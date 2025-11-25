@@ -1,0 +1,37 @@
+site_name: University Physics with Calculus
+site_url: https://lhs-beane.github.io/CollegePhysics201
+
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - toc:
+      permalink: true
+
+  - pymdownx.arithmatex:
+      generic: true
+
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Syllabus: syllabus.md
+  - Modules:
+      - Week 1: week1/index.md
+      - Week 2: week2/index.md
+      - Week 3: week3/index.md
+      - Week 4: week4/index.md
+      - Week 5: week5/index.md
+      - Week 6: week6/index.md
+      - Week 7: week7/index.md
+      - Week 8: week8/index.md
