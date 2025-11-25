@@ -29,7 +29,7 @@ Explore modules, practice problems, simulations, and reviews — all in one plac
   ---
   Instantly find any formula, example, or topic using the search bar.
 
-  [Use Search ↑](#)
+  Use the 🔍 icon in the top-right.
 
 </div>
 
@@ -108,21 +108,21 @@ Explore modules, practice problems, simulations, and reviews — all in one plac
   ---
   Test motion graphs, forces, energy, and waves with interactive demos.
 
-  [Simulations →](simulations.md)
+  *Coming soon.*
 
 - :pencil2: **Practice Problems**
 
   ---
   Challenge problems with instant solutions to test your understanding.
 
-  [Practice Sets →](practice.md)
+  *Coming soon.*
 
 - :zap: **Exam Reviews**
 
   ---
   Guided review modules for each exam with summaries & practice quizzes.
 
-  [Review Modules →](review.md)
+  *Coming soon.*
 
 </div>
 
@@ -143,14 +143,15 @@ You will learn to:
 - model physical systems  
 - solve problems using derivatives & integrals  
 - build intuition with diagrams & graphs  
-- analyze real-world situations using physics principles  
+- analyze real-world phenomena  
 
 ---
 
-# 🎉 Ready to Begin?
-
 <div align="center">
+
+# 🎉 Ready to Begin?
 
 [Start Week 1 →](week1/index.md){ .md-button .md-button--primary .md-button--large }
 
 </div>
+
