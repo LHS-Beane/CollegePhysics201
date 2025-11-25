@@ -1,121 +1,156 @@
-# 🧠 **College Physics 201**  
-### *A Complete Interactive Learning Environment for University Physics with Calculus*
+# 🧠 College Physics 201  
+### *Interactive Course Portal*
+
+Welcome to your complete physics learning environment.  
+Explore modules, practice problems, simulations, and reviews — all in one place.
 
 ---
 
-<div align="center">
+# 🚀 Start Here
 
-## 🚀 **Welcome to the Course!**
+<div class="grid cards" markdown>
 
-This site is your **1-stop learning platform** for everything you need in *University Physics with Calculus*:
+- :rocket: **Begin Learning**
+  
+  ---
+  Start with the fundamentals of 1D and 2D motion using calculus.
+  
+  [Start Week 1 →](week1/index.md)
 
-- 📚 Full lesson modules  
-- 🎥 (optional) video walkthroughs  
-- 🧮 Worked examples  
-- 🔍 Concept breakdowns  
-- 📝 Practice problems  
-- 🧠 Exam reviews  
-- 🧩 Interactive simulations  
+- :book: **View Syllabus**
 
-Whether you’re catching up after missing class  
-or reviewing to prepare for an exam—  
-**you’re in the right place.**
+  ---
+  Course structure, grading, expectations, and weekly schedule.
 
----
+  [Open Syllabus →](syllabus.md)
 
-## 🌟 **Start Learning**
+- :mag: **Search the Course**
 
-[➡️ Begin Week 1 – Kinematics](week1/index.md){ .md-button .md-button--primary }
+  ---
+  Instantly find any formula, example, or topic using the search bar.
 
-[📘 View Syllabus](syllabus.md){ .md-button }
+  [Use Search ↑](#)
 
 </div>
 
 ---
 
-# ⚡ What You’ll Learn in This Course
+# 📘 Course Modules
 
-This course helps you master the foundations of physics using the power of calculus.
+<div class="grid cards" markdown>
 
-### 🔢 **Kinematics**
-- Motion in 1D & 2D  
-- Derivatives & integrals in motion  
-- Projectile motion  
-- Velocity/acceleration analysis  
+- :one: **Week 1 — Kinematics**
 
-### ⚖️ **Dynamics**
-- Newton’s Laws  
-- Free-body diagrams  
-- Friction, tension, normal force  
-- Circular motion forces  
+  ---
+  Motion in 1D, derivatives, integrals, free fall, displacement, velocity, acceleration.
 
-### 🔋 **Energy**
-- Work-energy theorem  
-- Potential & kinetic energy  
-- Conservative forces  
+  [Go to Week 1 →](week1/index.md)
 
-### 💥 **Momentum**
-- Impulse  
-- Elastic & inelastic collisions  
-- Center of mass  
+- :two: **Week 2 — Vectors & 2D Motion**
 
-### 🌀 **Rotation**
-- Rotational kinematics  
-- Torque  
-- Moment of inertia  
+  ---
+  Components, unit vectors, dot product, projectile motion, circular motion.
 
-### 🎵 **Oscillations & Waves**
-- SHM  
-- Springs & pendulums  
-- Wave properties  
+  [Go to Week 2 →](week2/index.md)
 
-### 🔥 **Thermodynamics (Intro)**
-- Heat & temperature  
-- Ideal gas law  
-- Heat transfer  
+- :three: **Week 3 — Forces & Newton’s Laws**
+
+  ---
+  Dynamics, free-body diagrams, friction, tension, Newton’s laws, applications.
+
+  [Go to Week 3 →](week3/index.md)
+
+- :four: **Week 4 — Work & Energy**
+
+  ---
+  Work-energy theorem, kinetic & potential energy, conservative vs. non-conservative forces.
+
+  [Go to Week 4 →](week4/index.md)
+
+- :five: **Week 5 — Momentum & Collisions**
+
+  ---
+  Impulse-momentum theorem, elastic/inelastic collisions, center of mass.
+
+  [Go to Week 5 →](week5/index.md)
+
+- :six: **Week 6 — Rotational Motion**
+
+  ---
+  Rotational kinematics & dynamics, torque, moment of inertia.
+
+  [Go to Week 6 →](week6/index.md)
+
+- :seven: **Week 7 — SHM & Gravitation**
+
+  ---
+  Springs, pendulums, oscillations, universal gravitation, orbital motion.
+
+  [Go to Week 7 →](week7/index.md)
+
+- :eight: **Week 8 — Thermodynamics**
+
+  ---
+  Temperature, heat transfer, ideal gases, first law of thermodynamics.
+
+  [Go to Week 8 →](week8/index.md)
+
+</div>
+
+---
+
+# 🧪 Interactive Tools
+
+<div class="grid cards" markdown>
+
+- :chart_with_upwards_trend: **Simulations**
+
+  ---
+  Test motion graphs, forces, energy, and waves with interactive demos.
+
+  [Simulations →](simulations.md)
+
+- :pencil2: **Practice Problems**
+
+  ---
+  Challenge problems with instant solutions to test your understanding.
+
+  [Practice Sets →](practice.md)
+
+- :zap: **Exam Reviews**
+
+  ---
+  Guided review modules for each exam with summaries & practice quizzes.
+
+  [Review Modules →](review.md)
+
+</div>
 
 ---
 
-# 🧭 Quick Navigation
+# 🧩 About the Course
 
-Use the sidebar for full navigation, or jump directly:
+This course combines **physics + calculus** to help you master:
 
-- [Week 1 – Kinematics](week1/index.md)
-- [Week 2 – Vectors & 2D Motion](week2/index.md)
-- [Week 3 – Dynamics](week3/index.md)
-- [Week 4 – Energy](week4/index.md)
-- [Week 5 – Momentum](week5/index.md)
-- [Week 6 – Rotation](week6/index.md)
-- [Week 7 – SHM & Gravitation](week7/index.md)
-- [Week 8 – Thermodynamics](week8/index.md)
+- motion in 1D & 2D  
+- forces & Newton’s laws  
+- rotational dynamics  
+- energy & momentum  
+- oscillations & waves  
+- thermodynamics  
 
----
-
-# 🔧 Tools & Support
-
-### 🧮 Equation Help  
-This site supports full LaTeX. Example:
-
-\[
-F = ma
-\]
-
-### 🔍 Search Anything  
-Use the search bar in the top-right to instantly find formulas, definitions, and examples.
-
-### 💬 Need Help?  
-Bring questions to class or email your instructor at:  
-📧 **andy.beane@lepapps.org**
+You will learn to:
+- model physical systems  
+- solve problems using derivatives & integrals  
+- build intuition with diagrams & graphs  
+- analyze real-world situations using physics principles  
 
 ---
+
+# 🎉 Ready to Begin?
 
 <div align="center">
 
-# 🎉 **Let’s Get Started!**
-
-Physics is the study of the universe.  
-Let’s explore it — one equation at a time.
-
-[➡️ Start Learning](week1/index.md){ .md-button .md-button--primary }
+[Start Week 1 →](week1/index.md){ .md-button .md-button--primary .md-button--large }
 
 </div>
