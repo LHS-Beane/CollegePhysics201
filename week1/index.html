@@ -571,19 +571,22 @@
 
 
 <h1 id="week-1-units-dimensions-1d-kinematics-with-calculus">🧭 Week 1 — Units, Dimensions, &amp; 1D Kinematics (with Calculus)<a class="headerlink" href="#week-1-units-dimensions-1d-kinematics-with-calculus" title="Permanent link">&para;</a></h1>
-<p>Welcome to Week 1! This module teaches the foundations of motion using both <strong>physics</strong> and <strong>calculus</strong>.<br />
-Click sections to expand — you don’t need to scroll everything at once.</p>
+<p>Welcome to Week 1!<br />
+This module is designed so you can <strong>fully learn physics on your own</strong>, even if you missed class.</p>
+<p>Use the <strong>expandable sections</strong> below to navigate without endless scrolling.</p>
 <hr />
 <h1 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h1>
+<p>By the end of Week 1, you will be able to:</p>
 <ul>
-<li>Convert units and analyze dimensions  </li>
-<li>Use derivatives and integrals to describe motion  </li>
+<li>Convert and analyze units &amp; dimensions  </li>
+<li>Understand position, velocity, and acceleration  </li>
+<li>Use <strong>derivatives</strong> and <strong>integrals</strong> to model motion  </li>
 <li>Interpret motion graphs  </li>
-<li>Solve constant- and non-constant-acceleration problems  </li>
-<li>Apply free-fall equations  </li>
+<li>Solve real-world motion problems  </li>
+<li>Model free fall  </li>
 </ul>
 <hr />
-<h1 id="1-units-dimensions-and-analysis">📘 1. Units, Dimensions, and Analysis<a class="headerlink" href="#1-units-dimensions-and-analysis" title="Permanent link">&para;</a></h1>
+<h1 id="1-units-dimensions">📘 1. Units &amp; Dimensions<a class="headerlink" href="#1-units-dimensions" title="Permanent link">&para;</a></h1>
 <details class="info">
 <summary>1.1 SI Base Units (click to expand)</summary>
 <table>
@@ -626,65 +629,82 @@ Click sections to expand — you don’t need to scroll everything at once.</p>
 <hr />
 <details class="note">
 <summary>1.2 Dimensions (click to expand)</summary>
-<p>Dimensions describe the <em>type</em> of quantity.</p>
+<p>Dimensions describe <strong>what type</strong> of physical quantity something is.</p>
 <div class="arithmatex">\[
 \text{Velocity}: [L][T^{-1}]
 \]</div>
 <div class="arithmatex">\[
 \text{Acceleration}: [L][T^{-2}]
 \]</div>
-<p><strong>Invalid equation example:</strong><br />
-[
-v = 3t + 7x \quad \text{(units don’t match)}
-]</p>
+<div class="arithmatex">\[
+\text{Force}: [M][L][T^{-2}]
+\]</div>
+<hr />
+<p>❌ <strong>Incorrect Equation Example</strong></p>
+<div class="arithmatex">\[
+v = 3t + 7x
+\]</div>
+<ul>
+<li>Left side: <span class="arithmatex">\([L/T]\)</span>  </li>
+<li>Right side: <span class="arithmatex">\(3t \rightarrow [T]\)</span>, <span class="arithmatex">\(7x \rightarrow [L]\)</span></li>
+</ul>
+<p>Units do <strong>not</strong> match → equation is invalid.</p>
 </details>
 <hr />
 <details class="example">
 <summary>1.3 Unit Conversion Example (click)</summary>
-<p>Convert 60 mph → m/s:</p>
+<p>Convert 60 mph to m/s:</p>
 <div class="arithmatex">\[
 60 \frac{\text{mi}}{\text{hr}}
 \cdot
 \frac{1609\ \text{m}}{1\ \text{mi}}
 \cdot
 \frac{1\ \text{hr}}{3600\ \text{s}}
-= 26.8\ \text{m/s}
+=
+26.8\ \text{m/s}
 \]</div>
 </details>
 <hr />
 <h1 id="2-position-velocity-and-acceleration">📘 2. Position, Velocity, and Acceleration<a class="headerlink" href="#2-position-velocity-and-acceleration" title="Permanent link">&para;</a></h1>
-<p>We use:</p>
 <div class="arithmatex">\[
-v(t)=\frac{dx}{dt} \qquad a(t)=\frac{dv}{dt}
+v(t) = \frac{dx}{dt}
+\qquad
+a(t) = \frac{dv}{dt}
 \]</div>
+<p>These are <strong>definitions</strong> from calculus applied to motion.</p>
 <hr />
 <h2 id="concept-example-try-it">🧩 Concept → Example → Try It<a class="headerlink" href="#concept-example-try-it" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It Yourself</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Position <span class="arithmatex">\(x(t)\)</span>, velocity <span class="arithmatex">\(v(t)\)</span>, and acceleration <span class="arithmatex">\(a(t)\)</span> are linked through calculus.</p>
+<ul>
+<li><strong>Position</strong> <span class="arithmatex">\(x(t)\)</span> tells where something is.  </li>
+<li><strong>Velocity</strong> <span class="arithmatex">\(v(t)\)</span> is how fast position changes.  </li>
+<li><strong>Acceleration</strong> <span class="arithmatex">\(a(t)\)</span> is how fast velocity changes.</li>
+</ul>
 </div>
 <div class="tabbed-block">
 <p>Given:
 [
-x(t) = t^3 - 4t + 2
+x(t)=t^3 - 4t + 2
+]
+Then:
+[
+v(t)=3t^2 - 4
+]
+[
+a(t)=6t
 ]</p>
-<div class="arithmatex">\[
-v(t) = 3t^2 - 4
-\]</div>
-<div class="arithmatex">\[
-a(t) = 6t
-\]</div>
 </div>
 <div class="tabbed-block">
-<p>Find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span> if:
+<p>Find velocity &amp; acceleration if:
 [
 x(t)=5t^2 - 3t + 8
 ]</p>
 <details class="success">
 <summary>Show Solution</summary>
 <p>[
-v(t)=10t-3
+v(t)=10t - 3
 ]
 [
 a(t)=10
@@ -695,15 +715,17 @@ a(t)=10
 </div>
 <hr />
 <h1 id="3-integrals-in-kinematics">📘 3. Integrals in Kinematics<a class="headerlink" href="#3-integrals-in-kinematics" title="Permanent link">&para;</a></h1>
+<p>Integration reconstructs motion when velocity or acceleration is known.</p>
+<hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Constant Acceleration</label><label for="__tabbed_2_2">Non-Constant Acceleration</label><label for="__tabbed_2_3">Free Fall</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>[
+<div class="arithmatex">\[
 v(t)=v_0 + at
-]
-[
+\]</div>
+<div class="arithmatex">\[
 x(t)=x_0 + v_0 t + \frac{1}{2}at^2
-]</p>
+\]</div>
 </div>
 <div class="tabbed-block">
 <p>Example:
@@ -715,29 +737,27 @@ v(t)=2t^2 + C
 ]</p>
 </div>
 <div class="tabbed-block">
-<p>[
-a=g=9.8\ \text{m/s}^2
-]
-[
+<div class="arithmatex">\[
+a = g = 9.8\ \text{m/s}^2
+\]</div>
+<div class="arithmatex">\[
 v(t)=gt + v_0
-]
-[
+\]</div>
+<div class="arithmatex">\[
 x(t)=x_0 + v_0 t + \frac{1}{2}gt^2
-]</p>
+\]</div>
 </div>
 </div>
 </div>
 <hr />
-<h1 id="4-graph-interpretation">📘 4. Graph Interpretation<a class="headerlink" href="#4-graph-interpretation" title="Permanent link">&para;</a></h1>
-<p>Graphs are essential.</p>
+<h1 id="4-reading-motion-graphs">📘 4. Reading Motion Graphs<a class="headerlink" href="#4-reading-motion-graphs" title="Permanent link">&para;</a></h1>
 <details class="info">
-<summary>How to read motion graphs (click to expand)</summary>
-<ul>
-<li>Position slope → velocity  </li>
-<li>Velocity slope → acceleration  </li>
-<li>Area under velocity curve → displacement  </li>
-</ul>
+<summary>Click to expand</summary>
+<p><strong>Position graph → slope → velocity</strong><br />
+<strong>Velocity graph → slope → acceleration</strong><br />
+<strong>Velocity graph → area → displacement</strong></p>
 </details>
+<p>Understanding graphs is essential for Test 1.</p>
 <hr />
 <h1 id="5-worked-examples">🎓 5. Worked Examples<a class="headerlink" href="#5-worked-examples" title="Permanent link">&para;</a></h1>
 <details class="example">
@@ -762,7 +782,7 @@ v=gt=9.8(2)=19.6\ \text{m/s}
 ]</p>
 <p><strong>Position:</strong>
 [
-x=20 - \frac{1}{2}(9.8)(2^2)=0.4\ \text{m}
+x = 20 - \frac{1}{2}(9.8)(2^2) = 0.4\ \text{m}
 ]</p>
 </details>
 <hr />
@@ -781,12 +801,7 @@ x(t)=t^3 + 3t
 <hr />
 <h1 id="6-practice-problems">📝 6. Practice Problems<a class="headerlink" href="#6-practice-problems" title="Permanent link">&para;</a></h1>
 <details class="question">
-<summary>Practice Problem 1</summary>
-<p>Given:
-[
-x(t)=2t^3 - 5t^2 + 7
-]
-Find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span>.</p>
+<summary>1. Given <span class="arithmatex">\(x(t)=2t^3 - 5t^2 + 7\)</span>, find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span></summary>
 <details class="success">
 <summary>Show Answer</summary>
 <p>[
@@ -799,19 +814,17 @@ a(t)=12t - 10
 </details>
 <hr />
 <details class="question">
-<summary>Practice Problem 2</summary>
-<p>A car starts from rest and accelerates at 4 m/s² for 5 seconds.</p>
+<summary>2. A car accelerates from rest at 4 m/s² for 5 s</summary>
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
-x=\frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
+x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
 \]</div>
 </details>
 </details>
 <hr />
 <details class="question">
-<summary>Practice Problem 3</summary>
-<p>A ball is thrown upward at 12 m/s. Find its max height.</p>
+<summary>3. A ball is thrown upward at 12 m/s</summary>
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
@@ -821,19 +834,17 @@ h=\frac{v_0^2}{2g}=\frac{144}{19.6}=7.35\ \text{m}
 </details>
 <hr />
 <details class="question">
-<summary>Practice Problem 4</summary>
-<p>Convert 45 mph to m/s.</p>
+<summary>4. Convert 45 mph to m/s</summary>
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
-45\ \text{mph}=20.1\ \text{m/s}
+45\ \text{mph} \approx 20.1\ \text{m/s}
 \]</div>
 </details>
 </details>
 <hr />
 <details class="question">
-<summary>Practice Problem 5</summary>
-<p>If <span class="arithmatex">\(v(t)=6t\)</span> and <span class="arithmatex">\(x(0)=0\)</span>, find <span class="arithmatex">\(x(t)\)</span>.</p>
+<summary>5. If <span class="arithmatex">\(v(t)=6t\)</span> and <span class="arithmatex">\(x(0)=0\)</span>, find <span class="arithmatex">\(x(t)\)</span></summary>
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
@@ -844,10 +855,14 @@ x(t)=3t^2
 <hr />
 <h1 id="7-summary-sheet">🎉 7. Summary Sheet<a class="headerlink" href="#7-summary-sheet" title="Permanent link">&para;</a></h1>
 <div class="arithmatex">\[
-v=\frac{dx}{dt} \qquad a=\frac{dv}{dt}
+v=\frac{dx}{dt}
+\qquad 
+a=\frac{dv}{dt}
 \]</div>
 <div class="arithmatex">\[
-v=v_0+at \qquad x=x_0 + v_0t + \frac{1}{2}at^2
+v=v_0+at
+\qquad
+x=x_0 + v_0 t + \frac{1}{2}at^2
 \]</div>
 <hr />
 <div align="center">
