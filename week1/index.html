@@ -571,19 +571,19 @@
 
 
 <h1 id="week-1-units-dimensions-1d-kinematics-with-calculus">🧭 Week 1 — Units, Dimensions, &amp; 1D Kinematics (with Calculus)<a class="headerlink" href="#week-1-units-dimensions-1d-kinematics-with-calculus" title="Permanent link">&para;</a></h1>
-<p>Welcome to Week 1!<br />
-This module is designed so you can <strong>fully learn physics on your own</strong>, even if you missed class.</p>
-<p>Use the <strong>expandable sections</strong> below to navigate without endless scrolling.</p>
+<p>Welcome to <strong>Week 1</strong> of College Physics 201!<br />
+This module is built so you can <strong>fully learn the content on your own</strong>, with explanations, intuition, practice, and hidden solutions.</p>
 <hr />
 <h1 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h1>
 <p>By the end of Week 1, you will be able to:</p>
 <ul>
-<li>Convert and analyze units &amp; dimensions  </li>
-<li>Understand position, velocity, and acceleration  </li>
-<li>Use <strong>derivatives</strong> and <strong>integrals</strong> to model motion  </li>
+<li>Convert and analyze physical quantities using units &amp; dimensions  </li>
+<li>Understand the relationship between position, velocity, and acceleration  </li>
+<li>Use <strong>derivatives</strong> to find velocity/acceleration  </li>
+<li>Use <strong>integrals</strong> to find velocity/position  </li>
 <li>Interpret motion graphs  </li>
-<li>Solve real-world motion problems  </li>
-<li>Model free fall  </li>
+<li>Solve free-fall and constant-acceleration problems  </li>
+<li>Recognize real-world applications of calculus in motion  </li>
 </ul>
 <hr />
 <h1 id="1-units-dimensions">📘 1. Units &amp; Dimensions<a class="headerlink" href="#1-units-dimensions" title="Permanent link">&para;</a></h1>
@@ -628,8 +628,8 @@ This module is designed so you can <strong>fully learn physics on your own</stro
 </details>
 <hr />
 <details class="note">
-<summary>1.2 Dimensions (click to expand)</summary>
-<p>Dimensions describe <strong>what type</strong> of physical quantity something is.</p>
+<summary>1.2 Dimensions (What They Mean and Why They Matter)</summary>
+<p>Dimensions describe <strong>the type</strong> of physical quantity.</p>
 <div class="arithmatex">\[
 \text{Velocity}: [L][T^{-1}]
 \]</div>
@@ -639,21 +639,26 @@ This module is designed so you can <strong>fully learn physics on your own</stro
 <div class="arithmatex">\[
 \text{Force}: [M][L][T^{-2}]
 \]</div>
-<hr />
-<p>❌ <strong>Incorrect Equation Example</strong></p>
+<h3 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If dimensions don’t match on both sides of an equation → the equation is <strong>wrong</strong>.  </li>
+<li>This is one of the fastest ways to check your work.  </li>
+<li>Physicists use this to guess formulas before deriving them.</li>
+</ul>
+<h3 id="example-invalid-equation">Example — Invalid Equation<a class="headerlink" href="#example-invalid-equation" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
 v = 3t + 7x
 \]</div>
 <ul>
-<li>Left side: <span class="arithmatex">\([L/T]\)</span>  </li>
-<li>Right side: <span class="arithmatex">\(3t \rightarrow [T]\)</span>, <span class="arithmatex">\(7x \rightarrow [L]\)</span></li>
+<li>LHS: <span class="arithmatex">\([L/T]\)</span>  </li>
+<li>RHS: <span class="arithmatex">\(3t → [T]\)</span>, <span class="arithmatex">\(7x → [L]\)</span></li>
 </ul>
-<p>Units do <strong>not</strong> match → equation is invalid.</p>
+<p>❌ You can’t add time to length, so this equation is invalid.</p>
 </details>
 <hr />
 <details class="example">
-<summary>1.3 Unit Conversion Example (click)</summary>
-<p>Convert 60 mph to m/s:</p>
+<summary>1.3 Unit Conversion (Factor-Label Method)</summary>
+<p>Convert 60 mph → m/s</p>
 <div class="arithmatex">\[
 60 \frac{\text{mi}}{\text{hr}}
 \cdot
@@ -671,36 +676,40 @@ v(t) = \frac{dx}{dt}
 \qquad
 a(t) = \frac{dv}{dt}
 \]</div>
-<p>These are <strong>definitions</strong> from calculus applied to motion.</p>
+<p>These are the <strong>calculus definitions</strong> of motion.</p>
 <hr />
 <h2 id="concept-example-try-it">🧩 Concept → Example → Try It<a class="headerlink" href="#concept-example-try-it" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It Yourself</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ul>
-<li><strong>Position</strong> <span class="arithmatex">\(x(t)\)</span> tells where something is.  </li>
-<li><strong>Velocity</strong> <span class="arithmatex">\(v(t)\)</span> is how fast position changes.  </li>
-<li><strong>Acceleration</strong> <span class="arithmatex">\(a(t)\)</span> is how fast velocity changes.</li>
+<li><strong>Position</strong> <span class="arithmatex">\(x(t)\)</span>: where the object is  </li>
+<li><strong>Velocity</strong> <span class="arithmatex">\(v(t)\)</span>: how fast position changes  </li>
+<li><strong>Acceleration</strong> <span class="arithmatex">\(a(t)\)</span>: how fast velocity changes  </li>
+<li>In real life, nothing moves at constant speed<br />
+  → calculus handles changing, real-world motion</li>
 </ul>
 </div>
 <div class="tabbed-block">
 <p>Given:
 [
 x(t)=t^3 - 4t + 2
-]
-Then:
-[
-v(t)=3t^2 - 4
-]
-[
-a(t)=6t
 ]</p>
+<div class="arithmatex">\[
+v(t) = 3t^2 - 4
+\]</div>
+<div class="arithmatex">\[
+a(t) = 6t
+\]</div>
+<p><strong>Interpretation:</strong>
+- Velocity increases quadratically<br />
+- Acceleration increases linearly<br />
+- This describes an object pushed harder over time</p>
 </div>
 <div class="tabbed-block">
-<p>Find velocity &amp; acceleration if:
-[
+<div class="arithmatex">\[
 x(t)=5t^2 - 3t + 8
-]</p>
+\]</div>
 <details class="success">
 <summary>Show Solution</summary>
 <p>[
@@ -714,8 +723,24 @@ a(t)=10
 </div>
 </div>
 <hr />
+<details class="note">
+<summary>Deep Explanation — Why Derivatives Describe Motion</summary>
+<p>Physics uses derivatives because motion is <strong>never perfectly constant</strong>.</p>
+<ul>
+<li>Your position changes → velocity  </li>
+<li>Your velocity changes → acceleration  </li>
+<li>Your acceleration might change → jerk (used in engineering)</li>
+</ul>
+<p><strong>Real-world example:</strong><br />
+A car’s speedometer approximates<br />
+[
+v(t)=\frac{dx}{dt}
+]
+in real time.</p>
+</details>
+<hr />
 <h1 id="3-integrals-in-kinematics">📘 3. Integrals in Kinematics<a class="headerlink" href="#3-integrals-in-kinematics" title="Permanent link">&para;</a></h1>
-<p>Integration reconstructs motion when velocity or acceleration is known.</p>
+<p>Integration <em>rebuilds</em> motion from rate-of-change information.</p>
 <hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Constant Acceleration</label><label for="__tabbed_2_2">Non-Constant Acceleration</label><label for="__tabbed_2_3">Free Fall</label></div>
 <div class="tabbed-content">
@@ -733,7 +758,7 @@ x(t)=x_0 + v_0 t + \frac{1}{2}at^2
 a(t)=4t
 ]
 [
-v(t)=2t^2 + C
+v(t) = 2t^2 + C
 ]</p>
 </div>
 <div class="tabbed-block">
@@ -750,40 +775,68 @@ x(t)=x_0 + v_0 t + \frac{1}{2}gt^2
 </div>
 </div>
 <hr />
+<details class="note">
+<summary>Deep Explanation — Why Integrals Matter</summary>
+<p>If derivatives “zoom in,” integrals “zoom out.”</p>
+<ul>
+<li>Integrating acceleration shows how small changes add up to velocity  </li>
+<li>Integrating velocity shows how motion accumulates over time  </li>
+</ul>
+<p><strong>Graphically:</strong><br />
+- Area under velocity curve = displacement<br />
+- Area under acceleration curve = change in velocity  </p>
+</details>
+<hr />
 <h1 id="4-reading-motion-graphs">📘 4. Reading Motion Graphs<a class="headerlink" href="#4-reading-motion-graphs" title="Permanent link">&para;</a></h1>
 <details class="info">
-<summary>Click to expand</summary>
-<p><strong>Position graph → slope → velocity</strong><br />
-<strong>Velocity graph → slope → acceleration</strong><br />
-<strong>Velocity graph → area → displacement</strong></p>
+<summary>Graph Interpretation (click to expand)</summary>
+<ul>
+<li><strong>Slope of position graph = velocity</strong>  </li>
+<li><strong>Slope of velocity graph = acceleration</strong>  </li>
+<li><strong>Area under velocity = displacement</strong>  </li>
+</ul>
+<p>Motion graphs are stories:
+- Position tells <em>where you are</em>
+- Velocity tells <em>how fast you move</em>
+- Acceleration tells <em>why your motion changes</em></p>
 </details>
-<p>Understanding graphs is essential for Test 1.</p>
 <hr />
 <h1 id="5-worked-examples">🎓 5. Worked Examples<a class="headerlink" href="#5-worked-examples" title="Permanent link">&para;</a></h1>
 <details class="example">
-<summary>Example 1 — From x(t) to v(t) and a(t)</summary>
-<p>[
+<summary>Example 1 — From <span class="arithmatex">\(x(t)\)</span> to <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span></summary>
+<p><strong>Given:</strong>
+[
 x(t)=4t^3 - 2t
-]
+]</p>
+<p><strong>Velocity:</strong>
 [
 v(t)=12t^2 - 2
-]
+]</p>
+<p><strong>Acceleration:</strong>
 [
 a(t)=24t
 ]</p>
+<p><strong>Interpretation:</strong>
+- Velocity is quadratic → speed grows more quickly<br />
+- Acceleration is linear → push gets stronger over time  </p>
 </details>
 <hr />
 <details class="example">
 <summary>Example 2 — Dropped Object</summary>
-<p>A ball is dropped from height 20 m.</p>
+<p>Released from height 20 m.</p>
+<div class="arithmatex">\[
+v_0=0,\quad x_0=20,\quad g=9.8\ \text{m/s}^2
+\]</div>
 <p><strong>Velocity after 2 s:</strong>
 [
-v=gt=9.8(2)=19.6\ \text{m/s}
+v = gt = 19.6\ \text{m/s}
 ]</p>
-<p><strong>Position:</strong>
+<p><strong>Position after 2 s:</strong>
 [
-x = 20 - \frac{1}{2}(9.8)(2^2) = 0.4\ \text{m}
+x = 20 - \frac{1}{2}(9.8)(4) = 0.4\ \text{m}
 ]</p>
+<p><strong>Interpretation:</strong><br />
+Quadratic position function reveals <em>rapid acceleration</em> near the ground.</p>
 </details>
 <hr />
 <details class="example">
@@ -818,7 +871,7 @@ a(t)=12t - 10
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
-x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
+x = \frac{1}{2}at^2 = 50\ \text{m}
 \]</div>
 </details>
 </details>
@@ -828,7 +881,7 @@ x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
 <details class="success">
 <summary>Show Answer</summary>
 <div class="arithmatex">\[
-h=\frac{v_0^2}{2g}=\frac{144}{19.6}=7.35\ \text{m}
+h=\frac{v_0^2}{2g}=7.35\ \text{m}
 \]</div>
 </details>
 </details>
@@ -868,7 +921,6 @@ x=x_0 + v_0 t + \frac{1}{2}at^2
 <div align="center">
 
 # 🎓 Week 1 Complete!  
-[Continue to Week 2 →](../week2/index.md){ .md-button .md-button--primary }
 
 </div>
 
