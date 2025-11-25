@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#placeholder" class="md-skip">
+        <a href="#week-1-units-dimensions-1d-kinematics-with-calculus" class="md-skip">
           Skip to content
         </a>
       
@@ -570,8 +570,311 @@
 
 
 
-<h1 id="placeholder">Placeholder<a class="headerlink" href="#placeholder" title="Permanent link">&para;</a></h1>
-<p>Content coming soon.</p>
+<h1 id="week-1-units-dimensions-1d-kinematics-with-calculus">🧭 Week 1 — Units, Dimensions, &amp; 1D Kinematics (with Calculus)<a class="headerlink" href="#week-1-units-dimensions-1d-kinematics-with-calculus" title="Permanent link">&para;</a></h1>
+<p>Welcome to Week 1!<br />
+This module is designed so that you can <strong>teach yourself physics</strong> even if you missed class — or want to build a stronger foundation for the rest of the course.</p>
+<p>By the end of Week 1, you’ll understand:</p>
+<ul>
+<li>Units, dimensions, and physical meaning  </li>
+<li>Position, velocity, acceleration  </li>
+<li>Derivatives in motion  </li>
+<li>Integrals in motion  </li>
+<li>Free fall  </li>
+<li>Graph interpretation  </li>
+<li>Real-world problem solving  </li>
+</ul>
+<hr />
+<h1 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h1>
+<p>By the end of this module, you will be able to:</p>
+<ul>
+<li>Convert units and analyze dimensions  </li>
+<li>Use calculus to transition between position, velocity, and acceleration  </li>
+<li>Interpret motion graphs  </li>
+<li>Solve constant and non-constant acceleration problems  </li>
+<li>Model real motion with integrals and derivatives  </li>
+<li>Apply free-fall equations correctly  </li>
+</ul>
+<hr />
+<h1 id="1-units-dimensions-and-basic-concepts">📘 1. Units, Dimensions, and Basic Concepts<a class="headerlink" href="#1-units-dimensions-and-basic-concepts" title="Permanent link">&para;</a></h1>
+<h2 id="si-base-units">SI Base Units<a class="headerlink" href="#si-base-units" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Unit</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length</td>
+<td>meter</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>kilogram</td>
+<td>kg</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>second</td>
+<td>s</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>kelvin</td>
+<td>K</td>
+</tr>
+<tr>
+<td>Electric current</td>
+<td>ampere</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dimensions">Dimensions<a class="headerlink" href="#dimensions" title="Permanent link">&para;</a></h2>
+<p>Dimensions express the <em>type</em> of quantity.</p>
+<p>Examples:</p>
+<div class="arithmatex">\[
+\text{Velocity}: [L][T^{-1}]
+\]</div>
+<div class="arithmatex">\[
+\text{Acceleration}: [L][T^{-2}]
+\]</div>
+<div class="arithmatex">\[
+\text{Force}: [M][L][T^{-2}]
+\]</div>
+<p>📌 <strong>If dimensions don’t match on both sides of an equation, the equation is wrong.</strong></p>
+<hr />
+<h2 id="example-dimensional-analysis">✨ Example: Dimensional Analysis<a class="headerlink" href="#example-dimensional-analysis" title="Permanent link">&para;</a></h2>
+<p>Is<br />
+[
+v = 3t + 7x
+]<br />
+valid?</p>
+<ul>
+<li>Left side: <span class="arithmatex">\([L/T]\)</span>  </li>
+<li>Right side: <span class="arithmatex">\(3t \rightarrow [T]\)</span>, <span class="arithmatex">\(7x \rightarrow [L]\)</span></li>
+</ul>
+<p>❌ <strong>Invalid.</strong> Units don’t match, so this equation cannot describe motion.</p>
+<hr />
+<h2 id="unit-conversions-factor-label-method">🔧 Unit Conversions (Factor-Label Method)<a class="headerlink" href="#unit-conversions-factor-label-method" title="Permanent link">&para;</a></h2>
+<p>Example:</p>
+<p>Convert 60 mph → m/s</p>
+<div class="arithmatex">\[
+60\frac{\text{mi}}{\text{hr}}
+\cdot
+\frac{1609\ \text{m}}{1\ \text{mi}}
+\cdot
+\frac{1\ \text{hr}}{3600\ \text{s}}
+=
+26.8\ \text{m/s}
+\]</div>
+<p>Unit consistency = physics success.</p>
+<hr />
+<h1 id="2-position-velocity-and-acceleration">📘 2. Position, Velocity, and Acceleration<a class="headerlink" href="#2-position-velocity-and-acceleration" title="Permanent link">&para;</a></h1>
+<h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+v(t) = \frac{dx}{dt}
+\]</div>
+<div class="arithmatex">\[
+a(t) = \frac{dv}{dt}
+\]</div>
+<p>These come directly from calculus.</p>
+<ul>
+<li><strong>Velocity</strong> = rate of change of position  </li>
+<li><strong>Acceleration</strong> = rate of change of velocity  </li>
+</ul>
+<hr />
+<h2 id="example-function">🔎 Example Function<a class="headerlink" href="#example-function" title="Permanent link">&para;</a></h2>
+<p>Let:</p>
+<div class="arithmatex">\[
+x(t) = t^3 - 4t + 2
+\]</div>
+<p>Then:</p>
+<div class="arithmatex">\[
+v(t) = 3t^2 - 4
+\]</div>
+<div class="arithmatex">\[
+a(t) = 6t
+\]</div>
+<p>Interpretation:</p>
+<ul>
+<li>Velocity changes quadratically  </li>
+<li>Acceleration increases linearly → motion speeds up faster over time  </li>
+</ul>
+<hr />
+<h1 id="3-derivatives-in-kinematics">📘 3. Derivatives in Kinematics<a class="headerlink" href="#3-derivatives-in-kinematics" title="Permanent link">&para;</a></h1>
+<p>Derivatives describe <strong>instantaneous</strong> rates of change.</p>
+<h3 id="example-try-this">Example (Try This!)<a class="headerlink" href="#example-try-this" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+x(t) = 5t^2 - 3t + 8
+\]</div>
+<p><strong>Velocity:</strong></p>
+<div class="arithmatex">\[
+v(t) = 10t - 3
+\]</div>
+<p><strong>Acceleration:</strong></p>
+<div class="arithmatex">\[
+a(t) = 10
+\]</div>
+<p>Acceleration is constant → parabola position + linear velocity.</p>
+<hr />
+<h1 id="4-integrals-in-kinematics">📘 4. Integrals in Kinematics<a class="headerlink" href="#4-integrals-in-kinematics" title="Permanent link">&para;</a></h1>
+<p>Integrals reconstruct motion when velocity or acceleration is known.</p>
+<h2 id="if-acceleration-is-known">If acceleration is known:<a class="headerlink" href="#if-acceleration-is-known" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+v(t) = \int a(t)\, dt
+\]</div>
+<h2 id="if-velocity-is-known">If velocity is known:<a class="headerlink" href="#if-velocity-is-known" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+x(t) = \int v(t)\, dt
+\]</div>
+<hr />
+<h2 id="constant-acceleration-very-important">🌟 Constant Acceleration (Very Important)<a class="headerlink" href="#constant-acceleration-very-important" title="Permanent link">&para;</a></h2>
+<p>If acceleration <span class="arithmatex">\(a\)</span> is constant:</p>
+<div class="arithmatex">\[
+v(t) = v_0 + at
+\]</div>
+<div class="arithmatex">\[
+x(t) = x_0 + v_0 t + \frac{1}{2}at^2
+\]</div>
+<p>These will appear <strong>everywhere</strong> in physics.</p>
+<hr />
+<h2 id="non-constant-acceleration">🌟 Non-Constant Acceleration<a class="headerlink" href="#non-constant-acceleration" title="Permanent link">&para;</a></h2>
+<p>Example:</p>
+<div class="arithmatex">\[
+a(t) = 4t
+\]</div>
+<div class="arithmatex">\[
+v(t) = \int 4t\,dt = 2t^2 + C
+\]</div>
+<p>Use initial conditions to solve for <span class="arithmatex">\(C\)</span>.</p>
+<hr />
+<h1 id="5-free-fall">📘 5. Free Fall<a class="headerlink" href="#5-free-fall" title="Permanent link">&para;</a></h1>
+<p>In free fall, acceleration is constant:</p>
+<div class="arithmatex">\[
+a = g = 9.8\ \text{m/s}^2
+\]</div>
+<p>Velocity:</p>
+<div class="arithmatex">\[
+v(t) = gt + v_0
+\]</div>
+<p>Position:</p>
+<div class="arithmatex">\[
+x(t) = x_0 + v_0 t + \frac{1}{2}gt^2
+\]</div>
+<p>If dropped:<br />
+[
+v_0 = 0
+]</p>
+<hr />
+<h1 id="6-graph-interpretation">📘 6. Graph Interpretation<a class="headerlink" href="#6-graph-interpretation" title="Permanent link">&para;</a></h1>
+<p>Understanding graphs is one of the MOST important physics skills.</p>
+<h2 id="position-velocity">📈 Position → Velocity<a class="headerlink" href="#position-velocity" title="Permanent link">&para;</a></h2>
+<p>Velocity = slope of position graph.</p>
+<h2 id="velocity-acceleration">📉 Velocity → Acceleration<a class="headerlink" href="#velocity-acceleration" title="Permanent link">&para;</a></h2>
+<p>Acceleration = slope of velocity graph.</p>
+<h2 id="velocity-displacement">🧭 Velocity → Displacement<a class="headerlink" href="#velocity-displacement" title="Permanent link">&para;</a></h2>
+<p>Displacement = area under velocity graph.</p>
+<hr />
+<h1 id="7-worked-examples">🎓 7. Worked Examples<a class="headerlink" href="#7-worked-examples" title="Permanent link">&para;</a></h1>
+<h2 id="example-1-derivatives-from-position">Example 1 — Derivatives from Position<a class="headerlink" href="#example-1-derivatives-from-position" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+x(t) = 4t^3 - 2t
+\]</div>
+<div class="arithmatex">\[
+v(t) = 12t^2 - 2
+\]</div>
+<div class="arithmatex">\[
+a(t) = 24t
+\]</div>
+<hr />
+<h2 id="example-2-dropped-object">Example 2 — Dropped Object<a class="headerlink" href="#example-2-dropped-object" title="Permanent link">&para;</a></h2>
+<p>A ball is dropped from 20 m.</p>
+<h3 id="velocity-after-2-s">Velocity after 2 s:<a class="headerlink" href="#velocity-after-2-s" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+v = gt = 9.8(2) = 19.6\ \text{m/s}
+\]</div>
+<h3 id="position">Position:<a class="headerlink" href="#position" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+x = 20 - \frac{1}{2}(9.8)(2^2) = 0.4\ \text{m}
+\]</div>
+<p>Just above the ground.</p>
+<hr />
+<h2 id="example-3-integrating-non-constant-acceleration">Example 3 — Integrating Non-Constant Acceleration<a class="headerlink" href="#example-3-integrating-non-constant-acceleration" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+a(t)=6t,\quad v(0)=3
+\]</div>
+<div class="arithmatex">\[
+v(t)=3t^2 + 3
+\]</div>
+<div class="arithmatex">\[
+x(t)=t^3 + 3t
+\]</div>
+<hr />
+<h1 id="8-practice-problems">📝 8. Practice Problems<a class="headerlink" href="#8-practice-problems" title="Permanent link">&para;</a></h1>
+<p>Try these before checking solutions:</p>
+<hr />
+<h3 id="1"><strong>1.</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>[
+x(t)=2t^3 - 5t^2 + 7
+]<br />
+Find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span>.</p>
+<hr />
+<h3 id="2"><strong>2.</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>A car starts from rest and accelerates at 4 m/s² for 5 seconds.<br />
+Find the distance traveled.</p>
+<hr />
+<h3 id="3"><strong>3.</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>A ball is thrown upward at 12 m/s.<br />
+Find its max height.</p>
+<hr />
+<h3 id="4"><strong>4.</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>Convert 45 mph to m/s.</p>
+<hr />
+<h3 id="5"><strong>5.</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>If <span class="arithmatex">\(v(t)=6t\)</span> and <span class="arithmatex">\(x(0)=0\)</span>, find <span class="arithmatex">\(x(t)\)</span>.</p>
+<hr />
+<h1 id="9-mini-quiz-check-your-understanding">🧪 9. Mini Quiz (Check Your Understanding)<a class="headerlink" href="#9-mini-quiz-check-your-understanding" title="Permanent link">&para;</a></h1>
+<p><strong>1.</strong> If velocity is the derivative of position, acceleration is the…<br />
+▶ derivative of velocity  </p>
+<p><strong>2.</strong> True or False: velocity can be zero while acceleration is nonzero.<br />
+▶ True  </p>
+<p><strong>3.</strong> A ball dropped has initial velocity…<br />
+▶ <span class="arithmatex">\(0\ \text{m/s}\)</span>  </p>
+<p><strong>4.</strong> If <span class="arithmatex">\(a(t)=10\)</span>, velocity is what type of function?<br />
+▶ Linear  </p>
+<hr />
+<h1 id="10-summary-sheet">🧩 10. Summary Sheet<a class="headerlink" href="#10-summary-sheet" title="Permanent link">&para;</a></h1>
+<h3 id="must-know-formulas">Must-Know Formulas<a class="headerlink" href="#must-know-formulas" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+v(t)=\frac{dx}{dt}
+\]</div>
+<div class="arithmatex">\[
+a(t)=\frac{dv}{dt}
+\]</div>
+<div class="arithmatex">\[
+v(t)=v_0 + at
+\]</div>
+<div class="arithmatex">\[
+x(t)=x_0 + v_0 t + \frac{1}{2}at^2
+\]</div>
+<h3 id="must-know-skills">Must-Know Skills<a class="headerlink" href="#must-know-skills" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read position/velocity/acceleration graphs  </li>
+<li>Perform derivatives &amp; integrals in motion  </li>
+<li>Apply free-fall equations  </li>
+<li>Check dimensional consistency  </li>
+<li>Convert units reliably  </li>
+</ul>
+<hr />
+<h1 id="excellent-work">🎉 Excellent Work!<a class="headerlink" href="#excellent-work" title="Permanent link">&para;</a></h1>
+<p>You’ve completed Week 1 — the foundation of all motion in physics.<br />
+You're ready for Week 2: <strong>Vectors, Components, and 2D Motion.</strong></p>
+<p><a class="md-button md-button--primary" href="../week2/">➡️ Continue to Week 2</a></p>
 
 
 
