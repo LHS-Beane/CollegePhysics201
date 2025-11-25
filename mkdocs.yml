@@ -1,4 +1,4 @@
-site_name: University Physics with Calculus
+site_name: University Physics 201
 site_url: https://lhs-beane.github.io/CollegePhysics201
 
 theme:
@@ -16,7 +16,6 @@ markdown_extensions:
 
   - pymdownx.highlight
   - pymdownx.superfences
-    - attr_list
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
@@ -36,3 +35,4 @@ nav:
       - Week 6: week6/index.md
       - Week 7: week7/index.md
       - Week 8: week8/index.md
+
