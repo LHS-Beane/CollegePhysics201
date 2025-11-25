@@ -1,21 +1,26 @@
 # 🧭 Week 1 — Units, Dimensions, & 1D Kinematics (with Calculus)
 
-Welcome to Week 1! This module teaches the foundations of motion using both **physics** and **calculus**.  
-Click sections to expand — you don’t need to scroll everything at once.
+Welcome to Week 1!  
+This module is designed so you can **fully learn physics on your own**, even if you missed class.
+
+Use the **expandable sections** below to navigate without endless scrolling.
 
 ---
 
 # 🎯 Learning Objectives
 
-- Convert units and analyze dimensions  
-- Use derivatives and integrals to describe motion  
+By the end of Week 1, you will be able to:
+
+- Convert and analyze units & dimensions  
+- Understand position, velocity, and acceleration  
+- Use **derivatives** and **integrals** to model motion  
 - Interpret motion graphs  
-- Solve constant- and non-constant-acceleration problems  
-- Apply free-fall equations  
+- Solve real-world motion problems  
+- Model free fall  
 
 ---
 
-# 📘 1. Units, Dimensions, and Analysis
+# 📘 1. Units & Dimensions
 
 ??? info "1.1 SI Base Units (click to expand)"
     | Quantity | Unit | Symbol |
@@ -29,7 +34,7 @@ Click sections to expand — you don’t need to scroll everything at once.
 ---
 
 ??? note "1.2 Dimensions (click to expand)"
-    Dimensions describe the *type* of quantity.
+    Dimensions describe **what type** of physical quantity something is.
 
     \[
     \text{Velocity}: [L][T^{-1}]
@@ -39,15 +44,26 @@ Click sections to expand — you don’t need to scroll everything at once.
     \text{Acceleration}: [L][T^{-2}]
     \]
 
-    **Invalid equation example:**  
     \[
-    v = 3t + 7x \quad \text{(units don’t match)}
+    \text{Force}: [M][L][T^{-2}]
     \]
+
+    ---
+    ❌ **Incorrect Equation Example**
+
+    \[
+    v = 3t + 7x
+    \]
+
+    - Left side: \([L/T]\)  
+    - Right side: \(3t \rightarrow [T]\), \(7x \rightarrow [L]\)
+
+    Units do **not** match → equation is invalid.
 
 ---
 
 ??? example "1.3 Unit Conversion Example (click)"
-    Convert 60 mph → m/s:
+    Convert 60 mph to m/s:
 
     \[
     60 \frac{\text{mi}}{\text{hr}}
@@ -55,49 +71,53 @@ Click sections to expand — you don’t need to scroll everything at once.
     \frac{1609\ \text{m}}{1\ \text{mi}}
     \cdot
     \frac{1\ \text{hr}}{3600\ \text{s}}
-    = 26.8\ \text{m/s}
+    =
+    26.8\ \text{m/s}
     \]
 
 ---
 
 # 📘 2. Position, Velocity, and Acceleration
 
-We use:
-
 \[
-v(t)=\frac{dx}{dt} \qquad a(t)=\frac{dv}{dt}
+v(t) = \frac{dx}{dt}
+\qquad
+a(t) = \frac{dv}{dt}
 \]
+
+These are **definitions** from calculus applied to motion.
 
 ---
 
 ## 🧩 Concept → Example → Try It
 
 === "Concept"
-    Position \(x(t)\), velocity \(v(t)\), and acceleration \(a(t)\) are linked through calculus.
+    - **Position** \(x(t)\) tells where something is.  
+    - **Velocity** \(v(t)\) is how fast position changes.  
+    - **Acceleration** \(a(t)\) is how fast velocity changes.
 
 === "Example"
     Given:
     \[
-    x(t) = t^3 - 4t + 2
+    x(t)=t^3 - 4t + 2
     \]
-
+    Then:
     \[
-    v(t) = 3t^2 - 4
+    v(t)=3t^2 - 4
     \]
-
     \[
-    a(t) = 6t
+    a(t)=6t
     \]
 
-=== "Try It"
-    Find \(v(t)\) and \(a(t)\) if:
+=== "Try It Yourself"
+    Find velocity & acceleration if:
     \[
     x(t)=5t^2 - 3t + 8
     \]
 
     ??? success "Show Solution"
         \[
-        v(t)=10t-3
+        v(t)=10t - 3
         \]
         \[
         a(t)=10
@@ -107,10 +127,15 @@ v(t)=\frac{dx}{dt} \qquad a(t)=\frac{dv}{dt}
 
 # 📘 3. Integrals in Kinematics
 
+Integration reconstructs motion when velocity or acceleration is known.
+
+---
+
 === "Constant Acceleration"
     \[
     v(t)=v_0 + at
     \]
+
     \[
     x(t)=x_0 + v_0 t + \frac{1}{2}at^2
     \]
@@ -126,24 +151,27 @@ v(t)=\frac{dx}{dt} \qquad a(t)=\frac{dv}{dt}
 
 === "Free Fall"
     \[
-    a=g=9.8\ \text{m/s}^2
+    a = g = 9.8\ \text{m/s}^2
     \]
+
     \[
     v(t)=gt + v_0
     \]
+
     \[
     x(t)=x_0 + v_0 t + \frac{1}{2}gt^2
     \]
 
 ---
 
-# 📘 4. Graph Interpretation  
-Graphs are essential.
+# 📘 4. Reading Motion Graphs
 
-??? info "How to read motion graphs (click to expand)"
-    - Position slope → velocity  
-    - Velocity slope → acceleration  
-    - Area under velocity curve → displacement  
+??? info "Click to expand"
+    **Position graph → slope → velocity**  
+    **Velocity graph → slope → acceleration**  
+    **Velocity graph → area → displacement**
+
+Understanding graphs is essential for Test 1.
 
 ---
 
@@ -172,7 +200,7 @@ Graphs are essential.
 
     **Position:**
     \[
-    x=20 - \frac{1}{2}(9.8)(2^2)=0.4\ \text{m}
+    x = 20 - \frac{1}{2}(9.8)(2^2) = 0.4\ \text{m}
     \]
 
 ---
@@ -194,13 +222,7 @@ Graphs are essential.
 
 # 📝 6. Practice Problems
 
-??? question "Practice Problem 1"
-    Given:
-    \[
-    x(t)=2t^3 - 5t^2 + 7
-    \]
-    Find \(v(t)\) and \(a(t)\).
-
+??? question "1. Given \(x(t)=2t^3 - 5t^2 + 7\), find \(v(t)\) and \(a(t)\)"
     ??? success "Show Answer"
         \[
         v(t)=6t^2 - 10t
@@ -211,19 +233,15 @@ Graphs are essential.
 
 ---
 
-??? question "Practice Problem 2"
-    A car starts from rest and accelerates at 4 m/s² for 5 seconds.
-    
+??? question "2. A car accelerates from rest at 4 m/s² for 5 s"
     ??? success "Show Answer"
         \[
-        x=\frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
+        x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
         \]
 
 ---
 
-??? question "Practice Problem 3"
-    A ball is thrown upward at 12 m/s. Find its max height.
-    
+??? question "3. A ball is thrown upward at 12 m/s"
     ??? success "Show Answer"
         \[
         h=\frac{v_0^2}{2g}=\frac{144}{19.6}=7.35\ \text{m}
@@ -231,19 +249,15 @@ Graphs are essential.
 
 ---
 
-??? question "Practice Problem 4"
-    Convert 45 mph to m/s.
-
+??? question "4. Convert 45 mph to m/s"
     ??? success "Show Answer"
         \[
-        45\ \text{mph}=20.1\ \text{m/s}
+        45\ \text{mph} \approx 20.1\ \text{m/s}
         \]
 
 ---
 
-??? question "Practice Problem 5"
-    If \(v(t)=6t\) and \(x(0)=0\), find \(x(t)\).
-
+??? question "5. If \(v(t)=6t\) and \(x(0)=0\), find \(x(t)\)"
     ??? success "Show Answer"
         \[
         x(t)=3t^2
@@ -254,11 +268,15 @@ Graphs are essential.
 # 🎉 7. Summary Sheet
 
 \[
-v=\frac{dx}{dt} \qquad a=\frac{dv}{dt}
+v=\frac{dx}{dt}
+\qquad 
+a=\frac{dv}{dt}
 \]
 
 \[
-v=v_0+at \qquad x=x_0 + v_0t + \frac{1}{2}at^2
+v=v_0+at
+\qquad
+x=x_0 + v_0 t + \frac{1}{2}at^2
 \]
 
 ---
