@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#week-2-vectors-components-and-2d-motion" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -330,6 +335,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -545,6 +552,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -561,9 +570,357 @@
 
 
 
-  <h1>Week 2</h1>
+<h1 id="week-2-vectors-components-and-2d-motion">🧭 Week 2 — Vectors, Components, and 2D Motion<a class="headerlink" href="#week-2-vectors-components-and-2d-motion" title="Permanent link">&para;</a></h1>
+<p>Welcome to <strong>Week 2</strong>!<br />
+This module teaches how to represent quantities in two dimensions — a critical step for real physics.</p>
+<p>You’ll learn vectors, components, projectiles, and how calculus applies in 2D motion.</p>
+<p>Click on sections to expand and learn at your own pace.</p>
+<hr />
+<h1 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h1>
+<p>By the end of Week 2, you will be able to:</p>
+<ul>
+<li>Represent physical quantities as <strong>vectors</strong>  </li>
+<li>Break vectors into <strong>x and y components</strong>  </li>
+<li>Use <strong>unit vectors</strong>  </li>
+<li>Add, subtract, and scale vectors  </li>
+<li>Compute dot products  </li>
+<li>Analyze <strong>2D motion</strong> using components  </li>
+<li>Solve <strong>projectile motion</strong> problems  </li>
+<li>Use reasoning + calculus to understand curved motion  </li>
+</ul>
+<hr />
+<h1 id="1-introduction-to-vectors">📘 1. Introduction to Vectors<a class="headerlink" href="#1-introduction-to-vectors" title="Permanent link">&para;</a></h1>
+<details class="info">
+<summary>1.1 What is a Vector?</summary>
+<p>A <strong>vector</strong> has both:</p>
+<ul>
+<li><strong>magnitude</strong> (how much)</li>
+<li><strong>direction</strong> (which way)</li>
+</ul>
+<p>Examples:
+- velocity<br />
+- acceleration<br />
+- displacement<br />
+- force  </p>
+<p>Scalar ≠ vector<br />
+- a scalar has magnitude only<br />
+- example: mass, temperature, energy</p>
+</details>
+<hr />
+<details class="note">
+<summary>1.2 Vector Notation</summary>
+<p>Common notations:</p>
+<div class="arithmatex">\[
+\vec{A},\quad \mathbf{A},\quad \langle A_x, A_y \rangle
+\]</div>
+<p>Components:
+[
+\vec{A} = \langle A_x,\ A_y \rangle
+]</p>
+<p>Magnitude:
+[
+|\vec{A}| = \sqrt{A_x^2 + A_y^2}
+]</p>
+<p>Unit vector form:
+[
+\vec{A} = A_x \hat{i} + A_y \hat{j}
+]</p>
+</details>
+<hr />
+<details class="note">
+<summary>Deep Explanation — Why Physics Uses Components</summary>
+<p>Real-world motion rarely happens in a straight line.</p>
+<p>By breaking motion into:
+[
+x\text{-direction} \quad \text{and} \quad y\text{-direction}
+]
+we can:</p>
+<ul>
+<li>treat each dimension independently  </li>
+<li>solve harder problems using simple 1D equations  </li>
+<li>combine them at the end to get full motion  </li>
+</ul>
+<p>Example:<br />
+Projectile motion has:
+- horizontal motion with <strong>constant velocity</strong><br />
+- vertical motion with <strong>constant acceleration</strong>  </p>
+<p>Components allow us to separate these behaviors cleanly.</p>
+</details>
+<hr />
+<h1 id="2-vector-components">📘 2. Vector Components<a class="headerlink" href="#2-vector-components" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Any vector can be broken into x and y components:</p>
+<div class="arithmatex">\[
+A_x = A\cos\theta,\qquad A_y = A\sin\theta
+\]</div>
+<p>This allows you to treat motion separately in each direction.</p>
+</div>
+<div class="tabbed-block">
+<p>A 10 m vector at 30° above horizontal:</p>
+<p>[
+A_x = 10\cos 30^\circ = 8.66
+]
+[
+A_y = 10\sin 30^\circ = 5
+]</p>
+</div>
+<div class="tabbed-block">
+<p>A 12 m vector at 60°:</p>
+<details class="success">
+<summary>Show Solution</summary>
+<p>[
+A_x = 12\cos 60^\circ = 6
+]
+[
+A_y = 12\sin 60^\circ = 10.39
+]</p>
+</details>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="3-vector-addition-subtraction">📘 3. Vector Addition &amp; Subtraction<a class="headerlink" href="#3-vector-addition-subtraction" title="Permanent link">&para;</a></h1>
+<details class="example">
+<summary>Click to expand</summary>
+<p>For vectors:
+[
+\vec{A} = \langle A_x, A_y \rangle,\quad
+\vec{B} = \langle B_x, B_y \rangle
+]</p>
+<p>Addition:
+[
+\vec{A} + \vec{B} = \langle A_x + B_x,\ A_y + B_y \rangle
+]</p>
+<p>Subtraction:
+[
+\vec{A} - \vec{B} = \langle A_x - B_x,\ A_y - B_y \rangle
+]</p>
+<p>Geometric interpretation:<br />
+- Tip-to-tail method<br />
+- Parallelogram rule  </p>
+</details>
+<hr />
+<h1 id="4-dot-product-optional-but-powerful">📘 4. Dot Product (Optional but powerful)<a class="headerlink" href="#4-dot-product-optional-but-powerful" title="Permanent link">&para;</a></h1>
+<details class="info">
+<summary>Understanding the Dot Product (Why it matters)</summary>
+<p>Definition:</p>
+<div class="arithmatex">\[
+\vec{A}\cdot\vec{B} = A_x B_x + A_y B_y
+\]</div>
+<p>Geometric form:</p>
+<div class="arithmatex">\[
+\vec{A}\cdot\vec{B} = |\vec{A}|\,|\vec{B}|\cos\theta
+\]</div>
+<p>Meaning:
+- Measures how much two vectors “point in the same direction”<br />
+- Used heavily in energy &amp; work (Week 4)<br />
+- Helps find angles between vectors  </p>
+</details>
+<hr />
+<h1 id="5-2d-kinematics-overview">📘 5. 2D Kinematics Overview<a class="headerlink" href="#5-2d-kinematics-overview" title="Permanent link">&para;</a></h1>
+<p>Motion in 2 dimensions is broken into two <strong>independent</strong> motions:</p>
+<ul>
+<li>Horizontal (x): constant velocity  </li>
+<li>Vertical (y): constant acceleration  </li>
+</ul>
+<div class="arithmatex">\[
+x(t)=v_{0x}t,
+\qquad
+y(t)=y_0 + v_{0y} t + \frac{1}{2}(-g)t^2
+\]</div>
+<p>Acceleration only affects the <strong>vertical</strong> motion.</p>
+<hr />
+<details class="note">
+<summary>Deep Explanation — Why x and y Motion Are Independent</summary>
+<p>Gravity only pulls downward.</p>
+<p>That means:
+- it changes <strong>vertical</strong> motion<br />
+- it does NOT affect horizontal motion  </p>
+<p>This is why a bullet dropped and a bullet fired horizontally<br />
+hit the ground at <strong>the same time</strong>.</p>
+</details>
+<hr />
+<h1 id="6-projectile-motion">📘 6. Projectile Motion<a class="headerlink" href="#6-projectile-motion" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Concept</label><label for="__tabbed_2_2">Example</label><label for="__tabbed_2_3">Try It</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>A projectile has:
+- horizontal motion with constant velocity<br />
+[
+x(t)=v_{0x} t
+]
+- vertical motion with constant acceleration<br />
+[
+y(t)=y_0 + v_{0y} t - \frac{1}{2}gt^{2}
+]</p>
+</div>
+<div class="tabbed-block">
+<p>A ball is launched at <span class="arithmatex">\(20\ \text{m/s}\)</span> at 40°.</p>
+<p>Components:
+[
+v_{0x} = 20\cos 40^\circ = 15.32
+]
+[
+v_{0y} = 20\sin 40^\circ = 12.86
+]</p>
+</div>
+<div class="tabbed-block">
+<p>Launch speed <span class="arithmatex">\(15\ \text{m/s}\)</span> at 30°.</p>
+<details class="success">
+<summary>Show Solution</summary>
+<p>[
+v_{0x} = 15\cos 30^\circ = 12.99
+]
+[
+v_{0y} = 15\sin 30^\circ = 7.5
+]</p>
+</details>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="7-worked-examples">🎓 7. Worked Examples<a class="headerlink" href="#7-worked-examples" title="Permanent link">&para;</a></h1>
+<details class="example">
+<summary>Example 1 — Range of a Projectile</summary>
+<p>A ball is launched at <span class="arithmatex">\(25\ \text{m/s}\)</span> at 35° from ground level.</p>
+<p>Components:
+[
+v_{0x} = 25\cos 35^\circ = 20.48
+]
+[
+v_{0y} = 25\sin 35^\circ = 14.34
+]</p>
+<p>Time of flight:
+[
+t = \frac{2v_{0y}}{g} = 2.93\ \text{s}
+]</p>
+<p>Range:
+[
+R=v_{0x}t = 59.97\ \text{m}
+]</p>
+</details>
+<hr />
+<details class="example">
+<summary>Example 2 — Maximum Height</summary>
+<p>Using:
+[
+v_y^2 = v_{0y}^2 - 2g(y - y_0)
+]</p>
+<p>Max height occurs when:
+[
+v_y = 0
+]</p>
+<p>Solve:
+[
+h = \frac{v_{0y}^2}{2g}
+]</p>
+</details>
+<hr />
+<details class="example">
+<summary>Example 3 — Relative Velocity</summary>
+<p>A boat moves 5 m/s east in a river flowing 3 m/s north.</p>
+<div class="arithmatex">\[
+\vec{v} = \langle 5,\ 3 \rangle
+\]</div>
+<p>Magnitude:
+[
+|\vec{v}| = \sqrt{5^2 + 3^2} = 5.83\ \text{m/s}
+]</p>
+</details>
+<hr />
+<h1 id="8-practice-problems">📝 8. Practice Problems<a class="headerlink" href="#8-practice-problems" title="Permanent link">&para;</a></h1>
+<details class="question">
+<summary>1. A 12 m vector is at 25° above horizontal. Find components.</summary>
+<details class="success">
+<summary>Show Answer</summary>
+<p>[
+A_x = 12\cos 25^\circ = 10.88
+]
+[
+A_y = 12\sin 25^\circ = 5.07
+]</p>
+</details>
+</details>
+<hr />
+<details class="question">
+<summary>2. A projectile is launched at 18 m/s at 45°.</summary>
+<p>Find its horizontal and vertical components.</p>
+<details class="success">
+<summary>Show Answer</summary>
+<p>[
+v_{0x} = 18\cos 45^\circ = 12.73
+]
+[
+v_{0y} = 18\sin 45^\circ = 12.73
+]</p>
+</details>
+</details>
+<hr />
+<details class="question">
+<summary>3. Find the range of a projectile launched at 20 m/s at 30°.</summary>
+<details class="success">
+<summary>Show Answer</summary>
+<p>[
+v_{0x}=17.32,\quad v_{0y}=10
+]
+[
+t = \frac{2v_{0y}}{g} = 2.04\ \text{s}
+]
+[
+R = v_{0x} t = 35.3\ \text{m}
+]</p>
+</details>
+</details>
+<hr />
+<details class="question">
+<summary>4. A ball is thrown horizontally at 8 m/s from 10 m height.</summary>
+<details class="success">
+<summary>Show Answer</summary>
+<p>Time to fall:
+[
+t = \sqrt{\frac{2h}{g}} = 1.43\ \text{s}
+]</p>
+<p>Horizontal distance:
+[
+x = v_x t = 11.4\ \text{m}
+]</p>
+</details>
+</details>
+<hr />
+<details class="question">
+<summary>5. A boat moves 4 m/s east in a 3 m/s north current.</summary>
+<details class="success">
+<summary>Show Answer</summary>
+<p>[
+\vec{v}=\langle 4,\ 3 \rangle
+]
+[
+|\vec{v}| = 5\ \text{m/s}
+]</p>
+</details>
+</details>
+<hr />
+<h1 id="9-summary-sheet">🎉 9. Summary Sheet<a class="headerlink" href="#9-summary-sheet" title="Permanent link">&para;</a></h1>
+<div class="arithmatex">\[
+A_x = A\cos\theta,\quad A_y = A\sin\theta
+\]</div>
+<div class="arithmatex">\[
+x(t)=v_{0x}t
+\]</div>
+<div class="arithmatex">\[
+y(t)=y_0 + v_{0y}t - \frac{1}{2}gt^2
+\]</div>
+<div class="arithmatex">\[
+|\vec{A}|=\sqrt{A_x^2 + A_y^2}
+\]</div>
+<hr />
+<div align="center">
 
+# 🎓 Week 2 Complete!  
 
+</div>
 
 
 
