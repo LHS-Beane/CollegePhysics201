@@ -1,9 +1,7 @@
 # 🧭 Week 1 — Units, Dimensions, & 1D Kinematics (with Calculus)
 
-Welcome to Week 1!  
-This module is designed so you can **fully learn physics on your own**, even if you missed class.
-
-Use the **expandable sections** below to navigate without endless scrolling.
+Welcome to **Week 1** of College Physics 201!  
+This module is built so you can **fully learn the content on your own**, with explanations, intuition, practice, and hidden solutions.
 
 ---
 
@@ -11,12 +9,13 @@ Use the **expandable sections** below to navigate without endless scrolling.
 
 By the end of Week 1, you will be able to:
 
-- Convert and analyze units & dimensions  
-- Understand position, velocity, and acceleration  
-- Use **derivatives** and **integrals** to model motion  
+- Convert and analyze physical quantities using units & dimensions  
+- Understand the relationship between position, velocity, and acceleration  
+- Use **derivatives** to find velocity/acceleration  
+- Use **integrals** to find velocity/position  
 - Interpret motion graphs  
-- Solve real-world motion problems  
-- Model free fall  
+- Solve free-fall and constant-acceleration problems  
+- Recognize real-world applications of calculus in motion  
 
 ---
 
@@ -33,8 +32,8 @@ By the end of Week 1, you will be able to:
 
 ---
 
-??? note "1.2 Dimensions (click to expand)"
-    Dimensions describe **what type** of physical quantity something is.
+??? note "1.2 Dimensions (What They Mean and Why They Matter)"
+    Dimensions describe **the type** of physical quantity.
 
     \[
     \text{Velocity}: [L][T^{-1}]
@@ -48,22 +47,25 @@ By the end of Week 1, you will be able to:
     \text{Force}: [M][L][T^{-2}]
     \]
 
-    ---
-    ❌ **Incorrect Equation Example**
+    ### Why this matters  
+    - If dimensions don’t match on both sides of an equation → the equation is **wrong**.  
+    - This is one of the fastest ways to check your work.  
+    - Physicists use this to guess formulas before deriving them.
 
+    ### Example — Invalid Equation  
     \[
     v = 3t + 7x
     \]
 
-    - Left side: \([L/T]\)  
-    - Right side: \(3t \rightarrow [T]\), \(7x \rightarrow [L]\)
+    - LHS: \([L/T]\)  
+    - RHS: \(3t → [T]\), \(7x → [L]\)
 
-    Units do **not** match → equation is invalid.
+    ❌ You can’t add time to length, so this equation is invalid.
 
 ---
 
-??? example "1.3 Unit Conversion Example (click)"
-    Convert 60 mph to m/s:
+??? example "1.3 Unit Conversion (Factor-Label Method)"
+    Convert 60 mph → m/s
 
     \[
     60 \frac{\text{mi}}{\text{hr}}
@@ -85,32 +87,39 @@ v(t) = \frac{dx}{dt}
 a(t) = \frac{dv}{dt}
 \]
 
-These are **definitions** from calculus applied to motion.
+These are the **calculus definitions** of motion.
 
 ---
 
 ## 🧩 Concept → Example → Try It
 
 === "Concept"
-    - **Position** \(x(t)\) tells where something is.  
-    - **Velocity** \(v(t)\) is how fast position changes.  
-    - **Acceleration** \(a(t)\) is how fast velocity changes.
+    - **Position** \(x(t)\): where the object is  
+    - **Velocity** \(v(t)\): how fast position changes  
+    - **Acceleration** \(a(t)\): how fast velocity changes  
+    - In real life, nothing moves at constant speed  
+      → calculus handles changing, real-world motion
 
 === "Example"
     Given:
     \[
     x(t)=t^3 - 4t + 2
     \]
-    Then:
+
     \[
-    v(t)=3t^2 - 4
-    \]
-    \[
-    a(t)=6t
+    v(t) = 3t^2 - 4
     \]
 
-=== "Try It Yourself"
-    Find velocity & acceleration if:
+    \[
+    a(t) = 6t
+    \]
+
+    **Interpretation:**
+    - Velocity increases quadratically  
+    - Acceleration increases linearly  
+    - This describes an object pushed harder over time
+
+=== "Try It"
     \[
     x(t)=5t^2 - 3t + 8
     \]
@@ -125,9 +134,25 @@ These are **definitions** from calculus applied to motion.
 
 ---
 
+??? note "Deep Explanation — Why Derivatives Describe Motion"
+    Physics uses derivatives because motion is **never perfectly constant**.
+
+    - Your position changes → velocity  
+    - Your velocity changes → acceleration  
+    - Your acceleration might change → jerk (used in engineering)
+
+    **Real-world example:**  
+    A car’s speedometer approximates  
+    \[
+    v(t)=\frac{dx}{dt}
+    \]
+    in real time.
+
+---
+
 # 📘 3. Integrals in Kinematics
 
-Integration reconstructs motion when velocity or acceleration is known.
+Integration *rebuilds* motion from rate-of-change information.
 
 ---
 
@@ -146,7 +171,7 @@ Integration reconstructs motion when velocity or acceleration is known.
     a(t)=4t
     \]
     \[
-    v(t)=2t^2 + C
+    v(t) = 2t^2 + C
     \]
 
 === "Free Fall"
@@ -164,44 +189,75 @@ Integration reconstructs motion when velocity or acceleration is known.
 
 ---
 
+??? note "Deep Explanation — Why Integrals Matter"
+    If derivatives “zoom in,” integrals “zoom out.”
+
+    - Integrating acceleration shows how small changes add up to velocity  
+    - Integrating velocity shows how motion accumulates over time  
+
+    **Graphically:**  
+    - Area under velocity curve = displacement  
+    - Area under acceleration curve = change in velocity  
+
+---
+
 # 📘 4. Reading Motion Graphs
 
-??? info "Click to expand"
-    **Position graph → slope → velocity**  
-    **Velocity graph → slope → acceleration**  
-    **Velocity graph → area → displacement**
-
-Understanding graphs is essential for Test 1.
+??? info "Graph Interpretation (click to expand)"
+    - **Slope of position graph = velocity**  
+    - **Slope of velocity graph = acceleration**  
+    - **Area under velocity = displacement**  
+    
+    Motion graphs are stories:
+    - Position tells *where you are*
+    - Velocity tells *how fast you move*
+    - Acceleration tells *why your motion changes*
 
 ---
 
 # 🎓 5. Worked Examples
 
-??? example "Example 1 — From x(t) to v(t) and a(t)"
+??? example "Example 1 — From \(x(t)\) to \(v(t)\) and \(a(t)\)"
+    **Given:**
     \[
     x(t)=4t^3 - 2t
     \]
+
+    **Velocity:**
     \[
     v(t)=12t^2 - 2
     \]
+
+    **Acceleration:**
     \[
     a(t)=24t
     \]
 
+    **Interpretation:**
+    - Velocity is quadratic → speed grows more quickly  
+    - Acceleration is linear → push gets stronger over time  
+
 ---
 
 ??? example "Example 2 — Dropped Object"
-    A ball is dropped from height 20 m.
+    Released from height 20 m.
+
+    \[
+    v_0=0,\quad x_0=20,\quad g=9.8\ \text{m/s}^2
+    \]
 
     **Velocity after 2 s:**
     \[
-    v=gt=9.8(2)=19.6\ \text{m/s}
+    v = gt = 19.6\ \text{m/s}
     \]
 
-    **Position:**
+    **Position after 2 s:**
     \[
-    x = 20 - \frac{1}{2}(9.8)(2^2) = 0.4\ \text{m}
+    x = 20 - \frac{1}{2}(9.8)(4) = 0.4\ \text{m}
     \]
+
+    **Interpretation:**  
+    Quadratic position function reveals *rapid acceleration* near the ground.
 
 ---
 
@@ -236,7 +292,7 @@ Understanding graphs is essential for Test 1.
 ??? question "2. A car accelerates from rest at 4 m/s² for 5 s"
     ??? success "Show Answer"
         \[
-        x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
+        x = \frac{1}{2}at^2 = 50\ \text{m}
         \]
 
 ---
@@ -244,7 +300,7 @@ Understanding graphs is essential for Test 1.
 ??? question "3. A ball is thrown upward at 12 m/s"
     ??? success "Show Answer"
         \[
-        h=\frac{v_0^2}{2g}=\frac{144}{19.6}=7.35\ \text{m}
+        h=\frac{v_0^2}{2g}=7.35\ \text{m}
         \]
 
 ---
@@ -284,7 +340,5 @@ x=x_0 + v_0 t + \frac{1}{2}at^2
 <div align="center">
 
 # 🎓 Week 1 Complete!  
-[Continue to Week 2 →](../week2/index.md){ .md-button .md-button--primary }
 
 </div>
-
