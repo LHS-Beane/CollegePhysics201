@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-1-units-dimensions-1d-kinematics-with-calculus" class="md-skip">
+        <a href="#week-1-units-dimensions-1d-motion-illustrated-tiered-mastery" class="md-skip">
           Skip to content
         </a>
       
@@ -570,25 +570,60 @@
 
 
 
-<h1 id="week-1-units-dimensions-1d-kinematics-with-calculus">🧭 Week 1 — Units, Dimensions, &amp; 1D Kinematics (with Calculus)<a class="headerlink" href="#week-1-units-dimensions-1d-kinematics-with-calculus" title="Permanent link">&para;</a></h1>
-<p>Welcome to <strong>Week 1</strong> of College Physics 201!<br />
-This module is built so you can <strong>fully learn the content on your own</strong>, with explanations, intuition, practice, and hidden solutions.</p>
-<hr />
-<h1 id="learning-objectives">🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h1>
-<p>By the end of Week 1, you will be able to:</p>
+<h1 id="week-1-units-dimensions-1d-motion-illustrated-tiered-mastery">🧭 Week 1 — Units, Dimensions &amp; 1D Motion (Illustrated, Tiered Mastery)<a class="headerlink" href="#week-1-units-dimensions-1d-motion-illustrated-tiered-mastery" title="Permanent link">&para;</a></h1>
+<p>Welcome to <strong>Week 1</strong> of College Physics 201.</p>
+<p>This module is designed so that a motivated student can <strong>teach themselves</strong> the Week 1 material using:</p>
 <ul>
-<li>Convert and analyze physical quantities using units &amp; dimensions  </li>
-<li>Understand the relationship between position, velocity, and acceleration  </li>
-<li>Use <strong>derivatives</strong> to find velocity/acceleration  </li>
-<li>Use <strong>integrals</strong> to find velocity/position  </li>
-<li>Interpret motion graphs  </li>
-<li>Solve free-fall and constant-acceleration problems  </li>
-<li>Recognize real-world applications of calculus in motion  </li>
+<li>Illustrated explanations</li>
+<li>Tiered mastery (core → deeper → advanced)</li>
+<li>Examples and practice with hidden solutions</li>
+<li>Graphs and diagrams from your lecture slides (Ch. 1 &amp; Ch. 3)</li>
 </ul>
 <hr />
-<h1 id="1-units-dimensions">📘 1. Units &amp; Dimensions<a class="headerlink" href="#1-units-dimensions" title="Permanent link">&para;</a></h1>
+<details class="note">
+<summary>0. How to Use This Page</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Core Idea</label><label for="__tabbed_1_2">Deeper Reasoning</label><label for="__tabbed_1_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Each <strong>section is collapsible</strong> — click the bar to expand it.</li>
+<li>Inside most sections you’ll see tabs:</li>
+<li><strong>Core Idea</strong> — what you <em>must</em> know</li>
+<li><strong>Deeper Reasoning</strong> — why it works and how to think about it</li>
+<li>
+<p><strong>Advanced Application</strong> — calculus, graphs, and more challenging thinking</p>
+</li>
+<li>
+<p>Many problems have <strong>hidden solutions</strong>. Try them before opening the answer.</p>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Learning physics is like building a mental model of how the universe behaves.
+This page is structured so you can:
+- get the <em>big picture</em> first
+- then drill into detail only when you’re ready
+- then test yourself</p>
+</div>
+<div class="tabbed-block">
+<p>As you go through, ask yourself:
+- <em>“Where would this show up in real life?”</em>
+- <em>“Could I explain this to someone else?”</em>
+- <em>“What equation or graph represents this situation?”</em></p>
+</div>
+</div>
+</div>
+</details>
+<hr />
 <details class="info">
-<summary>1.1 SI Base Units (click to expand)</summary>
+<summary>1. Physical Quantities, Units, and Measurement</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Core Idea</label><label for="__tabbed_2_2">Deeper Reasoning</label><label for="__tabbed_2_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Physics describes the world using <strong>measurable quantities</strong>:
+- length, time, mass, temperature, etc.
+- each must have a <strong>unit</strong> (meters, seconds, kilograms, kelvins…)</p>
+<p>We use the <strong>SI (International System of Units)</strong> as a common language.</p>
 <table>
 <thead>
 <tr>
@@ -625,42 +660,90 @@ This module is built so you can <strong>fully learn the content on your own</str
 </tr>
 </tbody>
 </table>
+<p>Visual from your slides:</p>
+<p><img alt="SI units slide" src="media/week1_images/UniversityPhysicsVolume1-Ch01.pptx-slide3-6.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p>A “number” without a unit is <strong>meaningless</strong> in physics.</p>
+<p>Compare:
+- “The car went 30” → 30 <em>what</em>?
+- “The car went 30 m” vs “30 mi” vs “30 km” → very different physical situations.</p>
+<p>Units also hide <strong>physical scales</strong>:<br />
+- meters vs nanometers vs light-years<br />
+- seconds vs microseconds vs years  </p>
+<p>Your slide likely showing different scales:</p>
+<p><img alt="Scale of the universe / measurement context" src="media/week1_images/UniversityPhysicsVolume1-Ch01.pptx-slide2-4.jpg" /></p>
+<p>This helps students see that <strong>the same laws</strong> apply from atoms to galaxies.</p>
+</div>
+<div class="tabbed-block">
+<p>When you later do more advanced physics (EM, quantum, thermo), being sloppy
+with units leads to:
+- wrong answers
+- confusion about what an equation actually means
+- difficulty catching mistakes</p>
+<p>Habit to build now:
+- Always write the unit next to your answer.
+- Always check if unit types “match” on both sides of equations.</p>
+</div>
+</div>
+</div>
 </details>
 <hr />
-<details class="note">
-<summary>1.2 Dimensions (What They Mean and Why They Matter)</summary>
-<p>Dimensions describe <strong>the type</strong> of physical quantity.</p>
+<details class="info">
+<summary>2. SI Prefixes and Unit Conversions (Factor–Label Method)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Core Idea</label><label for="__tabbed_3_2">Deeper Reasoning</label><label for="__tabbed_3_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>We use <strong>prefixes</strong> to handle very large or small numbers:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Symbol</th>
+<th>Factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kilo</td>
+<td>k</td>
+<td><span class="arithmatex">\(10^3\)</span></td>
+</tr>
+<tr>
+<td>mega</td>
+<td>M</td>
+<td><span class="arithmatex">\(10^6\)</span></td>
+</tr>
+<tr>
+<td>giga</td>
+<td>G</td>
+<td><span class="arithmatex">\(10^9\)</span></td>
+</tr>
+<tr>
+<td>milli</td>
+<td>m</td>
+<td><span class="arithmatex">\(10^{-3}\)</span></td>
+</tr>
+<tr>
+<td>micro</td>
+<td>μ</td>
+<td><span class="arithmatex">\(10^{-6}\)</span></td>
+</tr>
+<tr>
+<td>nano</td>
+<td>n</td>
+<td><span class="arithmatex">\(10^{-9}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>From your slides:</p>
+<p><img alt="Metric prefixes" src="media/week1_images/UniversityPhysicsVolume1-Ch01.pptx-slide4-8.jpg" /></p>
+<p>We do conversions using the <strong>factor–label method</strong> (multiplying by 1 cleverly).</p>
+</div>
+<div class="tabbed-block">
+<p>Example: Convert 60 mph to m/s</p>
 <div class="arithmatex">\[
-\text{Velocity}: [L][T^{-1}]
-\]</div>
-<div class="arithmatex">\[
-\text{Acceleration}: [L][T^{-2}]
-\]</div>
-<div class="arithmatex">\[
-\text{Force}: [M][L][T^{-2}]
-\]</div>
-<h3 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h3>
-<ul>
-<li>If dimensions don’t match on both sides of an equation → the equation is <strong>wrong</strong>.  </li>
-<li>This is one of the fastest ways to check your work.  </li>
-<li>Physicists use this to guess formulas before deriving them.</li>
-</ul>
-<h3 id="example-invalid-equation">Example — Invalid Equation<a class="headerlink" href="#example-invalid-equation" title="Permanent link">&para;</a></h3>
-<div class="arithmatex">\[
-v = 3t + 7x
-\]</div>
-<ul>
-<li>LHS: <span class="arithmatex">\([L/T]\)</span>  </li>
-<li>RHS: <span class="arithmatex">\(3t → [T]\)</span>, <span class="arithmatex">\(7x → [L]\)</span></li>
-</ul>
-<p>❌ You can’t add time to length, so this equation is invalid.</p>
-</details>
-<hr />
-<details class="example">
-<summary>1.3 Unit Conversion (Factor-Label Method)</summary>
-<p>Convert 60 mph → m/s</p>
-<div class="arithmatex">\[
-60 \frac{\text{mi}}{\text{hr}}
+60\ \frac{\text{mi}}{\text{hr}}
 \cdot
 \frac{1609\ \text{m}}{1\ \text{mi}}
 \cdot
@@ -668,259 +751,478 @@ v = 3t + 7x
 =
 26.8\ \text{m/s}
 \]</div>
+<p>Each “conversion factor” is just a fancy version of:</p>
+<div class="arithmatex">\[
+\frac{\text{same quantity in different units}}{\text{same quantity in original units}} = 1
+\]</div>
+<p>So we are multiplying by 1, but in a way that changes units.</p>
+</div>
+<div class="tabbed-block">
+<p>In more advanced problems, you might convert:
+- km/h to m/s<br />
+- g/cm<span class="arithmatex">\(^3\)</span> to kg/m<span class="arithmatex">\(^3\)</span><br />
+- J to eV (electron-volts)</p>
+<p>Practice problem:</p>
+<p>Convert <span class="arithmatex">\( 3.5\ \text{g/cm}^3 \)</span> into kg/m<span class="arithmatex">\(^3\)</span>.</p>
+<details class="success">
+<summary>Show Solution</summary>
+<div class="arithmatex">\[
+3.5\ \frac{\text{g}}{\text{cm}^3}
+\cdot
+\frac{1\ \text{kg}}{1000\ \text{g}}
+\cdot
+\left(\frac{100\ \text{cm}}{1\ \text{m}}\right)^3
+=
+3.5 \cdot \frac{1}{1000} \cdot (10^6)
+= 3500\ \frac{\text{kg}}{\text{m}^3}
+\]</div>
+</details>
+</div>
+</div>
+</div>
 </details>
 <hr />
-<h1 id="2-position-velocity-and-acceleration">📘 2. Position, Velocity, and Acceleration<a class="headerlink" href="#2-position-velocity-and-acceleration" title="Permanent link">&para;</a></h1>
-<div class="arithmatex">\[
-v(t) = \frac{dx}{dt}
-\qquad
-a(t) = \frac{dv}{dt}
-\]</div>
-<p>These are the <strong>calculus definitions</strong> of motion.</p>
-<hr />
-<h2 id="concept-example-try-it">🧩 Concept → Example → Try It<a class="headerlink" href="#concept-example-try-it" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Concept</label><label for="__tabbed_1_2">Example</label><label for="__tabbed_1_3">Try It</label></div>
+<details class="note">
+<summary>3. Dimensions and Dimensional Analysis</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Core Idea</label><label for="__tabbed_4_2">Deeper Reasoning</label><label for="__tabbed_4_3">Advanced Application</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<p>Dimensions represent the <strong>type of quantity</strong>, not the unit.</p>
 <ul>
-<li><strong>Position</strong> <span class="arithmatex">\(x(t)\)</span>: where the object is  </li>
-<li><strong>Velocity</strong> <span class="arithmatex">\(v(t)\)</span>: how fast position changes  </li>
-<li><strong>Acceleration</strong> <span class="arithmatex">\(a(t)\)</span>: how fast velocity changes  </li>
-<li>In real life, nothing moves at constant speed<br />
-  → calculus handles changing, real-world motion</li>
+<li>Length: <span class="arithmatex">\([L]\)</span></li>
+<li>Time: <span class="arithmatex">\([T]\)</span></li>
+<li>Mass: <span class="arithmatex">\([M]\)</span></li>
 </ul>
-</div>
-<div class="tabbed-block">
-<p>Given:
+<p>Examples:
 [
-x(t)=t^3 - 4t + 2
+\text{Velocity} : [L][T^{-1}]
+]
+[
+\text{Acceleration} : [L][T^{-2}]
+]
+[
+\text{Force} : [M][L][T^{-2}]
 ]</p>
-<div class="arithmatex">\[
-v(t) = 3t^2 - 4
-\]</div>
-<div class="arithmatex">\[
-a(t) = 6t
-\]</div>
-<p><strong>Interpretation:</strong>
-- Velocity increases quadratically<br />
-- Acceleration increases linearly<br />
-- This describes an object pushed harder over time</p>
+<p>You can use dimensions to <strong>check if an equation could possibly be correct</strong>.</p>
 </div>
 <div class="tabbed-block">
+<p>Suppose someone proposes:</p>
 <div class="arithmatex">\[
-x(t)=5t^2 - 3t + 8
+v = 3t + 7x
+\]</div>
+<ul>
+<li>Left-hand side: <span class="arithmatex">\(v \rightarrow [L/T]\)</span>  </li>
+<li>Right-hand side:</li>
+<li><span class="arithmatex">\(3t \rightarrow [T]\)</span></li>
+<li><span class="arithmatex">\(7x \rightarrow [L]\)</span></li>
+</ul>
+<p>You <strong>cannot</strong> add <span class="arithmatex">\([T]\)</span> and <span class="arithmatex">\([L]\)</span>.<br />
+Therefore, the equation is nonsense physically.</p>
+<p>Dimensional analysis doesn’t prove an equation is right, but it can tell you if it’s <strong>definitely wrong</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Often, we know:
+- the relevant quantities (e.g., <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(h\)</span>, <span class="arithmatex">\(v_0\)</span>), and<br />
+- the dimension we want (e.g., time [T])</p>
+<p>Dimensional analysis can guide us to plausible forms of relationships.</p>
+<p>It’s also very helpful in checking your work in exams.</p>
+<p>Visual from your slides:</p>
+<p><img alt="Dimensional analysis slide" src="media/week1_images/UniversityPhysicsVolume1-Ch01.pptx-slide7-14.jpg" /></p>
+</div>
+</div>
+</div>
+</details>
+<hr />
+<details class="info">
+<summary>4. Position and Displacement Along a Line</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Core Idea</label><label for="__tabbed_5_2">Deeper Reasoning</label><label for="__tabbed_5_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Position</strong> <span class="arithmatex">\(x(t)\)</span> tells you where an object is along a 1D axis.<br />
+<strong>Displacement</strong> is the change in position:</p>
+<div class="arithmatex">\[
+\Delta x = x_f - x_i
+\]</div>
+<p>It can be positive (forward), negative (backwards) or zero.</p>
+<p>From your Ch. 3 slides:</p>
+<p><img alt="Position along a line" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide2-33.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p>Position depends on your <strong>choice of origin</strong>.<br />
+If you choose <span class="arithmatex">\(x=0\)</span> at one place vs another, the numeric values change, but
+<strong>physics does not</strong>.</p>
+<p>Displacement cares only about start and end, not the path taken.</p>
+</div>
+<div class="tabbed-block">
+<p>If <span class="arithmatex">\(x(t)\)</span> is given as a function (e.g., a polynomial), we can:
+- compute displacement over a time interval: <span class="arithmatex">\(x(t_2)-x(t_1)\)</span>
+- compute average velocity: <span class="arithmatex">\(\frac{\Delta x}{\Delta t}\)</span></p>
+<p>Example:</p>
+<p>[
+x(t) = 2t^2 - 4t + 1
+]
+From <span class="arithmatex">\(t=1\)</span> to <span class="arithmatex">\(t=3\)</span>:</p>
+<div class="arithmatex">\[
+\Delta x = x(3)-x(1)
 \]</div>
 <details class="success">
 <summary>Show Solution</summary>
 <p>[
-v(t)=10t - 3
+x(3)=2(9)-4(3)+1=18-12+1=7
 ]
 [
-a(t)=10
+x(1)=2(1)-4(1)+1=2-4+1=-1
+]
+[
+\Delta x = 7 - (-1) = 8\ \text{m}
 ]</p>
 </details>
 </div>
 </div>
 </div>
-<hr />
-<details class="note">
-<summary>Deep Explanation — Why Derivatives Describe Motion</summary>
-<p>Physics uses derivatives because motion is <strong>never perfectly constant</strong>.</p>
-<ul>
-<li>Your position changes → velocity  </li>
-<li>Your velocity changes → acceleration  </li>
-<li>Your acceleration might change → jerk (used in engineering)</li>
-</ul>
-<p><strong>Real-world example:</strong><br />
-A car’s speedometer approximates<br />
-[
-v(t)=\frac{dx}{dt}
-]
-in real time.</p>
 </details>
 <hr />
-<h1 id="3-integrals-in-kinematics">📘 3. Integrals in Kinematics<a class="headerlink" href="#3-integrals-in-kinematics" title="Permanent link">&para;</a></h1>
-<p>Integration <em>rebuilds</em> motion from rate-of-change information.</p>
-<hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Constant Acceleration</label><label for="__tabbed_2_2">Non-Constant Acceleration</label><label for="__tabbed_2_3">Free Fall</label></div>
+<details class="note">
+<summary>5. Average vs Instantaneous Velocity</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Core Idea</label><label for="__tabbed_6_2">Deeper Reasoning</label><label for="__tabbed_6_3">Advanced Application</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<p><strong>Average velocity</strong> over a time interval:</p>
 <div class="arithmatex">\[
-v(t)=v_0 + at
+\bar{v} = \frac{\Delta x}{\Delta t}
 \]</div>
+<p><strong>Instantaneous velocity</strong> is the velocity at one instant:</p>
 <div class="arithmatex">\[
-x(t)=x_0 + v_0 t + \frac{1}{2}at^2
+v(t) = \frac{dx}{dt}
 \]</div>
+<p>On a position–time graph:
+- average velocity ↔ slope of a secant line<br />
+- instantaneous velocity ↔ slope of the tangent line</p>
+<p>From your slides:</p>
+<p><img alt="Position vs time slope idea" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide6-41.jpg" /></p>
 </div>
 <div class="tabbed-block">
-<p>Example:
+<p>Average velocity is like “overall change”:<br />
+<em>“From 1:00 to 1:05, my position changed by 500 m, so on average I moved 100 m/min.”</em></p>
+<p>Instantaneous velocity zooms in on one time:
+<em>“Exactly at 1:02:30, what was my speed and direction?”</em></p>
+<p>Conceptual graph from your slides:</p>
+<p><img alt="Tangent vs secant line visualization" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide7-43.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p>Given:
 [
-a(t)=4t
+x(t) = t^3 - 4t + 2
+]</p>
+<ul>
+<li>Average velocity from <span class="arithmatex">\(t=1\)</span> to <span class="arithmatex">\(t=2\)</span></li>
+<li>Instantaneous velocity at <span class="arithmatex">\(t=1\)</span></li>
+</ul>
+<details class="success">
+<summary>Show Solution</summary>
+<div class="arithmatex">\[
+v(t) = \frac{dx}{dt} = 3t^2 - 4
+\]</div>
+<p><strong>Average</strong> from 1 to 2:</p>
+<p>[
+x(2) = 8 - 8 + 2 = 2
 ]
 [
-v(t) = 2t^2 + C
+x(1) = 1 - 4 + 2 = -1
+]
+[
+\bar{v} = \frac{2 - (-1)}{2-1} = 3\ \text{m/s}
+]</p>
+<p><strong>Instantaneous</strong> at <span class="arithmatex">\(t=1\)</span>:</p>
+<div class="arithmatex">\[
+v(1) = 3(1)^2-4 = -1\ \text{m/s}
+\]</div>
+<p>Negative means motion is in the negative direction at that instant.</p>
+</details>
+</div>
+</div>
+</div>
+</details>
+<hr />
+<details class="info">
+<summary>6. Acceleration: Changing Velocity</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Core Idea</label><label for="__tabbed_7_2">Deeper Reasoning</label><label for="__tabbed_7_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Acceleration</strong> is the rate of change of velocity:</p>
+<div class="arithmatex">\[
+a(t) = \frac{dv}{dt}
+\]</div>
+<p>On a velocity–time graph:
+- the slope is the acceleration</p>
+<p>Slide illustration:</p>
+<p><img alt="Velocity and acceleration graphs" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide9-47.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p>There are several ways velocity can change:
+- speed increases
+- speed decreases
+- direction reverses</p>
+<p>All of these involve <strong>acceleration</strong>, even if the speed is momentarily zero.</p>
+<p>For constant acceleration:
+[
+a = \text{constant}
+\Rightarrow v(t) = v_0 + at,\quad x(t) = x_0 + v_0 t + \frac{1}{2}at^2
 ]</p>
 </div>
 <div class="tabbed-block">
+<p>Suppose:
+[
+a(t) = 6t,\quad v(0) = 3,\quad x(0)=0
+]</p>
+<p>Then:
+[
+v(t) = \int 6t\,dt = 3t^2 + C
+]</p>
+<p>Using <span class="arithmatex">\(v(0)=3\)</span>:
+[
+3(0)^2 + C = 3 \Rightarrow C = 3
+]</p>
 <div class="arithmatex">\[
-a = g = 9.8\ \text{m/s}^2
+v(t) = 3t^2+3
 \]</div>
+<p>Then:
+[
+x(t) = \int (3t^2+3)\,dt = t^3 + 3t + C_2
+]</p>
+<p>Using <span class="arithmatex">\(x(0)=0\)</span> gives <span class="arithmatex">\(C_2=0\)</span>.</p>
 <div class="arithmatex">\[
-v(t)=gt + v_0
-\]</div>
-<div class="arithmatex">\[
-x(t)=x_0 + v_0 t + \frac{1}{2}gt^2
+x(t) = t^3 + 3t
 \]</div>
 </div>
 </div>
 </div>
+</details>
 <hr />
 <details class="note">
-<summary>Deep Explanation — Why Integrals Matter</summary>
-<p>If derivatives “zoom in,” integrals “zoom out.”</p>
-<ul>
-<li>Integrating acceleration shows how small changes add up to velocity  </li>
-<li>Integrating velocity shows how motion accumulates over time  </li>
-</ul>
-<p><strong>Graphically:</strong><br />
-- Area under velocity curve = displacement<br />
-- Area under acceleration curve = change in velocity  </p>
-</details>
-<hr />
-<h1 id="4-reading-motion-graphs">📘 4. Reading Motion Graphs<a class="headerlink" href="#4-reading-motion-graphs" title="Permanent link">&para;</a></h1>
-<details class="info">
-<summary>Graph Interpretation (click to expand)</summary>
-<ul>
-<li><strong>Slope of position graph = velocity</strong>  </li>
-<li><strong>Slope of velocity graph = acceleration</strong>  </li>
-<li><strong>Area under velocity = displacement</strong>  </li>
-</ul>
-<p>Motion graphs are stories:
-- Position tells <em>where you are</em>
-- Velocity tells <em>how fast you move</em>
-- Acceleration tells <em>why your motion changes</em></p>
-</details>
-<hr />
-<h1 id="5-worked-examples">🎓 5. Worked Examples<a class="headerlink" href="#5-worked-examples" title="Permanent link">&para;</a></h1>
-<details class="example">
-<summary>Example 1 — From <span class="arithmatex">\(x(t)\)</span> to <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span></summary>
-<p><strong>Given:</strong>
-[
-x(t)=4t^3 - 2t
-]</p>
-<p><strong>Velocity:</strong>
-[
-v(t)=12t^2 - 2
-]</p>
-<p><strong>Acceleration:</strong>
-[
-a(t)=24t
-]</p>
-<p><strong>Interpretation:</strong>
-- Velocity is quadratic → speed grows more quickly<br />
-- Acceleration is linear → push gets stronger over time  </p>
-</details>
-<hr />
-<details class="example">
-<summary>Example 2 — Dropped Object</summary>
-<p>Released from height 20 m.</p>
+<summary>7. Free Fall &amp; Constant Acceleration (1D Kinematics)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Core Idea</label><label for="__tabbed_8_2">Deeper Reasoning</label><label for="__tabbed_8_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Near Earth’s surface, ignoring air resistance:</p>
 <div class="arithmatex">\[
-v_0=0,\quad x_0=20,\quad g=9.8\ \text{m/s}^2
+a = g \approx 9.8\ \text{m/s}^2 \quad (\text{downward})
 \]</div>
-<p><strong>Velocity after 2 s:</strong>
-[
-v = gt = 19.6\ \text{m/s}
-]</p>
-<p><strong>Position after 2 s:</strong>
-[
-x = 20 - \frac{1}{2}(9.8)(4) = 0.4\ \text{m}
-]</p>
-<p><strong>Interpretation:</strong><br />
-Quadratic position function reveals <em>rapid acceleration</em> near the ground.</p>
-</details>
-<hr />
-<details class="example">
-<summary>Example 3 — Integrating Non-Constant Acceleration</summary>
+<p>If we take upward as positive, then:</p>
 <div class="arithmatex">\[
-a(t)=6t,\quad v(0)=3
+a = -g
 \]</div>
-<div class="arithmatex">\[
-v(t)=3t^2 + 3
-\]</div>
-<div class="arithmatex">\[
-x(t)=t^3 + 3t
-\]</div>
-</details>
-<hr />
-<h1 id="6-practice-problems">📝 6. Practice Problems<a class="headerlink" href="#6-practice-problems" title="Permanent link">&para;</a></h1>
-<details class="question">
-<summary>1. Given <span class="arithmatex">\(x(t)=2t^3 - 5t^2 + 7\)</span>, find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span></summary>
-<details class="success">
-<summary>Show Answer</summary>
+<p>Kinematic equations (constant acceleration):</p>
 <p>[
-v(t)=6t^2 - 10t
+v = v_0 + at
 ]
 [
-a(t)=12t - 10
+x = x_0 + v_0 t + \frac{1}{2}at^2
+]
+[
+v^2 = v_0^2 + 2a(x - x_0)
+]</p>
+<p>Your slide visual:</p>
+<p><img alt="Free-fall motion" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide20-69.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p>Free fall includes:
+- dropping an object (<span class="arithmatex">\(v_0 = 0\)</span>)
+- throwing an object upward
+- throwing an object downward</p>
+<p>All share:
+- same acceleration magnitude (if air resistance is negligible)
+- parabolic position–time graphs<br />
+- linear velocity–time graphs</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Example — Dropped from 20 m</strong></p>
+<div class="arithmatex">\[
+x_0 = 20\ \text{m},\quad v_0 = 0,\quad a=-9.8\ \text{m/s}^2
+\]</div>
+<p>Position:</p>
+<div class="arithmatex">\[
+x(t) = 20 + 0\cdot t + \frac{1}{2}(-9.8)t^2 = 20 - 4.9 t^2
+\]</div>
+<p>Time to hit the ground: set <span class="arithmatex">\(x(t)=0\)</span>:</p>
+<div class="arithmatex">\[
+20 - 4.9t^2 = 0 \Rightarrow t^2=\frac{20}{4.9}
+\Rightarrow t \approx 2.02\ \text{s}
+\]</div>
+<p>Velocity on impact:</p>
+<div class="arithmatex">\[
+v = v_0 + at = -9.8(2.02) \approx -19.8\ \text{m/s}
+\]</div>
+<p>Negative indicates downward direction.</p>
+</div>
+</div>
+</div>
+</details>
+<hr />
+<details class="example">
+<summary>8. Worked Examples (Tiered)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Core Idea</label><label for="__tabbed_9_2">Deeper Reasoning</label><label for="__tabbed_9_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Example 1 — From Position to Velocity and Acceleration</strong></p>
+<div class="arithmatex">\[
+x(t) = 4t^3 - 2t
+\]</div>
+<div class="arithmatex">\[
+v(t) = 12t^2 - 2
+\]</div>
+<div class="arithmatex">\[
+a(t) = 24t
+\]</div>
+<p>Graph-style slide:</p>
+<p><img alt="Polynomial motion example" src="media/week1_images/UniversityPhysicsVolume1-Ch03.pptx-slide16-61.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Position is cubic → velocity quadratic → acceleration linear.</li>
+<li>As time increases:</li>
+<li>velocity grows faster</li>
+<li>acceleration keeps changing (not constant)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>Example 2 — Car Accelerating from Rest</strong></p>
+<p>A car starts from rest and accelerates at <span class="arithmatex">\(4\ \text{m/s}^2\)</span> for 5 s.</p>
+<div class="arithmatex">\[
+v = v_0 + at = 0 + 4(5) = 20\ \text{m/s}
+\]</div>
+<div class="arithmatex">\[
+x = x_0 + v_0 t + \frac{1}{2}at^2
+= 0 + 0 + \frac{1}{2}(4)(25) = 50\ \text{m}
+\]</div>
+<p><strong>Example 3 — Free-Fall Upward Throw</strong></p>
+<p>A ball is thrown upward at <span class="arithmatex">\(12\ \text{m/s}\)</span>.<br />
+Maximum height (using <span class="arithmatex">\(v^2 = v_0^2 + 2a\Delta x\)</span> with final <span class="arithmatex">\(v=0\)</span>):</p>
+<div class="arithmatex">\[
+0 = (12)^2 + 2(-9.8)\Delta x
+\Rightarrow \Delta x = \frac{144}{19.6} \approx 7.35\ \text{m}
+\]</div>
+</div>
+</div>
+</div>
+</details>
+<hr />
+<details class="question">
+<summary>9. Practice Problems (Try First, Then Expand)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Core Idea</label><label for="__tabbed_10_2">Deeper Reasoning</label><label for="__tabbed_10_3">Advanced Application &amp; Solutions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Given <span class="arithmatex">\(x(t)=2t^3 - 5t^2 + 7\)</span>, find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(a(t)\)</span>.  </li>
+<li>A car accelerates from rest at <span class="arithmatex">\(4\ \text{m/s}^2\)</span> for 5 s. Find distance traveled.  </li>
+<li>A ball is thrown upward at <span class="arithmatex">\(12\ \text{m/s}\)</span>. Find max height.  </li>
+<li>Convert 45 mph to m/s.  </li>
+<li>If <span class="arithmatex">\(v(t)=6t\)</span> and <span class="arithmatex">\(x(0)=0\)</span>, find <span class="arithmatex">\(x(t)\)</span>.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Think for each:
+- What is given? (position? velocity? acceleration?)<br />
+- Do I need a <strong>derivative</strong> or <strong>integral</strong>?<br />
+- Is this <strong>constant acceleration</strong>?</p>
+</div>
+<div class="tabbed-block">
+<details class="success">
+<summary>Problem 1 Solution</summary>
+<p>[
+x(t)=2t^3 - 5t^2 + 7
+]
+[
+v(t)=\frac{dx}{dt}=6t^2 - 10t
+]
+[
+a(t)=\frac{dv}{dt}=12t - 10
 ]</p>
 </details>
-</details>
-<hr />
-<details class="question">
-<summary>2. A car accelerates from rest at 4 m/s² for 5 s</summary>
 <details class="success">
-<summary>Show Answer</summary>
+<summary>Problem 2 Solution</summary>
 <div class="arithmatex">\[
-x = \frac{1}{2}at^2 = 50\ \text{m}
+x = \frac{1}{2}at^2 = \frac{1}{2}(4)(25)=50\ \text{m}
 \]</div>
 </details>
-</details>
-<hr />
-<details class="question">
-<summary>3. A ball is thrown upward at 12 m/s</summary>
 <details class="success">
-<summary>Show Answer</summary>
+<summary>Problem 3 Solution</summary>
 <div class="arithmatex">\[
-h=\frac{v_0^2}{2g}=7.35\ \text{m}
+h = \frac{v_0^2}{2g} = \frac{144}{19.6} \approx 7.35\ \text{m}
 \]</div>
 </details>
-</details>
-<hr />
-<details class="question">
-<summary>4. Convert 45 mph to m/s</summary>
 <details class="success">
-<summary>Show Answer</summary>
+<summary>Problem 4 Solution</summary>
 <div class="arithmatex">\[
 45\ \text{mph} \approx 20.1\ \text{m/s}
 \]</div>
 </details>
-</details>
-<hr />
-<details class="question">
-<summary>5. If <span class="arithmatex">\(v(t)=6t\)</span> and <span class="arithmatex">\(x(0)=0\)</span>, find <span class="arithmatex">\(x(t)\)</span></summary>
 <details class="success">
-<summary>Show Answer</summary>
-<div class="arithmatex">\[
+<summary>Problem 5 Solution</summary>
+<p>[
+v(t)=6t
+\Rightarrow x(t)=\int 6t\,dt = 3t^2 + C
+]
+Using <span class="arithmatex">\(x(0)=0\)</span> gives <span class="arithmatex">\(C=0\)</span>. Thus:
+[
 x(t)=3t^2
-\]</div>
+]</p>
 </details>
+</div>
+</div>
+</div>
 </details>
 <hr />
-<h1 id="7-summary-sheet">🎉 7. Summary Sheet<a class="headerlink" href="#7-summary-sheet" title="Permanent link">&para;</a></h1>
+<details class="info">
+<summary>10. Summary Sheet (Exam-Focused)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Core Idea</label><label for="__tabbed_11_2">Deeper Reasoning</label><label for="__tabbed_11_3">Advanced Application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Definitions</strong></p>
 <div class="arithmatex">\[
-v=\frac{dx}{dt}
-\qquad 
-a=\frac{dv}{dt}
-\]</div>
-<div class="arithmatex">\[
-v=v_0+at
+v(t)=\frac{dx}{dt}
 \qquad
-x=x_0 + v_0 t + \frac{1}{2}at^2
+a(t)=\frac{dv}{dt}
 \]</div>
+<p><strong>Constant-Acceleration Equations</strong></p>
+<p>[
+v = v_0 + at
+]
+[
+x = x_0 + v_0 t + \frac{1}{2}at^2
+]
+[
+v^2 = v_0^2 + 2a(x-x_0)
+]</p>
+<p><strong>Key Ideas</strong></p>
+<ul>
+<li>Units &amp; dimensions must be consistent.</li>
+<li>Derivative ↔ slope of graph.</li>
+<li>Integral ↔ area under graph.</li>
+<li>Free fall ≈ constant acceleration due to gravity.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Ask yourself if you can:
+- explain what each symbol means physically<br />
+- sketch a rough graph for each motion situation<br />
+- decide which equation to use based on what’s known  </p>
+</div>
+<div class="tabbed-block">
+<p>On a test, the <strong>hardest</strong> problems often combine:
+- reading a graph<br />
+- interpreting a word problem<br />
+- choosing a kinematic equation<br />
+- performing a unit conversion<br />
+- checking units/dimensions at the end</p>
+<p>Practice spotting all of these elements in a single problem.</p>
+</div>
+</div>
+</div>
+</details>
 <hr />
 <div align="center">
 
-# 🎓 Week 1 Complete!  
 
 </div>
 
