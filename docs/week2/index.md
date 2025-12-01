@@ -1,439 +1,418 @@
-# 🧭 Week 2 — Vectors, Components & 2D Motion  
-### (*Fully Illustrated, Tiered Mastery Edition*)
+# 🧭 Week 2 — Vectors & 2D Motion  
+### *(Fully Illustrated — Tiered Mastery Edition)*
 
-In Week 2, we move beyond motion in a straight line and learn how to describe motion in **two dimensions** using **vectors**.
+This module teaches you everything you need about **vectors**, **components**, **2D motion**, **projectiles**, and **relative velocity** — even if you missed class.  
+Every section includes:
 
-This module is built from:
-- Your extracted images from **Chapter 2 & 4**  
-- OpenStax concepts (rewritten, expanded, and illustrated)  
-- Tiered mastery structure for deep understanding  
-- Clean, collapsible sections  
-- Perfectly formatted MathJax equations
+- **Core Idea** (must-know)
+- **Deeper Reasoning** (why it works)
+- **Advanced Application** (real physics + calculus)
+- **Illustrations** from your textbook
+- **Concept Checks**
+- **Examples & Practice**
 
 ---
 
-## 📘 1. What is a Vector?
+# ⭐ 0. HOW TO USE THIS MODULE
+??? note "Click to expand"
 
-??? info "1.1 Vector Definition (Core → Deeper → Advanced)"
+    ### What this module gives you:
+    - Complete lesson on Vectors + 2D Motion  
+    - Diagrams from your uploaded Chapters 2 and 4  
+    - Beginner-friendly explanations  
+    - Practice with hidden answers  
+    - Scaffolding from intuition → mastery  
+
+    ### How to learn efficiently:
+    - Expand each collapsible section  
+    - Do concept checks BEFORE revealing solutions  
+    - Work practice problems on paper first  
+    - Review the summary sheet before the quiz  
+
+---
+
+# ⭐ 1. WHAT IS A VECTOR?
+
+??? info "1.1 Understanding Vectors (Core → Deeper → Advanced)"
 
     === "Core Idea"
-        A **vector** has:
-        - **magnitude** (how much)
-        - **direction** (which way)
+    A **vector** has both:
+    - **magnitude** (how much)
+    - **direction** (which way)
 
-        Examples of vectors:
-        - displacement  
-        - velocity  
-        - acceleration  
-        - force  
+    Common vectors:
+    - displacement  
+    - velocity  
+    - acceleration  
+    - force  
 
-        Your textbook illustration:
-
-        ![Basic vector depiction](media/week2_images/College_Physics_-_Chapter_2_Book_p0_img0.png)
+    ![Vector arrow](media/week2_images/College_Physics_-_Chapter_2_Book_p0_img0.png)
 
     === "Deeper Reasoning"
-        A scalar (like mass or temperature) answers **“how much?”**  
-        A vector answers **“how much AND in what direction?”**
+    Scalars answer *“how much?”*.  
+    Vectors answer *“how much + which direction?”* — direction changes physics.
 
-        Because vectors have direction:
-        - signs matter  
-        - angles matter  
-        - graphs matter  
-
-        This is why student errors often come from mixing scalars and vectors.
-
-        Another useful visual:
-
-        ![Vector arrow concept](media/week2_images/College_Physics_-_Chapter_2_Book_p1_img0.png)
+    A 10 N push north ≠ a 10 N push east.
 
     === "Advanced Application"
-        To work with vectors mathematically, we represent them in component form:
+    Component form:
 
-        \[
-        \vec{A} = \langle A_x,\ A_y \rangle
-        \]
+    \[
+    \vec{A} = \langle A_x, A_y \rangle
+    \]
 
-        Or in unit vector form:
+    Unit vector form:
 
-        \[
-        \vec{A} = A_x \hat{i} + A_y \hat{j}
-        \]
+    \[
+    \vec{A} = A_x\hat{i} + A_y\hat{j}
+    \]
 
-        The magnitude is:
+    Magnitude:
 
-        \[
-        |\vec{A}| = \sqrt{A_x^2 + A_y^2}
-        \]
+    \[
+    |\vec{A}|=\sqrt{A_x^2 + A_y^2}
+    \]
 
-        And the direction angle:
+    Direction:
 
-        \[
-        \theta = \tan^{-1}\left(\frac{A_y}{A_x}\right)
-        \]
+    \[
+    \theta = \tan^{-1}\left(\frac{A_y}{A_x}\right)
+    \]
 
 ---
 
-## 📘 2. Breaking a Vector into Components
+# ⭐ 2. WHY VECTOR COMPONENTS MATTER
 
-??? info "2.1 Components (Core → Deeper → Advanced)"
+??? example "2.1 Components (Core → Deeper → Advanced)"
 
     === "Core Idea"
-        Any vector can be written as **horizontal** and **vertical** parts:
+    Any vector can be broken into **horizontal** and **vertical** parts:
 
-        \[
-        A_x = A \cos\theta, \qquad A_y = A \sin\theta
-        \]
+    \[
+    A_x = A\cos\theta,\qquad A_y = A\sin\theta
+    \]
 
-        Must-know diagram:
-
-        ![Components diagram](media/week2_images/College_Physics_-_Chapter_2_Book_p2_img0.png)
+    ![Components diagram](media/week2_images/College_Physics_-_Chapter_2_Book_p2_img0.png)
 
     === "Deeper Reasoning"
-        Why do we use components?
+    The key idea:
 
-        - Because motion in the **x** direction and **y** direction are independent.
-        - Gravity acts **vertically**, not horizontally.
-        - Calculus works smoothly on one dimension at a time.
+    > **A 2D motion problem is really just two separate 1D problems happening at the same time.**
 
-        Students struggle until they memorize this truth:
-        > “A 2D problem is really just two 1D problems happening at the same time.”
+    - Gravity affects **only vertical** motion  
+    - Horizontal motion is independent  
+    - Calculus and kinematics become easy in components  
 
     === "Advanced Application"
-        Example:
+    Example:
 
-        A \(12\ \text{m}\) vector at \(60^\circ\):
+    A \(12\text{ m}\) vector at \(60^\circ\):
 
-        \[
-        A_x = 12\cos60^\circ = 6\ \text{m}
-        \]
+    \[
+    A_x=12\cos60^\circ=6
+    \]
 
-        \[
-        A_y = 12\sin60^\circ = 10.39\ \text{m}
-        \]
-
-        This is crucial for projectile motion.
+    \[
+    A_y=12\sin60^\circ=10.39
+    \]
 
 ---
 
-## 📘 3. Vector Addition & Subtraction
+# ⭐ 3. VECTOR ADDITION & SUBTRACTION
 
-??? note "3.1 Adding Vectors (Core → Deeper → Advanced)"
+??? info "3.1 Adding and Subtracting Vectors"
 
     === "Core Idea"
-        For vectors:
-        \[
-        \vec{A} = \langle A_x, A_y\rangle,\quad
-        \vec{B} = \langle B_x, B_y\rangle
-        \]
+    Add vectors **component-wise**:
 
-        Then:
+    \[
+    \vec{A}+\vec{B}=\langle A_x+B_x,\ A_y+B_y\rangle
+    \]
 
-        \[
-        \vec{A} + \vec{B} = \langle A_x + B_x,\ A_y + B_y\rangle
-        \]
+    Geometric version (tip-to-tail):
 
-        Illustrated:
-
-        ![Tip to tail method](media/week2_images/College_Physics_-_Chapter_2_Book_p3_img0.png)
+    ![Tip to tail](media/week2_images/College_Physics_-_Chapter_2_Book_p3_img0.png)
 
     === "Deeper Reasoning"
-        The “tip-to-tail” method is the geometric version of vector addition.
+    The geometric and algebraic methods give identical results.
 
-        Vector subtraction simply flips direction:
+    Subtraction:
 
-        \[
-        \vec{A} - \vec{B} = \vec{A} + (-\vec{B})
-        \]
+    \[
+    \vec{A}-\vec{B}=\vec{A}+(-\vec{B})
+    \]
 
     === "Advanced Application"
-        Example:
+    Example:
 
-        \[
-        \vec{A}=\langle 3,4\rangle,\qquad \vec{B}=\langle -2,5\rangle
-        \]
+    \[
+    \vec{A}=\langle 3,4\rangle,\quad \vec{B}=\langle -2,5\rangle
+    \]
 
-        \[
-        \vec{A}+\vec{B}=\langle 1,9\rangle
-        \]
+    \[
+    \vec{A}+\vec{B}=\langle 1,9\rangle
+    \]
 
 ---
 
-## 📘 4. Dot Product (Scalar Product)
+# ⭐ 4. DOT PRODUCT (MEASURES ALIGNMENT)
 
-??? info "4.1 Dot Product (Core → Deeper → Advanced)"
+??? note "4.1 Dot Product (Core → Deeper → Advanced)"
 
     === "Core Idea"
-        The dot product is:
+    Component definition:
 
-        \[
-        \vec{A}\cdot\vec{B} = A_x B_x + A_y B_y
-        \]
+    \[
+    \vec{A}\cdot\vec{B}=A_xB_x + A_yB_y
+    \]
 
-        Or:
+    Geometric definition:
 
-        \[
-        \vec{A}\cdot\vec{B} = |\vec{A}|\,|\vec{B}|\cos\theta
-        \]
+    \[
+    \vec{A}\cdot\vec{B}=|\vec{A}||\vec{B}|\cos\theta
+    \]
 
-        Figure:
-
-        ![Dot product geometry](media/week2_images/College_Physics_-_Chapter_2_Book_p6_img0.png)
+    ![Dot product](media/week2_images/College_Physics_-_Chapter_2_Book_p6_img0.png)
 
     === "Deeper Reasoning"
-        The dot product measures **how aligned two vectors are**.
+    Dot product tells you *how aligned two vectors are*:
 
-        - Positive → similar direction  
-        - Zero → perpendicular  
-        - Negative → opposite directions  
-
-        This is the basis of **work** in physics.
+    - positive → same direction  
+    - zero → perpendicular  
+    - negative → opposite  
 
     === "Advanced Application"
-        Angle between vectors:
+    Angle between vectors:
 
-        \[
-        \theta = \cos^{-1} \left(\frac{\vec{A}\cdot\vec{B}}{|\vec{A}||\vec{B}|}\right)
-        \]
+    \[
+    \theta = \cos^{-1}\left(\frac{\vec{A}\cdot\vec{B}}{|\vec{A}||\vec{B}|}\right)
+    \]
 
 ---
 
-## 📘 5. Motion in Two Dimensions
+# ⭐ 5. MOTION IN TWO DIMENSIONS
 
-??? info "5.1 Independence of Motion (Core → Deeper → Advanced)"
+??? info "5.1 Independence of x- and y-motion"
 
     === "Core Idea"
-        Horizontal and vertical motions are **independent** except for time.
+    Key principle:
 
-        Gravity acts only in the **vertical** direction:
+    - Horizontal and vertical motions are **independent**  
+    - Time links them  
+    - Gravity affects only vertical direction  
 
-        \[
-        a_x = 0,\qquad a_y = -g
-        \]
+    ![2D motion](media/week2_images/College_Physics_-_Chapter_4_Book_p0_img0.png)
 
-        Textbook image:
-
-        ![2D motion diagram](media/week2_images/College_Physics_-_Chapter_4_Book_p0_img0.png)
+    \[
+    a_x=0,\qquad a_y=-g
+    \]
 
     === "Deeper Reasoning"
-        Students must understand:
-        - Horizontal motion is constant velocity.
-        - Vertical motion is constant acceleration.
+    Physics becomes simple when you realize:
 
-        This makes projectile motion possible.
+    - The **x-motion** behaves like constant velocity  
+    - The **y-motion** behaves like free fall  
+    - Combine the motions → you get a **parabola**
 
     === "Advanced Application"
-        Use components of initial velocity:
+    Break initial velocity into components:
 
-        \[
-        v_{0x} = v_0\cos\theta
-        \qquad
-        v_{0y} = v_0\sin\theta
-        \]
+    \[
+    v_{0x}=v_0\cos\theta
+    \]
 
-        Then:
-
-        \[
-        x(t)=v_{0x}t
-        \]
-
-        \[
-        y(t)=y_0+v_{0y}t - \frac{1}{2}gt^2
-        \]
+    \[
+    v_{0y}=v_0\sin\theta
+    \]
 
 ---
 
-## 📘 6. Projectile Motion
+# ⭐ 6. PROJECTILE MOTION
 
-??? note "6.1 Full Projectile Model (Core → Deeper → Advanced)"
+??? example "6.1 Full Projectile Motion Model"
 
     === "Core Idea"
-        Projectiles follow a **parabolic path**.
+    Horizontal motion:
 
-        Image:
+    \[
+    x(t)=v_{0x}t
+    \]
 
-        ![Projectile trajectory](media/week2_images/College_Physics_-_Chapter_4_Book_p1_img0.png)
+    Vertical motion:
 
-        Horizontal motion:
-        \[
-        x(t)=v_{0x}t
-        \]
+    \[
+    y(t)=y_0 + v_{0y}t - \frac{1}{2}gt^2
+    \]
 
-        Vertical motion:
-        \[
-        y(t)=v_{0y}t - \frac{1}{2}gt^2
-        \]
+    ![Projectile](media/week2_images/College_Physics_-_Chapter_4_Book_p1_img0.png)
 
     === "Deeper Reasoning"
-        Why parabola?
+    The path is a **parabola** because:
 
-        Because:
-        - Horizontal acceleration is zero
-        - Vertical acceleration is constant
-        - Combining them yields the parametric form of a parabola
+    - Horizontal: constant velocity  
+    - Vertical: constant acceleration  
 
-        Eliminate \(t\):
+    Eliminating \(t\) gives:
 
-        \[
-        y = x \tan\theta - \frac{g}{2v_0^2\cos^2\theta}x^2
-        \]
+    \[
+    y = x \tan\theta - \frac{g}{2v_0^2\cos^2\theta}\,x^2
+    \]
 
     === "Advanced Application"
-        Flight time:
+    Time of flight:
 
-        \[
-        T = \frac{2v_{0y}}{g}
-        \]
+    \[
+    T=\frac{2v_{0y}}{g}
+    \]
 
-        Range:
+    Range:
 
-        \[
-        R = \frac{v_0^2\sin2\theta}{g}
-        \]
+    \[
+    R = \frac{v_0^2\sin(2\theta)}{g}
+    \]
 
-        Maximum height:
+    Maximum height:
 
-        \[
-        h_{\max} = \frac{v_{0y}^2}{2g}
-        \]
+    \[
+    h_{\max} = \frac{v_{0y}^2}{2g}
+    \]
 
 ---
 
-## 📘 7. Relative Velocity
+# ⭐ 7. RELATIVE VELOCITY
 
-??? info "7.1 Relative Motion (Core → Deeper → Advanced)"
+??? info "7.1 Motion from Different Reference Frames"
 
     === "Core Idea"
-        Relative velocity:
+    Relative velocity formula:
 
-        \[
-        \vec{v}_{A/B} = \vec{v}_A - \vec{v}_B
-        \]
+    \[
+    \vec{v}_{A/B}=\vec{v}_A - \vec{v}_B
+    \]
 
-        Illustrated:
-
-        ![Relative velocity diagram](media/week2_images/College_Physics_-_Chapter_4_Book_p5_img0.png)
+    ![Relative motion](media/week2_images/College_Physics_-_Chapter_4_Book_p5_img0.png)
 
     === "Deeper Reasoning"
-        Relative motion answers:
-        - “How fast is object A moving relative to object B?”
+    Situations using relative velocity:
 
-        This is essential for:
-        - boats in rivers  
-        - airplanes in wind  
-        - cars on a highway  
+    - boats in current  
+    - planes in wind  
+    - cars passing  
+    - walking on a moving walkway  
 
     === "Advanced Application"
-        Example: A boat moves east at 5 m/s relative to the water.  
-        The water moves north at 3 m/s relative to the ground.
+    Example:
 
-        \[
-        \vec{v}_{B/G} = \langle 5,\ 3\rangle
-        \]
+    Plane: \(80\text{ m/s}\) north  
+    Wind: \(30\text{ m/s}\) east  
 
-        \[
-        |\vec{v}| = \sqrt{5^2+3^2} = 5.83\ \text{m/s}
-        \]
+    \[
+    \vec{v}=\langle 30,\ 80\rangle
+    \]
+
+    \[
+    |\vec{v}|=\sqrt{30^2+80^2}=85.4\text{ m/s}
+    \]
 
 ---
 
-## 📘 8. Worked Examples
+# ⭐ 8. WORKED EXAMPLES
 
 ??? example "Example 1 — Vector Components"
 
-    A 10 m vector at \(30^\circ\):
+    10 m vector at 30°:
 
     \[
-    A_x = 10\cos30^\circ = 8.66
-    \]
-    \[
-    A_y = 10\sin30^\circ = 5
+    A_x=10\cos30^\circ=8.66
     \]
 
-    ![Vector component figure](media/week2_images/College_Physics_-_Chapter_2_Book_p2_img0.png)
+    \[
+    A_y=10\sin30^\circ=5
+    \]
+
+    ![components](media/week2_images/College_Physics_-_Chapter_2_Book_p2_img0.png)
 
 ---
 
-??? example "Example 2 — Projectile Motion"
+??? example "Example 2 — Projectile Launched at Angle"
 
-    Ball launched at 20 m/s at \(40^\circ\):
+    Launch at 20 m/s, 40°:
 
     \[
-    v_{0x} = 20\cos40^\circ = 15.32
+    v_{0x} = 20\cos40^\circ
     \]
+
     \[
-    v_{0y} = 20\sin40^\circ = 12.86
+    v_{0y} = 20\sin40^\circ
     \]
 
-    Illustrated:
-
-    ![Projectile visual](media/week2_images/College_Physics_-_Chapter_4_Book_p1_img0.png)
+    ![projectile](media/week2_images/College_Physics_-_Chapter_4_Book_p1_img0.png)
 
 ---
 
 ??? example "Example 3 — Relative Velocity"
 
-    Plane moves 80 m/s north.  
-    Wind blows 30 m/s east.
+    Car A: 30 m/s east  
+    Car B: 20 m/s west  
 
     \[
-    \vec{v}=\langle 30,80\rangle
+    \vec{v}_{A/B}=\langle30,0\rangle - \langle -20,0\rangle
     \]
 
     \[
-    |\vec{v}| = \sqrt{30^2+80^2} = 85.4\ \text{m/s}
+    \vec{v}_{A/B}=\langle50,0\rangle
     \]
 
 ---
 
-## 📘 9. Practice Problems
+# ⭐ 9. PRACTICE PROBLEMS
 
-??? question "Try these before revealing the answers"
+??? question "Try these before revealing answers"
 
-    **1.** Find components of a 25 m vector at \(53^\circ\).  
-    **2.** A projectile is launched at 15 m/s at \(30^\circ\). Find flight time.  
-    **3.** A boat moves 4 m/s east in a 3 m/s north current. Find resultant magnitude.  
-    **4.** If \(\vec{A}=\langle 2,3\rangle\) and \(\vec{B}=\langle -1,4\rangle\), compute \(\vec{A}+\vec{B}\).  
-    **5.** A ball is thrown horizontally at 8 m/s from 12 m high. How far does it land?
+    **1.** Components of a 25 m vector at 53°.  
+    **2.** Launch at 15 m/s, 30°. Find flight time.  
+    **3.** Boat east 4 m/s, current north 3 m/s. Resultant speed?  
+    **4.** \(\vec{A}=\langle2,3\rangle\), \(\vec{B}=\langle-1,4\rangle\). Find \(\vec{A}+\vec{B}\).  
+    **5.** Ball thrown horizontally at 8 m/s from 12 m high. Range?
 
     ??? success "Solutions"
         1.  
         \[
-        A_x = 25\cos53^\circ \approx 15,\ 
-        A_y = 25\sin53^\circ \approx 20
+        A_x=25\cos53^\circ\approx15
+        \]
+        \[
+        A_y=25\sin53^\circ\approx20
         \]
 
         2.  
         \[
-        T = \frac{2v_{0y}}{g} =
-        \frac{2(15\sin30^\circ)}{9.8} = 1.53\ \text{s}
+        T=\frac{2v_{0y}}{g}=\frac{2(15\sin30^\circ)}{9.8}=1.53\text{ s}
         \]
 
         3.  
         \[
-        |\vec{v}|=\sqrt{4^2+3^2}=5\ \text{m/s}
+        |\vec{v}|=\sqrt{4^2+3^2}=5\text{ m/s}
         \]
 
         4.  
         \[
-        \langle 2,3\rangle+\langle -1,4\rangle=\langle 1,7\rangle
+        \langle2,3\rangle+\langle-1,4\rangle=\langle1,7\rangle
         \]
 
         5.  
-        Time:
         \[
-        t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{24}{9.8}} = 1.56\ \text{s}
+        t=\sqrt{\frac{2h}{g}}=\sqrt{\frac{24}{9.8}}=1.56\text{ s}
         \]
-        Distance:
         \[
-        x = v t = 8(1.56)=12.5\ \text{m}
+        x=vt=8(1.56)=12.5\text{ m}
         \]
 
 ---
 
-## 📘 10. Summary Sheet (Exam Essentials)
+# ⭐ 10. SUMMARY SHEET (Exam Essentials)
 
 \[
-A_x = A\cos\theta,\qquad A_y = A\sin\theta
+A_x = A\cos\theta,\quad A_y = A\sin\theta
 \]
 
 \[
@@ -445,16 +424,15 @@ y(t)=y_0 + v_{0y}t - \frac{1}{2}gt^2
 \]
 
 \[
-R = \frac{v_0^2\sin2\theta}{g}
+R=\frac{v_0^2\sin2\theta}{g}
 \]
 
 \[
-\vec{v}_{A/B} = \vec{v}_A - \vec{v}_B
+\vec{v}_{A/B}=\vec{v}_A - \vec{v}_B
 \]
 
 ---
 
 <div align="center">
-
 
 </div>
