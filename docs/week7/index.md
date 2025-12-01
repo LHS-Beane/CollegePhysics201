@@ -1,434 +1,455 @@
 # 🌀 Week 7 — Rotational Motion  
-### *(Fully Illustrated — Deep Explanations — Tiered Mastery)*
+### Understanding Rotation Through What You Already Know
 
-Rotational motion is one of the most difficult units in all of introductory physics.  
-This module is designed to take you from what you already know — **linear motion** — and build the **rotational analogs** step by step, with diagrams, explanations, examples, and conceptual checks.
-
----
-
-# ⭐ 0. How to Use This Module  
-??? note "Click to Expand"
-
-    You will see **Tiered Mastery** sections:
-
-    - **Core Idea** → What you MUST know  
-    - **Deeper Reasoning** → Why it works  
-    - **Advanced Application** → Calculus, AP-level thinking  
-
-    Each major concept includes:
-    - Diagrams taken from your textbook  
-    - Common misconceptions  
-    - Practice problems with answers hidden  
-    - Connections to earlier units (Weeks 1–6)
+Rotational motion is one of the hardest topics in physics — not because the ideas are new, but because the *language* changes.  
+This module rewrites everything using what you already understand from Weeks 1–6.
 
 ---
 
-# ⭐ 1. Linear → Rotational Connections (The Foundation)
+# ⭐ 1. Rotational Motion & Linear Motion: The Master Connection  
+## 1.1 Why Rotation Feels Hard — and Why It Shouldn’t
 
-??? info "1.1 Core Idea — Rotational Motion Mirrors Linear Motion"
+??? info "Linear → Rotational Analogy (The Foundation)"
 
-    Physics reuses ideas. Almost everything you already know from linear motion has a rotational counterpart.
+    === "Core Idea"
 
-    | Linear | Rotational | Meaning |
-    |--------|------------|---------|
-    | \(x\) | \(\theta\) | Position |
-    | \(v\) | \(\omega\) | Velocity |
-    | \(a\) | \(\alpha\) | Acceleration |
-    | \(m\) | \(I\) | Resistance to motion |
-    | \(F\) | \(\tau\) | Cause of acceleration |
-    | \(p = mv\) | \(L = I\omega\) | Momentum |
-    | \(K = \tfrac12 mv^2\) | \(K = \tfrac12 I\omega^2\) | Kinetic energy |
+        Rotational motion is just **linear motion wrapped into a circle**.
 
-    These connections form the *entire structure* of rotational physics.
+        Every linear quantity has a rotational partner:
 
-    ![Rotational Kinematics Overview](media/week7_images/College_Physics_-_Chapter_10_Book_p0_img0.png)
+        | Linear | Rotational | Meaning |
+        |--------|------------|---------|
+        | \(x\) | \(\theta\) | Position (angle) |
+        | \(v\) | \(\omega\) | Velocity |
+        | \(a\) | \(\alpha\) | Acceleration |
+        | \(m\) | \(I\) | Resistance to motion |
+        | \(F\) | \(\tau\) | Cause of acceleration |
+        | \(p = mv\) | \(L = I\omega\) | Momentum |
+        | \(K = \tfrac12 mv^2\) | \(K = \tfrac12 I\omega^2\) | Kinetic energy |
 
-??? tip "1.2 Deeper Reasoning — Why The Analogy Exists"
+        Understanding this chart makes everything else easier.
 
-    Rotational motion is just linear motion… wrapped around a circle.
+    === "Deeper Reasoning"
 
-    - Translational position → angular position  
-    - Translational velocity → rate of sweeping angle  
-    - Translational acceleration → rate of change of angular speed  
-    - Newton’s 2nd Law → torque version  
+        Rotation **inherits** the mathematics of linear motion:
+        - Derivatives describe change
+        - Integrals accumulate change
+        - Forces (or torques) cause acceleration
+        - Mass (or inertia) resists acceleration
 
-    Your brain already knows this — we’re just renaming ideas.
+        The physics does **not** change — only the *geometry* and terminology do.
 
-    **Big insight:**  
-    > Rotation becomes difficult only because the geometry changes.  
-    > The underlying *mechanics* are identical.
+        This is why you can rely on Weeks 1–6 such as:
+        - Kinematics
+        - Free-body diagrams
+        - Energy
+        - Momentum
 
-??? note "1.3 Advanced Application — Calculus Interpretation"
+        Rotation is simply those ideas in circular form.
 
-    Just like linear motion:
+    === "Advanced Application"
 
-    \[
-    v = \frac{dx}{dt}, \qquad a = \frac{dv}{dt}
-    \]
+        Total relationships:
 
-    Rotational variables behave the same:
+        \[
+        \omega = \frac{d\theta}{dt}, \qquad \alpha = \frac{d\omega}{dt}
+        \]
 
-    \[
-    \omega = \frac{d\theta}{dt}, \qquad \alpha = \frac{d\omega}{dt}
-    \]
+        Constant acceleration gives rotational kinematic equations:
 
-    If \(\alpha\) is constant:
-
-    \[
-    \omega = \omega_0 + \alpha t
-    \]
-    \[
-    \theta = \theta_0 + \omega_0 t + \tfrac12 \alpha t^2
-    \]
-
----
-
-# ⭐ 2. Angular Variables: θ, ω, α
-
-??? info "2.1 Core Idea — Angular Position, Velocity & Acceleration"
-
-    Angular position:
-    \[
-    \theta(t)
-    \]
-
-    Angular velocity:
-    \[
-    \omega = \frac{d\theta}{dt}
-    \]
-
-    Angular acceleration:
-    \[
-    \alpha = \frac{d\omega}{dt}
-    \]
-
-    ![Angular position diagram](media/week7_images/College_Physics_-_Chapter_10_Book_p2_img0.png)
-
-??? tip "2.2 Deeper Reasoning — Why Students Struggle"
-
-    Students often think:
-    - “Angular motion is new.”  
-    - “There is nothing similar to linear motion.”
-
-    But the truth:
-
-    > Angular variables are just *linear variables restricted to circular paths.*
-
-    Once you see that \(\theta\) is a “curved x,” everything becomes easier.
-
-??? note "2.3 Advanced Application — Arc Length & Tangential Speed"
-
-    Arc length relates linear to rotational motion:
-
-    \[
-    s = r \theta
-    \]
-
-    Tangential velocity:
-    \[
-    v = r\omega
-    \]
-
-    Tangential acceleration:
-    \[
-    a_t = r\alpha
-    \]
-
-    Centripetal acceleration:
-    \[
-    a_c = \omega^2 r
-    \]
+        \[
+        \omega = \omega_0 + \alpha t
+        \]
+        \[
+        \theta = \theta_0 + \omega_0 t + \tfrac12\alpha t^2
+        \]
+        \[
+        \omega^2 = \omega_0^2 + 2\alpha(\theta-\theta_0)
+        \]
 
 ---
 
-# ⭐ 3. Torque — The Rotational Force
+# ⭐ 2. Angular Variables: θ, ω, α  
+## 2.1 What “Angle” Really Represents
 
-??? info "3.1 Core Idea — Torque Makes Things Rotate"
+??? info "Understanding θ, ω, α"
 
-    Torque (\(\tau\)) is the rotational equivalent of force.
+    === "Core Idea"
 
-    \[
-    \tau = rF_\perp
-    \]
+        - **Angular position (θ):** where the object is on a circle  
+        - **Angular velocity (ω):** how fast the angle changes  
+        - **Angular acceleration (α):** how fast ω changes  
 
-    - \(r\) = distance from pivot  
-    - \(F_\perp\) = component of force perpendicular to the lever arm  
+        ![Angle diagram](media/week7_images/College_Physics_-_Chapter_10_Book_p2_img0.png)
 
-    ![Torque lever arm](media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png)
+    === "Deeper Reasoning"
 
-??? tip "3.2 Deeper Reasoning — Why the Angle Matters"
+        These three values behave exactly like:
+        - position → \(x(t)\)  
+        - velocity → \(v(t) = \frac{dx}{dt}\)  
+        - acceleration → \(a(t) = \frac{dv}{dt}\)
 
-    Torque depends on **how effectively a force can twist** an object.
+        The only difference is:
+        - Angle measures **rotation**, not distance.
 
-    The perpendicular component is:
-    \[
-    F_\perp = F\sin\theta
-    \]
+        But calculus works the same.
 
-    So:
-    \[
-    \tau = rF\sin\theta
-    \]
+    === "Advanced Application"
 
-    Pulling at 90° gives maximum torque — this is why you push doors sideways, not upward.
+        **Connecting linear & rotational motion:**
 
-??? note "3.3 Advanced Application — Right-Hand Rule (Simple Version)"
+        \[
+        s = r\theta
+        \]
 
-    Rotate your fingers from \(r\) toward \(F\).  
-    - Thumb into the page → clockwise torque (negative)  
-    - Thumb out of the page → counterclockwise torque (positive)
+        The arc length \(s\) is a linear displacement across the circle.
 
-    ![Right hand rule](media/week7_images/College_Physics_-_Chapter_11_Book_p3_img0.png)
+        Tangential velocity:
+        \[
+        v = r\omega
+        \]
 
----
+        Tangential acceleration:
+        \[
+        a_t = r\alpha
+        \]
 
-# ⭐ 4. Moment of Inertia — Mass Distribution
-
-??? info "4.1 Core Idea — What Is Moment of Inertia?"
-
-    Moment of inertia (\(I\)) tells you **how hard it is to spin something.**
-
-    \[
-    I = \sum mr^2
-    \]
-
-    The farther mass is from the axis, the harder it is to rotate.
-
-    ![Moment of inertia shapes](media/week7_images/College_Physics_-_Chapter_10_Book_p8_img0.png)
-
-??? tip "4.2 Deeper Reasoning — Why This Concept Breaks Students"
-
-    Students try to memorize inertia formulas without understanding:
-
-    - A door is easier to push near the hinge? **No.**  
-      It is harder — small lever arm.  
-
-    - A tightrope walker uses a long pole?  
-      Large \(r\) → larger \(I\) → more stability.
-
-    - Figure skater pulls arms in to spin faster?  
-      Smaller \(r\) → smaller \(I\) → larger \(\omega\).
-
-    **Mass distribution is everything.**
-
-??? note "4.3 Advanced Application — Parallel Axis Theorem"
-
-    If you know \(I_{\text{cm}}\), the moment about a parallel axis is:
-
-    \[
-    I = I_{\text{cm}} + md^2
-    \]
-
-    Where \(d\) is distance between axes.
-
-    Extremely important for:
-    - rods pivoting at ends  
-    - rotating doors  
-    - physical pendulums  
+        Centripetal acceleration:
+        \[
+        a_c = \omega^2 r
+        \]
 
 ---
 
-# ⭐ 5. Newton’s 2nd Law for Rotation
+# ⭐ 3. Torque — The Rotational Equivalent of Force  
+## 3.1 Why Force Alone Cannot Tell You How Something Rotates
 
-??? info "5.1 Core Idea — τ = Iα"
+??? info "Torque (τ): The Cause of Angular Acceleration"
 
-    Equivalent to \(F = ma\):
+    === "Core Idea"
 
-    \[
-    \tau_{\text{net}} = I\alpha
-    \]
+        Torque tells you how effectively a force **creates rotation**.
 
-    If multiple torques act:
+        \[
+        \tau = rF_\perp
+        \]
 
-    \[
-    \sum \tau = I\alpha
-    \]
+        - \(r\): distance from pivot  
+        - \(F_\perp\): the perpendicular component of the force  
 
-    ![Torque and rotation](media/week7_images/College_Physics_-_Chapter_11_Book_p8_img0.png)
+        ![Torque lever](media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png)
 
-??? tip "5.2 Deeper Reasoning — Rotational Free-Body Diagrams"
+    === "Deeper Reasoning"
 
-    To solve rotational problems:
-    1. Draw the object  
-    2. Mark pivot  
-    3. Add forces  
-    4. Compute each force's torque  
-    5. Apply \(\sum \tau = I\alpha\)
+        Why the angle matters:
 
-    Students often forget:
-    - only perpendicular force causes torque  
-    - torques have signs → clockwise vs CCW  
+        - Pulling perpendicular → **maximum torque**  
+        - Pulling at an angle → **less torque**  
+        - Pulling directly toward pivot → **zero torque**
 
-??? note "5.3 Advanced Application — Pulley Systems"
+        Perpendicular force:
+        \[
+        F_\perp = F\sin\theta
+        \]
 
-    For a pulley with tension \(T\):
+        So torque is:
+        \[
+        \tau = rF\sin\theta
+        \]
 
-    \[
-    \tau = Tr
-    \]
+    === "Advanced Application"
 
-    If the pulley has moment of inertia \(I\):
+        **Right-Hand Rule (simplified):**
+        - Curl fingers from \(r\) → \(F\)
+        - Thumb direction = torque direction  
+          - Out of page: counterclockwise (+)  
+          - Into page: clockwise (–)
 
-    \[
-    Tr = I\alpha
-    \]
-
-    And since \(a = r\alpha\):
-
-    \[
-    T = \frac{Ia}{r^2}
-    \]
+        ![RHR](media/week7_images/College_Physics_-_Chapter_11_Book_p3_img0.png)
 
 ---
 
-# ⭐ 6. Rolling Without Slipping
+# ⭐ 4. Moment of Inertia (I): How Hard It Is to Rotate Something  
+## 4.1 The Rotational Version of “Mass”
 
-??? info "6.1 Core Idea — The Condition v = rω"
+??? info "Moment of Inertia (I)"
 
-    Rolling without slipping means the wheel’s bottom point is **instantaneously at rest**.
+    === "Core Idea"
 
-    This gives the critical relation:
+        \[
+        I = \sum mr^2
+        \]
 
-    \[
-    v = r\omega
-    \]
+        Mass far from the axis contributes **a lot** to \(I\).  
+        Mass near the axis contributes **little**.
 
-    ![Rolling without slipping](media/week7_images/College_Physics_-_Chapter_10_Book_p12_img0.png)
+        ![Inertia diagram](media/week7_images/College_Physics_-_Chapter_10_Book_p8_img0.png)
 
-??? tip "6.2 Deeper Reasoning — Three Velocities at Once"
+    === "Deeper Reasoning"
 
-    For any rolling wheel:
+        Students struggle because inertia feels abstract.  
+        Here's the intuition:
 
-    - Center moves at \(v\)  
-    - Top moves at \(2v\)  
-    - Bottom moves at \(0\)  
+        - A baseball bat is easier to swing when held near the thick end  
+          (mass closer → smaller I)  
+        - A skater spins faster with arms in  
+          (decreasing r decreases I)
 
-    Because rotation adds to translational motion at the top and subtracts at the bottom.
+        **Distribution matters more than total mass.**
 
-    Students love this diagram:
+    === "Advanced Application"
 
-    ![Rolling velocities](media/week7_images/College_Physics_-_Chapter_10_Book_p13_img0.png)
+        **Parallel Axis Theorem**
 
-??? note "6.3 Advanced Application — Total Kinetic Energy"
+        \[
+        I = I_{\text{cm}} + md^2
+        \]
 
-    Rolling energy is the sum of:
-    - translational KE  
-    - rotational KE  
-
-    \[
-    K = \tfrac12 mv^2 + \tfrac12 I\omega^2
-    \]
-
-    Using \(v = r\omega\):
-
-    \[
-    K = \tfrac12 mv^2 + \tfrac12 I\left(\frac{v}{r}\right)^2
-    \]
+        Used whenever the pivot is **not** at the center of mass.
 
 ---
 
-# ⭐ 7. Worked Examples (Fully Guided)
+# ⭐ 5. Newton’s Second Law for Rotation  
+## 5.1 The Torque Version of F = ma
 
-??? example "Example 1 — Torque on a Wrench"
+??? info "τ = Iα"
 
-    A 0.25 m wrench feels a 120 N force at 90°.
+    === "Core Idea"
 
-    \[
-    \tau = rF = (0.25)(120)=30\ \text{N·m}
-    \]
+        \[
+        \tau_{\text{net}} = I\alpha
+        \]
 
-    If applied at 30°:
+        Torque causes angular acceleration in the same way force causes linear acceleration.
 
-    \[
-    \tau = rF\sin30^\circ = (0.25)(120)(0.5)=15\ \text{N·m}
-    \]
+        ![Torque system](media/week7_images/College_Physics_-_Chapter_11_Book_p8_img0.png)
 
-    ![Wrench torque](media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png)
+    === "Deeper Reasoning"
 
----
+        To solve rotational problems:
+        1. Draw free-body diagram  
+        2. Choose pivot  
+        3. Determine which forces cause torque  
+        4. Assign torque signs  
+        5. Apply \(\sum \tau = I\alpha\)
 
-??? example "Example 2 — Rolling Cylinder"
+        Critical reminders:
+        - Only **perpendicular force** counts  
+        - Torques have signs (CW / CCW matter)
 
-    A cylinder (I = ½mr²) rolls without slipping at v = 4 m/s.
+    === "Advanced Application"
 
-    \[
-    \omega = \frac{v}{r} = \frac{4}{r}
-    \]
+        **Pulley systems** often require:
 
-    KE:
+        \[
+        Tr = I\alpha
+        \]
+        and  
+        \[
+        a = r\alpha
+        \]
 
-    \[
-    K = \frac12 mv^2 + \frac12 I\omega^2
-    \]
-    \[
-    K = \frac12 mv^2 + \frac12\left(\frac12 mr^2\right)\left(\frac{v}{r}\right)^2
-    \]
-    \[
-    K = \frac12 mv^2 + \frac14 mv^2 = \frac34 mv^2
-    \]
-
----
-
-??? example "Example 3 — Rotational Acceleration"
-
-    A 2 kg, 20 cm radius disk accelerates from rest under a 10 N tangential force.
-
-    Tangential torque:
-    \[
-    \tau = rF = (0.20)(10) = 2\ \text{N·m}
-    \]
-
-    Moment of inertia of disk:
-    \[
-    I = \frac12 mr^2 = \frac12(2)(0.20^2)=0.04\ \text{kg·m^2}
-    \]
-
-    Angular acceleration:
-    \[
-    \alpha = \frac{\tau}{I}=\frac{2}{0.04}=50\ \text{rad/s}^2
-    \]
+        Letting you link rotational + linear motion.
 
 ---
 
-# ⭐ 8. Practice Problems (With Hidden Solutions)
+# ⭐ 6. Rolling Without Slipping  
+## 6.1 Why Wheels Don’t Slide (Most of the Time)
 
-??? question "Try Before Revealing"
+??? info "The Condition v = rω"
 
-    1. A 15 N force at 45° acts 0.40 m from pivot. Find torque.  
-    2. A disk (I = ½mr²) rolls at 3 m/s. Find ω.  
-    3. A rod pivots at end. Use parallel-axis theorem: \(I = I_\text{cm}+md^2\).  
-       Rod: m=2 kg, length=1.2 m. Find I_end.  
-    4. A wheel accelerates from 2 to 8 rad/s in 3 s. Find α.  
-    5. A 6 kg cylinder rolls without slipping. Find total KE at 5 m/s.
+    === "Core Idea"
 
-    ??? success "Solutions"
+        Rolling without slipping means:
 
-        1. \[
-           \tau = rF\sin\theta = (0.40)(15)(\sin45^\circ)=4.24\ \text{N·m}
-           \]
+        - Bottom point is instantaneously at rest  
+        - Wheel grips the ground  
+        - Linear & rotational motion are linked:
 
-        2. \[
-           \omega = \frac{v}{r}
-           \]
+        \[
+        v = r\omega
+        \]
 
-        3. \[
-           I_\text{cm} = \frac{1}{12}mL^2 = \frac{1}{12}(2)(1.2^2)=0.24
-           \]
-           \[
-           I_\text{end} = I_\text{cm}+md^2 = 0.24 + 2(0.6^2)=0.96
-           \]
+        ![Rolling](media/week7_images/College_Physics_-_Chapter_10_Book_p12_img0.png)
 
-        4. \[
-           \alpha = \frac{\Delta\omega}{t} = \frac{8-2}{3}=2\ \text{rad/s}^2
-           \]
+    === "Deeper Reasoning"
 
-        5. \[
-           K = \frac12 mv^2 + \frac12 I\omega^2
-           \]
+        The wheel actually has **three velocities**:
+
+        - Top: \(2v\)  
+        - Center: \(v\)  
+        - Bottom: \(0\)
+
+        Because rotational and translational motion add/subtract.
+
+        ![Velocities](media/week7_images/College_Physics_-_Chapter_10_Book_p13_img0.png)
+
+    === "Advanced Application"
+
+        Total kinetic energy:
+
+        \[
+        K = \tfrac12 mv^2 + \tfrac12 I\omega^2
+        \]
+
+        Substitute \(v = r\omega\):
+
+        \[
+        K = \tfrac12 mv^2 + \tfrac12 I\left(\frac{v}{r}\right)^2
+        \]
 
 ---
 
-# ⭐ 9. Summary Sheet — Exam Essentials
+# ⭐ 7. Worked Examples (Textbook Quality)  
+## These are written step-by-step for mastery.
+
+??? info "Example 1 — Torque from an Angled Force"
+
+    === "Core Idea"
+
+        A 0.25 m wrench with a 120 N force applied at 90°:
+
+        \[
+        \tau = rF = (0.25)(120)=30\ \text{N·m}
+        \]
+
+    === "Deeper Reasoning"
+
+        If applied at 30°:
+
+        \[
+        \tau = rF\sin30^\circ
+        \]
+        \[
+        \tau = (0.25)(120)(0.5)=15\ \text{N·m}
+        \]
+
+    === "Advanced Application"
+
+        If force is NOT applied at the end:
+
+        \[
+        \tau = (r_{\text{new}})F\sin\theta
+        \]
+
+        ![Torque wrench](media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png)
+
+---
+
+??? info "Example 2 — Rolling Cylinder"
+
+    === "Core Idea"
+
+        Cylinder: \(I = \tfrac12 mr^2\), moving at 4 m/s
+
+        \[
+        \omega = \frac{v}{r}
+        \]
+
+    === "Deeper Reasoning"
+
+        Total KE:
+
+        \[
+        K = \tfrac12 mv^2 + \tfrac12 I\omega^2
+        \]
+        \[
+        = \tfrac12 mv^2 + \tfrac14 mv^2 = \tfrac34 mv^2
+        \]
+
+    === "Advanced Application"
+
+        Same method works for:
+        - spheres  
+        - hoops  
+        - disks  
+
+---
+
+??? info "Example 3 — Angular Acceleration from Torque"
+
+    === "Core Idea"
+
+        Disk (2 kg, r=0.20 m), F_tan=10 N.
+
+        \[
+        \tau = rF = 2\ \text{N·m}
+        \]
+
+    === "Deeper Reasoning"
+
+        Moment of inertia:
+
+        \[
+        I = \tfrac12 mr^2 = 0.04
+        \]
+
+        \[
+        \alpha = \frac{\tau}{I} = 50\ \text{rad/s}^2
+        \]
+
+    === "Advanced Application"
+
+        A tension-based pulley system follows the same pattern.
+
+---
+
+# ⭐ 8. Practice Problems (Hidden Solutions)
+
+??? info "Try These First"
+
+    === "Core Idea"
+
+        1. A 15 N force at 45° acts 0.40 m from pivot. Find torque.  
+        2. A disk rolls at 3 m/s. Find ω.  
+        3. A rod (2 kg, 1.2 m) pivots at end. Find I_end.  
+        4. A wheel accelerates from 2 to 8 rad/s in 3s. Find α.  
+        5. A 6 kg cylinder rolls at 5 m/s. Find total KE.
+
+    === "Deeper Reasoning"
+
+        These cover:
+        - torque  
+        - rolling motion  
+        - parallel axis theorem  
+        - rotational energy  
+        - angular acceleration  
+
+    === "Advanced Application"
+
+        **Solutions:**
+
+        1.  
+        \[
+        \tau = rF\sin\theta = (0.40)(15)(\sin45^\circ)=4.24
+        \]
+
+        2.  
+        \[
+        \omega = \frac{v}{r}
+        \]
+
+        3.  
+        \[
+        I_{\text{cm}} = \tfrac{1}{12}mL^2 = 0.24
+        \]
+        \[
+        I_{\text{end}} = I_{\text{cm}} + md^2 = 0.96
+        \]
+
+        4.  
+        \[
+        \alpha = \frac{\Delta\omega}{t} = \frac{8-2}{3}=2
+        \]
+
+        5.  
+        \[
+        K = \tfrac12 mv^2 + \tfrac12 I\omega^2
+        \]
+
+---
+
+# ⭐ 9. Summary Sheet (Exam Essentials)
 
 \[
 \tau = rF\sin\theta
@@ -440,7 +461,10 @@ I = \sum mr^2
 \tau = I\alpha
 \]
 \[
-v = r\omega,\qquad a_t = r\alpha,\qquad a_c=\omega^2 r
+v = r\omega
+\]
+\[
+a_t = r\alpha \qquad a_c = \omega^2 r
 \]
 \[
 K = \tfrac12 mv^2 + \tfrac12 I\omega^2
@@ -449,7 +473,6 @@ K = \tfrac12 mv^2 + \tfrac12 I\omega^2
 ---
 
 <div align="center">
-
 
 
 </div>
