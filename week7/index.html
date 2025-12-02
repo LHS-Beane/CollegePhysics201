@@ -478,24 +478,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Week 7
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -512,36 +494,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-rotation-through-what-you-already-know" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understanding Rotation Through What You Already Know
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -603,25 +555,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-rotation-through-what-you-already-know" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understanding Rotation Through What You Already Know
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -637,480 +570,349 @@
 
 
 
-<h1 id="week-7-rotational-motion">🌀 Week 7 — Rotational Motion<a class="headerlink" href="#week-7-rotational-motion" title="Permanent link">&para;</a></h1>
-<h3 id="understanding-rotation-through-what-you-already-know">Understanding Rotation Through What You Already Know<a class="headerlink" href="#understanding-rotation-through-what-you-already-know" title="Permanent link">&para;</a></h3>
-<p>Rotational motion is one of the hardest topics in physics — not because the ideas are new, but because the <em>language</em> changes.<br />
-This module rewrites everything using what you already understand from Weeks 1–6.</p>
-<hr />
-<h1 id="1-rotational-motion-linear-motion-the-master-connection">⭐ 1. Rotational Motion &amp; Linear Motion: The Master Connection<a class="headerlink" href="#1-rotational-motion-linear-motion-the-master-connection" title="Permanent link">&para;</a></h1>
-<h2 id="11-why-rotation-feels-hard-and-why-it-shouldnt">1.1 Why Rotation Feels Hard — and Why It Shouldn’t<a class="headerlink" href="#11-why-rotation-feels-hard-and-why-it-shouldnt" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>Linear → Rotational Analogy (The Foundation)</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Core Idea</label><label for="__tabbed_1_2">Deeper Reasoning</label><label for="__tabbed_1_3">Advanced Application</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Rotational motion is just <strong>linear motion wrapped into a circle</strong>.</p>
-<p>Every linear quantity has a rotational partner:</p>
-<table>
-<thead>
-<tr>
-<th>Linear</th>
-<th>Rotational</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(x\)</span></td>
-<td><span class="arithmatex">\(\theta\)</span></td>
-<td>Position (angle)</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(v\)</span></td>
-<td><span class="arithmatex">\(\omega\)</span></td>
-<td>Velocity</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(a\)</span></td>
-<td><span class="arithmatex">\(\alpha\)</span></td>
-<td>Acceleration</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(m\)</span></td>
-<td><span class="arithmatex">\(I\)</span></td>
-<td>Resistance to motion</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(F\)</span></td>
-<td><span class="arithmatex">\(\tau\)</span></td>
-<td>Cause of acceleration</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(p = mv\)</span></td>
-<td><span class="arithmatex">\(L = I\omega\)</span></td>
-<td>Momentum</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(K = \tfrac12 mv^2\)</span></td>
-<td><span class="arithmatex">\(K = \tfrac12 I\omega^2\)</span></td>
-<td>Kinetic energy</td>
-</tr>
-</tbody>
-</table>
-<p>Understanding this chart makes everything else easier.</p>
-</div>
-<div class="tabbed-block">
-<p>Rotation <strong>inherits</strong> the mathematics of linear motion:
-- Derivatives describe change
-- Integrals accumulate change
-- Forces (or torques) cause acceleration
-- Mass (or inertia) resists acceleration</p>
-<p>The physics does <strong>not</strong> change — only the <em>geometry</em> and terminology do.</p>
-<p>This is why you can rely on Weeks 1–6 such as:
-- Kinematics
-- Free-body diagrams
-- Energy
-- Momentum</p>
-<p>Rotation is simply those ideas in circular form.</p>
-</div>
-<div class="tabbed-block">
-<p>Total relationships:</p>
-<div class="arithmatex">\[
-\omega = \frac{d\theta}{dt}, \qquad \alpha = \frac{d\omega}{dt}
-\]</div>
-<p>Constant acceleration gives rotational kinematic equations:</p>
-<p>[
-\omega = \omega_0 + \alpha t
-]
-[
-\theta = \theta_0 + \omega_0 t + \tfrac12\alpha t^2
-]
-[
-\omega^2 = \omega_0^2 + 2\alpha(\theta-\theta_0)
-]</p>
-</div>
-</div>
-</div>
-</details>
-<hr />
-<h1 id="2-angular-variables">⭐ 2. Angular Variables: θ, ω, α<a class="headerlink" href="#2-angular-variables" title="Permanent link">&para;</a></h1>
-<h2 id="21-what-angle-really-represents">2.1 What “Angle” Really Represents<a class="headerlink" href="#21-what-angle-really-represents" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>Understanding θ, ω, α</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Core Idea</label><label for="__tabbed_2_2">Deeper Reasoning</label><label for="__tabbed_2_3">Advanced Application</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<h1 id="week-7-rotational-motion">📘 Week 7 — Rotational Motion<a class="headerlink" href="#week-7-rotational-motion" title="Permanent link">&para;</a></h1>
+<p><em>College Physics 201 — Calculus-Based Physics</em></p>
+<p>Rotational motion is the natural continuation of everything you've done with <strong>kinematics</strong>, <strong>forces</strong>, <strong>energy</strong>, and <strong>momentum</strong> — but now extended into circular and rigid-body motion.</p>
+<p>In this module we will unify:</p>
 <ul>
-<li><strong>Angular position (θ):</strong> where the object is on a circle  </li>
-<li><strong>Angular velocity (ω):</strong> how fast the angle changes  </li>
-<li><strong>Angular acceleration (α):</strong> how fast ω changes  </li>
+<li>Linear vs. rotational analogies  </li>
+<li>Angular variables (θ, ω, α)  </li>
+<li>Torque (τ)  </li>
+<li>Moment of inertia (I)  </li>
+<li>Newton’s 2nd Law for rotation:<br />
+  $$
+  \tau_{\text{net}} = I\alpha
+  $$</li>
+<li>Rolling without slipping  </li>
+<li>Rotational kinetic energy  </li>
+<li>Angular momentum (L)  </li>
+<li>Conservation of angular momentum  </li>
+<li>Precession &amp; gyroscopic motion  </li>
 </ul>
-<p><img alt="Angle diagram" src="media/week7_images/College_Physics_-_Chapter_10_Book_p2_img0.png" /></p>
-</div>
+<hr />
+<h1 id="navigation">🧭 <strong>Navigation</strong><a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="#rotational-kinematics">Rotational Kinematics</a></li>
+<li><a href="#torque">Torque</a></li>
+<li><a href="#moment-of-inertia">Moment of Inertia</a></li>
+<li><a href="#rotational-dynamics">Rotational Dynamics</a></li>
+<li><a href="#rolling-without-slipping">Rolling Without Slipping</a></li>
+<li><a href="#rotational-energy">Rotational Energy</a></li>
+<li><a href="#angular-momentum">Angular Momentum</a></li>
+<li><a href="#conservation-of-angular-momentum">Conservation of Angular Momentum</a></li>
+<li><a href="#gyroscopes--precession">Gyroscopes &amp; Precession</a></li>
+<li><a href="#worked-examples">Examples</a></li>
+<li><a href="#practice-problems">Practice Problems</a></li>
+</ul>
+<hr />
+<h1 id="rotational-kinematics">🔵 Rotational Kinematics<a class="headerlink" href="#rotational-kinematics" title="Permanent link">&para;</a></h1>
+<h2 id="angular-variables-and-circular-motion"><strong>Angular Variables and Circular Motion</strong><a class="headerlink" href="#angular-variables-and-circular-motion" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Core Idea</label><label for="__tabbed_1_2">Deeper Reasoning</label><label for="__tabbed_1_3">Advanced Applications</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
-<p>These three values behave exactly like:
-- position → <span class="arithmatex">\(x(t)\)</span><br />
-- velocity → <span class="arithmatex">\(v(t) = \frac{dx}{dt}\)</span><br />
-- acceleration → <span class="arithmatex">\(a(t) = \frac{dv}{dt}\)</span></p>
-<p>The only difference is:
-- Angle measures <strong>rotation</strong>, not distance.</p>
-<p>But calculus works the same.</p>
-</div>
-<div class="tabbed-block">
-<p><strong>Connecting linear &amp; rotational motion:</strong></p>
+<p>Angular motion is described using <strong>three primary variables</strong>:</p>
 <div class="arithmatex">\[
+\theta \quad \omega = \frac{d\theta}{dt} \quad \alpha = \frac{d\omega}{dt}
+\]</div>
+<ul>
+<li><strong>θ</strong> — angular position (radians)  </li>
+<li><strong>ω</strong> — angular velocity (rad/s)  </li>
+<li><strong>α</strong> — angular acceleration (rad/s²)</li>
+</ul>
+<p><strong>Radians</strong> are dimensionless. They make calculus work seamlessly.</p>
+<p><img alt="intro" src="media/week7_images/College_Physics_-_Chapter_10_Book_p0_img0.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Hewitt explains rotational motion conceptually as <em>“turning instead of sliding.”</em><br />
+Instead of describing how far something moves, we describe how <strong>much it turns</strong>.</p>
+<p>If an object rotates through angle θ, every point on it sweeps out an arc:
+$$
 s = r\theta
-\]</div>
-<p>The arc length <span class="arithmatex">\(s\)</span> is a linear displacement across the circle.</p>
-<p>Tangential velocity:
-[
+$$</p>
+<p>This leads to:
+$$
 v = r\omega
-]</p>
-<p>Tangential acceleration:
-[
+$$
+$$
 a_t = r\alpha
-]</p>
-<p>Centripetal acceleration:
-[
-a_c = \omega^2 r
-]</p>
+$$</p>
+<p>Circular motion has <strong>two accelerations</strong>:
+$$
+a_t = r\alpha \quad\text{(tangential, changes speed)}
+$$
+$$
+a_c = \omega^2 r \quad\text{(centripetal, changes direction)}
+$$</p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Hard drives  </li>
+<li>Gears and pulleys  </li>
+<li>Rotating machinery  </li>
+<li>Planetary rotations  </li>
+</ul>
+<p><img alt="circular" src="media/week7_images/College_Physics_-_Chapter_10_Book_p13_img0.png" /></p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="3-torque-the-rotational-equivalent-of-force">⭐ 3. Torque — The Rotational Equivalent of Force<a class="headerlink" href="#3-torque-the-rotational-equivalent-of-force" title="Permanent link">&para;</a></h1>
-<h2 id="31-why-force-alone-cannot-tell-you-how-something-rotates">3.1 Why Force Alone Cannot Tell You How Something Rotates<a class="headerlink" href="#31-why-force-alone-cannot-tell-you-how-something-rotates" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>Torque (τ): The Cause of Angular Acceleration</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Core Idea</label><label for="__tabbed_3_2">Deeper Reasoning</label><label for="__tabbed_3_3">Advanced Application</label></div>
+<h1 id="torque">🔵 Torque<a class="headerlink" href="#torque" title="Permanent link">&para;</a></h1>
+<h2 id="the-cause-of-rotational-motion"><strong>The Cause of Rotational Motion</strong><a class="headerlink" href="#the-cause-of-rotational-motion" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Core Idea</label><label for="__tabbed_2_2">Deeper Reasoning</label><label for="__tabbed_2_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Torque tells you how effectively a force <strong>creates rotation</strong>.</p>
+<p>Torque determines how effectively a force causes rotation.</p>
 <div class="arithmatex">\[
-\tau = rF_\perp
-\]</div>
-<ul>
-<li><span class="arithmatex">\(r\)</span>: distance from pivot  </li>
-<li><span class="arithmatex">\(F_\perp\)</span>: the perpendicular component of the force  </li>
-</ul>
-<p><img alt="Torque lever" src="media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png" /></p>
-</div>
-<div class="tabbed-block">
-<p>Why the angle matters:</p>
-<ul>
-<li>Pulling perpendicular → <strong>maximum torque</strong>  </li>
-<li>Pulling at an angle → <strong>less torque</strong>  </li>
-<li>Pulling directly toward pivot → <strong>zero torque</strong></li>
-</ul>
-<p>Perpendicular force:
-[
-F_\perp = F\sin\theta
-]</p>
-<p>So torque is:
-[
 \tau = rF\sin\theta
-]</p>
+\]</div>
+<p>Where:
+- <strong>r</strong> = lever arm<br />
+- <strong>F</strong> = applied force<br />
+- <strong>θ</strong> = angle between r and F  </p>
+<p><img alt="torque" src="media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><strong>Right-Hand Rule (simplified):</strong>
-- Curl fingers from <span class="arithmatex">\(r\)</span> → <span class="arithmatex">\(F\)</span>
-- Thumb direction = torque direction<br />
-  - Out of page: counterclockwise (+)<br />
-  - Into page: clockwise (–)</p>
-<p><img alt="RHR" src="media/week7_images/College_Physics_-_Chapter_11_Book_p3_img0.png" /></p>
+<p>From Hewitt: <em>“You can push hard on a door and still fail to open it if you push the wrong way.”</em></p>
+<ul>
+<li>Perpendicular force → <strong>max torque</strong>  </li>
+<li>Parallel force → <strong>zero torque</strong>  </li>
+</ul>
+<p>Torque direction uses the <strong>right-hand rule</strong>:</p>
+<p><img alt="rhr" src="media/week7_images/College_Physics_-_Chapter_11_Book_p3_img0.png" /></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Wrenches and tools  </li>
+<li>Human joints  </li>
+<li>Bicycles  </li>
+<li>Torque on pulleys  </li>
+</ul>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="4-moment-of-inertia-i-how-hard-it-is-to-rotate-something">⭐ 4. Moment of Inertia (I): How Hard It Is to Rotate Something<a class="headerlink" href="#4-moment-of-inertia-i-how-hard-it-is-to-rotate-something" title="Permanent link">&para;</a></h1>
-<h2 id="41-the-rotational-version-of-mass">4.1 The Rotational Version of “Mass”<a class="headerlink" href="#41-the-rotational-version-of-mass" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>Moment of Inertia (I)</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Core Idea</label><label for="__tabbed_4_2">Deeper Reasoning</label><label for="__tabbed_4_3">Advanced Application</label></div>
+<h1 id="moment-of-inertia">🔵 Moment of Inertia<a class="headerlink" href="#moment-of-inertia" title="Permanent link">&para;</a></h1>
+<h2 id="rotational-inertia-the-rotational-form-of-mass"><strong>Rotational Inertia: The Rotational Form of Mass</strong><a class="headerlink" href="#rotational-inertia-the-rotational-form-of-mass" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Core Idea</label><label for="__tabbed_3_2">Deeper Reasoning</label><label for="__tabbed_3_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="arithmatex">\[
-I = \sum mr^2
+I = \sum m r^2
 \]</div>
-<p>Mass far from the axis contributes <strong>a lot</strong> to <span class="arithmatex">\(I\)</span>.<br />
-Mass near the axis contributes <strong>little</strong>.</p>
-<p><img alt="Inertia diagram" src="media/week7_images/College_Physics_-_Chapter_10_Book_p8_img0.png" /></p>
+<p>Mass far from the axis contributes <strong>more</strong> to inertia.</p>
+<p><img alt="inertia" src="media/week7_images/College_Physics_-_Chapter_11_Book_p10_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p>Students struggle because inertia feels abstract.<br />
-Here's the intuition:</p>
-<ul>
-<li>A baseball bat is easier to swing when held near the thick end<br />
-  (mass closer → smaller I)  </li>
-<li>A skater spins faster with arms in<br />
-  (decreasing r decreases I)</li>
-</ul>
-<p><strong>Distribution matters more than total mass.</strong></p>
+<p>Knight emphasizes:<br />
+<em>“Rotational inertia is not just about how much mass — it’s about where that mass is distributed.”</em></p>
+<p>Example:
+- Solid disk → small I<br />
+- Hoop → large I (all mass at the rim)</p>
+<p><img alt="shapes" src="media/week7_images/College_Physics_-_Chapter_10_Book_p22_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><strong>Parallel Axis Theorem</strong></p>
-<div class="arithmatex">\[
-I = I_{\text{cm}} + md^2
-\]</div>
-<p>Used whenever the pivot is <strong>not</strong> at the center of mass.</p>
+<p>Parallel-axis theorem:
+$$
+I = I_{cm} + Md^2
+$$</p>
+<p>Useful for rods, doors, rotating limbs.</p>
+<p><img alt="pat" src="media/week7_images/College_Physics_-_Chapter_11_Book_p30_img0.png" /></p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="5-newtons-second-law-for-rotation">⭐ 5. Newton’s Second Law for Rotation<a class="headerlink" href="#5-newtons-second-law-for-rotation" title="Permanent link">&para;</a></h1>
-<h2 id="51-the-torque-version-of-f-ma">5.1 The Torque Version of F = ma<a class="headerlink" href="#51-the-torque-version-of-f-ma" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>τ = Iα</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Core Idea</label><label for="__tabbed_5_2">Deeper Reasoning</label><label for="__tabbed_5_3">Advanced Application</label></div>
+<h1 id="rotational-dynamics">🔵 Rotational Dynamics<a class="headerlink" href="#rotational-dynamics" title="Permanent link">&para;</a></h1>
+<h2 id="newtons-second-law-for-rotation"><strong>Newton’s Second Law for Rotation</strong><a class="headerlink" href="#newtons-second-law-for-rotation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Core Idea</label><label for="__tabbed_4_2">Deeper Reasoning</label><label for="__tabbed_4_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="arithmatex">\[
 \tau_{\text{net}} = I\alpha
 \]</div>
-<p>Torque causes angular acceleration in the same way force causes linear acceleration.</p>
-<p><img alt="Torque system" src="media/week7_images/College_Physics_-_Chapter_11_Book_p8_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p>To solve rotational problems:
-1. Draw free-body diagram<br />
-2. Choose pivot<br />
-3. Determine which forces cause torque<br />
-4. Assign torque signs<br />
-5. Apply <span class="arithmatex">\(\sum \tau = I\alpha\)</span></p>
-<p>Critical reminders:
-- Only <strong>perpendicular force</strong> counts<br />
-- Torques have signs (CW / CCW matter)</p>
+<p>This is the rotational form of:
+$$
+F_{\text{net}} = ma
+$$</p>
+<p>If you apply more torque:
+- Angular acceleration increases<br />
+- Rotation direction depends on sign of torque<br />
+- Mass distribution (I) determines resistance  </p>
+<p><img alt="rot-dyn" src="media/week7_images/College_Physics_-_Chapter_11_Book_p36_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><strong>Pulley systems</strong> often require:</p>
-<p>[
-Tr = I\alpha
-]
-and<br />
-[
-a = r\alpha
-]</p>
-<p>Letting you link rotational + linear motion.</p>
+<p>Pulley systems:
+<img alt="pulley1" src="media/week7_images/College_Physics_-_Chapter_10_Book_p18_img0.png" /></p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="6-rolling-without-slipping">⭐ 6. Rolling Without Slipping<a class="headerlink" href="#6-rolling-without-slipping" title="Permanent link">&para;</a></h1>
-<h2 id="61-why-wheels-dont-slide-most-of-the-time">6.1 Why Wheels Don’t Slide (Most of the Time)<a class="headerlink" href="#61-why-wheels-dont-slide-most-of-the-time" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>The Condition v = rω</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Core Idea</label><label for="__tabbed_6_2">Deeper Reasoning</label><label for="__tabbed_6_3">Advanced Application</label></div>
+<h1 id="rolling-without-slipping">🔵 Rolling Without Slipping<a class="headerlink" href="#rolling-without-slipping" title="Permanent link">&para;</a></h1>
+<h2 id="translation-rotation-combined"><strong>Translation + Rotation Combined</strong><a class="headerlink" href="#translation-rotation-combined" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Core Idea</label><label for="__tabbed_5_2">Deeper Reasoning</label><label for="__tabbed_5_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Rolling without slipping means:</p>
-<ul>
-<li>Bottom point is instantaneously at rest  </li>
-<li>Wheel grips the ground  </li>
-<li>Linear &amp; rotational motion are linked:</li>
-</ul>
-<div class="arithmatex">\[
+<p>The rolling condition:
+$$
 v = r\omega
-\]</div>
-<p><img alt="Rolling" src="media/week7_images/College_Physics_-_Chapter_10_Book_p12_img0.png" /></p>
+$$</p>
+<p>Bottom point: momentarily at rest<br />
+Top point: moving at 2v  </p>
+<p><img alt="rolling" src="media/week7_images/College_Physics_-_Chapter_10_Book_p21_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p>The wheel actually has <strong>three velocities</strong>:</p>
+<p>Hewitt:<br />
+<em>“Rolling is walking and spinning at the same time.”</em></p>
+<p>Static friction provides the link — but does <strong>no work</strong>.</p>
+</div>
+<div class="tabbed-block">
 <ul>
-<li>Top: <span class="arithmatex">\(2v\)</span>  </li>
-<li>Center: <span class="arithmatex">\(v\)</span>  </li>
-<li>Bottom: <span class="arithmatex">\(0\)</span></li>
+<li>Bicycles  </li>
+<li>Rolling robots  </li>
+<li>Car wheels  </li>
+<li>Bowling balls  </li>
 </ul>
-<p>Because rotational and translational motion add/subtract.</p>
-<p><img alt="Velocities" src="media/week7_images/College_Physics_-_Chapter_10_Book_p13_img0.png" /></p>
-</div>
-<div class="tabbed-block">
-<p>Total kinetic energy:</p>
-<div class="arithmatex">\[
-K = \tfrac12 mv^2 + \tfrac12 I\omega^2
-\]</div>
-<p>Substitute <span class="arithmatex">\(v = r\omega\)</span>:</p>
-<div class="arithmatex">\[
-K = \tfrac12 mv^2 + \tfrac12 I\left(\frac{v}{r}\right)^2
-\]</div>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="7-worked-examples-textbook-quality">⭐ 7. Worked Examples (Textbook Quality)<a class="headerlink" href="#7-worked-examples-textbook-quality" title="Permanent link">&para;</a></h1>
-<h2 id="these-are-written-step-by-step-for-mastery">These are written step-by-step for mastery.<a class="headerlink" href="#these-are-written-step-by-step-for-mastery" title="Permanent link">&para;</a></h2>
-<details class="info">
-<summary>Example 1 — Torque from an Angled Force</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Core Idea</label><label for="__tabbed_7_2">Deeper Reasoning</label><label for="__tabbed_7_3">Advanced Application</label></div>
+<h1 id="rotational-energy">🔵 Rotational Energy<a class="headerlink" href="#rotational-energy" title="Permanent link">&para;</a></h1>
+<h2 id="energy-of-rolling-objects"><strong>Energy of Rolling Objects</strong><a class="headerlink" href="#energy-of-rolling-objects" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Core Idea</label><label for="__tabbed_6_2">Deeper Reasoning</label><label for="__tabbed_6_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>A 0.25 m wrench with a 120 N force applied at 90°:</p>
 <div class="arithmatex">\[
-\tau = rF = (0.25)(120)=30\ \text{N·m}
+K_{\text{tot}} = \frac12 mv^2 + \frac12 I\omega^2
 \]</div>
 </div>
 <div class="tabbed-block">
-<p>If applied at 30°:</p>
-<p>[
-\tau = rF\sin30^\circ
-]
-[
-\tau = (0.25)(120)(0.5)=15\ \text{N·m}
-]</p>
+<p>Shapes with <strong>smaller I</strong> accelerate faster down a ramp.</p>
 </div>
 <div class="tabbed-block">
-<p>If force is NOT applied at the end:</p>
-<div class="arithmatex">\[
-\tau = (r_{\text{new}})F\sin\theta
-\]</div>
-<p><img alt="Torque wrench" src="media/week7_images/College_Physics_-_Chapter_10_Book_p5_img0.png" /></p>
+<p>Energy diagrams:
+<img alt="energy" src="media/week7_images/College_Physics_-_Chapter_10_Book_p27_img1.png" /></p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<details class="info">
-<summary>Example 2 — Rolling Cylinder</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Core Idea</label><label for="__tabbed_8_2">Deeper Reasoning</label><label for="__tabbed_8_3">Advanced Application</label></div>
+<h1 id="angular-momentum">🔵 Angular Momentum<a class="headerlink" href="#angular-momentum" title="Permanent link">&para;</a></h1>
+<h2 id="rotational-equivalent-of-linear-momentum"><strong>Rotational Equivalent of Linear Momentum</strong><a class="headerlink" href="#rotational-equivalent-of-linear-momentum" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Core Idea</label><label for="__tabbed_7_2">Deeper Reasoning</label><label for="__tabbed_7_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Cylinder: <span class="arithmatex">\(I = \tfrac12 mr^2\)</span>, moving at 4 m/s</p>
 <div class="arithmatex">\[
-\omega = \frac{v}{r}
+L = I\omega
 \]</div>
+<p>Direction given by the right-hand rule.</p>
+<p><img alt="L" src="media/week7_images/College_Physics_-_Chapter_11_Book_p18_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p>Total KE:</p>
-<p>[
-K = \tfrac12 mv^2 + \tfrac12 I\omega^2
-]
-[
-= \tfrac12 mv^2 + \tfrac14 mv^2 = \tfrac34 mv^2
-]</p>
+<p>Hewitt’s intuitive model:
+- A spinning object “wants” to keep spinning<br />
+- More rotational inertia → harder to change ω  </p>
 </div>
 <div class="tabbed-block">
-<p>Same method works for:
-- spheres<br />
-- hoops<br />
-- disks  </p>
+<p>Figure skater diagrams:
+<img alt="spin" src="media/week7_images/College_Physics_-_Chapter_11_Book_p23_img0.png" /></p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<details class="info">
-<summary>Example 3 — Angular Acceleration from Torque</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Core Idea</label><label for="__tabbed_9_2">Deeper Reasoning</label><label for="__tabbed_9_3">Advanced Application</label></div>
+<h1 id="conservation-of-angular-momentum">🔵 Conservation of Angular Momentum<a class="headerlink" href="#conservation-of-angular-momentum" title="Permanent link">&para;</a></h1>
+<h2 id="when-no-net-external-torque-acts"><strong>When No Net External Torque Acts…</strong><a class="headerlink" href="#when-no-net-external-torque-acts" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Core Idea</label><label for="__tabbed_8_2">Deeper Reasoning</label><label for="__tabbed_8_3">Advanced Applications</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Disk (2 kg, r=0.20 m), F_tan=10 N.</p>
 <div class="arithmatex">\[
-\tau = rF = 2\ \text{N·m}
+L_i = L_f
+$$  
+$$
+I_i \omega_i = I_f \omega_f
 \]</div>
 </div>
 <div class="tabbed-block">
-<p>Moment of inertia:</p>
-<div class="arithmatex">\[
-I = \tfrac12 mr^2 = 0.04
-\]</div>
-<div class="arithmatex">\[
-\alpha = \frac{\tau}{I} = 50\ \text{rad/s}^2
-\]</div>
+<ul>
+<li>Skaters pull arms in → spin faster  </li>
+<li>Neutron stars collapse → rotate extremely fast  </li>
+</ul>
 </div>
 <div class="tabbed-block">
-<p>A tension-based pulley system follows the same pattern.</p>
+<p>Planetary formation, collapsing stellar cores.</p>
 </div>
 </div>
 </div>
-</details>
 <hr />
-<h1 id="8-practice-problems-hidden-solutions">⭐ 8. Practice Problems (Hidden Solutions)<a class="headerlink" href="#8-practice-problems-hidden-solutions" title="Permanent link">&para;</a></h1>
-<details class="info">
-<summary>Try These First</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Core Idea</label><label for="__tabbed_10_2">Deeper Reasoning</label><label for="__tabbed_10_3">Advanced Application</label></div>
+<h1 id="gyroscopes-precession">🔵 Gyroscopes &amp; Precession<a class="headerlink" href="#gyroscopes-precession" title="Permanent link">&para;</a></h1>
+<h2 id="why-spinning-objects-defy-intuition"><strong>Why Spinning Objects Defy Intuition</strong><a class="headerlink" href="#why-spinning-objects-defy-intuition" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Core Idea</label><label for="__tabbed_9_2">Deeper Reasoning</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<ol>
-<li>A 15 N force at 45° acts 0.40 m from pivot. Find torque.  </li>
-<li>A disk rolls at 3 m/s. Find ω.  </li>
-<li>A rod (2 kg, 1.2 m) pivots at end. Find I_end.  </li>
-<li>A wheel accelerates from 2 to 8 rad/s in 3s. Find α.  </li>
-<li>A 6 kg cylinder rolls at 5 m/s. Find total KE.</li>
-</ol>
+<p>Precession occurs when torque acts <strong>perpendicular</strong> to angular momentum.</p>
+<p><img alt="gyroscope" src="media/week7_images/College_Physics_-_Chapter_11_Book_p32_img0.png" /></p>
 </div>
 <div class="tabbed-block">
-<p>These cover:
-- torque<br />
-- rolling motion<br />
-- parallel axis theorem<br />
-- rotational energy<br />
-- angular acceleration  </p>
+<p>Hewitt’s insight:<br />
+<em>“A gyroscope does not fall — it moves sideways.”</em></p>
+<p>Because:
+$$
+\vec{\tau} = \frac{d\vec{L}}{dt}
+$$</p>
 </div>
-<div class="tabbed-block">
-<p><strong>Solutions:</strong></p>
+</div>
+</div>
+<hr />
+<h1 id="worked-examples">🧩 Worked Examples<a class="headerlink" href="#worked-examples" title="Permanent link">&para;</a></h1>
+<h2 id="example-1-torque">Example 1 — Torque<a class="headerlink" href="#example-1-torque" title="Permanent link">&para;</a></h2>
+<p>A 0.30 m wrench is used to exert a 120 N force at 90°.</p>
+<div class="arithmatex">\[
+\tau = rF = (0.30)(120) = 36\text{ N·m}
+\]</div>
+<h2 id="example-2-rotational-dynamics">Example 2 — Rotational Dynamics<a class="headerlink" href="#example-2-rotational-dynamics" title="Permanent link">&para;</a></h2>
+<p>A disk (m = 2.0 kg, r = 0.20 m) has force 10 N applied tangentially.</p>
 <ol>
 <li>
 <div class="arithmatex">\[
-\tau = rF\sin\theta = (0.40)(15)(\sin45^\circ)=4.24
-\]</div>
+   \tau = rF = 2.0\text{ N·m}
+   \]</div>
 </li>
 <li>
 <div class="arithmatex">\[
-\omega = \frac{v}{r}
-\]</div>
-</li>
-<li>
-<p>[
-I_{\text{cm}} = \tfrac{1}{12}mL^2 = 0.24
-]
-[
-I_{\text{end}} = I_{\text{cm}} + md^2 = 0.96
-]</p>
+   I = \frac12 mr^2 = 0.04
+   \]</div>
 </li>
 <li>
 <div class="arithmatex">\[
-\alpha = \frac{\Delta\omega}{t} = \frac{8-2}{3}=2
-\]</div>
-</li>
-<li>
-<div class="arithmatex">\[
-K = \tfrac12 mv^2 + \tfrac12 I\omega^2
-\]</div>
+   \alpha = \frac{\tau}{I} = 50\text{ rad/s}^2
+   \]</div>
 </li>
 </ol>
-</div>
-</div>
-</div>
-</details>
 <hr />
-<h1 id="9-summary-sheet-exam-essentials">⭐ 9. Summary Sheet (Exam Essentials)<a class="headerlink" href="#9-summary-sheet-exam-essentials" title="Permanent link">&para;</a></h1>
-<p>[
-\tau = rF\sin\theta
-]
-[
-I = \sum mr^2
-]
-[
-\tau = I\alpha
-]
-[
-v = r\omega
-]
-[
-a_t = r\alpha \qquad a_c = \omega^2 r
-]
-[
-K = \tfrac12 mv^2 + \tfrac12 I\omega^2
-]</p>
-<hr />
-<div align="center">
-
-
+<h1 id="practice-problems">📝 Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Try These</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
 </div>
+</div>
+<ol>
+<li>Compute <span class="arithmatex">\(\omega\)</span> after 3 seconds if <span class="arithmatex">\(\alpha = 4 \text{ rad/s}^2\)</span> from rest.  </li>
+<li>A force of 15 N is applied at 60° to a 0.40 m bar. Find τ.  </li>
+<li>Determine <span class="arithmatex">\(I\)</span> for a hoop of mass 2 kg and radius 0.5 m.  </li>
+<li>A skater pulls arms in and reduces I to half. What happens to ω?  </li>
+<li>A rolling sphere (I = 2/5 mr²) goes down a ramp. Compare to a cylinder.</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Solutions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<ol>
+<li><span class="arithmatex">\(\omega = 12\text{ rad/s}\)</span>  </li>
+<li><span class="arithmatex">\(\tau = 5.2\text{ N·m}\)</span>  </li>
+<li><span class="arithmatex">\(I = 0.5\text{ kg·m}^2\)</span>  </li>
+<li>ω doubles  </li>
+<li>Sphere accelerates faster</li>
+</ol>
 
 
 
