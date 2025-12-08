@@ -6,22 +6,19 @@ theme:
 
 markdown_extensions:
   - admonition
-  - attr_list
   - footnotes
-  - toc:
-      permalink: true
-
+  - meta
+  - def_list
+  - attr_list
   - pymdownx.arithmatex:
       generic: true
-
-  - pymdownx.highlight
-  - pymdownx.superfences
   - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
+  - pymdownx.superfences
 
 extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 
 nav:
   - Home: index.md
