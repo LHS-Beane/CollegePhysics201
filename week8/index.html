@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#week-8-oscillations" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -464,6 +469,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -651,6 +658,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -667,53 +676,482 @@
 
 
 
-  <h1>Overview</h1>
-
-<p>Week 8 – Oscillations</p>
-<p>Welcome to Week 8 of College Physics 201. This module introduces oscillatory motion, focusing on physical systems where a restoring force leads to periodic motion. You will learn how to analyze oscillations mathematically, interpret energy relationships, and apply oscillation concepts to springs, pendulums, and damped systems.</p>
-<p>Learning Objectives</p>
-<p>By the end of Week 8 you should be able to:</p>
-<p>Identify systems that exhibit simple harmonic motion (SHM)</p>
-<p>Use the SHM equations 
-𝑥
-(
-𝑡
-)
-,
-𝑣
-(
-𝑡
-)
-,
-𝑎
-(
-𝑡
-)
-x(t),v(t),a(t) to describe oscillatory motion</p>
-<p>Determine amplitude, period, frequency, and phase</p>
-<p>Use energy conservation to analyze oscillations</p>
-<p>Describe small-angle pendulum motion</p>
-<p>Differentiate underdamped, critically damped, and overdamped motion</p>
-<p>Explain resonance qualitatively</p>
-<p>Pages for This Week</p>
-<p>Simple Harmonic Motion</p>
-<p>Energy in Oscillations</p>
-<p>Pendulums</p>
-<p>Damping &amp; Resonance</p>
-<p>Problem Set</p>
-<p>Pre-Class Preparation</p>
-<p>Read: OpenStax College Physics Chapter 15 (Oscillations)
-Watch: Walter Lewin MIT Lecture – “Simple Harmonic Motion” (optional)</p>
-<p>What You Should Focus On</p>
-<p>Using SHM equations rather than deriving them</p>
-<p>Understanding physical meaning behind graphs</p>
-<p>Making connections between springs, pendulums, and circular motion</p>
-<p>Recognizing oscillations in real systems (bridges, buildings, circuits)</p>
-<p>In-Class Activities</p>
-<p>Group problem solving</p>
-<p>Interactive graph interpretation</p>
-<p>Pendulum demonstrations</p>
-<p>Qualitative damping/resonance modeling</p>
+<h1 id="week-8-oscillations">📘 Week 8 — Oscillations</h1>
+<p><em>College Physics 201 — Calculus-Based Physics</em></p>
+<p>Oscillations show up everywhere in physics: springs, pendulums, atoms, circuits, buildings, and bridges.<br />
+This week you’ll learn how to describe <strong>simple harmonic motion (SHM)</strong> mathematically, connect it to <strong>energy</strong> and <strong>pendulums</strong>, and understand <strong>damping</strong> and <strong>resonance</strong> in real systems.</p>
+<p>Use these collapsible sections to work through the ideas at your own pace.</p>
+<hr />
+<h1 id="simple-harmonic-motion-shm">🔵 Simple Harmonic Motion (SHM)</h1>
+<details class="example" open="open">
+<summary>Simple Harmonic Motion (SHM)</summary>
+<h2 id="core-idea">⭐ Core Idea</h2>
+<p>A system undergoes <strong>simple harmonic motion</strong> when the restoring force is proportional to displacement and points toward equilibrium:</p>
+<div class="arithmatex">\[
+F = -kx
+\]</div>
+<p>This produces sinusoidal motion:</p>
+<div class="arithmatex">\[
+x(t) = A\cos(\omega t + \phi)
+\]</div>
+<ul>
+<li><strong><span class="arithmatex">\(A\)</span></strong> — amplitude (maximum displacement)  </li>
+<li><strong><span class="arithmatex">\(\omega\)</span></strong> — angular frequency  </li>
+<li><strong><span class="arithmatex">\(\phi\)</span></strong> — phase constant  </li>
+<li><strong><span class="arithmatex">\(x(t)\)</span></strong> — displacement as a function of time  </li>
+</ul>
+<p><img alt="Mass–spring oscillator" src="/week8/media/week8_images_pdf/week8_img_0_I621.jpg" /></p>
+<hr />
+<h3 id="key-quantities">Key quantities</h3>
+<ul>
+<li><strong>Period <span class="arithmatex">\(T\)</span></strong> — time for one complete cycle (seconds)  </li>
+<li><strong>Frequency <span class="arithmatex">\(f\)</span></strong> — cycles per second (Hz)  </li>
+<li><strong>Angular frequency <span class="arithmatex">\(\omega\)</span></strong> — relates to <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(f\)</span>:</li>
+</ul>
+<p>$$
+  \omega = 2\pi f = \frac{2\pi}{T}
+  $$</p>
+<p>For a mass–spring system:</p>
+<div class="arithmatex">\[
+\omega = \sqrt{\frac{k}{m}}, \quad
+T = 2\pi\sqrt{\frac{m}{k}}, \quad
+f = \frac{1}{2\pi}\sqrt{\frac{k}{m}}
+\]</div>
+<hr />
+<h2 id="deeper-reasoning">🌟 Deeper Reasoning</h2>
+<p>SHM is defined not just by the displacement but by the <strong>acceleration</strong>:</p>
+<div class="arithmatex">\[
+a(t) = \frac{d^2 x}{dt^2} = -\omega^2 x(t)
+\]</div>
+<p>That is:
+- acceleration is <strong>always directed toward equilibrium</strong>, and<br />
+- its magnitude is proportional to how far you are from equilibrium.</p>
+<p>This is the mathematical fingerprint of SHM.</p>
+<p>The <strong>velocity</strong> and <strong>acceleration</strong> follow from derivatives of <span class="arithmatex">\(x(t)\)</span>:</p>
+<div class="arithmatex">\[
+v(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \phi)
+$$
+$$
+a(t) = \frac{dv}{dt} = -A\omega^2 \cos(\omega t + \phi) = -\omega^2 x(t)
+\]</div>
+<p><img alt="SHM position, velocity, and acceleration vs time" src="/week8/media/week8_images_pdf/week8_img_1_I622.jpg" /></p>
+<p>Notice:
+- <span class="arithmatex">\(x(t)\)</span> and <span class="arithmatex">\(a(t)\)</span> are in phase (both cosines, opposite sign).<br />
+- <span class="arithmatex">\(v(t)\)</span> is shifted by 90° (a sine).</p>
+<hr />
+<h2 id="advanced-concept-initial-conditions-and-phase">🎓 Advanced Concept — Initial Conditions and Phase</h2>
+<p>The <strong>phase constant <span class="arithmatex">\(\phi\)</span></strong> is set by the initial conditions.</p>
+<p>At <span class="arithmatex">\(t = 0\)</span>:</p>
+<div class="arithmatex">\[
+x(0) = A\cos\phi, \qquad
+v(0) = -A\omega\sin\phi
+\]</div>
+<p>You can solve these for <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(\phi\)</span> if you know <span class="arithmatex">\(x(0)\)</span> and <span class="arithmatex">\(v(0)\)</span>.</p>
+<p>Example patterns:
+- Released from rest at <strong>+A</strong> → <span class="arithmatex">\(x(0) = +A\)</span>, <span class="arithmatex">\(v(0) = 0\)</span> → <span class="arithmatex">\(\phi = 0\)</span><br />
+- Released from rest at <strong>−A</strong> → <span class="arithmatex">\(x(0) = −A\)</span>, <span class="arithmatex">\(v(0) = 0\)</span> → <span class="arithmatex">\(\phi = \pi\)</span><br />
+- Passing through equilibrium with maximum positive speed → <span class="arithmatex">\(\phi = -\frac{\pi}{2}\)</span></p>
+<hr />
+<h3 id="worked-example-finding-the-shm-equation">🔶 <em>Worked Example: Finding the SHM Equation</em></h3>
+<details class="example" open="open">
+<summary>Worked Example: SHM from Initial Conditions</summary>
+<p>A 0.50 kg mass oscillates on a spring. The amplitude is <span class="arithmatex">\(A = 0.12 \text{ m}\)</span>.<br />
+The mass is at <span class="arithmatex">\(x(0) = +0.06 \text{ m}\)</span> and moving to the <strong>left</strong> with speed <span class="arithmatex">\(v(0) = 0.30 \text{ m/s}\)</span>.<br />
+The spring constant is <span class="arithmatex">\(k = 8.0 \text{ N/m}\)</span>. Find the function <span class="arithmatex">\(x(t)\)</span>.</p>
+<p><strong>Step 1 — Find <span class="arithmatex">\(\omega\)</span></strong>  </p>
+<div class="arithmatex">\[
+\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{8.0}{0.50}} = \sqrt{16} = 4.0 \text{ rad/s}
+\]</div>
+<p><strong>Step 2 — Use <span class="arithmatex">\(x(0)\)</span> to relate <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(\phi\)</span></strong>  </p>
+<div class="arithmatex">\[
+x(0) = A\cos\phi = 0.06
+\]</div>
+<p>With <span class="arithmatex">\(A = 0.12\)</span>:</p>
+<div class="arithmatex">\[
+\cos\phi = \frac{0.06}{0.12} = 0.50 \Rightarrow \phi = \pm \frac{\pi}{3}
+\]</div>
+<p><strong>Step 3 — Use <span class="arithmatex">\(v(0)\)</span> to choose the correct sign</strong>  </p>
+<div class="arithmatex">\[
+v(0) = -A\omega \sin\phi = - (0.12)(4.0)\sin\phi = -0.48\sin\phi
+\]</div>
+<p>We’re told the mass is moving <strong>left</strong>, so <span class="arithmatex">\(v(0) &lt; 0\)</span>:</p>
+<div class="arithmatex">\[
+-0.48\sin\phi = -0.30 \Rightarrow \sin\phi = 0.625
+\]</div>
+<p>Sin is positive and cos is positive → <span class="arithmatex">\(\phi\)</span> is in quadrant I → <span class="arithmatex">\(\phi \approx \frac{\pi}{3}\)</span> is correct.</p>
+<p><strong>Final Answer:</strong></p>
+<div class="arithmatex">\[
+x(t) = 0.12\cos(4.0t + \frac{\pi}{3})
+\]</div>
+</details>
+</details>
+<hr />
+<h1 id="shm-and-uniform-circular-motion">🔵 SHM and Uniform Circular Motion</h1>
+<details class="example" open="open">
+<summary>SHM and Uniform Circular Motion</summary>
+<h2 id="core-idea_1">⭐ Core Idea</h2>
+<p>SHM can be viewed as the <strong>shadow</strong> of a point moving in uniform circular motion.</p>
+<p>Imagine a point traveling around a circle of radius <span class="arithmatex">\(A\)</span> with constant angular speed <span class="arithmatex">\(\omega\)</span>. The projection of this point onto the x-axis follows:</p>
+<div class="arithmatex">\[
+x(t) = A\cos(\omega t)
+\]</div>
+<p><img alt="Uniform circular motion and SHM projection" src="/week8/media/week8_images_pdf/week8_img_3_I623.jpg" /></p>
+<p>This gives a powerful geometric interpretation of SHM.</p>
+<hr />
+<h2 id="deeper-reasoning_1">🌟 Deeper Reasoning</h2>
+<p>For the circular motion:</p>
+<ul>
+<li>Position on the circle:<br />
+  [
+  x(t) = A\cos(\omega t), \quad y(t) = A\sin(\omega t)
+  ]</li>
+<li>The x-component alone behaves like SHM.</li>
+</ul>
+<p>The circular picture helps you:
+- visualize <strong>phase</strong> as an angle on the circle<br />
+- understand why SHM is sinusoidal<br />
+- connect SHM to wave motion later  </p>
+<hr />
+<h2 id="advanced-concept-phase-and-initial-angle">🎓 Advanced Concept — Phase and Initial Angle</h2>
+<p>If the rotating point starts at angle <span class="arithmatex">\(\phi\)</span> at <span class="arithmatex">\(t = 0\)</span>, then:</p>
+<div class="arithmatex">\[
+x(t) = A\cos(\omega t + \phi)
+\]</div>
+<p>The <strong>phase constant <span class="arithmatex">\(\phi\)</span></strong> is literally the starting angle on the reference circle.</p>
+</details>
+<hr />
+<h1 id="energy-in-oscillations">🔵 Energy in Oscillations</h1>
+<details class="example" open="open">
+<summary>Energy in Oscillations</summary>
+<h2 id="core-idea_2">⭐ Core Idea</h2>
+<p>For a mass–spring system in SHM (no friction):</p>
+<ul>
+<li><strong>Spring potential energy:</strong>
+  $$
+  U = \frac12 kx^2
+  $$</li>
+<li><strong>Kinetic energy:</strong>
+  $$
+  K = \frac12 mv^2
+  $$</li>
+</ul>
+<p>The <strong>total mechanical energy</strong> is constant:</p>
+<div class="arithmatex">\[
+E = K + U = \frac12 kA^2
+\]</div>
+<p><img alt="Energy vs position in SHM" src="/week8/media/week8_images_pdf/week8_img_3_I624.jpg" /></p>
+<p>At:
+- <span class="arithmatex">\(x = 0\)</span> → <span class="arithmatex">\(U = 0\)</span>, <span class="arithmatex">\(K = E\)</span><br />
+- <span class="arithmatex">\(x = \pm A\)</span> → <span class="arithmatex">\(U = E\)</span>, <span class="arithmatex">\(K = 0\)</span></p>
+<hr />
+<h2 id="deeper-reasoning-velocity-from-energy">🌟 Deeper Reasoning — Velocity from Energy</h2>
+<p>Conservation of energy provides a very useful relation:</p>
+<div class="arithmatex">\[
+\frac12 mv^2 + \frac12 kx^2 = \frac12 kA^2
+\]</div>
+<p>Solving for <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v(x) = \pm \sqrt{\frac{k}{m}(A^2 - x^2)} = \pm \omega \sqrt{A^2 - x^2}
+\]</div>
+<p>This tells you how fast the mass is moving at any position <span class="arithmatex">\(x\)</span>, without needing time <span class="arithmatex">\(t\)</span>.</p>
+<hr />
+<h2 id="advanced-concept-turning-points-energy-diagrams">🎓 Advanced Concept — Turning Points &amp; Energy Diagrams</h2>
+<ul>
+<li><strong>Turning points</strong> occur where <span class="arithmatex">\(v = 0\)</span> → all energy is potential.</li>
+<li>For SHM, these are at <span class="arithmatex">\(x = \pm A\)</span>.  </li>
+<li>On an energy vs. position graph, the total energy is a <strong>horizontal line</strong>, and the potential energy is a <strong>parabola</strong>.</li>
+</ul>
+<p>The intersection points of these curves give the maximum allowed displacement.</p>
+<hr />
+<h3 id="worked-example-speed-from-energy">🔶 <em>Worked Example: Speed from Energy</em></h3>
+<details class="example" open="open">
+<summary>Worked Example: Speed at a Given Position</summary>
+<p>A 0.40 kg block oscillates on a spring with <span class="arithmatex">\(k = 16\text{ N/m}\)</span> and amplitude <span class="arithmatex">\(A = 0.25 \text{ m}\)</span>.</p>
+<p><strong>(a)</strong> What is the total mechanical energy?<br />
+<strong>(b)</strong> What is the speed at <span class="arithmatex">\(x = 0.15 \text{ m}\)</span>?</p>
+<p><strong>(a) Total energy</strong></p>
+<div class="arithmatex">\[
+E = \frac12 kA^2 = \frac12(16)(0.25^2) = 8(0.0625) = 0.50 \text{ J}
+\]</div>
+<p><strong>(b) Speed at <span class="arithmatex">\(x = 0.15\)</span></strong>  </p>
+<p>Energy conservation:</p>
+<div class="arithmatex">\[
+\frac12 mv^2 + \frac12 kx^2 = E
+$$
+$$
+\frac12 (0.40)v^2 + \frac12(16)(0.15^2) = 0.50
+\]</div>
+<p>Compute the potential term:</p>
+<div class="arithmatex">\[
+\frac12(16)(0.0225) = 8(0.0225) = 0.18 \text{ J}
+\]</div>
+<p>So:</p>
+<div class="arithmatex">\[
+\frac12 (0.40)v^2 = 0.50 - 0.18 = 0.32
+$$
+$$
+0.20 v^2 = 0.32 \Rightarrow v^2 = 1.60 \Rightarrow v = 1.26 \text{ m/s}
+\]</div>
+<p><strong>Answer:</strong> <span class="arithmatex">\(v \approx 1.26 \text{ m/s}\)</span></p>
+</details>
+</details>
+<hr />
+<h1 id="pendulums">🔵 Pendulums</h1>
+<details class="example" open="open">
+<summary>Pendulums</summary>
+<h2 id="core-idea-simple-pendulum">⭐ Core Idea — Simple Pendulum</h2>
+<p>A <strong>simple pendulum</strong> is a point mass <span class="arithmatex">\(m\)</span> on a massless string of length <span class="arithmatex">\(L\)</span>, swinging under gravity.  </p>
+<p>For <strong>small angles</strong> (<span class="arithmatex">\(\theta \lesssim 10^\circ\)</span>), the motion is approximately SHM with period:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}}
+\]</div>
+<p><img alt="Simple pendulum geometry" src="/week8/media/week8_images_pdf/week8_img_4_I625.jpg" /></p>
+<p>Key points:
+- Period does <strong>not</strong> depend on mass.<br />
+- Period increases with length.<br />
+- Period decreases if gravity is stronger.</p>
+<hr />
+<h2 id="deeper-reasoning-small-angle-approximation">🌟 Deeper Reasoning — Small-Angle Approximation</h2>
+<p>The tangential component of gravity is:</p>
+<div class="arithmatex">\[
+F_t = -mg\sin\theta
+\]</div>
+<p>For small angles, <span class="arithmatex">\(\sin\theta \approx \theta\)</span> (in radians), so:</p>
+<div class="arithmatex">\[
+F_t \approx -mg\theta
+\]</div>
+<p>The resulting angular equation of motion has the same form as SHM:</p>
+<div class="arithmatex">\[
+\ddot{\theta} + \frac{g}{L}\theta = 0
+\]</div>
+<p>Giving:</p>
+<div class="arithmatex">\[
+\omega = \sqrt{\frac{g}{L}}, \quad T = 2\pi\sqrt{\frac{L}{g}}
+\]</div>
+<hr />
+<h2 id="advanced-concept-physical-pendulum">🎓 Advanced Concept — Physical Pendulum</h2>
+<p>A <strong>physical pendulum</strong> is any rigid body swinging about a pivot.</p>
+<p>For small oscillations, the period is:</p>
+<div class="arithmatex">\[
+T = 2\pi\sqrt{\frac{I}{mgd}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(I\)</span> — moment of inertia about the pivot<br />
+- <span class="arithmatex">\(d\)</span> — distance from pivot to center of mass  </p>
+<p><img alt="Physical pendulum example" src="/week8/media/week8_images_pdf/week8_img_4_I626.jpg" /></p>
+<hr />
+<h3 id="worked-example-simple-pendulum-period">🔶 <em>Worked Example: Simple Pendulum Period</em></h3>
+<details class="example" open="open">
+<summary>Worked Example: Pendulum on Earth</summary>
+<p>A simple pendulum has length <span class="arithmatex">\(L = 1.10 \text{ m}\)</span>.  </p>
+<p><strong>Find its period on Earth (<span class="arithmatex">\(g = 9.80 \text{ m/s}^2\)</span>).</strong></p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{1.10}{9.80}}
+\]</div>
+<div class="arithmatex">\[
+\frac{1.10}{9.80} \approx 0.1122,\quad \sqrt{0.1122} \approx 0.335
+\]</div>
+<div class="arithmatex">\[
+T \approx 2\pi(0.335) \approx 2.10 \text{ s}
+\]</div>
+<p><strong>Answer:</strong> <span class="arithmatex">\(T \approx 2.1\text{ s}\)</span></p>
+</details>
+</details>
+<hr />
+<h1 id="damping">🔵 Damping</h1>
+<details class="example" open="open">
+<summary>Damping</summary>
+<h2 id="core-idea_3">⭐ Core Idea</h2>
+<p>Real oscillators lose energy over time due to friction or drag.<br />
+The amplitude of motion <strong>decreases</strong> with time — this is called <strong>damping</strong>.</p>
+<p>Types of damping:
+- <strong>Underdamped</strong> — oscillates with decreasing amplitude<br />
+- <strong>Critically damped</strong> — returns to equilibrium as fast as possible without oscillating<br />
+- <strong>Overdamped</strong> — returns slowly, no oscillations  </p>
+<p><img alt="Damped oscillation envelopes" src="/week8/media/week8_images_pdf/week8_img_5_I627.jpg" /></p>
+<hr />
+<h2 id="deeper-reasoning-exponential-decay">🌟 Deeper Reasoning — Exponential Decay</h2>
+<p>For a lightly damped oscillator, the amplitude obeys:</p>
+<div class="arithmatex">\[
+A(t) = A_0 e^{-\frac{b}{2m} t}
+\]</div>
+<p>where <span class="arithmatex">\(b\)</span> is the damping constant.</p>
+<p>The motion looks like SHM with a slowly shrinking envelope.</p>
+<hr />
+<h2 id="advanced-concept-damped-frequency">🎓 Advanced Concept — Damped Frequency</h2>
+<p>Without derivation, the <strong>damped angular frequency</strong> is:</p>
+<div class="arithmatex">\[
+\omega_d = \sqrt{\omega_0^2 - \left(\frac{b}{2m}\right)^2}
+\]</div>
+<p>where <span class="arithmatex">\(\omega_0 = \sqrt{\frac{k}{m}}\)</span> is the undamped natural frequency.</p>
+<p>For light damping, <span class="arithmatex">\(\omega_d \approx \omega_0\)</span>.</p>
+</details>
+<hr />
+<h1 id="driven-oscillations-resonance">🔵 Driven Oscillations &amp; Resonance</h1>
+<details class="example" open="open">
+<summary>Driven Oscillations &amp; Resonance</summary>
+<h2 id="core-idea_4">⭐ Core Idea</h2>
+<p>If an oscillator is subjected to a <strong>periodic driving force</strong>:</p>
+<div class="arithmatex">\[
+F(t) = F_0 \sin(\omega t)
+\]</div>
+<p>it eventually oscillates at the <strong>driving frequency</strong>. The <strong>amplitude</strong> of steady-state oscillation depends on how close the driving frequency is to the system’s <strong>natural frequency</strong>.</p>
+<p>When these match, the system is in <strong>resonance</strong> and the amplitude can become very large.</p>
+<p><img alt="Resonance curves with different damping" src="/week8/media/week8_images_pdf/week8_img_6_I628.jpg" /></p>
+<hr />
+<h2 id="deeper-reasoning_2">🌟 Deeper Reasoning</h2>
+<ul>
+<li>If the driving frequency is <strong>far</strong> from the natural frequency → small response.  </li>
+<li>If the driving frequency is <strong>near</strong> the natural frequency → big response.  </li>
+<li>Lower damping → <strong>taller &amp; narrower</strong> resonance peak.  </li>
+<li>Higher damping → <strong>shorter &amp; wider</strong> resonance peak.</li>
+</ul>
+<p>Real-world relevance:
+- Bridges and buildings (wind, earthquakes)<br />
+- Musical instruments<br />
+- Radio circuits (tuning)<br />
+- MRI machines  </p>
+<hr />
+<h2 id="advanced-concept-qualitative-equation">🎓 Advanced Concept — Qualitative Equation</h2>
+<p>The full driven, damped oscillator equation is:</p>
+<div class="arithmatex">\[
+m\ddot{x} + b\dot{x} + kx = F_0 \sin(\omega t)
+\]</div>
+<p>We <strong>do not</strong> solve this in this course, but we use its qualitative behavior:
+- driving term → sets the steady-state frequency<br />
+- damping term → limits amplitude and broadens resonance  </p>
+</details>
+<hr />
+<h1 id="worked-examples-summary">🧩 Worked Examples (Summary)</h1>
+<details class="example" open="open">
+<summary>Worked Examples (Summary)</summary>
+<p><strong>Covered above:</strong>
+- SHM from initial conditions<br />
+- Speed at a position using energy<br />
+- Simple pendulum period<br />
+- Physical pendulum concept<br />
+- Identifying damping and resonance behavior  </p>
+<p>Use these as models when working through the practice problems.</p>
+</details>
+<hr />
+<h1 id="practice-problems">📝 Practice Problems</h1>
+<details class="example" open="open">
+<summary>Practice Problems</summary>
+<ol>
+<li>
+<p><strong>Mass–Spring Frequency</strong><br />
+   A 0.30 kg mass is attached to a spring with <span class="arithmatex">\(k = 12 \text{ N/m}\)</span>.<br />
+   (a) Find <span class="arithmatex">\(\omega\)</span>, <span class="arithmatex">\(T\)</span>, and <span class="arithmatex">\(f\)</span>.<br />
+   (b) If <span class="arithmatex">\(A = 0.080 \text{ m}\)</span>, write <span class="arithmatex">\(x(t)\)</span> assuming release from rest at <span class="arithmatex">\(x = +A\)</span>.</p>
+</li>
+<li>
+<p><strong>Speed at a Position</strong><br />
+   A 0.50 kg mass oscillates with amplitude <span class="arithmatex">\(0.10\text{ m}\)</span> on a spring whose natural frequency is <span class="arithmatex">\(\omega = 6.0 \text{ rad/s}\)</span>.<br />
+   Find the speed at <span class="arithmatex">\(x = 0.06 \text{ m}\)</span>.</p>
+</li>
+<li>
+<p><strong>Energy and Turning Points</strong><br />
+   A mass–spring system has total energy <span class="arithmatex">\(E = 0.40 \text{ J}\)</span> and spring constant <span class="arithmatex">\(k = 20 \text{ N/m}\)</span>.<br />
+   (a) Find the amplitude.<br />
+   (b) At what displacement is the kinetic energy half of the total energy?</p>
+</li>
+<li>
+<p><strong>Pendulum on Earth vs. Moon</strong><br />
+   A 1.00 m simple pendulum has period <span class="arithmatex">\(T_E\)</span> on Earth.<br />
+   (a) Find <span class="arithmatex">\(T_E\)</span>.<br />
+   (b) On a moon where <span class="arithmatex">\(g_{\text{moon}} = 1.6 \text{ m/s}^2\)</span>, find its new period.</p>
+</li>
+<li>
+<p><strong>Damping Type Identification</strong><br />
+   Given three displacement vs. time graphs:  </p>
+</li>
+<li>Graph A: quickly returns to equilibrium, no oscillations.  </li>
+<li>Graph B: oscillations with slowly shrinking amplitude.  </li>
+<li>
+<p>Graph C: very slow return, no oscillations.<br />
+   Label each as underdamped, critically damped, or overdamped.</p>
+</li>
+<li>
+<p><strong>Resonance Concept</strong><br />
+   Explain why a lightly damped system can be dangerous if driven near its natural frequency. Give one real-world example.</p>
+</li>
+</ol>
+</details>
+<details class="example" open="open">
+<summary>Solutions (Sketch Only)</summary>
+<ol>
+<li><strong>Mass–Spring Frequency</strong></li>
+<li>
+<p>(a)<br />
+     $$
+     \omega = \sqrt{\frac{12}{0.30}} = \sqrt{40} \approx 6.32\text{ rad/s}
+     $$
+     $$
+     T = \frac{2\pi}{\omega} \approx \frac{2\pi}{6.32} \approx 0.995\text{ s}, \quad
+     f \approx 1.00\text{ Hz}
+     $$
+     (b) Release from rest at <span class="arithmatex">\(+A\)</span> → <span class="arithmatex">\(\phi = 0\)</span>:
+     $$
+     x(t) = 0.080\cos(6.32t)
+     $$</p>
+</li>
+<li>
+<p><strong>Speed at a Position</strong>
+   $$
+   v(x) = \omega\sqrt{A^2 - x^2} = 6.0\sqrt{0.10^2 - 0.06^2}
+   $$
+   $$
+   = 6.0\sqrt{0.01 - 0.0036} = 6.0\sqrt{0.0064} = 6.0(0.080) = 0.48\text{ m/s}
+   $$</p>
+</li>
+<li>
+<p><strong>Energy and Turning Points</strong></p>
+</li>
+<li>(a)
+     $$
+     E = \frac12 kA^2 \Rightarrow 0.40 = \frac12(20)A^2 = 10A^2
+     $$
+     $$
+     A^2 = 0.04 \Rightarrow A = 0.20\text{ m}
+     $$</li>
+<li>
+<p>(b) Half kinetic → <span class="arithmatex">\(K = E/2 = 0.20\)</span>, so <span class="arithmatex">\(U = 0.20\)</span>:
+     $$
+     U = \frac12 kx^2 = \frac12(20)x^2 = 10x^2 = 0.20
+     $$
+     $$
+     x^2 = 0.02 \Rightarrow x \approx 0.141\text{ m}
+     $$</p>
+</li>
+<li>
+<p><strong>Pendulum on Earth vs. Moon</strong></p>
+</li>
+<li>(a)
+     $$
+     T_E = 2\pi\sqrt{\frac{1.00}{9.80}} \approx 2.01\text{ s}
+     $$</li>
+<li>
+<p>(b)
+     $$
+     T_{\text{moon}} = 2\pi\sqrt{\frac{1.00}{1.6}} \approx 4.97\text{ s}
+     $$</p>
+</li>
+<li>
+<p><strong>Damping Types</strong></p>
+</li>
+<li>Graph A → critically damped  </li>
+<li>Graph B → underdamped  </li>
+<li>
+<p>Graph C → overdamped  </p>
+</li>
+<li>
+<p><strong>Resonance Concept</strong></p>
+</li>
+<li>Lightly damped systems have large amplitudes when driven near their natural frequency.</li>
+<li>Example: a bridge oscillating due to periodic wind or marching soldiers; a wine glass shattering under a singer’s resonant note.</li>
+</ol>
+</details>
+<hr />
 
 
 
