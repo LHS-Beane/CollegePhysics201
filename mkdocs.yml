@@ -25,14 +25,19 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Syllabus: syllabus.md
-  - Modules:
-      - Week 1: week1/index.md
-      - Week 2: week2/index.md
-      - Week 3: week3/index.md
-      - Week 4: week4/index.md
-      - Week 5: week5/index.md
-      - Week 6: week6/index.md
-      - Week 7: week7/index.md
-      - Week 8: week8/index.md
+  - Week 1: week1/index.md
+  - Week 2: week2/index.md
+  - Week 3: week3/index.md
+  - Week 4: week4/index.md
+  - Week 5: week5/index.md
+  - Week 6: week6/index.md
+  - Week 7: week7/index.md
+  - Week 8:
+      - Overview: week8/index.md
+      - Simple Harmonic Motion: week8/shm.md
+      - Energy in Oscillations: week8/energy.md
+      - Pendulums: week8/pendulums.md
+      - Damping & Resonance: week8/damping.md
+      - Problem Set: week8/problems.md
+
 
