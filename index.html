@@ -2,330 +2,359 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Physics 201 | Calculus-Based Mechanics</title>
+  <title>Physics 201 – Calculus-Based Mechanics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <!-- MathJax for equations -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    .hero-pattern {
-      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-      background-size: 24px 24px;
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800">
 
-  <!-- Top Nav -->
-  <nav class="bg-slate-900 text-white shadow-lg">
-   <div class="hidden md:flex space-x-6 text-sm font-medium items-center">
-  <a href="index.html" class="text-slate-300 hover:text-white transition">Home</a>
-  <a href="syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
-
-  <!-- Weeks dropdown -->
-  <div class="relative group">
-    <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
-      Weeks
-      <span class="text-[0.6rem]">▼</span>
+  <!-- MOBILE TOP BAR (shown on small screens only) -->
+  <div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
+    <span class="font-semibold">Physics 201</span>
+    <button id="menuBtn" class="text-white focus:outline-none">
+      <!-- Hamburger Icon -->
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
     </button>
-    <div class="absolute left-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
-      <a href="week1.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 1 – Kinematics</a>
-      <a href="week2.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 2 – Forces</a>
-      <a href="week3.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 3 – Work &amp; Energy</a>
-      <a href="week4.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 4 – Momentum</a>
-      <a href="week5.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 5 – Rotation I</a>
-      <a href="week6.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 6 – Rotation II</a>
-      <a href="week7.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 7 – Rotation &amp; Torque</a>
-      <a href="week8.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 8 – Oscillations</a>
-    </div>
   </div>
 
-  <!-- Resources dropdown -->
-  <div class="relative group">
-    <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
-      Resources
-      <span class="text-[0.6rem]">▼</span>
-    </button>
-    <div class="absolute right-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
-      <a href="formulas.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Formula Sheet</a>
-      <a href="calculus.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Calculus Refresher</a>
-    </div>
-  </div>
-</div>
+  <!-- OVERLAY (mobile dark background) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden z-30"></div>
 
-  </nav>
+  <!-- SIDEBAR -->
+  <aside id="sidebar"
+    class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
+           p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
 
-  <!-- Hero -->
-  <header class="bg-white border-b border-slate-200 hero-pattern relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
-      <div class="text-center md:text-left md:flex md:justify-between md:items-center gap-8">
-        <div class="md:w-1/2">
-          <span class="text-orange-600 font-bold uppercase tracking-wider text-xs mb-2 block">
-            Walsh University • PHYS 201
-          </span>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
-            Calculus-Based <span class="text-blue-600">Physics</span>:
-            Mechanics, Rotation, & Oscillations
+    <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
+
+    <!-- Main links -->
+    <a href="index.html" class="nav-item block px-3 py-2 rounded">Home</a>
+    <a href="syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
+
+    <hr class="my-3">
+
+    <!-- Resources -->
+    <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
+
+    <a href="formulas.html" class="nav-item block px-3 py-2 rounded">
+      Formula Sheet
+    </a>
+    <a href="calculus.html" class="nav-item block px-3 py-2 rounded">
+      Calculus Refresher
+    </a>
+
+    <hr class="my-3">
+
+    <!-- Weeks -->
+    <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
+
+    <a href="weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
+    <a href="weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
+    <a href="weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
+    <a href="weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
+    <a href="weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
+    <a href="weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
+    <a href="weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
+    <a href="weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
+
+  </aside>
+
+  <!-- MAIN CONTENT (shifted right on md+ screens) -->
+  <div class="md:ml-64 p-6 md:p-8 max-w-6xl mx-auto space-y-10">
+
+    <!-- HERO SECTION -->
+    <section class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <!-- Left: Blue Panel -->
+        <div class="md:w-2/5 bg-blue-700 text-white p-8 md:p-10 flex flex-col justify-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-blue-200 mb-2">
+            College Physics – Calculus-Based
+          </p>
+          <h1 class="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">
+            Physics 201: Mechanics with Calculus
           </h1>
-          <p class="text-lg text-slate-600 mb-8 max-w-xl">
-            This 8-week course develops a deep understanding of motion, forces, energy,
-            momentum, rotational dynamics, and oscillations using the tools of calculus.
-            Use this site to learn independently, review missed classes, and prepare for exams.
+          <p class="text-sm md:text-base text-blue-100 mb-6 max-w-md">
+            An 8-week intensive on motion, forces, energy, momentum, rotation, and oscillations.
+            Designed to be fully self-paced, with complete notes, examples, and practice.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+
+          <div class="flex flex-wrap gap-3 text-sm">
             <a href="weeks/week1.html"
-               class="bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition shadow-md text-center">
-              Start with Week 1: Kinematics
+               class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white text-blue-700 font-semibold hover:bg-blue-50">
+              Start Week 1
             </a>
-            <a href="#weeks"
-               class="bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition text-center">
-              View All Weekly Modules
+            <a href="syllabus.pdf"
+               class="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-blue-200 bg-blue-600/30 text-blue-50 hover:bg-blue-600/50">
+              View Syllabus
+            </a>
+            <a href="formulas.html"
+               class="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-blue-100 text-blue-50 hover:bg-blue-600/70">
+              Formula Sheet
             </a>
           </div>
         </div>
 
-        <!-- Decorative physics icon area -->
-        <div class="hidden md:block md:w-1/3 opacity-90">
-          <div class="relative w-64 h-64 mx-auto">
-            <div class="absolute inset-0 bg-blue-100 rounded-full animate-pulse opacity-40"></div>
-            <div class="absolute inset-6 bg-orange-100 rounded-full opacity-60"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-7xl">
-              ∫
-            </div>
-          </div>
+        <!-- Right: SVG Illustration -->
+        <div class="md:w-3/5 bg-slate-50 p-8 flex items-center justify-center">
+          <!-- Rotational dynamics SVG -->
+          <svg viewBox="0 0 320 220" class="w-full max-w-md">
+            <!-- Background circle (rotating body) -->
+            <circle cx="140" cy="110" r="60" fill="white" stroke="#1d4ed8" stroke-width="2" />
+
+            <!-- Center point -->
+            <circle cx="140" cy="110" r="4" fill="#1d4ed8" />
+
+            <!-- Radius / moment arm -->
+            <line x1="140" y1="110" x2="200" y2="80" stroke="#1d4ed8" stroke-width="2" />
+            <text x="182" y="90" font-size="10" fill="#1e293b">r</text>
+
+            <!-- Force vector at the end of the arm -->
+            <line x1="200" y1="80" x2="240" y2="60" stroke="#0f766e" stroke-width="3" />
+            <polygon points="240,60 232,62 236,54" fill="#0f766e" />
+            <text x="244" y="58" font-size="10" fill="#0f766e">F</text>
+
+            <!-- Small angle arc -->
+            <path d="M 180 120 A 40 40 0 0 1 200 80" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+            <text x="190" y="115" font-size="10" fill="#64748b">θ</text>
+
+            <!-- Torque arrow (curved) -->
+            <path d="M 110 50
+                     C 80 80, 80 140, 110 170" 
+                  fill="none" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="110,50 112,58 104,54" fill="#1d4ed8" />
+            <text x="80" y="110" font-size="11" fill="#1d4ed8">τ = r × F</text>
+
+            <!-- Angular velocity arrow -->
+            <path d="M 140 30
+                     Q 160 35 170 50" 
+                  fill="none" stroke="#6366f1" stroke-width="2" />
+            <polygon points="170,50 168,42 162,48" fill="#6366f1" />
+            <text x="140" y="26" font-size="11" fill="#6366f1">ω</text>
+
+            <!-- Ground / reference line -->
+            <line x1="40" y1="190" x2="280" y2="190" stroke="#cbd5f5" stroke-width="2" />
+            <text x="120" y="205" font-size="10" fill="#94a3b8">Rigid body rotation & torque</text>
+          </svg>
         </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- Main Content -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-
-    <!-- Weeks Overview -->
-    <section id="weeks" class="mb-12">
-      <h2 class="text-2xl font-bold text-slate-800 mb-6 border-l-4 border-blue-500 pl-4">
-        Weekly Modules (8-Week Term)
+    <!-- COURSE OVERVIEW -->
+    <section class="space-y-4">
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900">
+        Course Overview
       </h2>
+      <p class="text-sm md:text-base text-slate-700 max-w-2xl">
+        This 8-week course covers core topics in calculus-based mechanics: kinematics, forces,
+        work and energy, momentum, rotational dynamics, and oscillations. Each week has
+        complete notes, worked examples, practice problems, and simulations built for
+        independent learning.
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="grid gap-4 md:grid-cols-3 text-sm">
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">Mechanics Foundations</h3>
+          <p class="text-slate-600">
+            Vectors, 1D & 2D motion, Newton’s Laws, and applying derivatives and integrals
+            to describe motion.
+          </p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">Energy & Momentum</h3>
+          <p class="text-slate-600">
+            Work–energy methods, potential energy, conservation of energy and momentum,
+            and real collision models.
+          </p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">Rotation & Oscillations</h3>
+          <p class="text-slate-600">
+            Torque, angular momentum, rolling motion, and simple harmonic motion with
+            calculus-based descriptions.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Week 1 -->
+    <!-- WEEK MODULE GRID -->
+    <section class="space-y-4">
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900">
+        Weekly Modules
+      </h2>
+      <p class="text-sm md:text-base text-slate-700 max-w-2xl">
+        Each week module includes: a standalone note set, fully worked calculus-based examples,
+        practice problems with solutions, and at least one interactive or simulation.
+      </p>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        <!-- Week cards -->
         <a href="weeks/week1.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 1</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Units, Dimensions, & 1D Kinematics with Calculus
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Position, velocity, and acceleration as functions of time. Derivatives and integrals in motion.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 1 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 1 – 1D Kinematics</h3>
+          <p class="text-xs text-slate-500 mb-2">Position, velocity, acceleration, calculus definitions.</p>
+          <p class="text-sm text-slate-700">
+            Motion graphs, derivative relationships, and constant-acceleration models.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 2 -->
         <a href="weeks/week2.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 2</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Vectors & 2D Kinematics
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Vector algebra, components, unit vectors, projectile motion, and uniform circular motion.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 2 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 2 – 2D Motion & Vectors</h3>
+          <p class="text-xs text-slate-500 mb-2">Vectors, components, projectile motion.</p>
+          <p class="text-sm text-slate-700">
+            Vector addition, dot products, and calculus with vector components.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 3 -->
         <a href="weeks/week3.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 3</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Test 1 & Newton’s Laws, Friction, Applications
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Review kinematics, then dive into forces, free-body diagrams, and friction on inclines and pulleys.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 3 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 3 – Newton’s Laws</h3>
+          <p class="text-xs text-slate-500 mb-2">Forces, free-body diagrams, and dynamics.</p>
+          <p class="text-sm text-slate-700">
+            Translating physical situations into equations using \(\sum \vec F = m\vec a\).
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 4 -->
         <a href="weeks/week4.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 4</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Work & Energy (incl. Variable Forces)
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Work–energy theorem, work by variable forces using integrals, online activities and problem sets.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 4 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 4 – Work & Energy</h3>
+          <p class="text-xs text-slate-500 mb-2">Work integrals, potential energy, conservation.</p>
+          <p class="text-sm text-slate-700">
+            Using integrals to compute work and energy changes in realistic systems.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 5 -->
         <a href="weeks/week5.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 5</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Potential Energy, Conservation of Energy, & Momentum
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Conservative forces, gravitational and spring potential, linear momentum, impulse, and collisions.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 5 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 5 – Momentum & Collisions</h3>
+          <p class="text-xs text-slate-500 mb-2">Impulse, conservation, 1D & 2D collisions.</p>
+          <p class="text-sm text-slate-700">
+            Vector momentum and realistic collision analysis using calculus when needed.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 6 -->
         <a href="weeks/week6.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 6</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Test 2 & Extensions
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Assessment on dynamics, work, energy, and momentum, plus targeted review and challenge problems.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 6 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 6 – Rotation I</h3>
+          <p class="text-xs text-slate-500 mb-2">Angular kinematics, moment of inertia.</p>
+          <p class="text-sm text-slate-700">
+            Relating linear and angular motion; building intuition for \(I\) and rotational energy.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 7 -->
         <a href="weeks/week7.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 7</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Rotational Motion, Torque, & Moment of Inertia
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              Rotational kinematics and dynamics, torque, and the role of mass distribution in motion.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 7 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 7 – Rotation II & Torque</h3>
+          <p class="text-xs text-slate-500 mb-2">Torque, angular momentum, rolling motion.</p>
+          <p class="text-sm text-slate-700">
+            Using \(\sum \tau = I\alpha\) and energy methods for rotating systems.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
 
-        <!-- Week 8 -->
         <a href="weeks/week8.html"
-           class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-slate-200">
-          <div class="p-6">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Week 8</p>
-            <h3 class="font-bold text-lg text-slate-900 mb-1">
-              Oscillations, Gravitation, & Final Review
-            </h3>
-            <p class="text-sm text-slate-600 mb-3">
-              SHM, pendulums, Newton’s law of gravitation, and comprehensive exam preparation.
-            </p>
-            <p class="text-xs text-blue-600 font-semibold group-hover:underline">
-              Open Week 8 Module →
-            </p>
-          </div>
+           class="block bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+          <h3 class="font-semibold text-slate-900">Week 8 – Oscillations & SHM</h3>
+          <p class="text-xs text-slate-500 mb-2">Springs, SHM, energy in oscillations.</p>
+          <p class="text-sm text-slate-700">
+            Differential equations and energy methods applied to simple harmonic motion.
+          </p>
+          <p class="mt-2 text-xs text-blue-600 font-semibold">Open Module →</p>
         </a>
-
       </div>
     </section>
 
-    <!-- Student Resources -->
-    <section id="resources">
-      <h2 class="text-2xl font-bold text-slate-800 mb-6 border-l-4 border-slate-500 pl-4">
-        Student Resources
+    <!-- HOW TO USE THIS SITE -->
+    <section class="space-y-4">
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900">
+        How to Use This Course Site
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Formula Sheet -->
-        <div class="group bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-400 transition hover:shadow-md cursor-default">
-          <div class="flex items-center mb-4">
-            <div class="bg-blue-100 p-3 rounded-lg text-blue-600 mr-4 group-hover:bg-blue-600 group-hover:text-white transition">
-              📘
-            </div>
-            <h3 class="font-bold text-slate-800">Formula & Symbol Sheet</h3>
-          </div>
-          <p class="text-sm text-slate-600">
-            Common symbols, units, and core formulas for kinematics, dynamics, energy, momentum, and rotation.
+      <div class="grid gap-4 md:grid-cols-4 text-sm">
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">1. Start with Notes</h3>
+          <p class="text-slate-600">
+            Each week has a complete, standalone note set that mirrors in-class explanations.
           </p>
         </div>
-
-        <!-- Calculus Refresher -->
-        <div class="group bg-white p-6 rounded-xl border border-slate-200 hover:border-emerald-400 transition hover:shadow-md cursor-default">
-          <div class="flex items-center mb-4">
-            <div class="bg-emerald-100 p-3 rounded-lg text-emerald-600 mr-4 group-hover:bg-emerald-600 group-hover:text-white transition">
-              ∂
-            </div>
-            <h3 class="font-bold text-slate-800">Calculus Refresher</h3>
-          </div>
-          <p class="text-sm text-slate-600">
-            Quick reference on derivatives and integrals used in the course (e.g. $v = \\frac{dx}{dt}$, $x(t) = \\int v(t)dt$).
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">2. Study Worked Examples</h3>
+          <p class="text-slate-600">
+            Follow step-by-step solutions that show how the calculus and physics connect.
           </p>
         </div>
-
-        <!-- Office Hours / Contact -->
-        <div class="group bg-white p-6 rounded-xl border border-slate-200 hover:border-purple-400 transition hover:shadow-md cursor-default">
-          <div class="flex items-center mb-4">
-            <div class="bg-purple-100 p-3 rounded-lg text-purple-600 mr-4 group-hover:bg-purple-600 group-hover:text-white transition">
-              🕒
-            </div>
-            <h3 class="font-bold text-slate-800">Help & Contact</h3>
-          </div>
-          <p class="text-sm text-slate-600 mb-1">
-            Instructor: <span class="font-semibold">Andrew Beane</span><br/>
-            Email: <a href="mailto:andy.beane@lepapps.org" class="text-blue-600 hover:underline">andy.beane@lepapps.org</a>
-          </p>
-          <p class="text-xs text-slate-500">
-            Reach out with questions, or bring them to class and problem-solving sessions.
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">3. Try Practice Problems</h3>
+          <p class="text-slate-600">
+            Attempt problems on your own, then compare with provided solutions.
           </p>
         </div>
-
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-900 mb-1">4. Use the Resources</h3>
+          <p class="text-slate-600">
+            The Formula Sheet and Calculus Refresher are designed to support all 8 weeks.
+          </p>
+        </div>
       </div>
     </section>
 
-  </main>
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 pt-4 mt-6 text-xs text-slate-500 flex flex-col md:flex-row justify-between gap-2">
+      <p>Physics 201 – Calculus-Based Mechanics • 8-Week Course</p>
+      <p>Built for independent learning and review.</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-10 mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-6 text-sm">
-      <div>
-        <h4 class="text-white font-bold mb-2">Physics 201 • Calculus-Based Mechanics</h4>
-        <p>Designed for science and engineering majors to build a strong foundation in classical mechanics.</p>
-      </div>
-      <div>
-        <p>&copy; 2025 • Course site for instructional use only.</p>
-      </div>
-    </div>
-  </footer>
+  </div>
+
+  <!-- SIDEBAR / ACTIVE LINK SCRIPT -->
+  <script>
+    // Determine current path (last segment, default to index.html at root)
+    let pathParts = window.location.pathname.split("/").filter(Boolean);
+    let current = pathParts.length ? pathParts[pathParts.length - 1] : "index.html";
+
+    document.querySelectorAll(".nav-item").forEach(link => {
+      const href = link.getAttribute("href");
+      if (href && href.endsWith(current)) {
+        link.classList.add("bg-blue-600", "text-white");
+      } else {
+        link.classList.add("text-slate-700", "hover:bg-slate-100");
+      }
+    });
+
+    const sidebar = document.getElementById("sidebar");
+    const menuBtn = document.getElementById("menuBtn");
+    const overlay = document.getElementById("overlay");
+
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+    }
+  </script>
 
 </body>
 </html>
