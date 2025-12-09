@@ -1,1 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Week 7 | Physics 201 – Rotational Motion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .noselect {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="bg-slate-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">🌀</span>
+          <a href="../index.html" class="font-bold text-xl tracking-tight hover:underline">
+            Physics 201
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="../index.html" class="text-slate-300 hover:text-white transition">Home</a>
+          <a href="../syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+          <span class="text-slate-100">Week 7</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Week 7 • Rotational Motion
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Fixed-Axis Rotation, Torque & Rotational Energy
+      </h1>
+      <p class="text-slate-600 max-w-2xl">
+        This module extends kinematics, dynamics, and energy to rotational motion:
+        angular displacement, velocity, and acceleration; torque and rotational dynamics;
+        moment of inertia and rotational kinetic energy; and work and power in rotation.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="overview"
+                class="tab-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+          Overview
+        </button>
+        <button data-tab="notes"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Notes
+        </button>
+        <button data-tab="examples"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Worked Examples
+        </button>
+        <button data-tab="practice"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Practice Problems
+        </button>
+        <button data-tab="sim"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Interactive Panel
+        </button>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section id="tab-overview" class="tab-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Define angular displacement \(\theta\), angular velocity \(\omega\), and angular acceleration \(\alpha\).</li>
+            <li>Use rotational kinematics for constant angular acceleration.</li>
+            <li>Relate linear and angular quantities: \(v = r\omega\), \(a_t = r\alpha\), \(a_c = r\omega^2\).</li>
+            <li>Explain and calculate moment of inertia, including dependence on mass distribution.</li>
+            <li>Use \(K_\text{rot} = \tfrac12 I\omega^2\) and energy conservation in rotational systems.</li>
+            <li>Compute torque \(\tau = rF\sin\theta\) and apply \(\sum \tau = I\alpha\).</li>
+            <li>Connect work and power in rotation: \(W = \int \tau\,d\theta\), \(P = \tau\omega\).</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Week</h3>
+          <ul class="list-disc pl-5 text-xs text-slate-700 space-y-1">
+            <li>Treat the <span class="font-semibold">Notes</span> tab as a mini-chapter on rotation.</li>
+            <li>Sketch diagrams alongside the SVGs to build your own visual library.</li>
+            <li>Work through the <span class="font-semibold">examples</span> before the practice set.</li>
+            <li>Use the <span class="font-semibold">Torque Playground</span> to experiment with multi-force net torque.</li>
+            <li>Use the <span class="font-semibold">Inertia Explorer</span> to see how shifting mass outward increases rotational inertia.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <section id="tab-notes" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- 1. Angular Variables -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Angular Displacement, Velocity, and Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            For a rigid body rotating about a fixed axis, the angular position is specified by an
+            angle \(\theta(t)\), usually measured in radians. Angular displacement over a time interval is
+            \(\Delta\theta = \theta_2 - \theta_1\).
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Angular velocity:
+            \[
+              \omega = \frac{d\theta}{dt},
+            \]
+            and angular acceleration:
+            \[
+              \alpha = \frac{d\omega}{dt} = \frac{d^2\theta}{dt^2}.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            For <span class="font-semibold">constant angular acceleration</span> \(\alpha\), the rotational analogs of the
+            kinematics equations are:
+            \[
+              \omega = \omega_0 + \alpha t,
+            \]
+            \[
+              \theta = \theta_0 + \omega_0 t + \tfrac12 \alpha t^2,
+            \]
+            \[
+              \omega^2 = \omega_0^2 + 2\alpha (\theta - \theta_0).
+            \]
+          </p>
+
+          <!-- SVG: rotating disk -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Disk -->
+              <circle cx="130" cy="90" r="60" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.5" />
+              <!-- Radius -->
+              <line x1="130" y1="90" x2="190" y2="50"
+                    stroke="#2563eb" stroke-width="2" />
+              <circle cx="130" cy="90" r="4" fill="#0f172a" />
+              <text x="192" y="52" font-size="10" fill="#2563eb">\(r\)</text>
+              <!-- Angle arc -->
+              <path d="M190 90 A60 60 0 0 0 190 50"
+                    fill="none" stroke="#f97316" stroke-width="1.5" />
+              <text x="190" y="80" font-size="10" fill="#f97316">\(\theta\)</text>
+              <!-- Angular velocity arrow -->
+              <path d="M110 30 Q130 10 150 30"
+                    fill="none" stroke="#22c55e" stroke-width="2" />
+              <polygon points="150,30 145,22 152,24" fill="#22c55e" />
+              <text x="150" y="22" font-size="10" fill="#22c55e">\(\vec\omega\)</text>
+            </svg>
+          </div>
+
+          <p class="text-xs text-slate-600">
+            Sign convention: typically counterclockwise (CCW) rotations are taken as positive.
+          </p>
+        </article>
+
+        <!-- 2. Linear-Angular Relations -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Connecting Linear and Angular Quantities</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Consider a point on a rotating rigid body at distance \(r\) from the axis of rotation.
+            Its arc length and angular displacement are related by:
+            \[
+              s = r\theta.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Differentiating with respect to time:
+            \[
+              v = \frac{ds}{dt} = r\frac{d\theta}{dt} = r\omega,
+            \]
+            where \(v\) is the tangential speed. The tangential component of acceleration is
+            \[
+              a_t = r\alpha.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            There is also a radial (centripetal) component pointing toward the axis:
+            \[
+              a_c = \frac{v^2}{r} = r\omega^2.
+            \]
+          </p>
+
+          <!-- SVG: tangential vs centripetal -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Circle path -->
+              <circle cx="130" cy="90" r="60" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+              <!-- Position point -->
+              <circle cx="190" cy="90" r="4" fill="#0f172a" />
+              <text x="194" y="86" font-size="9" fill="#0f172a">P</text>
+
+              <!-- Radius -->
+              <line x1="130" y1="90" x2="190" y2="90"
+                    stroke="#2563eb" stroke-width="2" />
+              <text x="155" y="82" font-size="9" fill="#2563eb">\(r\)</text>
+
+              <!-- Tangential velocity -->
+              <line x1="190" y1="90" x2="190" y2="50"
+                    stroke="#22c55e" stroke-width="2" />
+              <polygon points="190,50 186,57 194,57" fill="#22c55e" />
+              <text x="194" y="54" font-size="9" fill="#22c55e">\(\vec v\)</text>
+
+              <!-- Centripetal acceleration -->
+              <line x1="190" y1="90" x2="160" y2="90"
+                    stroke="#f97316" stroke-width="2" />
+              <polygon points="160,90 167,86 167,94" fill="#f97316" />
+              <text x="162" y="82" font-size="9" fill="#f97316">\(\vec a_c\)</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 3. Moment of Inertia -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Moment of Inertia</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            The <span class="font-semibold">moment of inertia</span> \(I\) of a rigid body about a given axis measures
+            how difficult it is to change its rotational motion. In discrete form,
+            \[
+              I = \sum_i m_i r_i^2,
+            \]
+            and in continuous form,
+            \[
+              I = \int r^2\,dm.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            For common shapes about standard axes:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Thin rod of length \(L\) about center: \(I = \frac{1}{12}ML^2\).</li>
+            <li>Solid disk of radius \(R\): \(I = \frac{1}{2}MR^2\).</li>
+            <li>Thin hoop (ring) of radius \(R\): \(I = MR^2\).</li>
+            <li>Solid sphere of radius \(R\): \(I = \frac{2}{5}MR^2\).</li>
+          </ul>
+
+          <!-- SVG: mass distribution comparison -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Disk -->
+              <circle cx="80" cy="90" r="40" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5" />
+              <circle cx="80" cy="90" r="5" fill="#0f172a" />
+              <text x="80" y="140" text-anchor="middle" font-size="10" fill="#0f172a">
+                Solid Disk
+              </text>
+
+              <!-- Hoop -->
+              <circle cx="180" cy="90" r="40" fill="none" stroke="#0f172a" stroke-width="8" />
+              <circle cx="180" cy="90" r="5" fill="#0f172a" />
+              <text x="180" y="140" text-anchor="middle" font-size="10" fill="#0f172a">
+                Thin Hoop
+              </text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            Both objects may have the same mass and radius, but the hoop places more mass at larger radius,
+            so \(I_\text{hoop} > I_\text{disk}\).
+          </p>
+        </article>
+
+        <!-- 4. Rotational Kinetic Energy -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Rotational Kinetic Energy</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            For a rigid body rotating with angular speed \(\omega\), the rotational kinetic energy is
+            \[
+              K_\text{rot} = \tfrac12 I\omega^2.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            In many problems we combine translational and rotational energy:
+            \[
+              K_\text{total} = \tfrac12 Mv_\text{CM}^2 + \tfrac12 I\omega^2.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            In rolling without slipping, the condition \(v_\text{CM} = R\omega\) links the two terms.
+          </p>
+        </article>
+
+        <!-- 5. Torque and Newton's 2nd Law for Rotation -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">5. Torque and Rotational Dynamics</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            The torque of a force \(\vec F\) applied at position vector \(\vec r\) relative to the axis is
+            defined by the cross product:
+            \[
+              \vec\tau = \vec r \times \vec F.
+            \]
+            Its magnitude is
+            \[
+              \tau = rF\sin\theta,
+            \]
+            where \(\theta\) is the angle between \(\vec r\) and \(\vec F\).
+          </p>
+
+          <!-- SVG: torque diagram -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Pivot -->
+              <circle cx="60" cy="130" r="5" fill="#0f172a" />
+              <text x="45" y="135" font-size="10" fill="#0f172a">pivot</text>
+
+              <!-- Lever arm -->
+              <line x1="60" y1="130" x2="210" y2="130"
+                    stroke="#2563eb" stroke-width="3" />
+              <text x="135" y="145" font-size="10" fill="#2563eb">\(r\)</text>
+
+              <!-- Force at end -->
+              <line x1="210" y1="130" x2="210" y2="60"
+                    stroke="#22c55e" stroke-width="2" />
+              <polygon points="210,60 206,67 214,67" fill="#22c55e" />
+              <text x="214" y="70" font-size="10" fill="#22c55e">\(\vec F\)</text>
+
+              <!-- Angle -->
+              <path d="M200 130 A20 20 0 0 1 210 110"
+                    fill="none" stroke="#f97316" stroke-width="1.5" />
+              <text x="195" y="115" font-size="10" fill="#f97316">\(\theta\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-3">
+            Taking counterclockwise torques as positive, Newton's Second Law for rotation is
+            \[
+              \sum \tau = I\alpha.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            This is the rotational analog of \(\sum F = ma\).
+          </p>
+        </article>
+
+        <!-- 6. Work and Power in Rotation -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">6. Work and Power in Rotational Motion</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            If a torque \(\tau\) acts through an angular displacement \(\Delta\theta\), the work done is
+            \[
+              W = \int_{\theta_i}^{\theta_f} \tau\,d\theta.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            For constant torque,
+            \[
+              W = \tau\,\Delta\theta.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            The instantaneous power associated with a torque is
+            \[
+              P = \tau\omega.
+            \]
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Worked Examples -->
+    <section id="tab-examples" class="tab-section hidden">
+      <div class="space-y-6">
+
+        <!-- Example 1: Rotational Kinematics -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 1 – Constant Angular Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A flywheel starts from rest and undergoes a constant angular acceleration of
+            \(\alpha = 4.0\,\text{rad/s}^2\). How many revolutions does it complete in the first
+            5.0 seconds?
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                Given: \(\omega_0 = 0\), \(\alpha = 4.0\,\text{rad/s}^2\), \(t = 5.0\,\text{s}\).
+              </p>
+              <p>
+                Use
+                \[
+                  \theta = \theta_0 + \omega_0 t + \tfrac12 \alpha t^2
+                \]
+                with \(\theta_0 = 0\):
+                \[
+                  \theta = \tfrac12 (4.0)(5.0)^2 = 2(25) = 50\,\text{rad}.
+                \]
+              </p>
+              <p>
+                Convert radians to revolutions:
+                \[
+                  N = \frac{\theta}{2\pi} = \frac{50}{2\pi} \approx 7.96.
+                \]
+                So the flywheel completes about \(8.0\) revolutions.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 2: Torque and Angular Acceleration -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 2 – Torque and Angular Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A uniform disk of mass \(M = 3.0\,\text{kg}\) and radius \(R = 0.40\,\text{m}\) is free to rotate
+            about a fixed axis through its center. A string is wrapped around the rim, and a force
+            \(F = 10\,\text{N}\) is applied tangentially.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-2">
+            <li>Find the magnitude of the torque.</li>
+            <li>Find the angular acceleration \(\alpha\).</li>
+          </ol>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                (1) Torque (tangential, so \(\sin\theta = 1\)):
+                \[
+                  \tau = rF = (0.40)(10) = 4.0\,\text{N·m}.
+                \]
+              </p>
+              <p>
+                (2) Moment of inertia of a solid disk:
+                \[
+                  I = \tfrac12 MR^2 = \tfrac12(3.0)(0.40)^2
+                  = 1.5(0.16) = 0.24\,\text{kg·m}^2.
+                \]
+              </p>
+              <p>
+                Use \(\sum\tau = I\alpha\):
+                \[
+                  4.0 = 0.24\,\alpha \quad\Rightarrow\quad
+                  \alpha = \frac{4.0}{0.24} \approx 16.7\,\text{rad/s}^2.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 3: Rotational Energy -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 3 – Rotational Kinetic Energy</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A solid cylinder of mass \(2.0\,\text{kg}\) and radius \(0.25\,\text{m}\) rotates at
+            \(\omega = 10\,\text{rad/s}\). Find its rotational kinetic energy.
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                For a solid cylinder (same as a solid disk):
+                \[
+                  I = \tfrac12 MR^2 = \tfrac12(2.0)(0.25)^2
+                  = 1.0(0.0625) = 0.0625\,\text{kg·m}^2.
+                \]
+              </p>
+              <p>
+                Rotational kinetic energy:
+                \[
+                  K_\text{rot} = \tfrac12 I\omega^2
+                  = \tfrac12(0.0625)(10^2)
+                  = 0.5(0.0625)(100) = 3.125\,\text{J}.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Practice Problems -->
+    <section id="tab-practice" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Rotational Motion</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Try these without notes first. Then use the outlines to check strategy and structure.
+        </p>
+
+        <div class="space-y-4 text-sm text-slate-800">
+
+          <!-- P1 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 1 – Angular Kinematics
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A wheel initially at \(\omega_0 = 3.0\,\text{rad/s}\) undergoes a constant angular
+                acceleration of \(\alpha = 2.0\,\text{rad/s}^2\) for \(t = 4.0\,\text{s}\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the final angular velocity.</li>
+                <li>Find the angular displacement in this time.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Outline:</p>
+              <p>
+                Use \(\omega = \omega_0 + \alpha t\) for part (1),
+                and \(\theta = \theta_0 + \omega_0 t + \tfrac12 \alpha t^2\) for part (2) with \(\theta_0 = 0\).
+              </p>
+            </div>
+          </details>
+
+          <!-- P2 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 2 – Net Torque with Multiple Forces
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A uniform beam is pivoted at its center. A \(20\,\text{N}\) force acts downward at
+                \(0.80\,\text{m}\) to the right of the pivot. A \(15\,\text{N}\) force acts downward at
+                \(0.60\,\text{m}\) to the left of the pivot.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Take counterclockwise as positive. Find the net torque.</li>
+                <li>Which direction does the beam start to rotate?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Outline:</p>
+              <p>
+                Assign signs based on CCW vs CW. Compute each torque as \(\pm rF\).
+                Sum them to get \(\sum\tau\). The sign indicates direction of rotation.
+              </p>
+            </div>
+          </details>
+
+          <!-- P3 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 3 – Rotational Energy and Speed
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A hoop (thin ring) of mass \(M\) and radius \(R\) is spinning at angular speed \(\omega_1\).
+                It then speeds up to \(\omega_2 = 2\omega_1\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>By what factor does the rotational kinetic energy change?</li>
+                <li>What if it were a solid disk instead?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Outline:</p>
+              <p>
+                Use \(K_\text{rot} = \tfrac12 I\omega^2\). Ratio of energies depends on \(\omega^2\);
+                note that both disk and hoop have constant \(I\) for fixed \(M\) and \(R\).
+              </p>
+            </div>
+          </details>
+
+          <!-- P4 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 4 – Work from Torque
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A constant torque of \(3.0\,\text{N·m}\) is applied to a flywheel, causing it to rotate
+                through an angle of \(5.0\,\text{rad}\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>How much work is done by the torque?</li>
+                <li>If the angular speed increases from \(2.0\,\text{rad/s}\) to \(4.0\,\text{rad/s}\),
+                  what is the change in rotational kinetic energy?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Outline:</p>
+              <p>
+                For part (1), use \(W = \tau\Delta\theta\). For part (2), express
+                \(\Delta K_\text{rot} = \tfrac12 I(\omega_f^2 - \omega_i^2)\)
+                and note that for a rigid body experiencing only this torque, the work–energy theorem applies.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Panel -->
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- Torque Playground -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Torque Playground – Multiple Forces on a Beam</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A horizontal beam is pivoted at its center. You can apply up to three forces at different
+            positions and angles. Counterclockwise torques are taken as positive.
+          </p>
+
+          <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+
+            <!-- SVG and explanation -->
+            <div class="xl:col-span-2 bg-white border border-slate-200 rounded-lg p-4 noselect">
+              <p class="text-xs text-slate-600 mb-2">
+                Drag the colored force points along the beam, or adjust parameters in the panel.
+              </p>
+              <svg id="torque-svg" viewBox="0 0 320 200" class="w-full">
+                <!-- Beam -->
+                <rect x="40" y="90" width="240" height="10" fill="#e5e7eb" stroke="#0f172a" stroke-width="1.5" />
+                <!-- Pivot -->
+                <circle cx="160" cy="95" r="6" fill="#0f172a" />
+                <text x="160" y="115" text-anchor="middle" font-size="10" fill="#0f172a">pivot</text>
+
+                <!-- Force 1 -->
+                <line id="F1-line" x1="220" y1="95" x2="220" y2="40"
+                      stroke="#2563eb" stroke-width="2" />
+                <polygon id="F1-arrow" points="220,40 216,47 224,47" fill="#2563eb" />
+                <circle id="F1-handle" cx="220" cy="95" r="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5" />
+
+                <!-- Force 2 -->
+                <line id="F2-line" x1="100" y1="95" x2="100" y2="150"
+                      stroke="#22c55e" stroke-width="2" />
+                <polygon id="F2-arrow" points="100,150 96,143 104,143" fill="#22c55e" />
+                <circle id="F2-handle" cx="100" cy="95" r="6" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5" />
+
+                <!-- Force 3 -->
+                <line id="F3-line" x1="280" y1="95" x2="280" y2="150"
+                      stroke="#f97316" stroke-width="2" />
+                <polygon id="F3-arrow" points="280,150 276,143 284,143" fill="#f97316" />
+                <circle id="F3-handle" cx="280" cy="95" r="6" fill="#fed7aa" stroke="#f97316" stroke-width="1.5" />
+
+              </svg>
+              <p class="text-[0.7rem] text-slate-600 mt-2">
+                Blue = Force 1, Green = Force 2, Orange = Force 3. Drag the handles left/right to change radius \(r\).
+                CCW torques are positive.
+              </p>
+            </div>
+
+            <!-- Controls / outputs -->
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs md:text-sm text-slate-800">
+              <p class="font-semibold mb-2">Force Controls</p>
+
+              <div class="space-y-3 mb-3">
+                <!-- Force 1 -->
+                <div class="border border-slate-200 rounded-md p-2">
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-semibold text-blue-700">Force 1</span>
+                    <label class="flex items-center gap-1 text-[0.7rem]">
+                      <input type="checkbox" id="F1-enabled" checked class="h-3 w-3">
+                      active
+                    </label>
+                  </div>
+                  <label class="block mb-1">Magnitude \(F_1\) (N)</label>
+                  <input id="F1-mag" type="range" min="0" max="40" step="1" value="20" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>0</span><span id="F1-mag-val">20</span>
+                  </div>
+                  <label class="block mt-1 mb-1">Angle \(\theta_1\) (deg, from +x)</label>
+                  <input id="F1-angle" type="range" min="-170" max="170" step="5" value="-90" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>-170</span><span id="F1-angle-val">-90</span>
+                  </div>
+                </div>
+
+                <!-- Force 2 -->
+                <div class="border border-slate-200 rounded-md p-2">
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-semibold text-emerald-700">Force 2</span>
+                    <label class="flex items-center gap-1 text-[0.7rem]">
+                      <input type="checkbox" id="F2-enabled" checked class="h-3 w-3">
+                      active
+                    </label>
+                  </div>
+                  <label class="block mb-1">Magnitude \(F_2\) (N)</label>
+                  <input id="F2-mag" type="range" min="0" max="40" step="1" value="15" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>0</span><span id="F2-mag-val">15</span>
+                  </div>
+                  <label class="block mt-1 mb-1">Angle \(\theta_2\) (deg, from +x)</label>
+                  <input id="F2-angle" type="range" min="-170" max="170" step="5" value="90" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>-170</span><span id="F2-angle-val">90</span>
+                  </div>
+                </div>
+
+                <!-- Force 3 -->
+                <div class="border border-slate-200 rounded-md p-2">
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="font-semibold text-amber-700">Force 3</span>
+                    <label class="flex items-center gap-1 text-[0.7rem]">
+                      <input type="checkbox" id="F3-enabled" checked class="h-3 w-3">
+                      active
+                    </label>
+                  </div>
+                  <label class="block mb-1">Magnitude \(F_3\) (N)</label>
+                  <input id="F3-mag" type="range" min="0" max="40" step="1" value="10" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>0</span><span id="F3-mag-val">10</span>
+                  </div>
+                  <label class="block mt-1 mb-1">Angle \(\theta_3\) (deg, from +x)</label>
+                  <input id="F3-angle" type="range" min="-170" max="170" step="5" value="-90" class="w-full" />
+                  <div class="flex justify-between text-[0.7rem]">
+                    <span>-170</span><span id="F3-angle-val">-90</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="font-semibold mb-1">Torque Summary (about pivot, CCW +)</p>
+              <p id="torque-F1" class="text-[0.7rem] mb-1">\( \tau_1 = \dots \)</p>
+              <p id="torque-F2" class="text-[0.7rem] mb-1">\( \tau_2 = \dots \)</p>
+              <p id="torque-F3" class="text-[0.7rem] mb-1">\( \tau_3 = \dots \)</p>
+              <p id="torque-net" class="text-[0.8rem] font-semibold mt-2">
+                \( \sum\tau = \dots \)
+              </p>
+              <p class="text-[0.7rem] text-slate-600 mt-2">
+                Torque for each force: \(\tau_i = r_i F_i \sin(\theta_i)\), where \(r_i\) is the signed
+                distance from the pivot (right = positive, left = negative) and angles are measured from the
+                positive x-axis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inertia Explorer -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Moment of Inertia Explorer – Shape & Mass Distribution</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Choose a rigid body, set its mass and characteristic size, and slide the mass distribution
+            control. This tool emphasizes how moving mass away from the axis increases \(I\).
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+            <!-- Controls -->
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs md:text-sm text-slate-800">
+              <div class="mb-3">
+                <label class="block font-semibold mb-1">Shape</label>
+                <select id="I-shape" class="w-full border border-slate-300 rounded-md px-2 py-1 text-sm">
+                  <option value="rod">Thin Rod (center)</option>
+                  <option value="disk">Solid Disk</option>
+                  <option value="hoop">Thin Hoop</option>
+                  <option value="sphere">Solid Sphere</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="block font-semibold mb-1">Mass \(M\) (kg)</label>
+                <input id="I-mass" type="range" min="0.5" max="10" step="0.5" value="2" class="w-full" />
+                <div class="flex justify-between text-[0.7rem]">
+                  <span>0.5</span><span id="I-mass-val">2.0</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label id="I-size-label" class="block font-semibold mb-1">Radius \(R\) (m)</label>
+                <input id="I-size" type="range" min="0.1" max="2" step="0.1" value="0.5" class="w-full" />
+                <div class="flex justify-between text-[0.7rem]">
+                  <span>0.1</span><span id="I-size-val">0.5</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="block font-semibold mb-1">Mass Distribution (center → rim)</label>
+                <input id="I-dist" type="range" min="0" max="1" step="0.05" value="0" class="w-full" />
+                <div class="flex justify-between text-[0.7rem]">
+                  <span>center-heavy</span><span id="I-dist-val">0.00</span>
+                </div>
+              </div>
+
+              <div class="bg-white border border-slate-200 rounded-md p-3 text-xs md:text-sm">
+                <p class="font-semibold mb-1">Moment of Inertia</p>
+                <p id="I-formula-base" class="mb-1">Base formula: \(I = \dots\)</p>
+                <p id="I-value-base" class="mb-1">Homogeneous shape: \(I_0 = \dots\)</p>
+                <p id="I-value-effective" class="font-semibold">
+                  Effective (with distribution): \(I_\text{eff} = \dots\)
+                </p>
+              </div>
+
+              <p class="text-[0.7rem] text-slate-600 mt-2">
+                Slider changes how much mass is imagined to move toward the outer radius. This is conceptual –
+                real rigid bodies have fixed distributions – but it illustrates the effect of \(r^2\) in
+                \(I = \int r^2\,dm\).
+              </p>
+            </div>
+
+            <!-- Shape visualization -->
+            <div class="bg-white border border-slate-200 rounded-lg p-4 noselect">
+              <p class="text-xs text-slate-600 mb-2">
+                Blue shading indicates where mass is concentrated. Orange ring indicates outer radius / length.
+              </p>
+              <svg id="I-svg" viewBox="0 0 260 200" class="w-full">
+                <!-- content drawn dynamically in JS -->
+              </svg>
+              <p class="text-[0.7rem] text-slate-600 mt-2">
+                Compare the effective \(I\) as you change shape, size, and distribution. Try matching values
+                for different shapes with different distributions.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 7</p>
+        <p>Rotational motion, torque, inertia, and rotational energy.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: Tabs, Torque Playground, Inertia Explorer -->
+  <script>
+    // ---------- Tabs ----------
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        });
+
+        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        tabSections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('tab-' + target).classList.remove('hidden');
+
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+    });
+
+    function roundTo(val, places) {
+      const factor = Math.pow(10, places);
+      return Math.round(val * factor) / factor;
+    }
+
+    // ============================================================
+    // TORQUE PLAYGROUND
+    // ============================================================
+    const torqueSvg = document.getElementById('torque-svg');
+    const pivotX = 160;
+    const pivotY = 95;
+    const beamLeft = 40;
+    const beamRight = 280;
+
+    const F1Handle = document.getElementById('F1-handle');
+    const F2Handle = document.getElementById('F2-handle');
+    const F3Handle = document.getElementById('F3-handle');
+    const F1Line = document.getElementById('F1-line');
+    const F1Arrow = document.getElementById('F1-arrow');
+    const F2Line = document.getElementById('F2-line');
+    const F2Arrow = document.getElementById('F2-arrow');
+    const F3Line = document.getElementById('F3-line');
+    const F3Arrow = document.getElementById('F3-arrow');
+
+    const F1Enabled = document.getElementById('F1-enabled');
+    const F2Enabled = document.getElementById('F2-enabled');
+    const F3Enabled = document.getElementById('F3-enabled');
+
+    const F1Mag = document.getElementById('F1-mag');
+    const F2Mag = document.getElementById('F2-mag');
+    const F3Mag = document.getElementById('F3-mag');
+    const F1MagVal = document.getElementById('F1-mag-val');
+    const F2MagVal = document.getElementById('F2-mag-val');
+    const F3MagVal = document.getElementById('F3-mag-val');
+
+    const F1Angle = document.getElementById('F1-angle');
+    const F2Angle = document.getElementById('F2-angle');
+    const F3Angle = document.getElementById('F3-angle');
+    const F1AngleVal = document.getElementById('F1-angle-val');
+    const F2AngleVal = document.getElementById('F2-angle-val');
+    const F3AngleVal = document.getElementById('F3-angle-val');
+
+    const torqueF1Text = document.getElementById('torque-F1');
+    const torqueF2Text = document.getElementById('torque-F2');
+    const torqueF3Text = document.getElementById('torque-F3');
+    const torqueNetText = document.getElementById('torque-net');
+
+    let dragStateTorque = { which: null };
+
+    function svgPointFromEvent(svg, evt, viewW, viewH) {
+      const rect = svg.getBoundingClientRect();
+      let clientX, clientY;
+      if (evt.touches && evt.touches.length > 0) {
+        clientX = evt.touches[0].clientX;
+        clientY = evt.touches[0].clientY;
+      } else {
+        clientX = evt.clientX;
+        clientY = evt.clientY;
+      }
+      const x = (clientX - rect.left) * (viewW / rect.width);
+      const y = (clientY - rect.top) * (viewH / rect.height);
+      return { x, y };
+    }
+
+    function clampBeamX(x) {
+      return Math.max(beamLeft, Math.min(beamRight, x));
+    }
+
+    function drawArrow(lineElem, arrowElem, x1, y1, x2, y2, size = 6) {
+      lineElem.setAttribute('x1', x1);
+      lineElem.setAttribute('y1', y1);
+      lineElem.setAttribute('x2', x2);
+      lineElem.setAttribute('y2', y2);
+
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.sqrt(dx*dx + dy*dy);
+      if (len < 1e-3) {
+        arrowElem.setAttribute('points', '');
+        return;
+      }
+      const ux = dx / len;
+      const uy = dy / len;
+      const tipX = x2;
+      const tipY = y2;
+      const leftX = tipX - ux*size - uy*size*0.5;
+      const leftY = tipY - uy*size + ux*size*0.5;
+      const rightX = tipX - ux*size + uy*size*0.5;
+      const rightY = tipY - uy*size - ux*size*0.5;
+      const pts = `${tipX},${tipY} ${leftX},${leftY} ${rightX},${rightY}`;
+      arrowElem.setAttribute('points', pts);
+    }
+
+    function updateTorqueGraphics() {
+      // Update mag labels
+      F1MagVal.textContent = F1Mag.value;
+      F2MagVal.textContent = F2Mag.value;
+      F3MagVal.textContent = F3Mag.value;
+
+      F1AngleVal.textContent = F1Angle.value;
+      F2AngleVal.textContent = F2Angle.value;
+      F3AngleVal.textContent = F3Angle.value;
+
+      // For each force: get handle position, magnitude, angle
+      function getForceData(handleEl, magEl, angleEl, enabledEl) {
+        const x = Number(handleEl.getAttribute('cx'));
+        const r = x - pivotX; // positive right, negative left
+        const F = Number(magEl.value);
+        const thetaDeg = Number(angleEl.value);
+        const thetaRad = thetaDeg * Math.PI / 180;
+        const enabled = enabledEl.checked && F > 0;
+        return { x, r, F, thetaDeg, thetaRad, enabled };
+      }
+
+      const F1 = getForceData(F1Handle, F1Mag, F1Angle, F1Enabled);
+      const F2 = getForceData(F2Handle, F2Mag, F2Angle, F2Enabled);
+      const F3 = getForceData(F3Handle, F3Mag, F3Angle, F3Enabled);
+
+      const forces = [
+        { id: 1, data: F1, line: F1Line, arrow: F1Arrow, color: '#2563eb' },
+        { id: 2, data: F2, line: F2Line, arrow: F2Arrow, color: '#22c55e' },
+        { id: 3, data: F3, line: F3Line, arrow: F3Arrow, color: '#f97316' }
+      ];
+
+      // Draw each force vector
+      forces.forEach(f => {
+        const { x } = f.data;
+        const y = pivotY;
+        const lengthPix = 50; // purely visual
+        const angle = f.data.thetaRad;
+        const dx = lengthPix * Math.cos(angle);
+        const dy = -lengthPix * Math.sin(angle); // minus because SVG y increases downward
+        const x2 = x + dx;
+        const y2 = y + dy;
+        drawArrow(f.line, f.arrow, x, y, x2, y2, 6);
+      });
+
+      // Compute torques
+      function computeTorque(d) {
+        if (!d.enabled) return 0;
+        // r in meters (scale factor per pixel is arbitrary, but consistent)
+        const rPix = d.r;
+        const r = rPix / 100; // e.g., 100 px ~ 1 m
+        const tau = r * d.F * Math.sin(d.thetaRad);
+        return tau;
+      }
+
+      const tau1 = computeTorque(F1);
+      const tau2 = computeTorque(F2);
+      const tau3 = computeTorque(F3);
+      const tauNet = tau1 + tau2 + tau3;
+
+      torqueF1Text.textContent = `\\( \\tau_1 \\approx ${roundTo(tau1, 3)}\\,\\text{N·m} \\)`;
+      torqueF2Text.textContent = `\\( \\tau_2 \\approx ${roundTo(tau2, 3)}\\,\\text{N·m} \\)`;
+      torqueF3Text.textContent = `\\( \\tau_3 \\approx ${roundTo(tau3, 3)}\\,\\text{N·m} \\)`;
+      torqueNetText.textContent = `\\( \\sum \\tau \\approx ${roundTo(tauNet, 3)}\\,\\text{N·m} \\)`;
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    function startTorqueDrag(which) {
+      dragStateTorque.which = which;
+    }
+
+    function stopTorqueDrag() {
+      dragStateTorque.which = null;
+    }
+
+    function handleTorqueMove(evt) {
+      if (!dragStateTorque.which) return;
+      evt.preventDefault();
+      const pt = svgPointFromEvent(torqueSvg, evt, 320, 200);
+      const clampedX = clampBeamX(pt.x);
+      if (dragStateTorque.which === 'F1') {
+        F1Handle.setAttribute('cx', clampedX);
+        F1Handle.setAttribute('cy', pivotY);
+      } else if (dragStateTorque.which === 'F2') {
+        F2Handle.setAttribute('cx', clampedX);
+        F2Handle.setAttribute('cy', pivotY);
+      } else if (dragStateTorque.which === 'F3') {
+        F3Handle.setAttribute('cx', clampedX);
+        F3Handle.setAttribute('cy', pivotY);
+      }
+      updateTorqueGraphics();
+    }
+
+    F1Handle.addEventListener('mousedown', () => startTorqueDrag('F1'));
+    F2Handle.addEventListener('mousedown', () => startTorqueDrag('F2'));
+    F3Handle.addEventListener('mousedown', () => startTorqueDrag('F3'));
+    F1Handle.addEventListener('touchstart', (e) => { startTorqueDrag('F1'); e.preventDefault(); });
+    F2Handle.addEventListener('touchstart', (e) => { startTorqueDrag('F2'); e.preventDefault(); });
+    F3Handle.addEventListener('touchstart', (e) => { startTorqueDrag('F3'); e.preventDefault(); });
+
+    document.addEventListener('mousemove', handleTorqueMove);
+    document.addEventListener('touchmove', handleTorqueMove, { passive: false });
+
+    document.addEventListener('mouseup', stopTorqueDrag);
+    document.addEventListener('touchend', stopTorqueDrag);
+    document.addEventListener('touchcancel', stopTorqueDrag);
+
+    [F1Mag, F2Mag, F3Mag, F1Angle, F2Angle, F3Angle,
+     F1Enabled, F2Enabled, F3Enabled].forEach(el => {
+      el.addEventListener('input', updateTorqueGraphics);
+    });
+
+    updateTorqueGraphics();
+
+    // ============================================================
+    // MOMENT OF INERTIA EXPLORER
+    // ============================================================
+    const IShape = document.getElementById('I-shape');
+    const IMass = document.getElementById('I-mass');
+    const IMassVal = document.getElementById('I-mass-val');
+    const ISize = document.getElementById('I-size');
+    const ISizeVal = document.getElementById('I-size-val');
+    const ISizeLabel = document.getElementById('I-size-label');
+    const IDist = document.getElementById('I-dist');
+    const IDistVal = document.getElementById('I-dist-val');
+    const IFormulaBase = document.getElementById('I-formula-base');
+    const IValueBase = document.getElementById('I-value-base');
+    const IValueEff = document.getElementById('I-value-effective');
+    const ISvg = document.getElementById('I-svg');
+
+    function drawInertiaShape() {
+      // clear SVG
+      while (ISvg.firstChild) ISvg.removeChild(ISvg.firstChild);
+
+      const shape = IShape.value;
+      const dist = Number(IDist.value); // 0 to 1
+      const centerX = 130;
+      const centerY = 100;
+
+      if (shape === 'rod') {
+        // horizontal rod with shading intensity based on distribution
+        const Lpix = 160;
+        const halfL = Lpix / 2;
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', centerX - halfL);
+        rect.setAttribute('y', centerY - 5);
+        rect.setAttribute('width', Lpix);
+        rect.setAttribute('height', 10);
+        rect.setAttribute('fill', '#dbeafe');
+        rect.setAttribute('stroke', '#0f172a');
+        rect.setAttribute('stroke-width', '1.5');
+        ISvg.appendChild(rect);
+
+        // shading – more mass toward ends with higher dist
+        const gradSteps = 10;
+        for (let i = 0; i < gradSteps; i++) {
+          const frac = (i + 0.5) / gradSteps;
+          const localDistFromCenter = Math.abs(frac - 0.5) / 0.5; // 0 at center, 1 at ends
+          const opacity = 0.1 + 0.4 * (dist * localDistFromCenter);
+          const w = Lpix / gradSteps;
+          const seg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          seg.setAttribute('x', centerX - halfL + i * w);
+          seg.setAttribute('y', centerY - 5);
+          seg.setAttribute('width', w);
+          seg.setAttribute('height', 10);
+          seg.setAttribute('fill', '#3b82f6');
+          seg.setAttribute('fill-opacity', opacity.toString());
+          ISvg.appendChild(seg);
+        }
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', centerX);
+        label.setAttribute('y', centerY + 30);
+        label.setAttribute('font-size', '10');
+        label.setAttribute('fill', '#0f172a');
+        label.setAttribute('text-anchor', 'middle');
+        label.textContent = 'Rod – mass distribution vs. distance from center';
+        ISvg.appendChild(label);
+
+      } else if (shape === 'disk' || shape === 'hoop' || shape === 'sphere') {
+        const Rpix = 60;
+        const outer = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        outer.setAttribute('cx', centerX);
+        outer.setAttribute('cy', centerY);
+        outer.setAttribute('r', Rpix);
+        outer.setAttribute('fill', 'none');
+        outer.setAttribute('stroke', '#f97316');
+        outer.setAttribute('stroke-width', '2');
+        ISvg.appendChild(outer);
+
+        // fill disk/hoop/sphere differently
+        if (shape === 'disk' || shape === 'sphere') {
+          // concentric rings shading heavier near rim as dist increases
+          const rings = 8;
+          for (let i = 0; i < rings; i++) {
+            const frac = (i + 0.5) / rings;
+            const rInner = Rpix * i / rings;
+            const rOuter = Rpix * (i + 1) / rings;
+            const localRad = frac; // 0 center, 1 rim
+            const opacity = 0.1 + 0.4 * (dist * localRad);
+            const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            ring.setAttribute('cx', centerX);
+            ring.setAttribute('cy', centerY);
+            ring.setAttribute('r', (rInner + rOuter) / 2);
+            ring.setAttribute('fill', '#3b82f6');
+            ring.setAttribute('fill-opacity', opacity.toString());
+            ISvg.appendChild(ring);
+          }
+        } else if (shape === 'hoop') {
+          const hoop = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          hoop.setAttribute('cx', centerX);
+          hoop.setAttribute('cy', centerY);
+          hoop.setAttribute('r', Rpix * (0.6 + 0.4 * dist)); // distribution moves ring outward
+          hoop.setAttribute('stroke', '#2563eb');
+          hoop.setAttribute('stroke-width', '8');
+          hoop.setAttribute('fill', 'none');
+          ISvg.appendChild(hoop);
+        }
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', centerX);
+        label.setAttribute('y', centerY + 70);
+        label.setAttribute('font-size', '10');
+        label.setAttribute('fill', '#0f172a');
+        label.setAttribute('text-anchor', 'middle');
+        label.textContent = 'Blue = mass concentration; Orange = outer radius';
+        ISvg.appendChild(label);
+      }
+    }
+
+    function updateInertia() {
+      const shape = IShape.value;
+      const M = Number(IMass.value);
+      const size = Number(ISize.value);
+      const dist = Number(IDist.value);
+
+      IMassVal.textContent = M.toFixed(1);
+      ISizeVal.textContent = size.toFixed(2);
+      IDistVal.textContent = dist.toFixed(2);
+
+      let I0 = 0;
+      let formula = '';
+
+      if (shape === 'rod') {
+        formula = 'I = \\frac{1}{12}ML^2';
+        I0 = (1/12) * M * size * size;
+        ISizeLabel.textContent = 'Length L (m)';
+      } else if (shape === 'disk') {
+        formula = 'I = \\frac{1}{2}MR^2';
+        I0 = 0.5 * M * size * size;
+        ISizeLabel.textContent = 'Radius R (m)';
+      } else if (shape === 'hoop') {
+        formula = 'I = MR^2';
+        I0 = M * size * size;
+        ISizeLabel.textContent = 'Radius R (m)';
+      } else if (shape === 'sphere') {
+        formula = 'I = \\frac{2}{5}MR^2';
+        I0 = (2/5) * M * size * size;
+        ISizeLabel.textContent = 'Radius R (m)';
+      }
+
+      // Effective inertia scaling: conceptual slider between "center-heavy" and "rim-heavy"
+      // We'll assume a factor range from I_min to I_max around I0.
+      let Imin = I0 * 0.3;
+      let Imax = I0 * 2.0;
+      if (shape === 'hoop') {
+        Imin = I0 * 0.5;
+        Imax = I0 * 1.5;
+      }
+      if (shape === 'rod') {
+        Imin = I0 * 0.5;
+        Imax = I0 * 1.8;
+      }
+
+      const Ieff = Imin + (Imax - Imin) * dist;
+
+      IFormulaBase.textContent = `Base formula: \\(${formula}\\)`;
+      IValueBase.textContent = `Homogeneous body: \\(I_0 \\approx ${roundTo(I0, 3)}\\,\\text{kg·m}^2\\)`;
+      IValueEff.textContent = `Effective (with slider): \\(I_\\text{eff} \\approx ${roundTo(Ieff, 3)}\\,\\text{kg·m}^2\\)`;
+
+      drawInertiaShape();
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    [IShape, IMass, ISize, IDist].forEach(el => {
+      el.addEventListener('input', updateInertia);
+    });
+
+    updateInertia();
+  </script>
+</body>
+</html>
 
