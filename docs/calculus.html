@@ -1,1 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculus Refresher | Physics 201</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="bg-slate-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">📘</span>
+          <a href="index.html" class="font-bold text-xl tracking-tight hover:underline">
+            Physics 201
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-6 text-sm font-medium items-center">
+          <a href="index.html" class="text-slate-300 hover:text-white transition">Home</a>
+          <a href="syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+
+          <!-- Weeks dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+              Weeks
+              <span class="text-[0.6rem]">▼</span>
+            </button>
+            <div class="absolute left-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+              <a href="week1.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 1 – Kinematics</a>
+              <a href="week2.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 2 – Forces</a>
+              <a href="week3.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 3 – Work & Energy</a>
+              <a href="week4.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 4 – Momentum</a>
+              <a href="week5.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 5 – Rotation I</a>
+              <a href="week6.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 6 – Rotation II</a>
+              <a href="week7.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 7 – Rotation & Torque</a>
+              <a href="week8.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 8 – Oscillations</a>
+            </div>
+          </div>
+
+          <!-- Resources dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-blue-300 hover:text-white transition">
+              Resources
+              <span class="text-[0.6rem]">▼</span>
+            </button>
+            <div class="absolute right-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+              <a href="formulas.html" class="block px-4 py-2 text-sm hover:bg-slate-100">
+                Formula Sheet
+              </a>
+              <a href="calculus.html" class="block px-4 py-2 text-sm hover:bg-slate-100 font-semibold text-blue-700">
+                Calculus Refresher
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Reference
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Calculus Refresher for Physics 201
+      </h1>
+      <p class="text-slate-600 max-w-2xl text-sm md:text-base">
+        This page connects derivatives and integrals directly to motion, force, energy, and rotation.
+        It’s not a full calculus course — it’s the toolbox you actually need in this class.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full text-sm md:text-[0.95rem] space-y-6">
+
+    <!-- I. Derivatives in 1D Motion -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">I. Derivatives in 1D Motion</h2>
+      <p class="text-slate-700">
+        At the core of kinematics:
+        \[
+          v(t) = \frac{dx}{dt}, \qquad a(t) = \frac{dv}{dt} = \frac{d^2x}{dt^2}.
+        \]
+        You should be comfortable taking first and second derivatives of simple functions of \(t\).
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 1 – Polynomial Position</p>
+          <p class="text-slate-700 text-sm">
+            \( x(t) = 3t^2 - 4t + 1 \) (m).
+          </p>
+          <p class="text-slate-700 text-sm mt-1">
+            Then
+            \[
+              v(t) = \frac{dx}{dt} = 6t - 4, \quad
+              a(t) = \frac{dv}{dt} = 6.
+            \]
+          </p>
+          <p class="text-xs text-slate-500 mt-1">
+            Constant \(a\) = straight line \(v\) vs \(t\), parabola \(x\) vs \(t\).
+          </p>
+        </div>
+
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 2 – Sinusoidal Motion</p>
+          <p class="text-slate-700 text-sm">
+            \( x(t) = A\cos(\omega t) \).
+          </p>
+          <p class="text-slate-700 text-sm mt-1">
+            \[
+              v(t) = \frac{dx}{dt} = -A\omega\sin(\omega t),\\
+              a(t) = \frac{dv}{dt} = -A\omega^2\cos(\omega t) = -\omega^2 x(t).
+            \]
+          </p>
+          <p class="text-xs text-slate-500 mt-1">
+            This is exactly the structure of SHM.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500">
+        Typical derivatives you need: powers \(t^n\), exponentials \(e^{kt}\), sin/cos, and sums/products.
+      </p>
+    </section>
+
+    <!-- II. Integrals in 1D Motion -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">II. Integrals in 1D Motion</h2>
+      <p class="text-slate-700">
+        Integrals reverse derivatives. In motion:
+        \[
+          x(t) = x(t_0) + \int_{t_0}^{t} v(t')\,dt', \quad
+          v(t) = v(t_0) + \int_{t_0}^{t} a(t')\,dt'.
+        \]
+        Graphically, the integral is the area under the curve.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 3 – Velocity given, find displacement</p>
+          <p class="text-slate-700 text-sm">
+            A particle has velocity \(v(t) = 4t\) (m/s). How far does it move from \(t=0\) to \(t=3\) s?
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-blue-600 text-xs">Show solution</summary>
+            <div class="mt-1 text-slate-700 text-sm">
+              \[
+                \Delta x = \int_{0}^{3} 4t\,dt = 4\left[\frac{t^2}{2}\right]_0^3
+                = 2(9) = 18\ \text{m}.
+              \]
+            </div>
+          </details>
+        </div>
+
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 4 – Acceleration given, find velocity</p>
+          <p class="text-slate-700 text-sm">
+            \( a(t) = 6t \), and \( v(0) = 2\,\text{m/s} \).
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-blue-600 text-xs">Show solution</summary>
+            <div class="mt-1 text-slate-700 text-sm">
+              \[
+                v(t) = v(0) + \int_0^t 6t'\,dt' = 2 + 6\left[\frac{t'^2}{2}\right]_0^t
+                = 2 + 3t^2.
+              \]
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- III. Vectors & Component Derivatives -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">III. Vectors &amp; Component-Wise Derivatives</h2>
+      <p class="text-slate-700">
+        In 2D or 3D, we differentiate components:
+        \[
+          \vec r(t) = x(t)\hat i + y(t)\hat j (+ z(t)\hat k),
+        \]
+        \[
+          \vec v(t) = \frac{d\vec r}{dt} = \frac{dx}{dt}\hat i + \frac{dy}{dt}\hat j (+ \frac{dz}{dt}\hat k),
+        \]
+        \[
+          \vec a(t) = \frac{d\vec v}{dt} = \frac{d^2x}{dt^2}\hat i + \frac{d^2y}{dt^2}\hat j (+ \dots).
+        \]
+      </p>
+
+      <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+        <p class="font-semibold mb-1 text-slate-800 text-sm">Example 5 – Projectile in vector form</p>
+        <p class="text-slate-700 text-sm">
+          \[
+            \vec r(t) = (v_0\cos\theta_0\, t)\,\hat i
+            + (y_0 + v_0\sin\theta_0\, t - \tfrac12 g t^2)\,\hat j.
+          \]
+        </p>
+        <p class="text-slate-700 text-sm mt-1">
+          Then
+          \[
+            \vec v(t) = \frac{d\vec r}{dt}
+            = v_0\cos\theta_0\,\hat i + (v_0\sin\theta_0 - gt)\,\hat j,
+          \]
+          \[
+            \vec a(t) = \frac{d\vec v}{dt} = 0\,\hat i - g\,\hat j.
+          \]
+        </p>
+        <p class="text-xs text-slate-500 mt-1">
+          Same component-wise derivative rules as in single-variable calculus, but done for each component.
+        </p>
+      </div>
+    </section>
+
+    <!-- IV. Common Physics Integrals -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">IV. Common Physics Integrals</h2>
+      <p class="text-slate-700">
+        A few integrals show up repeatedly:
+      </p>
+      <ul class="list-disc pl-5 text-slate-700 space-y-1">
+        <li>Work from a variable force: \(W = \displaystyle\int F(x)\,dx\).</li>
+        <li>Rotational work: \(W = \displaystyle\int \tau(\theta)\,d\theta\).</li>
+        <li>Moment of inertia (concept): \(I = \displaystyle\int r^2\,dm\).</li>
+        <li>Energy in SHM from integrating forces/accelerations.</li>
+      </ul>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 6 – Work from a spring force</p>
+          <p class="text-slate-700 text-sm">
+            Spring force: \(F(x) = -kx\). Work from \(x=0\) to \(x=X\):
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-blue-600 text-xs">Show solution</summary>
+            <div class="mt-1 text-slate-700 text-sm">
+              \[
+                W = \int_0^{X} (-kx)\,dx = -k\left[\frac{x^2}{2}\right]_0^{X}
+                = -\frac12 kX^2.
+              \]
+              This equals \(-\Delta U_s\) where \(U_s = \tfrac12 kx^2\).
+            </div>
+          </details>
+        </div>
+
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold mb-1 text-slate-800 text-sm">Example 7 – Moment of inertia (conceptual)</p>
+          <p class="text-slate-700 text-sm">
+            Thin rod of length \(L\), mass \(M\), about its center:
+            \[
+              I = \int r^2\,dm.
+            \]
+          </p>
+          <p class="text-slate-700 text-sm mt-1">
+            With uniform density, the result is
+            \[
+              I = \frac{1}{12}ML^2.
+            \]
+            You don't need the full derivation here, but the integral form is what matters conceptually.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- V. Common Mistakes -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">V. Common Calculus Mistakes in Physics</h2>
+      <ul class="list-disc pl-5 text-slate-700 space-y-1">
+        <li>Forgetting that derivatives/integrals keep units (check units!).</li>
+        <li>Dropping the constant of integration when you actually need initial conditions.</li>
+        <li>Mixing up what is a function of time vs. a constant (treating constants like variables).</li>
+        <li>Using kinematics formulas in situations where acceleration is not constant.</li>
+        <li>Sign errors when integrating or differentiating vector components.</li>
+      </ul>
+    </section>
+
+    <!-- VI. Practice Problems -->
+    <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
+      <h2 class="text-lg font-bold text-slate-900">VI. Practice Problems (with Solutions)</h2>
+      <p class="text-slate-700">
+        Try these without looking at the solutions first. Each one is designed to match something that appears in the 8-week course.
+      </p>
+
+      <div class="space-y-3 text-slate-800">
+
+        <!-- Problem 1 -->
+        <details>
+          <summary class="cursor-pointer text-sm font-semibold">
+            Problem 1 – Velocity &amp; Acceleration from Position
+          </summary>
+          <div class="mt-1 text-sm space-y-1">
+            <p>
+              A particle moves along the \(x\)-axis with position
+              \[
+                x(t) = 2t^3 - 5t^2 + 4 \quad (\text{meters}).
+              \]
+              Find \(v(t)\) and \(a(t)\).
+            </p>
+            <p class="font-semibold text-xs mt-2 text-blue-700">Solution:</p>
+            <p>
+              \[
+                v(t) = \frac{dx}{dt} = 6t^2 - 10t,
+              \]
+              \[
+                a(t) = \frac{dv}{dt} = 12t - 10.
+              \]
+            </p>
+          </div>
+        </details>
+
+        <!-- Problem 2 -->
+        <details>
+          <summary class="cursor-pointer text-sm font-semibold">
+            Problem 2 – Displacement from Velocity Graph
+          </summary>
+          <div class="mt-1 text-sm space-y-1">
+            <p>
+              Velocity is \(v(t) = 3\) m/s for \(0 \le t \le 2\) s, then \(v(t) = 6\) m/s for \(2 \le t \le 4\) s.
+              If \(x(0) = 0\), find \(x(4)\).
+            </p>
+            <p class="font-semibold text-xs mt-2 text-blue-700">Solution:</p>
+            <p>
+              Displacement from 0 to 2:
+              \[
+                \Delta x_1 = \int_0^2 3\,dt = 3 \cdot 2 = 6\ \text{m}.
+              \]
+              From 2 to 4:
+              \[
+                \Delta x_2 = \int_2^4 6\,dt = 6 \cdot 2 = 12\ \text{m}.
+              \]
+              Total \(x(4) = 6 + 12 = 18\ \text{m}.\)
+            </p>
+          </div>
+        </details>
+
+        <!-- Problem 3 -->
+        <details>
+          <summary class="cursor-pointer text-sm font-semibold">
+            Problem 3 – Work from a Linearly Changing Force
+          </summary>
+          <div class="mt-1 text-sm space-y-1">
+            <p>
+              A force along the x-axis is \(F(x) = 10x\) N. How much work is done as the object moves
+              from \(x=0\) m to \(x=2\) m?
+            </p>
+            <p class="font-semibold text-xs mt-2 text-blue-700">Solution:</p>
+            <p>
+              \[
+                W = \int_0^2 10x\,dx = 10\left[\frac{x^2}{2}\right]_0^2
+                = 5(4) = 20\ \text{J}.
+              \]
+            </p>
+          </div>
+        </details>
+
+        <!-- Problem 4 -->
+        <details>
+          <summary class="cursor-pointer text-sm font-semibold">
+            Problem 4 – SHM from Differential Equation
+          </summary>
+          <div class="mt-1 text-sm space-y-1">
+            <p>
+              A mass–spring system satisfies
+              \[
+                \frac{d^2x}{dt^2} + \omega^2 x = 0.
+              \]
+              Show that \(x(t) = A\cos(\omega t) + B\sin(\omega t)\) is a solution.
+            </p>
+            <p class="font-semibold text-xs mt-2 text-blue-700">Solution:</p>
+            <p>
+              Differentiate twice:
+            </p>
+            <p>
+              \[
+                x(t) = A\cos(\omega t) + B\sin(\omega t),
+              \]
+              \[
+                x'(t) = -A\omega\sin(\omega t) + B\omega\cos(\omega t),
+              \]
+              \[
+                x''(t) = -A\omega^2\cos(\omega t) - B\omega^2\sin(\omega t)
+                       = -\omega^2 x(t).
+              \]
+              So
+              \[
+                x'' + \omega^2 x = -\omega^2 x + \omega^2 x = 0,
+              \]
+              so it satisfies the equation.
+            </p>
+          </div>
+        </details>
+
+        <!-- Problem 5 -->
+        <details>
+          <summary class="cursor-pointer text-sm font-semibold">
+            Problem 5 – Velocity Components for Circular Motion
+          </summary>
+          <div class="mt-1 text-sm space-y-1">
+            <p>
+              A particle moves in a circle of radius \(R\) with angular position \(\theta(t) = \omega t\).
+              Position vector:
+              \[
+                \vec r(t) = R\cos(\omega t)\,\hat i + R\sin(\omega t)\,\hat j.
+              \]
+              Find \(\vec v(t)\) and \(\vec a(t)\).
+            </p>
+            <p class="font-semibold text-xs mt-2 text-blue-700">Solution:</p>
+            <p>
+              \[
+                \vec v(t) = \frac{d\vec r}{dt}
+                = -R\omega\sin(\omega t)\,\hat i + R\omega\cos(\omega t)\,\hat j,
+              \]
+              with magnitude \(v = R\omega\).
+            </p>
+            <p>
+              \[
+                \vec a(t) = \frac{d\vec v}{dt}
+                = -R\omega^2\cos(\omega t)\,\hat i - R\omega^2\sin(\omega t)\,\hat j
+                = -\omega^2 \vec r(t),
+              \]
+              so acceleration is radial inward with magnitude \(a_c = R\omega^2\).
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 – Calculus Refresher</p>
+        <p>Targeted derivative &amp; integral tools for this course.</p>
+      </div>
+      <div>
+        <a href="index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
 
