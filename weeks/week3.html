@@ -2,603 +2,850 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Week 3 – Newton’s Laws | Physics 201</title>
+  <title>Week 3 | Physics 201 – Newton’s Laws of Motion</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    .hero-pattern {
+      background-image: radial-gradient(#1e293b 1px, transparent 1px);
+      background-size: 24px 24px;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-  <!-- MOBILE TOP BAR -->
-  <div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
-    <span class="font-semibold">Physics 201</span>
-    <button id="menuBtn" class="text-white focus:outline-none">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
+<!-- MOBILE TOP BAR -->
+<div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
+  <span class="font-semibold">Physics 201</span>
+  <button id="menuBtn" class="text-white focus:outline-none">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
 
-  <!-- OVERLAY (mobile) -->
-  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden z-30"></div>
+<!-- OVERLAY (mobile only) -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden"></div>
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar"
-    class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
-           p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
+<!-- SIDEBAR -->
+<aside id="sidebar"
+  class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
+         p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
 
-    <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
+  <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
 
-    <!-- Main links -->
-    <a href="/CollegePhysics201/index.html" class="nav-item block px-3 py-2 rounded">Home</a>
-    <a href="/CollegePhysics201/syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
+  <a href="/CollegePhysics201/index.html" class="nav-item block px-3 py-2 rounded">Home</a>
+  <a href="/CollegePhysics201/syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
 
-    <hr class="my-3">
+  <hr class="my-3">
 
-    <!-- Resources -->
-    <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
+  <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
 
-    <a href="/CollegePhysics201/docs/formulas.html" class="nav-item block px-3 py-2 rounded">
-      Formula Sheet
-    </a>
-    <a href="/CollegePhysics201/calculus.html" class="nav-item block px-3 py-2 rounded">
-      Calculus Refresher
-    </a>
+  <a href="/CollegePhysics201/docs/formulas.html" class="nav-item block px-3 py-2 rounded">
+    Formula Sheet
+  </a>
 
-    <hr class="my-3">
+  <a href="/CollegePhysics201/calculus.html" class="nav-item block px-3 py-2 rounded">
+    Calculus Refresher
+  </a>
 
-    <!-- Weeks -->
-    <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
+  <hr class="my-3">
 
-    <a href="/CollegePhysics201/weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
-    <a href="/CollegePhysics201/weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
-    <a href="/CollegePhysics201/weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
-    <a href="/CollegePhysics201/weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
-    <a href="/CollegePhysics201/weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
-    <a href="/CollegePhysics201/weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
-    <a href="/CollegePhysics201/weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
-    <a href="/CollegePhysics201/weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
+  <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
 
-  </aside>
+  <a href="/CollegePhysics201/weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
+  <a href="/CollegePhysics201/weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
+  <a href="/CollegePhysics201/weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
+  <a href="/CollegePhysics201/weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
+  <a href="/CollegePhysics201/weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
+  <a href="/CollegePhysics201/weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
+  <a href="/CollegePhysics201/weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
+  <a href="/CollegePhysics201/weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
 
-  <!-- MAIN CONTENT -->
-  <main class="md:ml-64 p-6 md:p-8 max-w-4xl mx-auto space-y-8">
+</aside>
 
-    <!-- Week Header -->
-    <header class="space-y-2">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
-        Week 3
+<!-- PAGE CONTENT WRAPPER -->
+<div class="md:ml-64 p-6">
+
+  <!-- Hero -->
+  <header id="top" class="bg-slate-900 border-b border-slate-800 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-sky-300 uppercase tracking-wide mb-1">
+        Week 3 • Sessions 5–6
       </p>
-      <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">
-        Newton’s Laws of Motion
+      <h1 class="text-3xl md:text-4xl font-extrabold text-sky-100 mb-3">
+        Newton’s Laws of Motion & Free-Body Diagrams
       </h1>
-      <p class="text-sm md:text-base text-slate-700 max-w-2xl">
-        This week moves from describing motion to explaining it. We connect forces to acceleration,
-        build and interpret free-body diagrams, and apply Newton’s three laws to 1D and 2D motion,
-        including friction and multi-object systems.
+      <p class="text-slate-300 max-w-2xl text-sm md:text-base">
+        This module introduces dynamics: how forces cause changes in motion. You will learn to
+        identify forces, build free-body diagrams, and apply Newton’s three laws in 1D and 2D,
+        including friction, tension, and multi-object systems.
       </p>
-      <div class="text-xs text-slate-500">
-        <span class="inline-flex items-center gap-1 mr-4">
-          ● Topic: Dynamics & Forces
-        </span>
-        <span class="inline-flex items-center gap-1">
-          ● Prereqs: Week 1–2 (kinematics & vectors)
-        </span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="overview"
+                class="tab-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+          Overview
+        </button>
+        <button data-tab="notes"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Notes
+        </button>
+        <button data-tab="examples"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Worked Examples
+        </button>
+        <button data-tab="practice"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Practice Problems
+        </button>
+        <button data-tab="sim"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Interactive Panel
+        </button>
       </div>
-    </header>
+    </div>
 
-    <!-- Learning Objectives -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm" open>
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Learning Objectives
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-2">
-          <p>By the end of this week, you should be able to:</p>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>State Newton’s three laws of motion and interpret them physically.</li>
-            <li>Identify all forces acting on an object and draw a correct free-body diagram (FBD).</li>
-            <li>Apply <code>∑F = ma</code> in one and two dimensions.</li>
-            <li>Resolve forces into components and choose appropriate coordinate axes.</li>
+    <!-- TAB: Overview -->
+    <section id="tab-overview" class="tab-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
+          <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
+            <li>State and interpret Newton’s First, Second, and Third Laws.</li>
+            <li>Identify all forces acting on a system and draw a correct free-body diagram (FBD).</li>
+            <li>Apply $\sum \vec{F} = m \vec{a}$ in component form in 1D and 2D.</li>
             <li>Analyze motion on horizontal surfaces and inclines with and without friction.</li>
-            <li>Solve problems involving tension, normal forces, springs, and multi-object systems.</li>
-            <li>Recognize action–reaction pairs and avoid common misconceptions.</li>
+            <li>Solve problems involving tension, normal force, friction, and multi-object systems.</li>
+            <li>Recognize action–reaction pairs and avoid common misconceptions about “cancelling forces.”</li>
           </ul>
         </div>
-      </details>
-    </section>
 
-    <!-- Core Notes -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm" open>
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Core Notes: Newton’s Laws & Types of Forces
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
-
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-4">
-
-          <!-- 3.1 -->
-          <div>
-            <h2 class="font-semibold text-slate-900 mb-1">3.1 Newton’s First Law (Inertia)</h2>
-            <p class="mb-2">
-              Newton’s First Law: An object at rest remains at rest, and an object in motion remains
-              in motion with constant velocity <em>unless</em> acted on by a net external force.
-            </p>
-            <ul class="list-disc pl-5 space-y-1 mb-2">
-              <li><strong>Inertia</strong> is the tendency of an object to resist changes in its motion.</li>
-              <li><strong>Mass</strong> is a measure of inertia.</li>
-              <li>If <code>∑F = 0</code>, the object is in <strong>equilibrium</strong>:
-                it either remains at rest or moves with constant velocity.</li>
-            </ul>
-            <p>
-              First Law is a special case of Second Law when <code>∑F = 0 ⇒ a = 0</code>.
-            </p>
-          </div>
-
-          <!-- 3.2 -->
-          <div>
-            <h2 class="font-semibold text-slate-900 mb-1">3.2 Newton’s Second Law</h2>
-            <p class="mb-2">
-              Newton’s Second Law connects force and motion:
-            </p>
-            <p class="mb-2">
-              <code>∑⃗F = m⃗a</code> &nbsp;&nbsp; (vector form)
-            </p>
-            <ul class="list-disc pl-5 space-y-1 mb-2">
-              <li>The <strong>net force</strong> is the vector sum of all forces acting on an object.</li>
-              <li>In 1D, we can write <code>∑F<sub>x</sub> = m a<sub>x</sub></code>.</li>
-              <li>In 2D, we split into components:
-                <div class="ml-4 mt-1">
-                  <code>∑F<sub>x</sub> = m a<sub>x</sub></code> and
-                  <code>∑F<sub>y</sub> = m a<sub>y</sub></code>.
-                </div>
-              </li>
-              <li><strong>Mass</strong> is constant in this course; acceleration is proportional to net force.</li>
-            </ul>
-            <p class="mb-2">
-              <strong>Weight:</strong> The force of gravity near Earth’s surface is
-              <code>W = mg</code>, directed downward.
-            </p>
-            <p>
-              Be careful to distinguish mass (kg, intrinsic) from weight (N, force due to gravity).
-            </p>
-          </div>
-
-          <!-- 3.3 -->
-          <div>
-            <h2 class="font-semibold text-slate-900 mb-1">3.3 Newton’s Third Law (Action–Reaction)</h2>
-            <p class="mb-2">
-              Newton’s Third Law: For every force that object A exerts on object B, object B exerts
-              an equal and opposite force on object A.
-            </p>
-            <p class="mb-2">
-              Symbolically: if <code>⃗F<sub>A→B</sub></code> is the force of A on B, then
-              <code>⃗F<sub>B→A</sub> = −⃗F<sub>A→B</sub></code>.
-            </p>
-            <ul class="list-disc pl-5 space-y-1 mb-2">
-              <li>Action–reaction forces always act on <strong>different objects</strong>.</li>
-              <li>They are <strong>equal in magnitude</strong> and <strong>opposite in direction</strong>.</li>
-              <li>They do not cancel in a single object’s free-body diagram (you only draw forces on one object).</li>
-            </ul>
-            <p>
-              Common example: You push on a wall; the wall pushes back on you with equal and opposite force.
-            </p>
-          </div>
-
-          <!-- 3.4 -->
-          <div>
-            <h2 class="font-semibold text-slate-900 mb-1">3.4 Common Forces in Mechanics</h2>
-            <p class="mb-2">
-              In typical problems, you will encounter the following forces:
-            </p>
-            <ul class="list-disc pl-5 space-y-1 mb-2">
-              <li><strong>Weight</strong> <code>W = mg</code>, downward.</li>
-              <li><strong>Normal force</strong> <code>N</code>: contact force perpendicular to the surface.</li>
-              <li><strong>Tension</strong> <code>T</code>: pulling force along an ideal rope or string.</li>
-              <li><strong>Friction</strong>:
-                <ul class="list-disc pl-5 mt-1 space-y-1">
-                  <li>Static friction: <code>f<sub>s</sub> ≤ μ<sub>s</sub> N</code>, adjusts up to a maximum.</li>
-                  <li>Kinetic friction: <code>f<sub>k</sub> = μ<sub>k</sub> N</code>, opposes motion.</li>
-                </ul>
-              </li>
-              <li><strong>Spring force</strong>: <code>F<sub>s</sub> = −k x</code>, opposite displacement.</li>
-              <li><strong>Applied forces</strong>: pushes/pulls at some angle relative to a surface.</li>
-            </ul>
-            <p>
-              The key to solving dynamics problems is: identify forces → draw a free-body diagram →
-              choose axes → resolve components → apply <code>∑F = ma</code>.
-            </p>
-          </div>
-
-        </div>
-      </details>
-    </section>
-
-    <!-- Free-Body Diagrams -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Free-Body Diagrams (FBDs)
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-3">
-          <p>
-            A free-body diagram shows all forces acting on a single object, isolated from its surroundings.
-          </p>
-          <ol class="list-decimal pl-5 space-y-1">
-            <li>Choose the object of interest.</li>
-            <li>Represent it as a simple shape (box, dot).</li>
-            <li>Identify all forces acting <em>on</em> the object (not by the object).</li>
-            <li>Draw each force as an arrow starting at the object, labeled with type and magnitude.</li>
-            <li>Choose coordinate axes (often along/normal to the surface if inclines are involved).</li>
-          </ol>
-          <p class="mt-2">
-            Example: Block of mass <code>m</code> on a rough horizontal surface with an applied force <code>F</code> to the right:
-          </p>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Weight: <code>W = mg</code> downward.</li>
-            <li>Normal force: <code>N</code> upward.</li>
-            <li>Applied force: <code>F</code> to the right.</li>
-            <li>Friction: <code>f</code> to the left (if motion or tendency to move right).</li>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
+          <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
+            <li>Work through the <span class="font-semibold">Notes</span> section first; treat it as your mini-textbook chapter.</li>
+            <li>Study the blueprint-style FBD diagrams and redraw them in your notebook.</li>
+            <li>Follow the <span class="font-semibold">Worked Examples</span> step by step, paying attention to setup.</li>
+            <li>Attempt all <span class="font-semibold">Practice Problems</span> before opening the solution outlines.</li>
+            <li>Use the <span class="font-semibold">Interactive Panel</span> to connect force, mass, and acceleration numerically.</li>
           </ul>
         </div>
-      </details>
+      </div>
     </section>
 
-    <!-- Worked Examples -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Worked Examples
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-5">
+    <!-- TAB: Notes -->
+    <section id="tab-notes" class="tab-section hidden">
+      <div class="space-y-8">
 
-          <!-- Example 1 -->
-          <div>
-            <h3 class="font-semibold text-slate-900 mb-1">Example 1: Horizontal Pull (No Friction)</h3>
-            <p class="mb-1">
-              A student pulls a 5.0 kg box on a frictionless floor with a horizontal force of 12 N.
-              Find the acceleration.
-            </p>
-            <p class="font-semibold">Solution (outline)</p>
-            <ol class="list-decimal pl-5 space-y-1">
-              <li>Draw an FBD: forces are weight <code>mg</code> down, normal <code>N</code> up, pull <code>F = 12 N</code> to the right.</li>
-              <li>Vertical: <code>N − mg = 0 ⇒ N = mg</code>. No vertical acceleration.</li>
-              <li>Horizontal: <code>∑F<sub>x</sub> = F = m a<sub>x</sub></code>.</li>
-              <li><code>a<sub>x</sub> = F / m = 12 / 5.0 = 2.4 m/s²</code> to the right.</li>
-            </ol>
-          </div>
+        <!-- 1. Newton’s Laws Overview -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Newton’s Three Laws of Motion</h2>
 
-          <!-- Example 2 -->
-          <div>
-            <h3 class="font-semibold text-slate-900 mb-1">Example 2: Inclined Plane with Friction</h3>
-            <p class="mb-1">
-              A 10 kg block slides down a 30° incline with kinetic friction coefficient
-              <code>μ<sub>k</sub> = 0.20</code>. Find the acceleration.
-            </p>
-            <p class="font-semibold">Solution (outline)</p>
-            <ol class="list-decimal pl-5 space-y-1">
-              <li>Choose axes: <code>x</code> parallel to the incline (down), <code>y</code> perpendicular.</li>
-              <li>Forces: weight <code>mg</code> (down), normal <code>N</code> (perpendicular), friction
-                  <code>f<sub>k</sub> = μ<sub>k</sub> N</code> up the plane.</li>
-              <li>Components of weight:
-                <ul class="list-disc pl-5 mt-1">
-                  <li><code>mg sinθ</code> down the plane</li>
-                  <li><code>mg cosθ</code> into the plane</li>
-                </ul>
-              </li>
-              <li>Normal direction: <code>N − mg cosθ = 0 ⇒ N = mg cosθ</code>.</li>
-              <li>Along the plane (taking down the plane as positive):
-                <br />
-                <code>∑F<sub>x</sub> = mg sinθ − f<sub>k</sub> = mg sinθ − μ<sub>k</sub> mg cosθ = m a</code>.
-              </li>
-              <li>Cancel <code>m</code>:
-                <br />
-                <code>a = g (sinθ − μ<sub>k</sub> cosθ)</code>.
-              </li>
-              <li>Plug in numbers with <code>g ≈ 9.8 m/s²</code>, <code>θ = 30°</code>:
-                <br />
-                <code>a ≈ 9.8 (0.5 − 0.2 · 0.866) ≈ 9.8 (0.5 − 0.173) ≈ 9.8 · 0.327 ≈ 3.2 m/s²</code> down the plane.
-              </li>
-            </ol>
-          </div>
-
-          <!-- Example 3 -->
-          <div>
-            <h3 class="font-semibold text-slate-900 mb-1">Example 3: Two-Block System (Tension)</h3>
-            <p class="mb-1">
-              Two blocks, <code>m₁ = 2.0 kg</code> and <code>m₂ = 3.0 kg</code>, are connected by a light string
-              and pulled across a frictionless surface by a horizontal 20 N force applied to <code>m₂</code>.
-              Find the acceleration of the system and the tension in the string.
-            </p>
-            <p class="font-semibold">Solution (outline)</p>
-            <ol class="list-decimal pl-5 space-y-1">
-              <li>Treat both masses together to find acceleration:
-                <br />
-                Total mass <code>M = m₁ + m₂ = 5.0 kg</code>.
-              </li>
-              <li><code>∑F<sub>ext</sub> = 20 N = M a ⇒ a = 20 / 5.0 = 4.0 m/s²</code> (to the right).</li>
-              <li>Now isolate <code>m₁</code>. Forces on <code>m₁</code> in x-direction: tension <code>T</code> to the right.</li>
-              <li><code>∑F<sub>x</sub> = T = m₁ a ⇒ T = 2.0 · 4.0 = 8.0 N</code>.</li>
-            </ol>
-          </div>
-
-          <!-- Example 4 -->
-          <div>
-            <h3 class="font-semibold text-slate-900 mb-1">Example 4: Elevator Apparent Weight</h3>
-            <p class="mb-1">
-              A 70 kg student stands on a scale in an elevator. The elevator accelerates
-              <em>upward</em> at <code>2.0 m/s²</code>. What does the scale read?
-            </p>
-            <p class="font-semibold">Solution (outline)</p>
-            <ol class="list-decimal pl-5 space-y-1">
-              <li>FBD of student: normal force <code>N</code> up (scale reading), weight <code>mg</code> down.</li>
-              <li>Take upward as positive: <code>∑F<sub>y</sub> = N − mg = m a</code>.</li>
-              <li><code>N = m(g + a)</code>.</li>
-              <li>Compute: <code>N = 70 (9.8 + 2.0) ≈ 70 · 11.8 ≈ 826 N</code>.</li>
-              <li>The scale “weight” is 826 N, larger than true weight because of the upward acceleration.</li>
-            </ol>
-          </div>
-
-        </div>
-      </details>
-    </section>
-
-    <!-- Practice Problems -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Practice Problems
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
-
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-3">
-          <p class="mb-1">
-            Try these before looking at the solutions. Draw an FBD for each.
+          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.1 First Law – Inertia</h3>
+          <p class="text-sm text-slate-700 mb-2">
+            An object at rest remains at rest, and an object in motion continues with constant velocity,
+            unless acted upon by a net external force.
           </p>
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>
-              A 4.0 kg block is pushed with a constant 10 N horizontal force across a frictionless surface.
-              Find the acceleration.
-            </li>
-            <li>
-              A 12 kg box is on a horizontal surface with <code>μ<sub>k</sub> = 0.25</code>. A horizontal
-              40 N force is applied. Find the acceleration.
-            </li>
-            <li>
-              A 15 kg crate rests on a rough horizontal floor with <code>μ<sub>s</sub> = 0.40</code>.
-              What is the minimum horizontal force required to start it moving?
-            </li>
-            <li>
-              A 5.0 kg block sits on a 25° incline with no friction. Find the acceleration of the block.
-            </li>
-            <li>
-              A 2.0 kg block is attached to a 3.0 kg hanging mass over a frictionless pulley
-              (Atwood-style system). Assume the 3.0 kg mass hangs freely. Find the acceleration of the system
-              and the tension in the string.
-            </li>
-            <li>
-              A 60 kg person stands on a scale in an elevator that accelerates <em>downward</em> at
-              <code>1.5 m/s²</code>. What does the scale read?
-            </li>
-            <li>
-              A 10 kg block is pulled up a 30° incline with a force of 80 N parallel to the incline.
-              Coefficient of kinetic friction is <code>μ<sub>k</sub> = 0.10</code>. Find the acceleration up the plane.
-            </li>
-            <li>
-              Identify the action–reaction pair: a book rests on a table under Earth’s gravity. List
-              all forces on the book and all forces on the Earth involved in the Third Law pair.
-            </li>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li><strong>Inertia:</strong> tendency of an object to resist changes in its motion.</li>
+            <li><strong>Mass:</strong> measure of inertia (more mass → harder to change velocity).</li>
+            <li><strong>Equilibrium:</strong> $\sum \vec{F} = 0 \Rightarrow \vec{a} = \vec{0}$, so velocity is constant (could be zero).</li>
+          </ul>
+
+          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.2 Second Law – Dynamics</h3>
+          <p class="text-sm text-slate-700 mb-2">
+            The net force on an object equals mass times acceleration:
+          </p>
+          <p class="text-sm text-slate-800 mb-2">
+            \[
+              \sum \vec{F} = m \vec{a}.
+            \]
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>Net force is the <em>vector sum</em> of all forces acting on the object.</li>
+            <li>In 1D: $\sum F_x = m a_x$.</li>
+            <li>In 2D: $\sum F_x = m a_x$ and $\sum F_y = m a_y$.</li>
+            <li>Mass is constant in this course, so changing the net force changes the acceleration.</li>
+          </ul>
+
+          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.3 Third Law – Action & Reaction</h3>
+          <p class="text-sm text-slate-700 mb-2">
+            For every force that object A exerts on B, there is an equal and opposite force that B exerts on A:
+          </p>
+          <p class="text-sm text-slate-800 mb-2">
+            \[
+              \vec{F}_{A \to B} = -\,\vec{F}_{B \to A}.
+            \]
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700">
+            <li>The pair always involves <strong>two objects</strong>.</li>
+            <li>They act on different objects, so they never cancel in a single free-body diagram.</li>
+            <li>Example: you push on the wall; the wall pushes back on you with equal magnitude, opposite direction.</li>
+          </ul>
+        </article>
+
+        <!-- 2. Forces & Blueprint FBDs -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Common Forces and Free-Body Diagrams</h2>
+
+          <p class="text-sm text-slate-700 mb-2">
+            In mechanics, you’ll repeatedly encounter a small set of force types:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li><strong>Weight</strong> $W = mg$ (downward, toward Earth’s center).</li>
+            <li><strong>Normal force</strong> $N$ (perpendicular contact force from a surface).</li>
+            <li><strong>Tension</strong> $T$ (pulling force along an ideal rope or string).</li>
+            <li><strong>Friction</strong> $f$ (parallel to the surface, opposes relative motion or tendency).</li>
+            <li><strong>Spring force</strong> $F_s = -k x$ (restoring force opposite displacement from equilibrium).</li>
+            <li><strong>Applied forces</strong> $F_{\text{app}}$ at some angle.</li>
+          </ul>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">Recipe for a free-body diagram (FBD):</p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 mb-4 space-y-1">
+            <li>Isolate the object of interest.</li>
+            <li>Represent it as a dot or box.</li>
+            <li>Draw an arrow for every force acting <em>on</em> the object, labeled and starting at the object.</li>
+            <li>Choose axes (often along/normal to the surface).</li>
+            <li>Write $\sum F_x = m a_x$ and $\sum F_y = m a_y$ using components.</li>
           </ol>
-        </div>
-      </details>
+
+          <!-- Blueprint FBD 1: Block on horizontal surface -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 200" class="w-full rounded-lg shadow-sm">
+              <!-- Blueprint background -->
+              <rect x="0" y="0" width="260" height="200" fill="#020617" />
+              <!-- Grid -->
+              <defs>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f172a" stroke-width="1" />
+                </pattern>
+                <marker id="arrow-blueprint" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#e0f2fe" />
+                </marker>
+              </defs>
+              <rect x="0" y="0" width="260" height="200" fill="url(#grid)" opacity="0.35" />
+
+              <!-- Ground -->
+              <line x1="30" y1="150" x2="230" y2="150" stroke="#38bdf8" stroke-width="2" />
+              <text x="32" y="165" font-size="10" fill="#bae6fd">surface</text>
+
+              <!-- Block -->
+              <rect x="100" y="110" width="60" height="40" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+              <text x="125" y="134" font-size="10" fill="#e0f2fe">m</text>
+
+              <!-- Weight -->
+              <line x1="130" y1="150" x2="130" y2="185"
+                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="136" y="180" font-size="10" fill="#e0f2fe">mg</text>
+
+              <!-- Normal -->
+              <line x1="130" y1="110" x2="130" y2="75"
+                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="136" y="85" font-size="10" fill="#e0f2fe">N</text>
+
+              <!-- Applied force -->
+              <line x1="160" y1="130" x2="215" y2="130"
+                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="190" y="123" font-size="10" fill="#e0f2fe">F</text>
+
+              <!-- Friction -->
+              <line x1="100" y1="130" x2="60" y2="130"
+                    stroke="#f97316" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="60" y="122" font-size="10" fill="#fed7aa">f</text>
+
+              <!-- Axes -->
+              <line x1="40" y1="145" x2="80" y2="145" stroke="#38bdf8" stroke-width="1.5" />
+              <line x1="40" y1="145" x2="40" y2="105" stroke="#38bdf8" stroke-width="1.5" />
+              <text x="82" y="148" font-size="9" fill="#e0f2fe">+x</text>
+              <text x="34" y="104" font-size="9" fill="#e0f2fe">+y</text>
+            </svg>
+          </div>
+
+          <p class="text-xs text-slate-600 mt-1 text-center max-w-md mx-auto">
+            Blueprint-style FBD for a block on a rough horizontal surface pulled to the right.
+          </p>
+        </article>
+
+        <!-- 3. Components, Inclines & Friction -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Components, Inclines, and Friction</h2>
+
+          <p class="text-sm text-slate-700 mb-2">
+            For many problems, choosing axes aligned with the motion simplifies the math, especially on inclines.
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">3.1 Weight Components on an Incline</p>
+          <p class="text-sm text-slate-700 mb-2">
+            For a block of mass $m$ on an incline at angle $\theta$:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>Component perpendicular to plane: $mg \cos\theta$.</li>
+            <li>Component parallel to plane (down-slope): $mg \sin\theta$.</li>
+          </ul>
+
+          <!-- Blueprint FBD 2: Incline -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 200" class="w-full rounded-lg shadow-sm">
+              <rect x="0" y="0" width="260" height="200" fill="#020617" />
+              <rect x="0" y="0" width="260" height="200" fill="url(#grid)" opacity="0.35" />
+
+              <!-- Incline plane -->
+              <polygon points="40,160 220,160 220,140" fill="#020617" stroke="#38bdf8" stroke-width="2" />
+              <line x1="60" y1="160" x2="200" y2="100" stroke="#38bdf8" stroke-width="2" />
+              <text x="180" y="112" font-size="10" fill="#e0f2fe">θ</text>
+
+              <!-- Block on incline -->
+              <g transform="translate(130,120) rotate(-20)">
+                <rect x="-20" y="-15" width="40" height="30" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+              </g>
+
+              <!-- Weight -->
+              <line x1="140" y1="120" x2="140" y2="175" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="146" y="170" font-size="10" fill="#e0f2fe">mg</text>
+
+              <!-- Components: mg⊥ and mg∥ -->
+              <line x1="140" y1="120" x2="120" y2="155" stroke="#f97316" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="100" y="158" font-size="10" fill="#fed7aa">mg‖</text>
+
+              <line x1="140" y1="120" x2="175" y2="135" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="175" y="132" font-size="10" fill="#bbf7d0">mg⊥</text>
+
+              <!-- Normal -->
+              <line x1="135" y1="115" x2="115" y2="95" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
+              <text x="100" y="92" font-size="10" fill="#e0f2fe">N</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">3.2 Friction Models</p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li><strong>Static friction</strong> adjusts up to a maximum:
+              \[
+                f_s \le \mu_s N.
+              \]
+            </li>
+            <li><strong>Kinetic friction</strong> (sliding):
+              \[
+                f_k = \mu_k N.
+              \]
+            </li>
+            <li>Direction: opposite the direction of motion (or intended motion along the surface).</li>
+          </ul>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">3.3 Newton’s Second Law on an Incline (with friction)</p>
+          <p class="text-sm text-slate-700 mb-2">
+            Choose $x$ along the plane (down-slope positive), $y$ perpendicular to the plane (out of surface positive).
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            \[
+              \sum F_x = mg \sin\theta - f_k = m a,
+              \quad
+              \sum F_y = N - mg \cos\theta = 0.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            Using $f_k = \mu_k N = \mu_k mg \cos\theta$,
+            \[
+              a = g\big(\sin\theta - \mu_k \cos\theta\big).
+            \]
+          </p>
+        </article>
+
+        <!-- 4. Multi-Object Systems & Atwood -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Multi-Object Systems and Tension</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Many Newton’s laws problems involve more than one object connected by ropes or in contact.
+            Strategy:
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 mb-3 space-y-1">
+            <li>Draw an FBD for each object separately.</li>
+            <li>Write $\sum F = m a$ for each object (same $a$ if rope is massless & inextensible).</li>
+            <li>Relate tensions and accelerations through constraints (e.g., same magnitude of tension in a massless rope).</li>
+            <li>Solve the system of equations for unknowns (accelerations, tensions, etc.).</li>
+          </ol>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">Example pattern: Two blocks on a horizontal surface</p>
+          <p class="text-sm text-slate-700 mb-2">
+            For two blocks $m_1$ and $m_2$ pulled by a force $F$:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>Treat $m_1 + m_2$ as one system to quickly find acceleration: $a = F/(m_1 + m_2)$.</li>
+            <li>Then isolate one block to find internal tension using $T = m a$.</li>
+          </ul>
+
+          <p class="text-sm text-slate-700">
+            For Atwood-style setups (one mass hanging, one on a surface), the same logic applies:
+            consistent acceleration but different force equations for each object.
+          </p>
+        </article>
+
+        <!-- 5. Summary -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">5. Summary of Key Relationships</h2>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>First Law describes equilibrium ($\sum \vec{F} = 0$); Second Law describes general motion ($\sum \vec{F} = m \vec{a}$).</li>
+            <li>Third Law: forces between two objects come in equal-and-opposite pairs on different objects.</li>
+            <li>Weight: $W = mg$; normal: $N$ is perpendicular contact; friction: $f_s \le \mu_s N$, $f_k = \mu_k N$.</li>
+            <li>On inclines, decompose weight into $mg \sin\theta$ (parallel) and $mg \cos\theta$ (perpendicular).</li>
+            <li>Dynamics problems are solved by: FBD → components → $\sum F_x = m a_x$, $\sum F_y = m a_y$ → solve.</li>
+            <li>For multi-object systems, write equations for each object and use constraints (same $a$, same $T$ in an ideal rope).</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
-    <!-- Solutions -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Practice Problem Solutions (Outline)
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
+    <!-- TAB: Worked Examples -->
+    <section id="tab-examples" class="tab-section hidden">
+      <div class="space-y-6">
 
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-3">
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>
-              <strong>4.0 kg, 10 N, frictionless</strong>:
-              <br />
-              <code>a = F / m = 10 / 4.0 = 2.5 m/s²</code>.
-            </li>
-            <li>
-              <strong>12 kg, μ<sub>k</sub> = 0.25, F = 40 N</strong>:
-              <br />
-              Normal <code>N = mg</code>, friction <code>f<sub>k</sub> = μ<sub>k</sub> N = 0.25 · 12 · 9.8 ≈ 29.4 N</code>.
-              Net force: <code>F − f<sub>k</sub> ≈ 40 − 29.4 = 10.6 N</code>.
-              <br />
-              <code>a ≈ 10.6 / 12 ≈ 0.88 m/s²</code>.
-            </li>
-            <li>
-              <strong>Static friction to start motion</strong>:
-              <br />
-              Max static friction <code>f<sub>s,max</sub> = μ<sub>s</sub> N = 0.40 · 12 · 9.8 ≈ 47 N</code>.
-              <br />
-              Minimum horizontal force ≈ <code>47 N</code>.
-            </li>
-            <li>
-              <strong>Frictionless 25° incline</strong>:
-              <br />
-              <code>a = g sinθ = 9.8 sin 25° ≈ 9.8 · 0.423 ≈ 4.1 m/s²</code> down the plane.
-            </li>
-            <li>
-              <strong>2.0 kg on table, 3.0 kg hanging</strong>:
-              <br />
-              Let system accelerate with <code>a</code>, heavier mass going down.
-              <br />
-              For 3.0 kg: <code>mg − T = m a</code>.
-              <br />
-              For 2.0 kg: <code>T = m a</code>.
-              <br />
-              Combine: <code>3g − T = 3a</code> and <code>T = 2a</code> ⇒ <code>3g − 2a = 3a</code> ⇒
-              <code>3g = 5a</code> ⇒ <code>a = (3/5) g ≈ 0.6 · 9.8 ≈ 5.9 m/s²</code>.
-              <br />
-              Tension: <code>T = 2a ≈ 11.8 N</code>.
-            </li>
-            <li>
-              <strong>Elevator downward, 60 kg, a = 1.5 m/s²</strong>:
-              <br />
-              Take upward positive: <code>N − mg = m a</code> (but now <code>a</code> is negative).
-              <br />
-              <code>N = m(g + a)</code> with <code>a = −1.5</code> ⇒ <code>N = 60 (9.8 − 1.5) = 60 · 8.3 ≈ 498 N</code>.
-            </li>
-            <li>
-              <strong>10 kg up 30° incline, F = 80 N, μ<sub>k</sub> = 0.10</strong>:
-              <br />
-              Components: weight down plane <code>mg sinθ</code>, friction down plane <code>f<sub>k</sub> = μ<sub>k</sub> N</code>,
-              <code>N = mg cosθ</code>.
-              <br />
-              Along plane (up positive): <code>∑F = F − mg sinθ − μ<sub>k</sub> mg cosθ = m a</code>.
-              <br />
-              Plug numbers (with <code>g = 9.8</code>, <code>θ = 30°</code>):
-              <br />
-              <code>a ≈ [80 − 10·9.8·0.5 − 0.10·10·9.8·0.866] / 10</code>
-              <br />
-              <code>≈ [80 − 49 − 8.5] / 10 ≈ 22.5 / 10 ≈ 2.3 m/s²</code> up the plane.
-            </li>
-            <li>
-              <strong>Action–reaction pair (book on table)</strong>:
-              <br />
-              Forces on the book:
+        <!-- Example 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">
+            Example 1: Horizontal Pull with Friction
+          </h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A 10 kg block is pulled to the right by a horizontal force of $F = 40\ \text{N}$ on a rough
+            horizontal surface. The coefficient of kinetic friction is $\mu_k = 0.30$.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Draw a free-body diagram.</li>
+            <li>Find the friction force.</li>
+            <li>Compute the acceleration of the block.</li>
+          </ol>
+
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1) FBD:</strong> Forces: weight $mg$ down, normal $N$ up, pull $F$ right, friction $f_k$ left.</p>
+              <p><strong>(2) Normal & friction:</strong></p>
+              <p>
+                Vertical equilibrium (no vertical acceleration):
+                \[
+                  N - mg = 0 \Rightarrow N = mg = 10 \cdot 9.8 = 98\ \text{N}.
+                \]
+              </p>
+              <p>
+                Kinetic friction:
+                \[
+                  f_k = \mu_k N = 0.30 \cdot 98 \approx 29.4\ \text{N}.
+                \]
+              </p>
+              <p><strong>(3) Horizontal dynamics:</strong></p>
+              <p>
+                Take right as positive:
+                \[
+                  \sum F_x = F - f_k = m a.
+                \]
+                So
+                \[
+                  a = \frac{F - f_k}{m} = \frac{40 - 29.4}{10} \approx 1.06\ \text{m/s}^2.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">
+            Example 2: Block on an Incline with Friction
+          </h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A 12 kg crate is on a $30^\circ$ incline. The coefficient of kinetic friction is
+            $\mu_k = 0.20$. The crate is released from rest and slides down. Find its acceleration.
+          </p>
+
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>Step 1: Choose axes & FBD.</strong></p>
               <ul class="list-disc pl-5">
-                <li>Normal force from table on book (upward).</li>
-                <li>Weight of Earth on book (downward).</li>
+                <li>$x$-axis along the incline (down-slope positive), $y$-axis perpendicular to the incline.</li>
+                <li>Forces: $mg$ downward, normal $N$ perpendicular to plane, friction $f_k$ up the plane.</li>
               </ul>
-              Action–reaction examples:
-              <ul class="list-disc pl-5">
-                <li>Book on Earth: Earth pulls book down (book’s weight);
-                    book pulls Earth up with equal and opposite gravitational force.</li>
-                <li>Table on book: table pushes up on book; book pushes down on table.</li>
-              </ul>
-            </li>
+
+              <p><strong>Step 2: Components and normal force.</strong></p>
+              <p>
+                Parallel component: $mg \sin\theta$; perpendicular: $mg \cos\theta$.
+              </p>
+              <p>
+                $\sum F_y = 0 \Rightarrow N - mg \cos\theta = 0 \Rightarrow N = mg \cos\theta.$
+              </p>
+
+              <p><strong>Step 3: Along the plane.</strong></p>
+              <p>
+                \[
+                  \sum F_x = mg \sin\theta - f_k = m a.
+                \]
+                With $f_k = \mu_k N = \mu_k mg \cos\theta$:
+                \[
+                  a = g (\sin\theta - \mu_k \cos\theta).
+                \]
+              </p>
+              <p>
+                Plug numbers: $g = 9.8$, $\theta = 30^\circ$:
+                \[
+                  a \approx 9.8 \left(0.5 - 0.20 \cdot 0.866\right)
+                  = 9.8 (0.5 - 0.173) \approx 9.8 \cdot 0.327 \approx 3.2\ \text{m/s}^2.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">
+            Example 3: Two-Block System with Tension
+          </h2>
+          <p class="text-sm text-slate-700 mb-2">
+            Two blocks are connected by a light string on a frictionless surface. Block 1 has mass
+            $m_1 = 2.0\ \text{kg}$, block 2 has mass $m_2 = 3.0\ \text{kg}$. A horizontal force of
+            $F = 20\ \text{N}$ pulls on $m_2$.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find the acceleration of the system.</li>
+            <li>Find the tension in the string between the blocks.</li>
           </ol>
+
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1) Acceleration of the system.</strong></p>
+              <p>
+                Treat $m_1 + m_2$ as one combined mass:
+                \[
+                  \sum F = F = (m_1 + m_2) a.
+                \]
+                So
+                \[
+                  a = \frac{F}{m_1 + m_2} = \frac{20}{2.0 + 3.0} = \frac{20}{5} = 4.0\ \text{m/s}^2.
+                \]
+              </p>
+
+              <p><strong>(2) Tension in the string.</strong></p>
+              <p>
+                Now isolate $m_1$. The only horizontal force on $m_1$ is tension $T$:
+                \[
+                  \sum F_x = T = m_1 a \Rightarrow T = 2.0 \cdot 4.0 = 8.0\ \text{N}.
+                \]
+              </p>
+            </div>
+          </details>
         </div>
-      </details>
+
+      </div>
     </section>
 
-    <!-- Interactive / Simulation Ideas -->
-    <section>
-      <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
-        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer">
-          <span class="font-semibold text-slate-900 text-sm md:text-base">
-            Suggested Simulations & Interactive Ideas
-          </span>
-          <span class="text-slate-400 group-open:rotate-180 transition-transform">
-            ▾
-          </span>
-        </summary>
+    <!-- TAB: Practice Problems -->
+    <section id="tab-practice" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Week 3</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Try each problem without looking at the outline. Draw clean free-body diagrams and label all forces.
+        </p>
 
-        <div class="px-4 pb-4 pt-1 text-sm text-slate-700 space-y-3">
-          <ul class="list-disc pl-5 space-y-2">
-            <li>
-              <strong>Force & Motion Sandbox:</strong> slider-controlled applied force and mass. Students
-              predict acceleration using <code>∑F = ma</code> then check with the sim.
-            </li>
-            <li>
-              <strong>Incline Plane Builder:</strong> interactive angle and friction coefficient controls,
-              with arrows for <code>mg</code>, <code>N</code>, and friction.
-            </li>
-            <li>
-              <strong>Two-Block Tension Visualizer:</strong> adjustable masses and external force; sim displays acceleration
-              and internal tension so students can check their calculations.
-            </li>
-            <li>
-              <strong>Elevator Apparent Weight:</strong> input acceleration; show changing normal force vs time
-              on a graph next to the equation <code>N = m(g + a)</code>.
-            </li>
-          </ul>
+        <div class="space-y-4 text-sm text-slate-800">
+
+          <!-- Problem 1 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 1 – Identifying Forces
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A book rests on a table. The Earth pulls down on the book with gravitational force $mg$.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>List all forces acting on the book and draw an FBD.</li>
+                <li>Identify one Newton’s Third Law pair involving the book.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Forces on the book: weight $mg$ downward, normal force $N$ upward from the table.
+              </p>
+              <p>
+                Third Law pair example: Earth pulls on the book (downward); book pulls on Earth (upward)
+                with equal magnitude.
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 2 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 2 – Friction Threshold
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 20 kg crate is at rest on a horizontal floor. The coefficient of static friction is
+                $\mu_s = 0.40$. A horizontal force $F$ is gradually increased.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the minimum $F$ required to start the crate moving.</li>
+                <li>Draw the FBD at the threshold of motion.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                $N = mg = 20 \cdot 9.8 = 196\ \text{N}$.
+              </p>
+              <p>
+                Maximum static friction:
+                \[
+                  f_{s,\max} = \mu_s N = 0.40 \cdot 196 \approx 78\ \text{N}.
+                \]
+                Threshold force $F_{\min} \approx 78\ \text{N}$.
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 3 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 3 – Elevator Apparent Weight
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 65 kg person stands on a scale in an elevator. The elevator accelerates <em>upward</em>
+                at $a = 1.8\ \text{m/s}^2$.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Draw an FBD for the person.</li>
+                <li>Find the scale reading (normal force).</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Take upward positive: $\sum F_y = N - mg = m a$.
+              </p>
+              <p>
+                So $N = m(g + a) = 65(9.8 + 1.8) \approx 65 \cdot 11.6 \approx 754\ \text{N}$.
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 4 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 4 – Atwood-Style System
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 2.0 kg block rests on a frictionless table and is connected by a light string over a
+                frictionless pulley to a 3.0 kg hanging mass.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Draw FBDs for each mass.</li>
+                <li>Find the magnitude of the acceleration of the system.</li>
+                <li>Find the tension in the string.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Let the 3.0 kg mass move downward with acceleration $a$, and the 2.0 kg block move right with $a$.
+              </p>
+              <p>
+                For 3.0 kg: $mg - T = m a$ → $3g - T = 3a$.<br />
+                For 2.0 kg: $T = 2a$.
+              </p>
+              <p>
+                Substitute: $3g - 2a = 3a \Rightarrow 3g = 5a \Rightarrow a = (3/5)g \approx 5.9\ \text{m/s}^2$,
+                and $T = 2a \approx 11.8\ \text{N}$.
+              </p>
+            </div>
+          </details>
+
         </div>
-      </details>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-200 pt-4 mt-6 text-xs text-slate-500 flex flex-col md:flex-row justify-between gap-2">
-      <p>Week 3 – Newton’s Laws of Motion</p>
-      <p>Physics 201 • Calculus-Based Mechanics</p>
-    </footer>
+    <!-- TAB: Interactive Panel -->
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Interactive Panel – Force, Mass, and Acceleration</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Use the sliders to choose a mass $m$ and a net horizontal force $\sum F_x$.
+          The panel will compute the resulting acceleration:
+          \[
+            a = \frac{\sum F_x}{m}.
+          \]
+          You can interpret this as a simplified “FBD in one number” for a block on a horizontal surface.
+        </p>
+
+        <!-- Controls -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm text-slate-800">
+          <div>
+            <label class="block mb-1 font-semibold">Mass $m$ (kg)</label>
+            <input id="m-slider" type="range" min="1" max="50" step="1" value="10" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="m-val">10</span> kg</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold">Net Force $\sum F_x$ (N)</label>
+            <input id="f-slider" type="range" min="-100" max="100" step="5" value="20" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="f-val">20</span> N</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold">Friction Present?</label>
+            <select id="fric-select" class="w-full border border-slate-300 rounded px-2 py-1 text-xs">
+              <option value="none">No (pure net force model)</option>
+              <option value="comment">Conceptually (you include it in $\sum F$)</option>
+            </select>
+            <p class="mt-1 text-[0.7rem] text-slate-600">
+              In real problems, you’d compute $\sum F_x$ from all forces (applied, friction, tension, etc.).
+            </p>
+          </div>
+        </div>
+
+        <!-- Display -->
+        <div class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-sm text-sky-100">
+          <p class="font-semibold mb-2">Result:</p>
+          <p id="a-equation" class="mb-1">
+            \( a = \dfrac{20}{10} = 2.0\ \text{m/s}^2 \)
+          </p>
+          <p class="text-xs text-slate-400 mb-2">
+            Sign convention: positive $a$ means acceleration to the right, negative $a$ to the left.
+          </p>
+          <p class="text-xs text-slate-400">
+            Think in terms of your free-body diagram: once you’ve summed all forces along $x$,
+            this panel tells you how “hard” the motion responds based on the mass.
+          </p>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- SIDEBAR / ACTIVE LINK SCRIPT -->
-  <script>
-    // Determine current file name
-    let pathParts = window.location.pathname.split("/").filter(Boolean);
-    let current = pathParts.length ? pathParts[pathParts.length - 1] : "week3.html";
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 3</p>
+        <p>Newton’s Laws, free-body diagrams, friction, and multi-object dynamics.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-sky-300 hover:text-sky-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
 
-    document.querySelectorAll(".nav-item").forEach(link => {
-      const href = link.getAttribute("href");
-      if (href && href.endsWith(current)) {
-        link.classList.add("bg-blue-600", "text-white");
-      } else {
-        link.classList.add("text-slate-700", "hover:bg-slate-100");
-      }
+  <!-- Tabs + Interactive Panel JS -->
+  <script>
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        });
+
+        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        tabSections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('tab-' + target).classList.remove('hidden');
+
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
     });
 
-    const sidebar = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("menuBtn");
-    const overlay = document.getElementById("overlay");
+    // Interactive panel: F = m a
+    const mSlider = document.getElementById('m-slider');
+    const fSlider = document.getElementById('f-slider');
+    const mVal = document.getElementById('m-val');
+    const fVal = document.getElementById('f-val');
+    const aEq = document.getElementById('a-equation');
 
-    if (menuBtn) {
-      menuBtn.addEventListener("click", () => {
-        sidebar.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
-      });
+    function updateAcceleration() {
+      const m = Number(mSlider.value);
+      const F = Number(fSlider.value);
+      mVal.textContent = m;
+      fVal.textContent = F;
+
+      const a = F / m;
+      const aFixed = a.toFixed(2);
+
+      const eqStr = `a = \\\\dfrac{${F}}{${m}} = ${aFixed}\\\\ \\text{m/s}^2`;
+      aEq.textContent = `\\\\(${eqStr}\\\\)`;
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
     }
 
-    if (overlay) {
-      overlay.addEventListener("click", () => {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-      });
-    }
+    mSlider.addEventListener('input', updateAcceleration);
+    fSlider.addEventListener('input', updateAcceleration);
+
+    // Initial render
+    updateAcceleration();
   </script>
+</div>
+
+<!-- SIDEBAR SCRIPT -->
+<script>
+  // Highlight active link
+  const path = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-item").forEach(link => {
+    if (link.getAttribute("href").includes(path)) {
+      link.classList.add("bg-sky-600", "text-white");
+    } else {
+      link.classList.add("text-slate-700", "hover:bg-slate-100");
+    }
+  });
+
+  // Mobile toggle
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  const overlay = document.getElementById("overlay");
+
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  }
+</script>
 
 </body>
 </html>
+
 
