@@ -1,1 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Week 8 | Physics 201 – Simple Harmonic Motion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="bg-slate-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">🔁</span>
+          <a href="../index.html" class="font-bold text-xl tracking-tight hover:underline">
+            Physics 201
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="../index.html" class="text-slate-300 hover:text-white transition">Home</a>
+          <a href="../syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+          <span class="text-slate-100">Week 8</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Week 8 • Sessions 15–16
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Simple Harmonic Motion (SHM)
+      </h1>
+      <p class="text-slate-600 max-w-2xl">
+        This module treats simple harmonic motion as a differential equation, connects it to circular
+        motion, and analyzes the energy of oscillating systems such as mass–spring oscillators and
+        simple pendulums.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="overview"
+                class="tab-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+          Overview
+        </button>
+        <button data-tab="notes"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Notes
+        </button>
+        <button data-tab="examples"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Worked Examples
+        </button>
+        <button data-tab="practice"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Practice Problems
+        </button>
+        <button data-tab="sim"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Interactive Panel
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB: Overview -->
+    <section id="tab-overview" class="tab-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
+          <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
+            <li>Recognize the conditions under which a system executes simple harmonic motion (SHM).</li>
+            <li>Write and interpret the SHM differential equation
+              \(\dfrac{d^2x}{dt^2} = -\omega^2 x\).</li>
+            <li>Use calculus to derive \(x(t)\), \(v(t)\), and \(a(t)\) for SHM.</li>
+            <li>Relate SHM to uniform circular motion via projection.</li>
+            <li>Analyze energy in SHM: potential, kinetic, and total mechanical energy.</li>
+            <li>Apply SHM to mass–spring systems and the small-angle approximation of a simple pendulum.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
+          <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
+            <li>Work through the <span class="font-semibold">Notes</span> carefully; treat them as a mini-chapter on SHM.</li>
+            <li>Use the diagrams to connect equations to physical pictures (spring, circle, pendulum).</li>
+            <li>Study the <span class="font-semibold">Worked Examples</span> and replicate the steps on paper.</li>
+            <li>Attempt the <span class="font-semibold">Practice Problems</span> before revealing solution outlines.</li>
+            <li>Experiment with the <span class="font-semibold">Interactive Panel</span> to see how changing \(m, k, x_0, v_0\) alters \(A\), \(\omega\), and the graph.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Notes -->
+    <section id="tab-notes" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- 1. Definition + Spring-Mass -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. What Is Simple Harmonic Motion?</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A system executes <span class="font-semibold">simple harmonic motion (SHM)</span> when:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>There is a stable equilibrium position.</li>
+            <li>The restoring force is proportional to the displacement from equilibrium and directed toward equilibrium.</li>
+          </ul>
+          <p class="text-sm text-slate-700 mb-3">
+            For a mass–spring system on a frictionless surface:
+            \[
+              F = -kx,
+            \]
+            where \(k\) is the spring constant and \(x\) is the displacement from equilibrium.
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Newton’s 2nd law gives
+            \[
+              m\frac{d^2x}{dt^2} = -kx,
+            \]
+            or
+            \[
+              \frac{d^2x}{dt^2} = -\frac{k}{m} x \equiv -\omega^2 x,
+            \]
+            where
+            \[
+              \omega = \sqrt{\frac{k}{m}}
+            \]
+            is the <span class="font-semibold">angular frequency</span>.
+          </p>
+
+          <!-- SVG: mass-spring -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 140" class="w-full">
+              <!-- Wall -->
+              <rect x="20" y="20" width="10" height="100" fill="#0f172a" />
+              <!-- Spring (zigzag) -->
+              <polyline points="30,70 45,60 60,80 75,60 90,80 105,60 120,80 135,60 150,70"
+                        fill="none" stroke="#2563eb" stroke-width="2" />
+              <!-- Mass block -->
+              <rect x="150" y="50" width="60" height="40"
+                    fill="#f97316" stroke="#ea580c" stroke-width="1.5" rx="5" />
+              <!-- Labels -->
+              <text x="155" y="45" font-size="11" fill="#0f172a">m</text>
+              <text x="70" y="100" font-size="10" fill="#2563eb">k</text>
+              <!-- Equilibrium marker -->
+              <line x1="180" y1="95" x2="180" y2="115" stroke="#94a3b8" stroke-dasharray="4 4" />
+              <text x="150" y="120" font-size="9" fill="#64748b">equilibrium</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 2. General SHM Solution -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. General Solution to the SHM Equation</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            The differential equation
+            \[
+              \frac{d^2x}{dt^2} = -\omega^2 x
+            \]
+            has the general sinusoidal solution
+            \[
+              x(t) = A\cos(\omega t + \phi),
+            \]
+            where:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>\(A\) is the <span class="font-semibold">amplitude</span> (maximum displacement).</li>
+            <li>\(\omega\) is the angular frequency.</li>
+            <li>\(\phi\) is the phase constant, set by initial conditions.</li>
+          </ul>
+          <p class="text-sm text-slate-700 mb-3">
+            The period and frequency are:
+            \[
+              T = \frac{2\pi}{\omega}, \qquad f = \frac{1}{T} = \frac{\omega}{2\pi}.
+            \]
+          </p>
+
+          <!-- SVG: x(t) cosine -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="30" y1="90" x2="230" y2="90" stroke="#64748b" stroke-width="1.5" />
+              <line x1="30" y1="20" x2="30" y2="160" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="95" font-size="10" fill="#64748b">t</text>
+              <text x="15" y="25" font-size="10" fill="#64748b">x</text>
+
+              <!-- Cosine curve -->
+              <path d="M30 90
+                       C 60 40, 90 40, 120 90
+                       S 180 140, 210 90"
+                    fill="none" stroke="#2563eb" stroke-width="2" />
+              <text x="190" y="35" font-size="10" fill="#2563eb">\(x(t)=A\cos(\omega t+\phi)\)</text>
+
+              <!-- Amplitude lines -->
+              <line x1="30" y1="40" x2="230" y2="40" stroke="#bfdbfe" stroke-dasharray="4 4" />
+              <line x1="30" y1="140" x2="230" y2="140" stroke="#bfdbfe" stroke-dasharray="4 4" />
+              <text x="33" y="38" font-size="9" fill="#1d4ed8">+A</text>
+              <text x="33" y="152" font-size="9" fill="#1d4ed8">-A</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 3. Velocity and Acceleration -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Velocity and Acceleration from Calculus</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Starting from
+            \[
+              x(t) = A\cos(\omega t + \phi),
+            \]
+            we differentiate to find velocity and acceleration.
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            Velocity:
+            \[
+              v(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \phi).
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            Acceleration:
+            \[
+              a(t) = \frac{dv}{dt} = -A\omega^2 \cos(\omega t + \phi) = -\omega^2 x(t).
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Note that acceleration is always proportional to \(-x\), pointing toward equilibrium.
+          </p>
+        </article>
+
+        <!-- 4. Energy in SHM -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Energy in Simple Harmonic Motion</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            For a mass–spring system with amplitude \(A\), the total mechanical energy is
+            \[
+              E = \tfrac12 kA^2.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            At a general displacement \(x\):
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>Potential energy:
+              \[
+                U(x) = \tfrac12 kx^2.
+              \]
+            </li>
+            <li>Kinetic energy:
+              \[
+                K(x) = E - U(x) = \tfrac12 kA^2 - \tfrac12 kx^2
+                = \tfrac12 k(A^2 - x^2).
+              \]
+            </li>
+          </ul>
+
+          <!-- SVG: Energy vs x -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="30" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="30" y1="150" x2="30" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">x</text>
+              <text x="15" y="35" font-size="10" fill="#64748b">Energy</text>
+
+              <!-- Potential: U(x) -->
+              <path d="M40 140 Q 130 40 220 140"
+                    fill="none" stroke="#2563eb" stroke-width="2" />
+              <text x="200" y="55" font-size="10" fill="#2563eb">U(x)</text>
+
+              <!-- Total energy line -->
+              <line x1="40" y1="70" x2="220" y2="70" stroke="#f97316" stroke-width="2" />
+              <text x="45" y="65" font-size="10" fill="#f97316">E = ½kA²</text>
+
+              <!-- Mark A and -A -->
+              <line x1="70" y1="150" x2="70" y2="155" stroke="#64748b" />
+              <line x1="190" y1="150" x2="190" y2="155" stroke="#64748b" />
+              <text x="65" y="167" font-size="9" fill="#64748b">-A</text>
+              <text x="187" y="167" font-size="9" fill="#64748b">+A</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            The particle speeds up where potential energy is low (near \(x=0\)) and slows down where potential
+            energy is high (near \(x = \pm A\)).
+          </p>
+        </article>
+
+        <!-- 5. SHM as Projection of Circular Motion -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">5. SHM as Projection of Circular Motion</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            SHM can be viewed as the projection of uniform circular motion onto one axis. Imagine a point
+            moving on a circle of radius \(A\) with angular speed \(\omega\).
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            The horizontal coordinate is
+            \[
+              x(t) = A\cos(\omega t),
+            \]
+            which is exactly the SHM solution.
+          </p>
+
+          <!-- SVG: Circle + projection -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Circle -->
+              <circle cx="90" cy="90" r="50" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" />
+              <!-- Rotating point -->
+              <circle cx="125" cy="65" r="4" fill="#2563eb" />
+              <!-- Radius -->
+              <line x1="90" y1="90" x2="125" y2="65"
+                    stroke="#2563eb" stroke-width="2" />
+              <!-- Projection axis (x-axis) -->
+              <line x1="150" y1="90" x2="230" y2="90" stroke="#64748b" stroke-width="1.5" />
+              <!-- Projection line -->
+              <line x1="125" y1="65" x2="180" y2="90"
+                    stroke="#94a3b8" stroke-dasharray="4 4" />
+              <!-- Projected point -->
+              <circle cx="180" cy="90" r="4" fill="#f97316" />
+              <text x="180" y="105" font-size="10" fill="#f97316">x(t)</text>
+              <text x="75" y="30" font-size="10" fill="#2563eb">uniform circular motion</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 6. Simple Pendulum -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">6. The Simple Pendulum (Small-Angle Approximation)</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A pendulum of length \(L\) and bob mass \(m\) swings under gravity. For small angular displacements
+            \(\theta\) (in radians), the motion approximates SHM.
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            The equation of motion for small angles is
+            \[
+              \frac{d^2\theta}{dt^2} = -\frac{g}{L}\theta,
+            \]
+            which has the same form as SHM with
+            \[
+              \omega = \sqrt{\frac{g}{L}},
+            \quad
+              T = 2\pi\sqrt{\frac{L}{g}}.
+            \]
+          </p>
+
+          <!-- SVG: Pendulum -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Ceiling -->
+              <line x1="60" y1="30" x2="200" y2="30" stroke="#0f172a" stroke-width="2" />
+              <!-- Pendulum string equilibrium -->
+              <line x1="130" y1="30" x2="130" y2="110" stroke="#e5e7eb" stroke-width="1.5" />
+              <!-- Pendulum string at angle -->
+              <line x1="130" y1="30" x2="175" y2="110" stroke="#2563eb" stroke-width="2" />
+              <!-- Bob -->
+              <circle cx="175" cy="110" r="10" fill="#f97316" stroke="#ea580c" stroke-width="1.5" />
+              <!-- Angle arc -->
+              <path d="M130 55 A25 25 0 0 1 145 50"
+                    fill="none" stroke="#0f172a" stroke-width="1" />
+              <text x="147" y="53" font-size="10" fill="#0f172a">\(\theta\)</text>
+              <text x="140" y="25" font-size="10" fill="#64748b">L</text>
+            </svg>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TAB: Worked Examples -->
+    <section id="tab-examples" class="tab-section hidden">
+      <div class="space-y-6">
+
+        <!-- Example 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 1 – Finding SHM Parameters from Initial Conditions</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A mass–spring system has \(m = 0.50\,\text{kg}\) and \(k = 8.0\,\text{N/m}\).
+            At \(t = 0\), the mass is at \(x_0 = 0.15\,\text{m}\) and has zero velocity.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find \(\omega\), the angular frequency.</li>
+            <li>Find the amplitude \(A\) and phase constant \(\phi\).</li>
+            <li>Write the equation of motion \(x(t)\).</li>
+            <li>Find the period \(T\).</li>
+          </ol>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1)</strong>
+                \[
+                  \omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{8.0}{0.50}} = \sqrt{16} = 4.0\,\text{rad/s}.
+                \]
+              </p>
+              <p><strong>(2)</strong> At \(t=0\),
+                \[
+                  x(0) = A\cos\phi = x_0 = 0.15\,\text{m},
+                  \quad
+                  v(0) = -A\omega\sin\phi = 0.
+                \]
+                The second equation implies \(\sin\phi = 0\Rightarrow \phi = 0\) (choose the case consistent with \(x_0>0\)).
+                Then \(A = x_0 = 0.15\,\text{m}.\)
+              </p>
+              <p><strong>(3)</strong>
+                \[
+                  x(t) = 0.15\cos(4.0t).
+                \]
+              </p>
+              <p><strong>(4)</strong>
+                \[
+                  T = \frac{2\pi}{\omega} = \frac{2\pi}{4.0} = \frac{\pi}{2} \approx 1.57\,\text{s}.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 2 – Energy and Speed at a Displacement</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            For the system in Example 1, find the speed of the mass when its displacement is
+            \(x = 0.10\,\text{m}\).
+          </p>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                Total energy:
+                \[
+                  E = \tfrac12 kA^2 = \tfrac12 (8.0)(0.15^2) = 4.0 \times 0.0225 = 0.09\,\text{J}.
+                \]
+              </p>
+              <p>
+                At displacement \(x\),
+                \[
+                  U = \tfrac12 kx^2 = \tfrac12 (8.0)(0.10^2) = 4.0 \times 0.01 = 0.04\,\text{J}.
+                \]
+              </p>
+              <p>
+                Then \(K = E - U = 0.09 - 0.04 = 0.05\,\text{J}\).
+              </p>
+              <p>
+                Kinetic energy is \(K = \tfrac12 m v^2\Rightarrow
+                v = \sqrt{\frac{2K}{m}} = \sqrt{\frac{2(0.05)}{0.50}} = \sqrt{0.2} \approx 0.45\,\text{m/s}.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 3 – Simple Pendulum</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A simple pendulum of length \(L = 0.80\,\text{m}\) is released from rest at a small angle of
+            \(\theta_0 = 5^\circ\) (convert to radians). Assuming the small-angle approximation, find:
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>The angular frequency \(\omega\).</li>
+            <li>The period \(T\).</li>
+            <li>An expression for \(\theta(t)\).</li>
+          </ol>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1)</strong>
+                \[
+                  \omega = \sqrt{\frac{g}{L}} = \sqrt{\frac{9.8}{0.80}} \approx \sqrt{12.25} \approx 3.50\,\text{rad/s}.
+                \]
+              </p>
+              <p><strong>(2)</strong>
+                \[
+                  T = \frac{2\pi}{\omega} \approx \frac{2\pi}{3.50} \approx 1.79\,\text{s}.
+                \]
+              </p>
+              <p><strong>(3)</strong> Since it is released from rest at maximum angle, we can take
+                \(\theta(t) = \theta_0\cos(\omega t)\). Convert \(5^\circ\) to radians:
+                \(\theta_0 \approx 5\pi/180 \approx 0.087\,\text{rad}\).
+              </p>
+              <p>
+                Thus
+                \[
+                  \theta(t) \approx 0.087\cos(3.50 t).
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: Practice Problems -->
+    <section id="tab-practice" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Simple Harmonic Motion</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Work through these problems to strengthen your understanding. Try them without notes first,
+          then use the outlines to check your reasoning.
+        </p>
+
+        <div class="space-y-4 text-sm text-slate-800">
+
+          <!-- Problem 1 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 1 – SHM from a DE
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A particle along the x-axis satisfies
+                \[
+                  \frac{d^2x}{dt^2} = -9x.
+                \]
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Identify \(\omega\).</li>
+                <li>Write the general solution for \(x(t)\).</li>
+                <li>If \(x(0) = 0\) and \(v(0) = 3.0\,\text{m/s}\), find the specific solution.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>\(\omega^2 = 9 \Rightarrow \omega = 3\,\text{rad/s}.\)</p>
+              <p>
+                General solution:
+                \[
+                  x(t) = A\cos(3t) + B\sin(3t)
+                \]
+                or equivalently \(x(t) = C\cos(3t + \phi)\).
+              </p>
+              <p>
+                Use initial conditions: \(x(0)=A=0\Rightarrow A=0\); \(v(t) = -3A\sin(3t)+3B\cos(3t)\).
+                Then \(v(0)=3B=3.0\Rightarrow B=1.0.\)
+              </p>
+              <p>So \(x(t) = \sin(3t)\,\text{m}.\)</p>
+            </div>
+          </details>
+
+          <!-- Problem 2 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 2 – Energy at Turning Point
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A mass–spring system has amplitude \(A = 0.20\,\text{m}\) and spring constant
+                \(k = 12\,\text{N/m}\). The mass is \(m = 0.60\,\text{kg}\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the total energy of the system.</li>
+                <li>What are the kinetic and potential energies at \(x = 0.10\,\text{m}\)?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                \(E = \tfrac12 kA^2 = \tfrac12(12)(0.20^2) = 6 \cdot 0.04 = 0.24\,\text{J}.\)
+              </p>
+              <p>
+                At \(x=0.10\,\text{m}\),
+                \[
+                  U = \tfrac12 kx^2 = 6 \cdot 0.01 = 0.06\,\text{J},
+                  \quad
+                  K = E - U = 0.18\,\text{J}.
+                \]
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 3 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 3 – Mixed Initial Conditions
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A mass–spring oscillator has \(m = 1.0\,\text{kg}\), \(k = 25\,\text{N/m}\).
+                At \(t=0\), the mass is at \(x_0 = 0.10\,\text{m}\) and has velocity
+                \(v_0 = 0.50\,\text{m/s}\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find \(\omega\).</li>
+                <li>Determine the amplitude \(A\).</li>
+                <li>Find the phase constant \(\phi\) in \(x(t) = A\cos(\omega t + \phi)\).</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>\(\omega = \sqrt{\frac{k}{m}} = \sqrt{25/1} = 5\,\text{rad/s}.\)</p>
+              <p>
+                Use relationships at \(t=0\):
+                \[
+                  x_0 = A\cos\phi,\quad v_0 = -A\omega\sin\phi.
+                \]
+              </p>
+              <p>
+                Then
+                \[
+                  A^2 = x_0^2 + \left(\frac{v_0}{\omega}\right)^2 =
+                  0.10^2 + (0.50/5)^2 = 0.01 + 0.01 = 0.02,
+                \]
+                so \(A = \sqrt{0.02} \approx 0.141\,\text{m}.\)
+              </p>
+              <p>
+                \(\cos\phi = x_0/A \approx 0.10/0.141 \approx 0.707\Rightarrow \phi\approx \pi/4\)
+                (check sign with \(v_0\)).
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 4 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 4 – Pendulum Period Comparison
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                Two simple pendulums have lengths \(L_1 = 0.50\,\text{m}\) and \(L_2 = 2.0\,\text{m}\).
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the ratio of their periods \(T_2/T_1\).</li>
+                <li>Which one swings more slowly?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                \(T = 2\pi\sqrt{L/g}\Rightarrow T_2/T_1 = \sqrt{L_2/L_1} = \sqrt{2.0/0.50} = \sqrt{4} = 2.\)
+              </p>
+              <p>The longer pendulum (\(L_2\)) swings more slowly and has double the period.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Interactive Panel -->
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Interactive SHM Panel – Mass–Spring Oscillator</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Use the controls to set the mass \(m\), spring constant \(k\), initial displacement \(x_0\),
+          and initial velocity \(v_0\). The panel computes the resulting amplitude \(A\),
+          angular frequency \(\omega\), period \(T\), and phase \(\phi\), and plots
+          \[
+            x(t) = A\cos(\omega t + \phi)
+          \]
+          for \(0 \le t \le 10\,\text{s}\).
+        </p>
+
+        <!-- Controls -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 text-sm text-slate-800">
+          <div>
+            <label class="block mb-1 font-semibold">Mass \(m\) (kg)</label>
+            <input id="m" type="range" min="0.2" max="5" step="0.1" value="1.0" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="m-val">1.0</span> kg</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold">Spring Constant \(k\) (N/m)</label>
+            <input id="k" type="range" min="1" max="50" step="1" value="20" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="k-val">20</span> N/m</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold">Initial Position \(x_0\) (m)</label>
+            <input id="x0" type="range" min="-0.5" max="0.5" step="0.01" value="0.2" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="x0-val">0.20</span> m</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold">Initial Velocity \(v_0\) (m/s)</label>
+            <input id="v0" type="range" min="-2" max="2" step="0.1" value="0.0" class="w-full" />
+            <div class="mt-1 text-xs">Value: <span id="v0-val">0.0</span> m/s</div>
+          </div>
+        </div>
+
+        <!-- Numeric Output -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 text-xs md:text-sm text-slate-800">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+            <p class="font-semibold mb-1">Angular Frequency</p>
+            <p id="omega-display">\(\omega \approx 4.47\,\text{rad/s}\)</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+            <p class="font-semibold mb-1">Period</p>
+            <p id="T-display">\(T \approx 1.41\,\text{s}\)</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+            <p class="font-semibold mb-1">Amplitude</p>
+            <p id="A-display">\(A \approx 0.20\,\text{m}\)</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+            <p class="font-semibold mb-1">Phase</p>
+            <p id="phi-display">\(\phi \approx 0.00\,\text{rad}\)</p>
+          </div>
+        </div>
+
+        <!-- Equations -->
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-800 mb-6">
+          <p class="font-semibold mb-2">Equations of Motion (from your settings):</p>
+          <p id="x-equation" class="mb-1">
+            \(x(t) = 0.20 \cos(4.47 t + 0.00)\)
+          </p>
+          <p id="v-equation" class="mb-1">
+            \(v(t) = -0.89 \sin(4.47 t + 0.00)\)
+          </p>
+          <p id="a-equation">
+            \(a(t) = -19.98 \cos(4.47 t + 0.00)\)
+          </p>
+        </div>
+
+        <!-- Graph -->
+        <div class="bg-white border border-slate-200 rounded-lg p-4">
+          <p class="text-sm font-semibold text-slate-800 mb-2">
+            Displacement vs Time (0–10 s)
+          </p>
+          <div class="w-full max-w-3xl mx-auto">
+            <svg id="shm-graph" viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="30" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="30" y1="20" x2="30" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">t (s)</text>
+              <text x="15" y="25" font-size="10" fill="#64748b">x (m)</text>
+
+              <!-- Equilibrium line -->
+              <line x1="30" y1="85" x2="230" y2="85" stroke="#e5e7eb" stroke-dasharray="4 4" />
+
+              <!-- Curve -->
+              <path id="shm-curve" d="" fill="none" stroke="#2563eb" stroke-width="2" />
+
+              <!-- Amplitude markers (updated in JS by reusing same y scale) -->
+              <text id="amp-label" x="34" y="33" font-size="9" fill="#1d4ed8"></text>
+              <text id="amp-neg-label" x="34" y="144" font-size="9" fill="#1d4ed8"></text>
+            </svg>
+          </div>
+          <p class="text-[0.75rem] text-slate-600 mt-2">
+            The sinusoidal curve shows \(x(t)\). Changing \(m\), \(k\), \(x_0\), or \(v_0\) modifies the
+            amplitude, frequency, and phase. You can ask: for what times does \(x(t)=0\)? When is the speed
+            maximum? When is the acceleration maximum?
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 8</p>
+        <p>Simple Harmonic Motion – differential equations, energy, and physical models.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tabs + Interactive Panel JS -->
+  <script>
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        });
+
+        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        tabSections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('tab-' + target).classList.remove('hidden');
+
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+    });
+
+    // Interactive SHM panel
+    const mSlider = document.getElementById('m');
+    const kSlider = document.getElementById('k');
+    const x0Slider = document.getElementById('x0');
+    const v0Slider = document.getElementById('v0');
+
+    const mVal = document.getElementById('m-val');
+    const kVal = document.getElementById('k-val');
+    const x0Val = document.getElementById('x0-val');
+    const v0Val = document.getElementById('v0-val');
+
+    const omegaDisp = document.getElementById('omega-display');
+    const TDisp = document.getElementById('T-display');
+    const ADisp = document.getElementById('A-display');
+    const phiDisp = document.getElementById('phi-display');
+
+    const xEq = document.getElementById('x-equation');
+    const vEq = document.getElementById('v-equation');
+    const aEq = document.getElementById('a-equation');
+
+    const shmCurve = document.getElementById('shm-curve');
+    const ampLabel = document.getElementById('amp-label');
+    const ampNegLabel = document.getElementById('amp-neg-label');
+
+    function roundTo(value, digits) {
+      const factor = Math.pow(10, digits);
+      return Math.round(value * factor) / factor;
+    }
+
+    function updateSHM() {
+      const m = Number(mSlider.value);
+      const k = Number(kSlider.value);
+      const x0 = Number(x0Slider.value);
+      const v0 = Number(v0Slider.value);
+
+      mVal.textContent = roundTo(m, 2);
+      kVal.textContent = roundTo(k, 1);
+      x0Val.textContent = x0.toFixed(2);
+      v0Val.textContent = roundTo(v0, 2);
+
+      let omega = Math.sqrt(k / m);
+      if (!isFinite(omega) || omega <= 0) {
+        omega = 0;
+      }
+
+      // Amplitude from initial conditions
+      let A;
+      if (omega === 0) {
+        A = Math.abs(x0);
+      } else {
+        A = Math.sqrt(x0 * x0 + (v0 / omega) * (v0 / omega));
+      }
+
+      // Phase using atan2: cos-form with x(0)=A cos φ, v(0)=-A ω sin φ
+      let phi = 0;
+      if (A > 0 && omega > 0) {
+        const cosPhi = x0 / A;
+        const sinPhi = -v0 / (A * omega);
+        phi = Math.atan2(sinPhi, cosPhi);
+      }
+
+      const T = (omega > 0) ? (2 * Math.PI / omega) : Infinity;
+
+      // Update displays
+      if (omega > 0) {
+        omegaDisp.textContent = `\\(\\omega \\approx ${roundTo(omega, 2)}\\,\\text{rad/s}\\)`;
+        TDisp.textContent = `\\(T \\approx ${roundTo(T, 2)}\\,\\text{s}\\)`;
+      } else {
+        omegaDisp.textContent = `\\(\\omega = 0\\)`;
+        TDisp.textContent = `\\(T = \\infty\\)`;
+      }
+      ADisp.textContent = `\\(A \\approx ${roundTo(A, 3)}\\,\\text{m}\\)`;
+      phiDisp.textContent = `\\(\\phi \\approx ${roundTo(phi, 2)}\\,\\text{rad}\\)`;
+
+      // Equations
+      const AStr = roundTo(A, 3);
+      const oStr = roundTo(omega, 3);
+      const phiStr = roundTo(phi, 3);
+
+      xEq.textContent = `\\(x(t) = ${AStr} \\cos(${oStr}\\, t + ${phiStr})\\)`;
+      vEq.textContent = `\\(v(t) = -${roundTo(AStr * oStr, 3)} \\sin(${oStr}\\, t + ${phiStr})\\)`;
+      aEq.textContent = `\\(a(t) = -${roundTo(AStr * oStr * oStr, 3)} \\cos(${oStr}\\, t + ${phiStr})\\)`;
+
+      // Update graph as SVG path
+      const tMax = 10; // seconds
+      const nPoints = 200;
+      const xMinPixel = 30;
+      const xMaxPixel = 230;
+      const yTopPixel = 20;
+      const yBottomPixel = 150;
+      const xPixelRange = xMaxPixel - xMinPixel;
+      const yPixelRange = yBottomPixel - yTopPixel;
+
+      const scaleAmp = Math.max(A, 0.05); // avoid division by zero; 0.05 m min scale
+      let d = "";
+
+      for (let i = 0; i <= nPoints; i++) {
+        const t = (tMax * i) / nPoints;
+        const x = A * Math.cos(omega * t + phi);
+
+        const px = xMinPixel + (t / tMax) * xPixelRange;
+        const py = (yTopPixel + yBottomPixel) / 2 - (x / scaleAmp) * (yPixelRange / 2) * 0.9;
+
+        if (i === 0) {
+          d += `M ${px.toFixed(2)} ${py.toFixed(2)} `;
+        } else {
+          d += `L ${px.toFixed(2)} ${py.toFixed(2)} `;
+        }
+      }
+
+      shmCurve.setAttribute('d', d);
+
+      // Update amplitude labels (approximate)
+      const yPlus = (yTopPixel + yBottomPixel) / 2 - (1.0) * (yPixelRange / 2) * 0.9;
+      const yMinus = (yTopPixel + yBottomPixel) / 2 + (1.0) * (yPixelRange / 2) * 0.9;
+
+      ampLabel.textContent = (A > 0.05) ? `+A ≈ ${roundTo(A, 2)} m` : '';
+      ampNegLabel.textContent = (A > 0.05) ? `-A ≈ -${roundTo(A, 2)} m` : '';
+      ampLabel.setAttribute('y', (yPlus + 5).toFixed(0));
+      ampNegLabel.setAttribute('y', (yMinus - 5).toFixed(0));
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    mSlider.addEventListener('input', updateSHM);
+    kSlider.addEventListener('input', updateSHM);
+    x0Slider.addEventListener('input', updateSHM);
+    v0Slider.addEventListener('input', updateSHM);
+
+    // Initial render
+    updateSHM();
+  </script>
+</body>
+</html>
 
