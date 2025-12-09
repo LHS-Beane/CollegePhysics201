@@ -1,1 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formula & Symbol Sheet | Physics 201</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="bg-slate-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">📘</span>
+          <a href="index.html" class="font-bold text-xl tracking-tight hover:underline">
+            Physics 201
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-6 text-sm font-medium items-center">
+          <a href="index.html" class="text-slate-300 hover:text-white transition">Home</a>
+          <a href="syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+
+          <!-- Weeks dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+              Weeks
+              <span class="text-[0.6rem]">▼</span>
+            </button>
+            <div class="absolute left-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+              <a href="week1.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 1 – Kinematics</a>
+              <a href="week2.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 2 – Forces</a>
+              <a href="week3.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 3 – Work & Energy</a>
+              <a href="week4.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 4 – Momentum</a>
+              <a href="week5.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 5 – Rotation I</a>
+              <a href="week6.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 6 – Rotation II</a>
+              <a href="week7.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 7 – Rotation & Torque</a>
+              <a href="week8.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 8 – Oscillations</a>
+            </div>
+          </div>
+
+          <!-- Resources dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-blue-300 hover:text-white transition">
+              Resources
+              <span class="text-[0.6rem]">▼</span>
+            </button>
+            <div class="absolute right-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+              <a href="formulas.html" class="block px-4 py-2 text-sm hover:bg-slate-100 font-semibold text-blue-700">
+                Formula Sheet
+              </a>
+              <a href="calculus.html" class="block px-4 py-2 text-sm hover:bg-slate-100">
+                Calculus Refresher
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Reference
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Formula &amp; Symbol Sheet
+      </h1>
+      <p class="text-slate-600 max-w-2xl text-sm md:text-base">
+        Master list of equations, variables, units, and meanings for Physics 201
+        (8-week calculus-based mechanics course). Use this as a quick reference, not a substitute for understanding.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        <button id="expand-all" class="px-3 py-1 rounded-md border border-slate-300 bg-slate-900 text-white">
+          Expand All
+        </button>
+        <button id="collapse-all" class="px-3 py-1 rounded-md border border-slate-300 bg-white text-slate-700">
+          Collapse All
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full text-sm md:text-[0.95rem]">
+
+    <p class="text-xs text-slate-500 mb-4">
+      Tip: click each section header to expand/collapse. Use “Expand All” before printing.
+    </p>
+
+    <div class="space-y-4">
+
+      <!-- I. Units & Dimensions -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm" open>
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">I. Units &amp; Dimensions</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4 text-sm text-slate-800">
+
+          <div>
+            <h2 class="font-semibold mb-1 text-slate-800 text-sm">SI Base Units</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+                <thead class="bg-slate-100">
+                  <tr>
+                    <th class="px-3 py-2 border-b">Quantity</th>
+                    <th class="px-3 py-2 border-b">Symbol</th>
+                    <th class="px-3 py-2 border-b">Unit</th>
+                    <th class="px-3 py-2 border-b">Unit Symbol</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Length</td>
+                    <td class="px-3 py-1 border-b">\(L\)</td>
+                    <td class="px-3 py-1 border-b">meter</td>
+                    <td class="px-3 py-1 border-b">m</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-1 border-b">Mass</td>
+                    <td class="px-3 py-1 border-b">\(m\)</td>
+                    <td class="px-3 py-1 border-b">kilogram</td>
+                    <td class="px-3 py-1 border-b">kg</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Time</td>
+                    <td class="px-3 py-1 border-b">\(t\)</td>
+                    <td class="px-3 py-1 border-b">second</td>
+                    <td class="px-3 py-1 border-b">s</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-1 border-b">Electric current</td>
+                    <td class="px-3 py-1 border-b">\(I\)</td>
+                    <td class="px-3 py-1 border-b">ampere</td>
+                    <td class="px-3 py-1 border-b">A</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Temperature</td>
+                    <td class="px-3 py-1 border-b">\(T\)</td>
+                    <td class="px-3 py-1 border-b">kelvin</td>
+                    <td class="px-3 py-1 border-b">K</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-1 border-b">Amount of substance</td>
+                    <td class="px-3 py-1 border-b">\(n\)</td>
+                    <td class="px-3 py-1 border-b">mole</td>
+                    <td class="px-3 py-1 border-b">mol</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="font-semibold mb-1 text-slate-800 text-sm">Common Derived Units</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+                <thead class="bg-slate-100">
+                  <tr>
+                    <th class="px-3 py-2 border-b">Quantity</th>
+                    <th class="px-3 py-2 border-b">Unit</th>
+                    <th class="px-3 py-2 border-b">Symbol</th>
+                    <th class="px-3 py-2 border-b">In Base Units</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Force</td>
+                    <td class="px-3 py-1 border-b">newton</td>
+                    <td class="px-3 py-1 border-b">N</td>
+                    <td class="px-3 py-1 border-b">kg·m/s\(^{2}\)</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-1 border-b">Work/Energy</td>
+                    <td class="px-3 py-1 border-b">joule</td>
+                    <td class="px-3 py-1 border-b">J</td>
+                    <td class="px-3 py-1 border-b">N·m = kg·m\(^{2}\)/s\(^{2}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Power</td>
+                    <td class="px-3 py-1 border-b">watt</td>
+                    <td class="px-3 py-1 border-b">W</td>
+                    <td class="px-3 py-1 border-b">J/s = kg·m\(^{2}\)/s\(^{3}\)</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-1 border-b">Pressure</td>
+                    <td class="px-3 py-1 border-b">pascal</td>
+                    <td class="px-3 py-1 border-b">Pa</td>
+                    <td class="px-3 py-1 border-b">N/m\(^{2}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1 border-b">Frequency</td>
+                    <td class="px-3 py-1 border-b">hertz</td>
+                    <td class="px-3 py-1 border-b">Hz</td>
+                    <td class="px-3 py-1 border-b">1/s</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </details>
+
+      <!-- II. Kinematics -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">II. Linear Kinematics (1D &amp; 2D)</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables &amp; Units</th>
+                  <th class="px-3 py-2 border-b">Meaning / Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( v = \dfrac{dx}{dt} \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(x\): position (m)  
+                    \(v\): velocity (m/s)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Definition of instantaneous velocity.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">\( a = \dfrac{dv}{dt} \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(a\): acceleration (m/s\(^2\))  
+                    \(v\): velocity (m/s)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Definition of instantaneous acceleration.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( x = x_0 + v_0 t + \tfrac12 a t^2 \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(x_0\): initial position (m)  
+                    \(v_0\): initial velocity (m/s)  
+                    \(a\): constant acceleration (m/s\(^2\))
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Position for constant acceleration.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">\( v = v_0 + a t \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Same variables as above.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Velocity update for constant acceleration.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( v^2 = v_0^2 + 2a(x - x_0) \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Eliminates time \(t\).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Constant acceleration only.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">Projectile:  
+                    \( x(t) = v_0\cos\theta_0\, t \)  
+                    \( y(t) = y_0 + v_0\sin\theta_0\, t - \tfrac12 g t^2 \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(v_0\): launch speed (m/s)  
+                    \(\theta_0\): launch angle  
+                    \(g\): 9.8 m/s\(^2\)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Neglects air resistance; constant downward acceleration.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- III. Vectors -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">III. Vectors &amp; Dot Product</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \vec A = A_x\,\hat i + A_y\,\hat j(+A_z\,\hat k) \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(A_x, A_y, A_z\): components  
+                    \(\hat i,\hat j,\hat k\): unit vectors
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Component form in Cartesian coordinates.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( |\vec A| = \sqrt{A_x^2 + A_y^2 (+A_z^2)} \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Magnitude of a vector.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Euclidean length.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \vec A \cdot \vec B = A_x B_x + A_y B_y (+A_z B_z) \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Components of vectors \(\vec A, \vec B\).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Dot product; equals \(AB\cos\theta\).
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( \vec A \cdot \vec B = AB\cos\theta \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(A, B\): magnitudes; \(\theta\): angle between them.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Useful for work: \(W = \vec F\cdot \vec d\).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- IV. Forces & Newton -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">IV. Forces &amp; Newton’s Laws</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning / Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( \sum \vec F = m\vec a \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(m\): mass (kg)  
+                    \(\vec a\): acceleration (m/s\(^2\))
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Newton’s 2nd Law; vector equation.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">\( \vec w = m\vec g \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Weight: force of gravity near Earth’s surface.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(\vec g\) ≈ \((0,-9.8)\,\text{m/s}^2\).
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( f_s \le \mu_s N \) (static friction)  
+                    \( f_k = \mu_k N \) (kinetic friction)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(N\): normal force (N)  
+                    \(\mu_s,\mu_k\): coefficients (unitless)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Static friction adjusts up to a max; kinetic is usually smaller.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">\( F_\text{spring} = -kx \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(k\): spring constant (N/m)  
+                    \(x\): displacement from equilibrium (m)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Hooke’s Law; minus sign pulls back toward equilibrium.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- V. Work, Energy, Power -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">V. Work, Energy &amp; Power</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning / Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( W = \vec F\cdot \vec d \)</td>
+                  <td class="px-3 py-2 border-b">
+                    \(\vec d\): displacement (m)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Work by a constant force.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( W = \int_{x_i}^{x_f} F(x)\,dx \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Variable force along \(x\).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Area under \(F\)-vs-\(x\) graph.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( K = \tfrac12 mv^2 \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Translational kinetic energy.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Always \(\ge 0\).
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">\( U_g = mgh \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Gravitational potential (near Earth).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Valid for small height changes; depends on choice of zero level.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( U_s = \tfrac12 kx^2 \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Spring potential energy.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(x\) measured from spring’s natural length.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( K_i + U_i + W_\text{nc} = K_f + U_f \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(W_\text{nc}\): work by non-conservative forces.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    General energy accounting.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( P = \dfrac{dW}{dt} \), \( P = \vec F\cdot \vec v \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Power (J/s = W).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Instantaneous rate of doing work.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- VI. Momentum & Collisions -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">VI. Momentum &amp; Collisions</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">\( \vec p = m\vec v \)</td>
+                  <td class="px-3 py-2 border-b">
+                    Linear momentum (kg·m/s).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Vector quantity; direction of motion.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( \vec J = \int \vec F\,dt = \Delta \vec p \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Impulse; area under \(F\)-vs-\(t\) graph.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Changes momentum.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \sum \vec p_\text{initial} = \sum \vec p_\text{final} \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Isolated system (no external net impulse).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Momentum conservation.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    Elastic 1D: \(v_{1f}, v_{2f}\) from momentum + energy
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Uses both \(p\) and \(K\) conservation.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Perfectly elastic collisions keep total \(K\) constant.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- VII. Rotation & Torque -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">VII. Rotation, Torque &amp; Rotational Energy</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning / Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \omega = \dfrac{d\theta}{dt} \), \( \alpha = \dfrac{d\omega}{dt} \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(\theta\): angle (rad)  
+                    \(\omega\): angular velocity (rad/s)  
+                    \(\alpha\): angular acceleration (rad/s\(^2\))
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Angular analogs of \(v\) and \(a\).
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( \omega = \omega_0 + \alpha t \)  
+                    \( \theta = \theta_0 + \omega_0 t + \tfrac12 \alpha t^2 \)  
+                    \( \omega^2 = \omega_0^2 + 2\alpha(\theta - \theta_0) \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Constant \(\alpha\) only.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Rotational kinematics.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( v = r\omega, \quad a_t = r\alpha, \quad a_c = r\omega^2 \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(r\): distance from axis (m).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Links linear and angular motion.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( I = \sum m_i r_i^2 \),  
+                    \( I = \int r^2\,dm \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Moment of inertia about an axis.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Measures resistance to changes in rotational motion.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( K_\text{rot} = \tfrac12 I\omega^2 \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Rotational kinetic energy.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Combine with translational \(K\) for rolling.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( \vec \tau = \vec r \times \vec F \)  
+                    \( \tau = rF\sin\theta \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Torque about an axis.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    CCW often chosen positive.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \sum \tau = I\alpha \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Rotational analog of \( \sum F = ma \).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Newton’s 2nd Law for rotation.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( W = \int \tau\,d\theta \), \( P = \tau\omega \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Work and power in rotational motion.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Analogous to \( W = \int F\,dx\), \( P = Fv\).
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    Rolling without slipping: \( v_\text{CM} = R\omega \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(R\): radius of rolling body.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Pure rolling (no slipping) condition.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- VIII. Oscillations & SHM -->
+      <details class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <summary class="cursor-pointer px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-semibold text-slate-800">VIII. Oscillations &amp; SHM</span>
+          <span class="text-[0.7rem] text-slate-500">click to toggle</span>
+        </summary>
+        <div class="p-4 space-y-4">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-xs md:text-sm border border-slate-200">
+              <thead class="bg-slate-100">
+                <tr>
+                  <th class="px-3 py-2 border-b">Equation</th>
+                  <th class="px-3 py-2 border-b">Variables</th>
+                  <th class="px-3 py-2 border-b">Meaning / Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( x(t) = A\cos(\omega t + \phi) \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(A\): amplitude (m)  
+                    \(\omega\): angular frequency (rad/s)  
+                    \(\phi\): phase (rad)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    General SHM solution.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    \( v(t) = -A\omega\sin(\omega t + \phi) \)  
+                    \( a(t) = -A\omega^2\cos(\omega t + \phi) = -\omega^2 x(t) \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Velocity and acceleration in SHM.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Acceleration is proportional to displacement, opposite direction.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 border-b">
+                    \( \omega = \sqrt{\dfrac{k}{m}} \) for mass–spring
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    \(k\): spring constant (N/m).
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    SHM angular frequency for horizontal mass–spring.
+                  </td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="px-3 py-2 border-b">
+                    Energy:  
+                    \( E = \tfrac12 kA^2 = K + U \)  
+                    \( K = \tfrac12 k(A^2 - x^2) \)  
+                    \( U = \tfrac12 kx^2 \)
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Total energy constant for ideal SHM.
+                  </td>
+                  <td class="px-3 py-2 border-b">
+                    Energy swaps between kinetic and potential.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 – Formula Sheet</p>
+        <p>Core mechanics equations for the 8-week course.</p>
+      </div>
+      <div>
+        <a href="index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: Expand/Collapse all -->
+  <script>
+    const expandBtn = document.getElementById('expand-all');
+    const collapseBtn = document.getElementById('collapse-all');
+    const allDetails = document.querySelectorAll('details');
+
+    expandBtn.addEventListener('click', () => {
+      allDetails.forEach(d => d.open = true);
+      if (window.MathJax) MathJax.typesetPromise();
+    });
+
+    collapseBtn.addEventListener('click', () => {
+      allDetails.forEach(d => d.open = false);
+    });
+  </script>
+</body>
+</html>
 
