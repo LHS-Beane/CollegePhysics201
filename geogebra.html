@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGebra Simulations | Mr. Beane</title>
+    <style>
+        /* --- COPYING YOUR THEME FOR CONSISTENCY --- */
+        :root {
+            --school-blue: #003399; 
+            --accent-gray: #f4f4f4;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--school-blue);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand { font-weight: bold; font-size: 1.5rem; }
+        .nav-links a { color: var(--white); margin-left: 20px; }
+        .nav-links a:hover { text-decoration: underline; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--school-blue);
+        }
+
+        /* --- SIMULATION GRID --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column for big simulations */
+            gap: 3rem;
+        }
+
+        .sim-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .sim-card h2 {
+            color: var(--school-blue);
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .sim-card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* --- RESPONSIVE VIDEO/IFRAME CONTAINER --- */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #555;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+        
+        .back-btn:hover { background: #333; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand">Interactive Sims</div>
+        <div class="nav-links">
+            <a href="https://lhs-beane.github.io/">Back to Main Hub</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>GeoGebra Physics Tools</h1>
+        <p>Use these interactive models to visualize vectors, motion, and forces.</p>
+    </header>
+
+    <div class="container">
+        <div class="sim-grid">
+
+            <div class="sim-card">
+                <h2>Vector Addition & Components</h2>
+                <p>Drag the vectors to see how head-to-tail addition works and how components (x, y) combine to form the resultant.</p>
+                
+                <div class="iframe-container">
+                    <iframe src="https://www.geogebra.org/material/iframe/id/u55Xq6Pq/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" 
+                    style="border:0px;" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="sim-card">
+                <h2>Projectile Motion Calculator</h2>
+                <p>Adjust the launch angle and initial velocity. Observe the parabolic path and the independence of x and y motion.</p>
+                
+                <div class="iframe-container">
+                    <iframe src="https://www.geogebra.org/material/iframe/id/h8w8n7m5/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" 
+                    style="border:0px;" allowfullscreen></iframe>
+                </div>
+            </div>
+
+             <div class="sim-card">
+                <h2>Slope and Derivatives</h2>
+                <p>Visualize the tangent line and instantaneous rate of change.</p>
+                
+                <div class="iframe-container">
+                    <iframe src="https://www.geogebra.org/material/iframe/id/R5e98X8w/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" 
+                    style="border:0px;" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://lhs-beane.github.io/" class="back-btn">Return to Main Menu</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Andy Beane | Louisville High School</p>
+        <p>Simulations powered by <a href="https://www.geogebra.org" target="_blank">GeoGebra</a>.</p>
+    </footer>
+
+</body>
+</html>
