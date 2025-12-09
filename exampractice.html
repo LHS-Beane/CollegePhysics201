@@ -1,1 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interactive Comprehensive Problem | Physics 201</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .feedback-ok {
+      color: #16a34a;
+      font-weight: 600;
+    }
+    .feedback-bad {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- HEADER / HERO -->
+  <header class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Physics 201 • Comprehensive Capstone Problem
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Incline, Friction, Spring, and SHM – Interactive Solver
+      </h1>
+      <p class="text-slate-600 max-w-3xl text-sm md:text-base">
+        This tool generates a multi-part problem that ties together Newton’s laws, work–energy,
+        friction, springs, and simple harmonic motion. Each time you click
+        <span class="font-semibold">“New Version”</span>, you get a new set of parameters.
+        Enter your answers, check them, and reveal hints or full solutions step-by-step.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3 items-center">
+        <button id="newVersionBtn"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800">
+          🔁 New Random Version
+        </button>
+        <span class="text-xs text-slate-500">
+          Tolerance for numeric answers: about 2–3% or ±0.02 in units.
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+
+    <!-- PARAMETERS SUMMARY + SIMPLE DIAGRAM -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-xl font-bold text-slate-800 mb-3">Problem Setup</h2>
+      <p class="text-sm text-slate-700 mb-4">
+        A block of mass $m$ starts from rest at the top of a rough incline, slides down,
+        moves across a rough horizontal surface, and compresses a spring at the end.
+        Later, you will analyze a frictionless SHM version using the same $m$ and $k$.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <!-- Parameters -->
+        <div class="bg-slate-50 rounded-lg border border-slate-200 p-4 text-sm">
+          <h3 class="font-semibold text-slate-800 mb-2">Randomized Parameters</h3>
+          <ul class="space-y-1 text-slate-700">
+            <li>Mass: <span id="p-m" class="font-mono"></span> kg</li>
+            <li>Incline angle: <span id="p-theta" class="font-mono"></span>°</li>
+            <li>Incline length: <span id="p-L" class="font-mono"></span> m</li>
+            <li>Coefficient of kinetic friction on incline: <span id="p-mu1" class="font-mono"></span></li>
+            <li>Coefficient of kinetic friction on horizontal: <span id="p-mu2" class="font-mono"></span></li>
+            <li>Distance from bottom of ramp to spring: <span id="p-d" class="font-mono"></span> m</li>
+            <li>Spring constant: <span id="p-k" class="font-mono"></span> N/m</li>
+            <li>Take $g = 9.8\\,\\text{m/s}^2$.</li>
+          </ul>
+          <p id="friction-note" class="mt-2 text-xs text-slate-500"></p>
+        </div>
+
+        <!-- Simple diagram (static geometry, dynamic labels) -->
+        <div class="w-full">
+          <svg viewBox="0 0 320 180" class="w-full">
+            <!-- ground -->
+            <line x1="40" y1="150" x2="280" y2="150" stroke="#64748b" stroke-width="2" />
+            <!-- incline -->
+            <line x1="40" y1="150" x2="150" y2="60" stroke="#1d4ed8" stroke-width="3" />
+            <!-- block on incline -->
+            <rect x="115" y="75" width="25" height="25"
+                  transform="rotate(-35 127.5 87.5)" fill="#0ea5e9" />
+            <!-- horizontal block path -->
+            <line x1="150" y1="150" x2="240" y2="150" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+            <!-- spring -->
+            <rect x="240" y="130" width="40" height="20" fill="#f97316" opacity="0.9" />
+            <text x="246" y="144" font-size="10" fill="#1f2937">spring</text>
+
+            <!-- theta arc -->
+            <path d="M60 150 A20 20 0 0 1 80 135" fill="none" stroke="#0f172a" stroke-width="1" />
+            <text x="82" y="137" font-size="10" fill="#0f172a">θ</text>
+
+            <!-- labels -->
+            <text x="60" y="165" font-size="10" fill="#64748b">bottom of ramp</text>
+            <text x="205" y="165" font-size="10" fill="#64748b">rough horizontal</text>
+          </svg>
+          <p class="mt-2 text-xs text-slate-500">
+            Geometry is schematic (not to scale). Use the numerical parameters above
+            for all calculations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 1: Energy & Forces on the Incline -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-lg font-bold text-slate-800 mb-2">Part 1 – Motion Down the Incline</h2>
+      <p class="text-sm text-slate-700 mb-3">
+        The block of mass $m$ starts from rest at the top of the incline and slides down a
+        distance $L$ along the ramp under gravity and kinetic friction with coefficient $\mu_1$.
+        Take the positive direction down the ramp.
+      </p>
+
+      <ol class="list-decimal pl-5 text-sm text-slate-800 space-y-3 mb-3">
+        <li>
+          Use Newton’s laws along the ramp to show that the acceleration magnitude is
+          \[
+            a = g(\sin\theta - \mu_1 \cos\theta).
+          \]
+        </li>
+        <li>
+          Using work–energy or kinematics, find the speed $v_1$ of the block at the bottom
+          of the incline.
+        </li>
+      </ol>
+
+      <!-- Input for a and v1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <label class="block mb-1 font-semibold">
+            (Numerical) Acceleration $a$ down the ramp (m/s²)
+          </label>
+          <input id="ans-a" type="number" step="0.01"
+                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+          <button onclick="checkAnswer('a')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+            Check $a$
+          </button>
+          <p id="fb-a" class="mt-1 text-xs"></p>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">
+            (Numerical) Speed $v_1$ at bottom of ramp (m/s)
+          </label>
+          <input id="ans-v1" type="number" step="0.01"
+                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+          <button onclick="checkAnswer('v1')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+            Check $v_1$
+          </button>
+          <p id="fb-v1" class="mt-1 text-xs"></p>
+        </div>
+      </div>
+
+      <!-- Hint + Solution -->
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          💡 Get a hint for Part 1
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            Draw a free-body diagram with three forces on the block:
+            gravity $mg$, the normal force $N$, and kinetic friction $f_k$.
+          </p>
+          <p>
+            Resolve gravity into components parallel and perpendicular to the incline:
+            along the ramp you get $mg\sin\theta$ (down) and perpendicular $mg\cos\theta$.
+          </p>
+          <p>
+            Kinetic friction magnitude is $f_k = \mu_1 N$, and $N = mg\cos\theta$.
+          </p>
+          <p>
+            Along the ramp, taking down the ramp as positive:
+            \[
+              \sum F_\parallel = mg\sin\theta - f_k = mg\sin\theta - \mu_1 mg\cos\theta = ma.
+            \]
+          </p>
+        </div>
+      </details>
+
+      <details class="mt-2">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          📘 Show full solution for Part 1
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p><strong>Acceleration:</strong></p>
+          <p>
+            Along the ramp we have
+            \[
+              mg\sin\theta - \mu_1 mg\cos\theta = ma,
+            \]
+            so
+            \[
+              a = g(\sin\theta - \mu_1\cos\theta).
+            \]
+          </p>
+          <p><strong>Speed at the bottom:</strong></p>
+          <p>
+            Using work–energy from top to bottom (distance $L$ along the ramp):
+            \[
+              W_\text{gravity} + W_\text{friction} = \Delta K.
+            \]
+          </p>
+          <p>
+            Gravity does positive work $W_g = mgL\sin\theta$.
+            Friction does negative work
+            \[
+              W_f = -f_k L = -\mu_1 mg\cos\theta \, L.
+            \]
+          </p>
+          <p>
+            Starting from rest, $\Delta K = \tfrac12 m v_1^2 - 0$, so
+            \[
+              mgL(\sin\theta - \mu_1\cos\theta) = \tfrac12 m v_1^2.
+            \]
+          </p>
+          <p>
+            Cancel $m$ and solve for $v_1$:
+            \[
+              v_1 = \sqrt{2gL(\sin\theta - \mu_1\cos\theta)}.
+            \]
+          </p>
+          <p>
+            The code uses this formula with the random values shown in the parameter block.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- PART 2: Rough Horizontal Before the Spring -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-lg font-bold text-slate-800 mb-2">Part 2 – Rough Horizontal Surface</h2>
+      <p class="text-sm text-slate-700 mb-3">
+        At the bottom of the ramp the block has speed $v_1$. It then slides across a
+        rough horizontal surface of length $d$ with kinetic friction coefficient $\mu_2$
+        before reaching the spring.
+      </p>
+
+      <ol class="list-decimal pl-5 text-sm text-slate-800 space-y-3 mb-3">
+        <li>
+          Write the work–energy equation from the bottom of the ramp to the moment just
+          before the block contacts the spring, where its speed is $v_2$.
+        </li>
+        <li>
+          Solve for the numerical value of $v_2$.
+        </li>
+      </ol>
+
+      <div class="text-sm mb-3">
+        <label class="block mb-1 font-semibold">
+          (Numerical) Speed $v_2$ just before touching the spring (m/s)
+        </label>
+        <input id="ans-v2" type="number" step="0.01"
+               class="w-full max-w-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+        <button onclick="checkAnswer('v2')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+          Check $v_2$
+        </button>
+        <p id="fb-v2" class="mt-1 text-xs"></p>
+      </div>
+
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          💡 Get a hint for Part 2
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            On the horizontal surface, gravity and the normal force cancel vertically
+            and do no net work. The only non-conservative work comes from kinetic friction.
+          </p>
+          <p>
+            The friction force magnitude is $f_k = \mu_2 mg$, directed opposite the motion.
+            Over distance $d$, the work done by friction is
+            \[
+              W_f = -\mu_2 mg d.
+            \]
+          </p>
+          <p>
+            Use
+            \[
+              W_\text{net} = \Delta K,
+            \]
+            with initial kinetic energy $\tfrac12 m v_1^2$ and final
+            $\tfrac12 m v_2^2$.
+          </p>
+        </div>
+      </details>
+
+      <details class="mt-2">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          📘 Show full solution for Part 2
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            Let state 1 be the bottom of the incline with speed $v_1$, and state 2 be just before
+            contacting the spring with speed $v_2$.
+          </p>
+          <p>
+            The only work between 1 and 2 is from friction:
+            \[
+              W_f = -\mu_2 mg d.
+            \]
+          </p>
+          <p>
+            Work–energy:
+            \[
+              W_\text{net} = \Delta K
+              \quad\Rightarrow\quad
+              -\mu_2 mg d = \tfrac12 m v_2^2 - \tfrac12 m v_1^2.
+            \]
+          </p>
+          <p>
+            Solve for $v_2^2$:
+            \[
+              \tfrac12 m v_2^2 = \tfrac12 m v_1^2 - \mu_2 mg d
+              \quad\Rightarrow\quad
+              v_2^2 = v_1^2 - 2\mu_2 g d.
+            \]
+          </p>
+          <p>
+            The numerical value displayed by the code is obtained from this expression with
+            the parameter values shown at the top.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- PART 3: Spring Compression with Friction -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-lg font-bold text-slate-800 mb-2">Part 3 – Compressing the Spring</h2>
+      <p class="text-sm text-slate-700 mb-3">
+        After reaching the spring, the block continues to move on the same rough horizontal
+        surface (same $\mu_2$) and compresses the spring until it momentarily comes to rest
+        at maximum compression $x_\text{max}$.
+      </p>
+
+      <ol class="list-decimal pl-5 text-sm text-slate-800 space-y-3 mb-3">
+        <li>
+          Write a work–energy equation between the point where the block just touches
+          the spring (speed $v_2$) and the moment of maximum compression $x_\text{max}$
+          (speed zero).
+        </li>
+        <li>
+          Solve for $x_\text{max}$ symbolically and then evaluate it numerically.
+        </li>
+      </ol>
+
+      <div class="text-sm mb-3">
+        <label class="block mb-1 font-semibold">
+          (Numerical) Maximum compression $x_\text{max}$ of the spring (m)
+        </label>
+        <input id="ans-xmax" type="number" step="0.001"
+               class="w-full max-w-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+        <button onclick="checkAnswer('xmax')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+          Check $x_\text{max}$
+        </button>
+        <p id="fb-xmax" class="mt-1 text-xs"></p>
+      </div>
+
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          💡 Get a hint for Part 3
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            Between the instant the block first touches the spring and the instant of maximum
+            compression, three things happen:
+          </p>
+          <ul class="list-disc pl-5">
+            <li>The block’s kinetic energy decreases from $\tfrac12 m v_2^2$ to $0$.</li>
+            <li>Spring potential energy increases from $0$ to $\tfrac12 k x_\text{max}^2$.</li>
+            <li>Friction does negative work over distance $x_\text{max}$:
+              $W_f = -\mu_2 mg x_\text{max}$.
+            </li>
+          </ul>
+          <p>
+            Use
+            \[
+              W_\text{friction} = \Delta K + \Delta U_\text{spring}.
+            \]
+          </p>
+        </div>
+      </details>
+
+      <details class="mt-2">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          📘 Show full solution for Part 3
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            Initial state (touching spring): speed $v_2$, spring compression $x = 0$.
+            Final state (max compression): speed $0$, compression $x = x_\text{max}$.
+          </p>
+          <p>
+            Work by friction:
+            \[
+              W_f = -\mu_2 mg x_\text{max}.
+            \]
+          </p>
+          <p>
+            Change in kinetic energy:
+            \[
+              \Delta K = 0 - \tfrac12 m v_2^2 = -\tfrac12 m v_2^2.
+            \]
+          </p>
+          <p>
+            Change in spring potential:
+            \[
+              \Delta U_s = \tfrac12 k x_\text{max}^2 - 0 = \tfrac12 k x_\text{max}^2.
+            \]
+          </p>
+          <p>
+            Work–energy:
+            \[
+              W_f = \Delta K + \Delta U_s
+              \quad\Rightarrow\quad
+              -\mu_2 mg x_\text{max}
+              = -\tfrac12 m v_2^2 + \tfrac12 k x_\text{max}^2.
+            \]
+          </p>
+          <p>
+            Rearranged:
+            \[
+              \tfrac12 k x_\text{max}^2 + \mu_2 mg x_\text{max} - \tfrac12 m v_2^2 = 0.
+            \]
+          </p>
+          <p>
+            Multiply by 2:
+            \[
+              k x_\text{max}^2 + 2\mu_2 mg x_\text{max} - m v_2^2 = 0.
+            \]
+          </p>
+          <p>
+            This is a quadratic in $x_\text{max}$:
+            \[
+              k x_\text{max}^2 + (2\mu_2 mg)x_\text{max} - m v_2^2 = 0.
+            \]
+          </p>
+          <p>
+            Using the quadratic formula (take the positive root):
+            \[
+              x_\text{max}
+              = \frac{-2\mu_2 mg + \sqrt{(2\mu_2 mg)^2 + 4km v_2^2}}{2k}.
+            \]
+          </p>
+          <p>
+            The numerical answer shown by the code comes from this expression using the
+            random parameters and the previously computed $v_2$.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- PART 4: SHM Extension (Frictionless Version) -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-lg font-bold text-slate-800 mb-2">Part 4 – SHM with the Spring (Frictionless Variant)</h2>
+      <p class="text-sm text-slate-700 mb-3">
+        Now imagine a <span class="font-semibold">new scenario</span> using the same mass $m$ and spring constant $k$,
+        but the block is now on a <span class="font-semibold">frictionless</span> horizontal surface attached to the spring.
+        The system is pulled to the right and released from rest at amplitude $A = x_\text{SHM}$.
+      </p>
+      <p class="text-sm text-slate-700 mb-3">
+        For this alternate system:
+      </p>
+      <ol class="list-decimal pl-5 text-sm text-slate-800 space-y-3 mb-3">
+        <li>Find the angular frequency $\omega$.</li>
+        <li>Find the period $T$ of the oscillation.</li>
+        <li>Given that the block is released from rest at $x = +A$ at $t = 0$, write
+            $x(t)$ for the SHM.</li>
+      </ol>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div>
+          <label class="block mb-1 font-semibold">
+            Angular frequency $\omega$ (rad/s)
+          </label>
+          <input id="ans-omega" type="number" step="0.01"
+                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+          <button onclick="checkAnswer('omega')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+            Check $\omega$
+          </button>
+          <p id="fb-omega" class="mt-1 text-xs"></p>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">
+            Period $T$ (s)
+          </label>
+          <input id="ans-T" type="number" step="0.01"
+                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+          <button onclick="checkAnswer('T')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+            Check $T$
+          </button>
+          <p id="fb-T" class="mt-1 text-xs"></p>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">
+            Amplitude used in SHM $A = x_\text{SHM}$ (m)
+          </label>
+          <input id="ans-xshm" type="number" step="0.001"
+                 class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+          <button onclick="checkAnswer('xshm')" class="mt-2 px-3 py-1 rounded bg-slate-900 text-white text-xs font-semibold">
+            Check $A$
+          </button>
+          <p id="fb-xshm" class="mt-1 text-xs"></p>
+        </div>
+      </div>
+
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          💡 Get a hint for Part 4
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p>
+            For a mass–spring system on a frictionless surface,
+            \[
+              \omega = \sqrt{\frac{k}{m}}, \qquad T = 2\pi\sqrt{\frac{m}{k}}.
+            \]
+          </p>
+          <p>
+            If the block is released from rest at maximum displacement $x(0) = +A$, the
+            SHM solution has the form
+            \[
+              x(t) = A\cos(\omega t).
+            \]
+          </p>
+          <p>
+            For $A$ in this alternate system, one natural choice is to imagine the mass
+            arriving with speed $v_2$ on a frictionless surface and converting all that
+            kinetic energy into spring potential, so
+            \[
+              \tfrac12 m v_2^2 = \tfrac12 k A^2
+              \quad\Rightarrow\quad
+              A = v_2\sqrt{\frac{m}{k}}.
+            \]
+          </p>
+        </div>
+      </details>
+
+      <details class="mt-2">
+        <summary class="cursor-pointer text-sm text-blue-600 hover:underline font-semibold">
+          📘 Show full solution for Part 4
+        </summary>
+        <div class="mt-2 text-sm text-slate-700 space-y-2">
+          <p><strong>Angular frequency and period:</strong></p>
+          <p>
+            For a simple mass–spring oscillator with mass $m$ and spring constant $k$,
+            \[
+              \omega = \sqrt{\frac{k}{m}}, \qquad
+              T = 2\pi\sqrt{\frac{m}{k}}.
+            \]
+          </p>
+          <p><strong>Amplitude from an equivalent energy argument:</strong></p>
+          <p>
+            If we reuse the speed $v_2$ from Part 2 but now imagine the surface near the
+            spring is frictionless, then at maximum compression all kinetic energy is stored
+            in the spring:
+            \[
+              \tfrac12 m v_2^2 = \tfrac12 k A^2
+              \quad\Rightarrow\quad
+              A = v_2\sqrt{\frac{m}{k}}.
+            \]
+          </p>
+          <p><strong>Position as a function of time:</strong></p>
+          <p>
+            Released from rest at $x(0) = +A$ and $v(0) = 0$,
+            \[
+              x(t) = A\cos(\omega t).
+            \]
+          </p>
+          <p>
+            The code computes numerical values of $\omega$, $T$, and $A$ (“$x_\text{SHM}$”)
+            using the randomized $m, k,$ and $v_2$.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- WRAP-UP -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+      <h2 class="text-lg font-bold text-slate-800 mb-2">Wrap-Up</h2>
+      <p class="text-sm text-slate-700 mb-2">
+        This single scenario ties together:
+      </p>
+      <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+        <li>Forces and free-body diagrams on an incline (Newton’s second law).</li>
+        <li>Work–energy with gravity, friction, and springs.</li>
+        <li>Quadratic relationships between displacement and energy in spring problems.</li>
+        <li>Mass–spring SHM: $\omega$, $T$, amplitude, and $x(t)$.</li>
+      </ul>
+      <p class="mt-2 text-xs text-slate-500">
+        Click “New Random Version” at the top to generate a fresh set of parameters and
+        repeat the full chain of reasoning.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-xs flex flex-col md:flex-row justify-between gap-2">
+      <p class="text-white font-semibold">Physics 201 – Interactive Comprehensive Problem</p>
+      <p>Designed for independent practice in an 8-week calculus-based mechanics course.</p>
+    </div>
+  </footer>
+
+  <!-- JS: Randomization + Checking -->
+  <script>
+    const g = 9.8;
+    let state = {};
+
+    function randInRange(min, max) {
+      return min + (max - min) * Math.random();
+    }
+
+    function roundTo(value, decimals = 3) {
+      const p = Math.pow(10, decimals);
+      return Math.round(value * p) / p;
+    }
+
+    function generateState() {
+      // Medium randomization: numbers + sometimes zero friction on one surface
+      let m, thetaDeg, L, mu1, mu2, d, k;
+      let v1sq, v2sq;
+      let tries = 0;
+
+      while (true) {
+        tries++;
+        if (tries > 1000) {
+          console.warn("Random generation struggling; using fallback defaults.");
+          m = 2.0;
+          thetaDeg = 30;
+          L = 4.0;
+          mu1 = 0.1;
+          mu2 = 0.2;
+          d = 1.5;
+          k = 300;
+          break;
+        }
+
+        m = randInRange(1.5, 4.0);             // kg
+        thetaDeg = randInRange(20, 40);        // degrees
+        L = randInRange(2.0, 5.0);             // m
+        d = randInRange(0.8, 2.5);             // m
+        k = randInRange(150, 500);             // N/m
+
+        // friction coefficients: some scenarios frictionless on one segment
+        const mode = Math.random();
+        if (mode < 0.33) {
+          mu1 = 0;
+          mu2 = randInRange(0.05, 0.35);
+        } else if (mode < 0.66) {
+          mu1 = randInRange(0.05, 0.35);
+          mu2 = 0;
+        } else {
+          mu1 = randInRange(0.05, 0.3);
+          mu2 = randInRange(0.05, 0.3);
+        }
+
+        const thetaRad = thetaDeg * Math.PI / 180;
+        const sinT = Math.sin(thetaRad);
+        const cosT = Math.cos(thetaRad);
+
+        // require downward acceleration
+        const accel = g * (sinT - mu1 * cosT);
+        if (accel <= 0.2) continue; // avoid near zero or negative
+
+        // v1^2 from energy
+        v1sq = 2 * g * L * (sinT - mu1 * cosT);
+        if (v1sq <= 0.5) continue;
+
+        // v2^2 from horizontal with friction
+        v2sq = v1sq - 2 * mu2 * g * d;
+        if (v2sq <= 0.5) continue;
+
+        // Now check spring quadratic will have positive root
+        // Rough estimate: require energy enough to compress at least 0.1 m
+        const guessx = 0.1;
+        const needed = 0.5 * k * guessx * guessx + mu2 * m * g * guessx;
+        if (0.5 * m * v2sq < needed) continue;
+
+        break;
+      }
+
+      const thetaRad = thetaDeg * Math.PI / 180;
+      const sinT = Math.sin(thetaRad);
+      const cosT = Math.cos(thetaRad);
+
+      const a = g * (sinT - mu1 * cosT);
+      const v1 = Math.sqrt(v1sq);
+      const v2 = Math.sqrt(v2sq);
+
+      // Spring compression (quadratic)
+      const b = 2 * mu2 * m * g;
+      const disc = b * b + 4 * k * m * v2sq;
+      const xmax = (-b + Math.sqrt(disc)) / (2 * k);
+
+      // SHM variant: frictionless, amplitude from v2
+      const omega = Math.sqrt(k / m);
+      const T = 2 * Math.PI * Math.sqrt(m / k);
+      const xshm = v2 * Math.sqrt(m / k);
+
+      state = {
+        m, thetaDeg, L, mu1, mu2, d, k,
+        a, v1, v2, xmax, omega, T, xshm
+      };
+    }
+
+    function updateParameterDisplay() {
+      document.getElementById("p-m").textContent = roundTo(state.m, 2);
+      document.getElementById("p-theta").textContent = roundTo(state.thetaDeg, 1);
+      document.getElementById("p-L").textContent = roundTo(state.L, 2);
+      document.getElementById("p-mu1").textContent = roundTo(state.mu1, 3);
+      document.getElementById("p-mu2").textContent = roundTo(state.mu2, 3);
+      document.getElementById("p-d").textContent = roundTo(state.d, 2);
+      document.getElementById("p-k").textContent = Math.round(state.k);
+
+      let note = "";
+      if (state.mu1 === 0 && state.mu2 !== 0) {
+        note = "This version is frictionless on the incline but rough on the horizontal.";
+      } else if (state.mu1 !== 0 && state.mu2 === 0) {
+        note = "This version is rough on the incline but frictionless on the horizontal section.";
+      } else if (state.mu1 === 0 && state.mu2 === 0) {
+        note = "This version is frictionless everywhere (rare case). Energy bookkeeping should be especially clean.";
+      } else {
+        note = "Both the incline and the horizontal surface involve kinetic friction.";
+      }
+      document.getElementById("friction-note").textContent = note;
+    }
+
+    function clearAnswers() {
+      const ids = ["ans-a", "ans-v1", "ans-v2", "ans-xmax", "ans-omega", "ans-T", "ans-xshm"];
+      const fids = ["fb-a", "fb-v1", "fb-v2", "fb-xmax", "fb-omega", "fb-T", "fb-xshm"];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      });
+      fids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = "";
+      });
+    }
+
+    function newVersion() {
+      generateState();
+      updateParameterDisplay();
+      clearAnswers();
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    function getCorrectValue(key) {
+      switch (key) {
+        case "a":     return state.a;
+        case "v1":    return state.v1;
+        case "v2":    return state.v2;
+        case "xmax":  return state.xmax;
+        case "omega": return state.omega;
+        case "T":     return state.T;
+        case "xshm":  return state.xshm;
+        default:      return null;
+      }
+    }
+
+    function checkAnswer(key) {
+      const inputId = {
+        a: "ans-a",
+        v1: "ans-v1",
+        v2: "ans-v2",
+        xmax: "ans-xmax",
+        omega: "ans-omega",
+        T: "ans-T",
+        xshm: "ans-xshm"
+      }[key];
+
+      const fbId = {
+        a: "fb-a",
+        v1: "fb-v1",
+        v2: "fb-v2",
+        xmax: "fb-xmax",
+        omega: "fb-omega",
+        T: "fb-T",
+        xshm: "fb-xshm"
+      }[key];
+
+      const inputEl = document.getElementById(inputId);
+      const fbEl = document.getElementById(fbId);
+      if (!inputEl || !fbEl) return;
+
+      const userVal = parseFloat(inputEl.value);
+      if (isNaN(userVal)) {
+        fbEl.textContent = "Please enter a number first.";
+        fbEl.className = "mt-1 text-xs feedback-bad";
+        return;
+      }
+
+      const correct = getCorrectValue(key);
+      if (correct === null || typeof correct === "undefined") {
+        fbEl.textContent = "Internal error: no reference value.";
+        fbEl.className = "mt-1 text-xs feedback-bad";
+        return;
+      }
+
+      const tolAbs = 0.02;
+      const tolRel = 0.025; // ~2.5%
+      const diff = Math.abs(userVal - correct);
+      const rel = diff / (Math.abs(correct) + 1e-9);
+
+      if (diff < tolAbs || rel < tolRel) {
+        fbEl.textContent = "✓ Nice! That’s within the accepted range. (Exact: " + roundTo(correct, 3) + ")";
+        fbEl.className = "mt-1 text-xs feedback-ok";
+      } else {
+        fbEl.textContent = "Not quite. Try again. (Your value: " + userVal + ", target ≈ " + roundTo(correct, 3) + ")";
+        fbEl.className = "mt-1 text-xs feedback-bad";
+      }
+    }
+
+    document.getElementById("newVersionBtn").addEventListener("click", newVersion);
+
+    // Initialize on load
+    newVersion();
+  </script>
+
+</body>
+</html>
 
