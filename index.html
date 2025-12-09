@@ -29,19 +29,41 @@
 
   <!-- Top Nav -->
   <nav class="bg-slate-900 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center space-x-2">
-          <span class="text-2xl">⚙️</span>
-          <span class="font-bold text-xl tracking-tight">Physics 201</span>
-        </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium">
-          <a href="syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
-          <a href="#weeks" class="text-slate-300 hover:text-white transition">Weekly Modules</a>
-          <a href="#resources" class="text-slate-300 hover:text-white transition">Resources</a>
-        </div>
-      </div>
+   <div class="hidden md:flex space-x-6 text-sm font-medium items-center">
+  <a href="index.html" class="text-slate-300 hover:text-white transition">Home</a>
+  <a href="syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+
+  <!-- Weeks dropdown -->
+  <div class="relative group">
+    <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+      Weeks
+      <span class="text-[0.6rem]">▼</span>
+    </button>
+    <div class="absolute left-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+      <a href="week1.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 1 – Kinematics</a>
+      <a href="week2.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 2 – Forces</a>
+      <a href="week3.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 3 – Work &amp; Energy</a>
+      <a href="week4.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 4 – Momentum</a>
+      <a href="week5.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 5 – Rotation I</a>
+      <a href="week6.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 6 – Rotation II</a>
+      <a href="week7.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 7 – Rotation &amp; Torque</a>
+      <a href="week8.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Week 8 – Oscillations</a>
     </div>
+  </div>
+
+  <!-- Resources dropdown -->
+  <div class="relative group">
+    <button class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+      Resources
+      <span class="text-[0.6rem]">▼</span>
+    </button>
+    <div class="absolute right-0 mt-2 w-56 bg-white text-slate-800 rounded-md shadow-lg border border-slate-200 hidden group-hover:block z-20">
+      <a href="formulas.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Formula Sheet</a>
+      <a href="calculus.html" class="block px-4 py-2 text-sm hover:bg-slate-100">Calculus Refresher</a>
+    </div>
+  </div>
+</div>
+
   </nav>
 
   <!-- Hero -->
