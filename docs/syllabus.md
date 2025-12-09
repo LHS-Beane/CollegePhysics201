@@ -1,2 +1,0 @@
-# Syllabus
-Content coming soon.
