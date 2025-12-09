@@ -38,31 +38,31 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
   <!-- HEADER / HERO -->
-  <header class="bg-white border-b border-slate-200 hero-pattern">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
-        Physics 201 • Comprehensive Capstone Problem
+ <header class="bg-slate-900 text-white">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div>
+      <p class="text-xs uppercase tracking-[0.2em] text-slate-400">
+        Physics 201
       </p>
-      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-        Incline, Friction, Spring, and SHM – Interactive Solver
+      <h1 class="text-sm md:text-base font-semibold">
+        Exam Practice 1 – Incline, Friction, Spring & SHM
       </h1>
-      <p class="text-slate-600 max-w-3xl text-sm md:text-base">
-        This tool generates a multi-part problem that ties together Newton’s laws, work–energy,
-        friction, springs, and simple harmonic motion. Each time you click
-        <span class="font-semibold">“New Version”</span>, you get a new set of parameters.
-        Enter your answers, check them, and reveal hints or full solutions step-by-step.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-3 items-center">
-        <button id="newVersionBtn"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800">
-          🔁 New Random Version
-        </button>
-        <span class="text-xs text-slate-500">
-          Tolerance for numeric answers: about 2–3% or ±0.02 in units.
-        </span>
-      </div>
     </div>
-  </header>
+
+    <div class="flex gap-2 text-xs">
+      <a href="/CollegePhysics201/index.html"
+         class="px-2 py-1 rounded border border-slate-600 hover:bg-slate-800">
+        Course Home
+      </a>
+
+      <a href="/CollegePhysics201/exampractice2.html"
+         class="px-2 py-1 rounded border border-blue-500 text-blue-200 hover:bg-blue-800/60">
+        Exam Practice 2
+      </a>
+    </div>
+  </div>
+</header>
+
 
   <!-- MAIN CONTENT -->
   <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
