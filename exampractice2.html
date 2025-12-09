@@ -74,18 +74,18 @@
     <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-8 space-y-4">
       <h3 class="text-lg font-semibold text-slate-900 mb-1">Physical Setup</h3>
       <p class="text-sm text-slate-700">
-        A uniform solid disk of mass $M = 4.0\\,\text{kg}$ and radius $R = 0.40\\,\text{m}$ can rotate
-        freely about a horizontal axle through its center. A light, non-stretching string is wrapped
-        around the rim and attached to a hanging block of mass $m = 1.2\\,\text{kg}$, as shown.
+        A uniform solid disk of mass \( M = 4.0\,\text{kg} \) and radius \( R = 0.40\,\text{m} \)
+        can rotate freely about a horizontal axle through its center. A light, non-stretching string is
+        wrapped around the rim and attached to a hanging block of mass \( m = 1.2\,\text{kg} \).
         The system is released from rest and the block falls vertically while the disk spins up.
       </p>
       <p class="text-sm text-slate-700">
         The axle is frictionless, and the string does not slip on the disk.
-        You may use $g = 9.8\\,\text{m/s}^2$.
+        You may use \( g = 9.8\,\text{m/s}^2 \).
       </p>
 
       <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
-        <li>The moment of inertia of a solid disk about its center is $I = \\tfrac{1}{2}MR^2$.</li>
+        <li>The moment of inertia of a solid disk about its center is \( I = \tfrac{1}{2}MR^2 \).</li>
         <li>There is no air resistance, and the string remains taut.</li>
       </ul>
 
@@ -93,8 +93,8 @@
         <p class="font-semibold mb-1">Later modification:</p>
         <p>
           After the block has fallen some distance and the disk is spinning, the string is cut and
-          the disk continues to spin freely with angular speed $\\omega_0$. At that instant, a small
-          blob of putty of mass $m_p = 0.50\\,\\text{kg}$ is dropped onto the <em>rim</em> and sticks
+          the disk continues to spin freely with angular speed \( \omega_0 \). At that instant, a small
+          blob of putty of mass \( m_p = 0.50\,\text{kg} \) is dropped onto the <em>rim</em> and sticks
           to the disk. The putty lands tangentially (so its initial speed relative to the ground is
           the same as the rim speed at that point).
         </p>
@@ -108,12 +108,12 @@
       </h3>
       <p class="text-sm text-slate-700">
         While the block is still moving and the string remains taut, the block has linear
-        acceleration $a$ downward, and the disk has angular acceleration $\\alpha$.
+        acceleration \( a \) downward, and the disk has angular acceleration \( \alpha \).
       </p>
       <p class="text-sm text-slate-700">
         Using Newton’s 2nd law for the block and the torque equation for the disk, find the
-        <span class="font-semibold">magnitude of the angular acceleration $\\alpha$</span> of the disk
-        in rad/s$^2$.
+        <span class="font-semibold">magnitude of the angular acceleration \( \alpha \)</span> of the disk
+        in rad/s\(^2\).
       </p>
 
       <div class="mt-3 flex flex-wrap items-center gap-2 text-sm">
@@ -139,11 +139,11 @@
 
       <div id="hint-alpha" class="mt-2 text-sm text-slate-700 hidden">
         <p class="mb-1">
-          For the block: $mg - T = ma$. For the disk: the torque from the string is
-          $\\tau = TR$, and $\\tau = I\\alpha$ with $I = \\tfrac12 MR^2$.
+          For the block: \( mg - T = ma \). For the disk: the torque from the string is
+          \( \tau = TR \), and \( \tau = I\alpha \) with \( I = \tfrac12 MR^2 \).
         </p>
         <p>
-          Use the no-slip condition $a = \\alpha R$ to eliminate $a$ or $\\alpha$ and solve for $\\alpha$.
+          Use the no-slip condition \( a = \alpha R \) to eliminate \( a \) or \( \alpha \) and solve for \( \alpha \).
         </p>
       </div>
 
@@ -155,48 +155,48 @@
           <div class="mt-2 text-sm text-slate-700 space-y-2">
             <p><strong>Step 1:</strong> Force equation for the block (taking down as positive):</p>
             <p>
-              \\[
+              \[
                 mg - T = ma.
-              \\]
+              \]
             </p>
             <p><strong>Step 2:</strong> Torque equation for the disk:</p>
             <p>
-              The tension $T$ exerts a torque $\\tau = TR$ about the center.
-              For a solid disk, $I = \\tfrac12 MR^2$, so
-              \\[
-                TR = I\\alpha = \\tfrac12 MR^2 \\alpha.
-              \\]
-              Using $a = \\alpha R$, we can write
-              \\[
-                T = \\frac{I\\alpha}{R} = \\frac{I}{R^2} a = \\tfrac12 M a.
-              \\]
+              The tension \( T \) exerts a torque \( \tau = TR \) about the center.
+              For a solid disk, \( I = \tfrac12 MR^2 \), so
+              \[
+                TR = I\alpha = \tfrac12 MR^2 \alpha.
+              \]
+              Using \( a = \alpha R \), we can write
+              \[
+                T = \frac{I\alpha}{R} = \frac{I}{R^2} a = \tfrac12 M a.
+              \]
             </p>
-            <p><strong>Step 3:</strong> Substitute $T = \\tfrac12 Ma$ into the block equation:</p>
+            <p><strong>Step 3:</strong> Substitute \( T = \tfrac12 Ma \) into the block equation:</p>
             <p>
-              \\[
-                mg - \\tfrac12 M a = m a
-                \\quad\\Rightarrow\\quad
-                mg = a\\left(m + \\tfrac12 M\\right).
-              \\]
+              \[
+                mg - \tfrac12 M a = m a
+                \quad\Rightarrow\quad
+                mg = a\left(m + \tfrac12 M\right).
+              \]
             </p>
             <p>
-              Solve for $a$:
-              \\[
-                a = \\frac{mg}{m + M/2}
-                = \\frac{(1.2)(9.8)}{1.2 + 4.0/2}
-                \\approx 3.68\\,\\text{m/s}^2.
-              \\]
+              Solve for \( a \):
+              \[
+                a = \frac{mg}{m + M/2}
+                = \frac{(1.2)(9.8)}{1.2 + 4.0/2}
+                \approx 3.68\,\text{m/s}^2.
+              \]
             </p>
-            <p><strong>Step 4:</strong> Use $a = \\alpha R$ to find $\\alpha$:</p>
+            <p><strong>Step 4:</strong> Use \( a = \alpha R \) to find \( \alpha \):</p>
             <p>
-              \\[
-                \\alpha = \\frac{a}{R}
-                = \\frac{3.68}{0.40}
-                \\approx 9.19\\,\\text{rad/s}^2.
-              \\]
+              \[
+                \alpha = \frac{a}{R}
+                = \frac{3.68}{0.40}
+                \approx 9.19\,\text{rad/s}^2.
+              \]
             </p>
             <p class="font-semibold">
-              Answer: $\\alpha \\approx 9.2\\,\\text{rad/s}^2$.
+              Answer: \( \alpha \approx 9.2\,\text{rad/s}^2 \).
             </p>
           </div>
         </details>
@@ -210,7 +210,7 @@
       </h3>
       <p class="text-sm text-slate-700">
         Still considering the motion while the block is accelerating downward and the disk is spinning
-        up, find the <span class="font-semibold">tension $T$</span> in the string.
+        up, find the <span class="font-semibold">tension \( T \)</span> in the string.
       </p>
 
       <div class="mt-3 flex flex-wrap items-center gap-2 text-sm">
@@ -236,8 +236,8 @@
 
       <div id="hint-tension" class="mt-2 text-sm text-slate-700 hidden">
         <p>
-          From part (a), you should have found $a$. The block equation $mg - T = ma$ can now be solved
-          directly for $T$.
+          From part (a), you should have found \( a \). The block equation \( mg - T = ma \) can now be solved
+          directly for \( T \).
         </p>
       </div>
 
@@ -248,24 +248,24 @@
           </summary>
           <div class="mt-2 text-sm text-slate-700 space-y-2">
             <p>
-              From part (a), $a \\approx 3.68\\,\\text{m/s}^2$. Use the block’s force equation:
+              From part (a), \( a \approx 3.68\,\text{m/s}^2 \). Use the block’s force equation:
             </p>
             <p>
-              \\[
+              \[
                 mg - T = ma
-                \\quad\\Rightarrow\\quad
+                \quad\Rightarrow\quad
                 T = mg - ma = m(g - a).
-              \\]
+              \]
             </p>
             <p>
               Plug in numbers:
-              \\[
-                T = (1.2\\,\\text{kg})\\big(9.8 - 3.68\\big)\\,\\text{m/s}^2
-                \\approx 7.35\\,\\text{N}.
-              \\]
+              \[
+                T = (1.2\,\text{kg})\big(9.8 - 3.68\big)\,\text{m/s}^2
+                \approx 7.35\,\text{N}.
+              \]
             </p>
             <p class="font-semibold">
-              Answer: $T \\approx 7.35\\,\\text{N}$.
+              Answer: \( T \approx 7.35\,\text{N} \).
             </p>
           </div>
         </details>
@@ -278,18 +278,18 @@
         Part (c) – Speed After Falling 1.5 m
       </h3>
       <p class="text-sm text-slate-700">
-        The block is released from rest and falls a distance of $h = 1.5\\,\\text{m}$ before you examine
+        The block is released from rest and falls a distance of \( h = 1.5\,\text{m} \) before you examine
         the motion. Assume the acceleration remains constant (the string is still attached and taut).
       </p>
       <p class="text-sm text-slate-700">
         Find the <span class="font-semibold">speed of the block</span> after it has fallen
-        $1.5\\,\\text{m}$. Then find the corresponding <span class="font-semibold">angular speed
-        $\\omega_0$</span> of the disk at that instant.
+        \( 1.5\,\text{m} \). Then find the corresponding <span class="font-semibold">angular speed
+        \( \omega_0 \)</span> of the disk at that instant.
       </p>
 
       <div class="mt-3 space-y-2 text-sm">
         <div class="flex flex-wrap items-center gap-2">
-          <label for="ans-speed" class="font-semibold">Block speed $v$:</label>
+          <label for="ans-speed" class="font-semibold">Block speed \( v \):</label>
           <input id="ans-speed" type="number" step="0.01"
                  class="w-28 px-2 py-1 border border-slate-300 rounded text-sm" />
           <span class="text-xs text-slate-500">m/s</span>
@@ -312,15 +312,15 @@
         <div id="hint-speed" class="mt-2 text-sm text-slate-700 hidden">
           <p class="mb-1">
             With constant acceleration, you can use either kinematics
-            $v^2 = v_0^2 + 2a\\Delta y$ (with $v_0 = 0$), or an energy argument.
+            \( v^2 = v_0^2 + 2a\Delta y \) (with \( v_0 = 0 \)), or an energy argument.
           </p>
           <p>
-            Once you know $v$, use the no-slip condition $v = \\omega_0 R$ to get $\\omega_0$.
+            Once you know \( v \), use the no-slip condition \( v = \omega_0 R \) to get \( \omega_0 \).
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2 mt-4">
-          <label for="ans-omega" class="font-semibold">Disk angular speed $\\omega_0$:</label>
+          <label for="ans-omega" class="font-semibold">Disk angular speed \( \omega_0 \):</label>
           <input id="ans-omega" type="number" step="0.01"
                  class="w-28 px-2 py-1 border border-slate-300 rounded text-sm" />
           <span class="text-xs text-slate-500">rad/s</span>
@@ -343,31 +343,31 @@
           <div class="mt-2 text-sm text-slate-700 space-y-2">
             <p><strong>Step 1:</strong> Block speed from constant acceleration.</p>
             <p>
-              The block starts from rest, so $v_0 = 0$, and $a \\approx 3.68\\,\\text{m/s}^2$ (from part (a)).
-              Use
-              \\[
+              The block starts from rest, so \( v_0 = 0 \), and \( a \approx 3.68\,\text{m/s}^2 \)
+              (from part (a)). Use
+              \[
                 v^2 = v_0^2 + 2a h = 0 + 2(3.68)(1.5).
-              \\]
+              \]
             </p>
             <p>
-              \\[
-                v = \\sqrt{2(3.68)(1.5)} \\approx 3.32\\,\\text{m/s}.
-              \\]
+              \[
+                v = \sqrt{2(3.68)(1.5)} \approx 3.32\,\text{m/s}.
+              \]
             </p>
-            <p><strong>Step 2:</strong> Relate $v$ and $\\omega_0$ at the rim.</p>
+            <p><strong>Step 2:</strong> Relate \( v \) and \( \omega_0 \) at the rim.</p>
             <p>
               No slipping on the rim means
-              \\[
-                v = \\omega_0 R \\quad\\Rightarrow\\quad \\omega_0 = \\frac{v}{R}.
-              \\]
+              \[
+                v = \omega_0 R \quad\Rightarrow\quad \omega_0 = \frac{v}{R}.
+              \]
             </p>
             <p>
-              \\[
-                \\omega_0 = \\frac{3.32}{0.40} \\approx 8.30\\,\\text{rad/s}.
-              \\]
+              \[
+                \omega_0 = \frac{3.32}{0.40} \approx 8.30\,\text{rad/s}.
+              \]
             </p>
             <p class="font-semibold">
-              Answers: $v \\approx 3.32\\,\\text{m/s}$, $\\omega_0 \\approx 8.30\\,\\text{rad/s}$.
+              Answers: \( v \approx 3.32\,\text{m/s} \), \( \omega_0 \approx 8.30\,\text{rad/s} \).
             </p>
           </div>
         </details>
@@ -380,17 +380,17 @@
         Part (d) – Inelastic Collision at the Rim (Angular Momentum)
       </h3>
       <p class="text-sm text-slate-700">
-        After the block has fallen $1.5\\,\\text{m}$, the string is cut. The block is removed and we
+        After the block has fallen \( 1.5\,\text{m} \), the string is cut. The block is removed and we
         now focus only on the spinning disk. At that instant, the disk has angular speed
-        $\\omega_0$ (from part (c)).
+        \( \omega_0 \) (from part (c)).
       </p>
       <p class="text-sm text-slate-700">
-        A blob of putty of mass $m_p = 0.50\\,\\text{kg}$ drops vertically onto the rim and sticks to
-        the disk at radius $R$. Just before it lands, the putty has negligible horizontal speed, so its
+        A blob of putty of mass \( m_p = 0.50\,\text{kg} \) drops vertically onto the rim and sticks to
+        the disk at radius \( R \). Just before it lands, the putty has negligible horizontal speed, so its
         angular momentum about the disk’s center is approximately zero.
       </p>
       <p class="text-sm text-slate-700">
-        Find the <span class="font-semibold">new angular speed $\\omega_f$</span> of the disk–putty
+        Find the <span class="font-semibold">new angular speed \( \omega_f \)</span> of the disk–putty
         system immediately after the putty sticks.
       </p>
 
@@ -421,8 +421,9 @@
           rotation axis is negligible during the brief collision, so angular momentum is conserved.
         </p>
         <p>
-          Before: only the disk has angular momentum ($I_{\\text{disk}} \\omega_0$).
-          After: disk + point mass at radius $R$ have moment of inertia $I_{\\text{disk}} + m_p R^2$.
+          Before: only the disk has angular momentum ( \( I_{\text{disk}} \omega_0 \) ).
+          After: disk + point mass at radius \( R \) have moment of inertia
+          \( I_{\text{disk}} + m_p R^2 \).
         </p>
       </div>
 
@@ -436,48 +437,49 @@
             <p>
               The putty has negligible angular momentum about the center just before sticking, so
               the initial angular momentum is
-              \\[
-                L_i = I_{\\text{disk}} \\omega_0.
-              \\]
+              \[
+                L_i = I_{\text{disk}} \omega_0.
+              \]
               For a solid disk,
-              \\[
-                I_{\\text{disk}} = \\tfrac12 MR^2 = \\tfrac12 (4.0)(0.40)^2
-                = 0.32\\,\\text{kg·m}^2.
-              \\]
+              \[
+                I_{\text{disk}} = \tfrac12 MR^2
+                = \tfrac12 (4.0)(0.40)^2
+                = 0.32\,\text{kg·m}^2.
+              \]
             </p>
             <p>
-              After the collision, the putty is stuck at radius $R$, so its moment of inertia is
-              $m_p R^2$. The total moment of inertia is
-              \\[
-                I_f = I_{\\text{disk}} + m_p R^2
+              After the collision, the putty is stuck at radius \( R \), so its moment of inertia is
+              \( m_p R^2 \). The total moment of inertia is
+              \[
+                I_f = I_{\text{disk}} + m_p R^2
                 = 0.32 + (0.50)(0.40)^2
-                = 0.32 + 0.08 = 0.40\\,\\text{kg·m}^2.
-              \\]
+                = 0.32 + 0.08 = 0.40\,\text{kg·m}^2.
+              \]
             </p>
             <p><strong>Step 2:</strong> Angular momentum conservation.</p>
             <p>
-              \\[
+              \[
                 L_i = L_f
-                \\quad\\Rightarrow\\quad
-                I_{\\text{disk}}\\omega_0 = I_f \\omega_f.
-              \\]
+                \quad\Rightarrow\quad
+                I_{\text{disk}} \omega_0 = I_f \omega_f.
+              \]
             </p>
             <p>
-              Solve for $\\omega_f$:
-              \\[
-                \\omega_f = \\frac{I_{\\text{disk}}}{I_f} \\omega_0
-                = \\frac{0.32}{0.40} \\omega_0
-                = 0.80\\,\\omega_0.
-              \\]
+              Solve for \( \omega_f \):
+              \[
+                \omega_f = \frac{I_{\text{disk}}}{I_f} \omega_0
+                = \frac{0.32}{0.40} \omega_0
+                = 0.80\,\omega_0.
+              \]
             </p>
             <p>
-              Using $\\omega_0 \\approx 8.30\\,\\text{rad/s}$ (from part (c)):
-              \\[
-                \\omega_f \\approx 0.80(8.30) \\approx 6.64\\,\\text{rad/s}.
-              \\]
+              Using \( \omega_0 \approx 8.30\,\text{rad/s} \) (from part (c)):
+              \[
+                \omega_f \approx 0.80(8.30) \approx 6.64\,\text{rad/s}.
+              \]
             </p>
             <p class="font-semibold">
-              Answer: $\\omega_f \\approx 6.64\\,\\text{rad/s}$.
+              Answer: \( \omega_f \approx 6.64\,\text{rad/s} \).
             </p>
           </div>
         </details>
@@ -518,15 +520,15 @@
 
       <div id="hint-energy_loss" class="mt-2 text-sm text-slate-700 hidden">
         <p class="mb-1">
-          Rotational kinetic energy is $K = \\tfrac12 I\\omega^2$. Compute $K_i$ using
-          $I_{\\text{disk}}$ and $\\omega_0$, and $K_f$ using $I_f = I_{\\text{disk}} + m_p R^2$
-          and $\\omega_f$ from part (d).
+          Rotational kinetic energy is \( K = \tfrac12 I\omega^2 \). Compute \( K_i \) using
+          \( I_{\text{disk}} \) and \( \omega_0 \), and \( K_f \) using
+          \( I_f = I_{\text{disk}} + m_p R^2 \) and \( \omega_f \) from part (d).
         </p>
         <p>
           Then the percentage loss is
-          \\[
-            \\%\\text{ loss} = \\frac{K_i - K_f}{K_i} \\times 100\\%.
-          \\]
+          \[
+            \%\text{ loss} = \frac{K_i - K_f}{K_i} \times 100\%.
+          \]
         </p>
       </div>
 
@@ -538,47 +540,40 @@
           <div class="mt-2 text-sm text-slate-700 space-y-2">
             <p><strong>Step 1:</strong> Initial rotational energy (disk only).</p>
             <p>
-              \\[
-                K_i = \\tfrac12 I_{\\text{disk}} \\omega_0^2
-                = \\tfrac12 (0.32) \\omega_0^2.
-              \\]
+              \[
+                K_i = \tfrac12 I_{\text{disk}} \omega_0^2
+                = \tfrac12 (0.32)\,\omega_0^2
+                = 0.16\,\omega_0^2.
+              \]
             </p>
             <p><strong>Step 2:</strong> Final rotational energy (disk + putty).</p>
             <p>
-              \\[
-                K_f = \\tfrac12 I_f \\omega_f^2
-                = \\tfrac12 (0.40) \\omega_f^2.
-              \\]
+              \[
+                K_f = \tfrac12 I_f \omega_f^2
+                = \tfrac12 (0.40)\,\omega_f^2.
+              \]
             </p>
             <p>
-              From part (d), $\\omega_f = 0.80\\,\\omega_0$. Substitute:
-              \\[
-                K_f = \\tfrac12 (0.40) (0.80^2 \\omega_0^2)
-                = 0.20 \\cdot 0.64\\,\\omega_0^2
-                = 0.128\\,\\omega_0^2.
-              \\]
-            </p>
-            <p>
-              For the initial energy:
-              \\[
-                K_i = \\tfrac12 (0.32) \\omega_0^2 = 0.16\\,\\omega_0^2.
-              \\]
+              From part (d), \( \omega_f = 0.80\,\omega_0 \). Substitute:
+              \[
+                K_f = \tfrac12 (0.40) (0.80^2 \omega_0^2)
+                = 0.20 \cdot 0.64\,\omega_0^2
+                = 0.128\,\omega_0^2.
+              \]
             </p>
             <p><strong>Step 3:</strong> Fraction and percentage of energy lost.</p>
             <p>
-              \\[
-                \\frac{K_f}{K_i} = \\frac{0.128\\,\\omega_0^2}{0.16\\,\\omega_0^2} = 0.80.
-              \\]
-            </p>
-            <p>
-              So $K_f$ is $80\\%$ of $K_i$, meaning $20\\%$ of the initial rotational kinetic energy
+              \[
+                \frac{K_f}{K_i} = \frac{0.128\,\omega_0^2}{0.16\,\omega_0^2} = 0.80.
+              \]
+              So \( K_f \) is \( 80\% \) of \( K_i \), meaning \( 20\% \) of the initial rotational kinetic energy
               is lost in the inelastic sticking collision:
-              \\[
-                \\%\\text{ loss} = 100\\% - 80\\% = 20\\%.
-              \\]
+              \[
+                \%\text{ loss} = 100\% - 80\% = 20\%.
+              \]
             </p>
             <p class="font-semibold">
-              Answer: about $20\\%$ of the rotational kinetic energy is lost.
+              Answer: about \( 20\% \) of the rotational kinetic energy is lost.
             </p>
           </div>
         </details>
@@ -591,16 +586,24 @@
         What This Problem Tested
       </h3>
       <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
-        <li>Coupling of translation ($mg - T = ma$) with rotation ($\\tau = I\\alpha$).</li>
-        <li>Using the no-slip condition $a = \\alpha R$ and $v = \\omega R$.</li>
+        <li>Coupling of translation ( \( mg - T = ma \) ) with rotation ( \( \tau = I\alpha \) ).</li>
+        <li>Using the no-slip condition \( a = \alpha R \) and \( v = \omega R \).</li>
         <li>Connecting kinematics and energy for constant-acceleration motion.</li>
         <li>Using angular momentum conservation in an inelastic rotational collision.</li>
         <li>Comparing rotational energies before and after a collision to quantify energy loss.</li>
       </ul>
       <p class="mt-3 text-xs text-slate-500">
-        When you’re comfortable with this, try creating your own variant: change $m$, $M$, or $R$
+        When you’re comfortable with this, try creating your own variant: change \( m \), \( M \), or \( R \)
         and see how each answer scales.
       </p>
+
+      <div class="mt-4">
+        <button type="button"
+                onclick="resetAll()"
+                class="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800">
+          Reset All Answers
+        </button>
+      </div>
     </section>
 
   </main>
@@ -652,8 +655,27 @@
         MathJax.typesetPromise();
       }
     }
+
+    function resetAll() {
+      // Clear all inputs and feedback
+      const ids = ['alpha', 'tension', 'speed', 'omega', 'omega_f', 'energy_loss'];
+      ids.forEach(id => {
+        const input = document.getElementById('ans-' + id);
+        const feedback = document.getElementById('feedback-' + id);
+        const hint = document.getElementById('hint-' + id);
+        if (input) input.value = '';
+        if (feedback) {
+          feedback.textContent = '';
+          feedback.className = 'mt-2 text-sm';
+        }
+        if (hint && !hint.classList.contains('hidden')) {
+          hint.classList.add('hidden');
+        }
+      });
+    }
   </script>
 
 </body>
 </html>
+
 
