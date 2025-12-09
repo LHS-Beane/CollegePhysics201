@@ -33,25 +33,60 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-  <!-- Top Nav -->
-  <nav class="bg-slate-900 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center space-x-2">
-          <span class="text-2xl">🌀</span>
-          <a href="../index.html" class="font-bold text-xl tracking-tight hover:underline">
-            Physics 201
-          </a>
-        </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium">
-          <a href="../index.html" class="text-slate-300 hover:text-white transition">Home</a>
-          <a href="../syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
-          <span class="text-slate-100">Week 7</span>
-        </div>
-      </div>
-    </div>
-  </nav>
+<!-- MOBILE TOP BAR -->
+<div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
+  <span class="font-semibold">Physics 201</span>
+  <button id="menuBtn" class="text-white focus:outline-none">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
 
+<!-- OVERLAY (mobile only) -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar"
+  class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
+         p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
+
+  <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
+
+  <a href="../index.html" class="nav-item block px-3 py-2 rounded">Home</a>
+  <a href="../syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
+
+  <hr class="my-3">
+
+  <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
+
+  <a href="../formulas.html" class="nav-item block px-3 py-2 rounded">
+    Formula Sheet
+  </a>
+
+  <a href="../calculus.html" class="nav-item block px-3 py-2 rounded">
+    Calculus Refresher
+  </a>
+
+  <hr class="my-3">
+
+  <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
+
+  <a href="../weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
+  <a href="../weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
+  <a href="../weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
+  <a href="../weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
+  <a href="../weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
+  <a href="../weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
+  <a href="../weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
+  <a href="../weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
+
+</aside>
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="md:ml-64 p-6">
+  
   <!-- Hero -->
   <header class="bg-white border-b border-slate-200 hero-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -1259,6 +1294,37 @@
 
     updateInertia();
   </script>
+</div>
+
+<!-- SIDEBAR SCRIPT -->
+<script>
+  // Highlight active link
+  const path = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-item").forEach(link => {
+    if (link.getAttribute("href").includes(path)) {
+      link.classList.add("bg-blue-600", "text-white");
+    } else {
+      link.classList.add("text-slate-700", "hover:bg-slate-100");
+    }
+  });
+
+  // Mobile toggle
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  const overlay = document.getElementById("overlay");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  });
+</script>
+
+
 </body>
 </html>
 
