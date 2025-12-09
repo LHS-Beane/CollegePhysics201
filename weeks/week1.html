@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Week 1 | Physics 201 – Units & 1D Kinematics with Calculus</title>
+  <title>Week 1 | Physics 201 – Units, Vectors, and 1D Kinematics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,13 +18,12 @@
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
     .hero-pattern {
       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
       background-size: 24px 24px;
-    }
-    .tab-active {
-      @apply bg-slate-900 text-white;
     }
   </style>
 </head>
@@ -43,7 +42,7 @@
         <div class="hidden md:flex space-x-8 text-sm font-medium">
           <a href="../index.html" class="text-slate-300 hover:text-white transition">Home</a>
           <a href="../syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
-          <a href="#top" class="text-slate-300 hover:text-white transition">Week 1</a>
+          <span class="text-slate-100">Week 1</span>
         </div>
       </div>
     </div>
@@ -56,12 +55,12 @@
         Week 1 • Sessions 1–2
       </p>
       <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-        Units, Dimensions & 1D Kinematics with Calculus
+        Units, Vectors, and 1D Kinematics with Calculus
       </h1>
       <p class="text-slate-600 max-w-2xl">
-        This week you will connect derivatives and integrals with physical motion. We start with
-        units and dimensions, then describe position, velocity, and acceleration as functions of
-        time in one dimension, including constant and non-constant acceleration.
+        This module introduces the language of physics: units, dimensions, vectors, and the
+        calculus-based description of motion in one dimension. The goal is to tie what you know
+        from calculus directly to real physical motion.
       </p>
     </div>
   </header>
@@ -101,22 +100,23 @@
         <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
           <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
           <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
-            <li>Express position $x(t)$, velocity $v(t)$, and acceleration $a(t)$ as functions of time.</li>
-            <li>Interpret velocity as the derivative of position: $v(t) = \\dfrac{dx}{dt}$.</li>
-            <li>Interpret acceleration as the derivative of velocity: $a(t) = \\dfrac{dv}{dt}$.</li>
-            <li>Use integrals to recover velocity and position from acceleration.</li>
-            <li>Apply kinematic relationships to motion with constant acceleration (including free fall).</li>
+            <li>Use and interpret SI units, prefixes, and dimensions for physical quantities.</li>
+            <li>Apply dimensional analysis to check equations and infer relationships.</li>
+            <li>Distinguish clearly between scalars and vectors, and represent vectors graphically and in components.</li>
+            <li>Relate position, velocity, and acceleration using derivatives and integrals.</li>
+            <li>Derive and apply the constant-acceleration kinematic equations, including free-fall motion.</li>
+            <li>Interpret and connect \(x(t)\), \(v(t)\), and \(a(t)\) graphs.</li>
           </ul>
         </div>
 
         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h3 class="text-sm font-bold text-slate-800 mb-2">This Week’s Tasks</h3>
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
           <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
-            <li>Read textbook section on 1D kinematics (calculus-based treatment).</li>
-            <li>Watch the short video or lecture recording, if posted.</li>
-            <li>Work through the <span class="font-semibold">Notes</span> and <span class="font-semibold">Worked Examples</span> tabs.</li>
-            <li>Complete the <span class="font-semibold">Practice Problems</span> and check your answers.</li>
-            <li>Use the <span class="font-semibold">Interactive Panel</span> to explore how $a$, $v$, and $x$ are related.</li>
+            <li>Read the <span class="font-semibold">Notes</span> section carefully, pausing to work through each example.</li>
+            <li>Use the diagrams to connect formulas to geometry and graphs.</li>
+            <li>Work through the <span class="font-semibold">Worked Examples</span> start to finish.</li>
+            <li>Attempt the <span class="font-semibold">Practice Problems</span> without looking at solutions; then check your reasoning.</li>
+            <li>Use the <span class="font-semibold">Interactive Panel</span> to experiment with constant-acceleration motion.</li>
           </ul>
         </div>
       </div>
@@ -124,66 +124,468 @@
 
     <!-- TAB: Notes -->
     <section id="tab-notes" class="tab-section hidden">
-      <div class="space-y-6">
-        <!-- Units & Dimensions -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Units, Dimensions, and Coordinate Systems</h2>
+      <div class="space-y-8">
+
+        <!-- 1. Units and Dimensions -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Physical Quantities, Units, and Dimensions</h2>
           <p class="text-sm text-slate-700 mb-3">
-            We work in the SI system: meters (m) for length, seconds (s) for time, and kilograms (kg) for mass.
-            Dimensional analysis helps check if an equation is physically reasonable.
+            Physics describes the world using measurable quantities. Every quantity has:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>a <span class="font-semibold">dimension</span> (type of quantity, like length or time), and</li>
+            <li>a <span class="font-semibold">unit</span> (standard used to measure that dimension).</li>
+          </ul>
+
+          <div class="overflow-x-auto text-sm mb-3">
+            <table class="min-w-full text-left border border-slate-200 rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800">
+                <tr>
+                  <th class="px-3 py-2 border-b border-slate-200">Quantity</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Dimension</th>
+                  <th class="px-3 py-2 border-b border-slate-200">SI Unit</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Symbol</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">Length</td>
+                  <td class="px-3 py-2">[L]</td>
+                  <td class="px-3 py-2">meter</td>
+                  <td class="px-3 py-2">m</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">Mass</td>
+                  <td class="px-3 py-2">[M]</td>
+                  <td class="px-3 py-2">kilogram</td>
+                  <td class="px-3 py-2">kg</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">Time</td>
+                  <td class="px-3 py-2">[T]</td>
+                  <td class="px-3 py-2">second</td>
+                  <td class="px-3 py-2">s</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2">Velocity</td>
+                  <td class="px-3 py-2">[L/T]</td>
+                  <td class="px-3 py-2">meter/second</td>
+                  <td class="px-3 py-2">m/s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Many everyday prefixes are powers of ten:
+          </p>
+
+          <div class="overflow-x-auto text-sm">
+            <table class="min-w-full text-left border border-slate-200 rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800">
+                <tr>
+                  <th class="px-3 py-2 border-b border-slate-200">Prefix</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Symbol</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Factor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">milli</td>
+                  <td class="px-3 py-2">m</td>
+                  <td class="px-3 py-2">\(10^{-3}\)</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">centi</td>
+                  <td class="px-3 py-2">c</td>
+                  <td class="px-3 py-2">\(10^{-2}\)</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">kilo</td>
+                  <td class="px-3 py-2">k</td>
+                  <td class="px-3 py-2">\(10^{3}\)</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2">mega</td>
+                  <td class="px-3 py-2">M</td>
+                  <td class="px-3 py-2">\(10^{6}\)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- 2. Dimensional Analysis -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Dimensional Analysis</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Dimensional analysis uses the basic dimensions of a quantity (such as [L], [M], [T]) to check
+            whether equations are consistent and to guess how different quantities might relate.
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Example: Check the kinematic equation
+            \[
+              v = v_0 + a t.
+            \]
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li>Left side: \(v\) has dimensions [L/T].</li>
+            <li>Right side: \(v_0\) has [L/T], and \(a t\) has \([L/T^2] [T] = [L/T]\).</li>
+          </ul>
+          <p class="text-sm text-slate-700 mb-3">
+            Both sides have the same dimensions, so the equation is dimensionally consistent.
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Example of an inconsistent formula:
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Suppose someone proposes \(x = v^2 t\). Dimensions:
+            \[
+              [x] = [L], \qquad [v^2 t] = (L/T)^2 \cdot T = [L^2/T].
+            \]
+            These do not match, so the equation cannot be physically correct.
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">
+            Using dimensions to infer a formula
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Assume the period \(T\) of a simple pendulum depends only on its length \(L\) and the gravitational
+            acceleration \(g\). Guess \(T \propto L^a g^b\). Use dimensions:
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            \([T] = [L]^a [L/T^2]^b = [L]^{a+b} [T]^{-2b}\).
+            Matching exponents: time gives \(1 = -2b\Rightarrow b=-\tfrac12\); length gives \(0=a+b\Rightarrow a=\tfrac12\).
+            So \(T \propto \sqrt{L/g}\).
+          </p>
+        </article>
+
+        <!-- 3. Scalars and Vectors -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Scalars and Vectors</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A <span class="font-semibold">scalar</span> has magnitude only (e.g., mass, temperature, time).
+            A <span class="font-semibold">vector</span> has both magnitude and direction
+            (e.g., displacement, velocity, acceleration, force).
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            In two dimensions, a vector \(\vec{A}\) can be written in component form:
+            \[
+              \vec{A} = A_x \hat{i} + A_y \hat{j}.
+            \]
+          </p>
+
+          <!-- SVG 1: Vector Components -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 220 160" class="w-full">
+              <defs>
+                <marker id="arrowhead-blue" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#2563eb"></polygon>
+                </marker>
+                <marker id="arrowhead-orange" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#f97316"></polygon>
+                </marker>
+              </defs>
+              <!-- Axes -->
+              <line x1="20" y1="140" x2="200" y2="140" stroke="#64748b" stroke-width="1.5" />
+              <line x1="20" y1="140" x2="20" y2="20" stroke="#64748b" stroke-width="1.5" />
+              <text x="205" y="145" font-size="10" fill="#64748b">x</text>
+              <text x="15" y="15" font-size="10" fill="#64748b">y</text>
+
+              <!-- Vector A -->
+              <line x1="20" y1="140" x2="160" y2="60"
+                    stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowhead-blue)" />
+              <text x="145" y="55" font-size="11" fill="#2563eb">\(\vec{A}\)</text>
+
+              <!-- Components (dashed) -->
+              <line x1="160" y1="60" x2="160" y2="140"
+                    stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+              <line x1="20" y1="60" x2="160" y2="60"
+                    stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+
+              <!-- Ax component -->
+              <line x1="20" y1="140" x2="160" y2="140"
+                    stroke="#f97316" stroke-width="2" marker-end="url(#arrowhead-orange)" />
+              <text x="90" y="153" font-size="10" fill="#f97316">\(A_x\)</text>
+
+              <!-- Ay component -->
+              <line x1="20" y1="140" x2="20" y2="60"
+                    stroke="#f97316" stroke-width="2" marker-end="url(#arrowhead-orange)" />
+              <text x="4" y="100" font-size="10" fill="#f97316">\(A_y\)</text>
+
+              <!-- Angle -->
+              <path d="M40 140 A20 20 0 0 1 60 130" fill="none" stroke="#0f172a" stroke-width="1" />
+              <text x="62" y="132" font-size="10" fill="#0f172a">\(\theta\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-3">
+            From the diagram, the magnitude and direction of \(\vec{A}\) are
+            \[
+              |\vec{A}| = \sqrt{A_x^2 + A_y^2}, \qquad
+              \theta = \tan^{-1}\!\left(\frac{A_y}{A_x}\right).
+            \]
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">
+            Vector addition (head-to-tail):
+          </p>
+
+          <!-- SVG 2: Vector Addition -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 140" class="w-full">
+              <defs>
+                <marker id="arrowhead-blue2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#2563eb"></polygon>
+                </marker>
+                <marker id="arrowhead-emerald" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#059669"></polygon>
+                </marker>
+                <marker id="arrowhead-orange2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#f97316"></polygon>
+                </marker>
+              </defs>
+
+              <!-- Vector A -->
+              <line x1="30" y1="100" x2="110" y2="70"
+                    stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowhead-blue2)" />
+              <text x="40" y="88" font-size="10" fill="#2563eb">\(\vec{A}\)</text>
+
+              <!-- Vector B (from head of A) -->
+              <line x1="110" y1="70" x2="180" y2="40"
+                    stroke="#059669" stroke-width="2.5" marker-end="url(#arrowhead-emerald)" />
+              <text x="130" y="58" font-size="10" fill="#059669">\(\vec{B}\)</text>
+
+              <!-- Resultant R -->
+              <line x1="30" y1="100" x2="180" y2="40"
+                    stroke="#f97316" stroke-width="2.5" marker-end="url(#arrowhead-orange2)" />
+              <text x="110" y="40" font-size="11" fill="#f97316">\(\vec{R} = \vec{A} + \vec{B}\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            Algebraically, if \(\vec{R} = \vec{A} + \vec{B}\), then
+            \[
+              R_x = A_x + B_x, \qquad R_y = A_y + B_y.
+            \]
+          </p>
+        </article>
+
+        <!-- 4. Calculus-Based Description of Motion -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Calculus-Based Description of Motion in 1D</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            In one dimension, motion is along a single axis (we will call it the \(x\)-axis).
+            We describe position as a function of time: \(x(t)\).
           </p>
           <p class="text-sm text-slate-700 mb-2">
-            Example: In $x = x_0 + v_0 t + \\tfrac{1}{2} a t^2$, each term must have dimensions of length $[L]$:
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700">
-            <li>$[x_0] = [L]$</li>
-            <li>$[v_0 t] = [L/T] [T] = [L]$</li>
-            <li>$[a t^2] = [L/T^2] [T^2] = [L]$</li>
-          </ul>
-        </div>
-
-        <!-- Calculus definitions -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Position, Velocity, and Acceleration</h2>
-          <p class="text-sm text-slate-700 mb-3">
-            In one dimension, we describe motion along a line with a function $x(t)$.
+            The calculus definitions:
           </p>
           <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-800 mb-3">
-            <p class="font-semibold mb-1">Definitions (Calculus-Based):</p>
-            <p class="mb-1">$v(t) = \\dfrac{dx}{dt}$ — instantaneous velocity is the time derivative of position.</p>
-            <p class="mb-1">$a(t) = \\dfrac{dv}{dt} = \\dfrac{d^2 x}{dt^2}$ — instantaneous acceleration is the derivative of velocity, or the second derivative of position.</p>
+            <p class="mb-1">
+              <strong>Velocity:</strong> \(v(t) = \dfrac{dx}{dt}\)
+              (instantaneous rate of change of position).
+            </p>
+            <p>
+              <strong>Acceleration:</strong> \(a(t) = \dfrac{dv}{dt} = \dfrac{d^2 x}{dt^2}\)
+              (instantaneous rate of change of velocity).
+            </p>
           </div>
-          <p class="text-sm text-slate-700">
-            If you know $a(t)$ and an initial velocity $v(t_0)$, you can integrate to find velocity:
-            $$v(t) = v(t_0) + \\int_{t_0}^{t} a(t')\\, dt'$$
-            and then integrate again to find position:
-            $$x(t) = x(t_0) + \\int_{t_0}^{t} v(t')\\, dt'$$
-          </p>
-        </div>
 
-        <!-- Constant acceleration -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Motion with Constant Acceleration</h2>
-          <p class="text-sm text-slate-700 mb-3">
-            A very important special case is when acceleration is constant: $a(t) = a_0$.
+          <p class="text-sm text-slate-700 mb-2">
+            To reverse the process, we integrate:
           </p>
           <p class="text-sm text-slate-700 mb-2">
-            Starting from $a = \\dfrac{dv}{dt} = a_0$, integrate:
+            If we know \(a(t)\) and the velocity at some initial time \(t_0\),
+            \[
+              v(t) = v(t_0) + \int_{t_0}^{t} a(t')\, dt'.
+            \]
           </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-2">
-            <li>$v(t) = v_0 + a_0 (t - t_0)$</li>
-            <li>$x(t) = x_0 + v_0 (t - t_0) + \\tfrac{1}{2} a_0 (t - t_0)^2$</li>
-          </ul>
           <p class="text-sm text-slate-700 mb-3">
-            Another useful relationship (eliminating time) is obtained by combining definitions:
+            If we then know \(v(t)\) and the position at \(t_0\),
+            \[
+              x(t) = x(t_0) + \int_{t_0}^{t} v(t')\, dt'.
+            \]
           </p>
+
+          <!-- SVG 3: x(t) graph -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="40" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="40" y1="150" x2="40" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">t</text>
+              <text x="25" y="35" font-size="10" fill="#64748b">x</text>
+
+              <!-- Linear x(t) -->
+              <path d="M40 130 Q 110 90 180 70"
+                    fill="none" stroke="#2563eb" stroke-width="2" />
+              <text x="185" y="68" font-size="10" fill="#2563eb">\(x(t)\)</text>
+
+              <!-- Tangent showing slope = v -->
+              <line x1="110" y1="100" x2="180" y2="80" stroke="#f97316" stroke-width="1.8" />
+              <circle cx="110" cy="100" r="3" fill="#f97316" />
+              <text x="120" y="95" font-size="10" fill="#f97316">slope = \(v\)</text>
+            </svg>
+          </div>
+
           <p class="text-sm text-slate-700">
-            $$v^2 = v_0^2 + 2 a_0 (x - x_0)$$
+            On an \(x\)-versus-\(t\) graph, the slope at each point is the instantaneous velocity.
+            If the graph curves, the slope is changing, which means the acceleration is nonzero.
           </p>
-          <p class="text-xs text-slate-500 mt-2">
-            In free fall near Earth’s surface, we often take $a_0 = -g \\approx -9.8\\,\\text{m/s}^2$.
+        </article>
+
+        <!-- 5. Motion with Constant Acceleration -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">5. Motion with Constant Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A very important special case is when acceleration is constant: \(a(t) = a\).
           </p>
-        </div>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">Deriving the kinematic equations</p>
+          <p class="text-sm text-slate-700 mb-2">
+            Start from the definition \(a = \dfrac{dv}{dt} = a\).
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            Integrate:
+            \[
+              v(t) = v_0 + a t
+            \]
+            where \(v_0 = v(0)\).
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Now use \(v = \dfrac{dx}{dt} = v_0 + a t\), and integrate again:
+            \[
+              x(t) = x_0 + v_0 t + \tfrac12 a t^2,
+            \]
+            where \(x_0 = x(0)\).
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Eliminating time gives the third kinematic relationship:
+            \[
+              v^2 = v_0^2 + 2a(x - x_0).
+            \]
+          </p>
+
+          <!-- SVG 4: v(t) graph with area -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="40" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="40" y1="150" x2="40" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">t</text>
+              <text x="25" y="35" font-size="10" fill="#64748b">v</text>
+
+              <!-- v(t) line -->
+              <line x1="50" y1="130" x2="200" y2="60"
+                    stroke="#2563eb" stroke-width="2" />
+              <text x="205" y="60" font-size="10" fill="#2563eb">\(v(t)\)</text>
+
+              <!-- Shaded area (displacement) from t1 to t2 -->
+              <polygon points="90,115 160,85 160,150 90,150" fill="#bfdbfe" opacity="0.9" />
+              <line x1="90" y1="150" x2="90" y2="115" stroke="#94a3b8" stroke-dasharray="4 4" />
+              <line x1="160" y1="150" x2="160" y2="85" stroke="#94a3b8" stroke-dasharray="4 4" />
+              <text x="95" y="163" font-size="9" fill="#64748b">\(t_1\)</text>
+              <text x="157" y="163" font-size="9" fill="#64748b">\(t_2\)</text>
+              <text x="105" y="105" font-size="10" fill="#1d4ed8">\(\Delta x\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            On a \(v\)-versus-\(t\) graph, the area under the curve between \(t_1\) and \(t_2\) is the displacement:
+            \[
+              \Delta x = \int_{t_1}^{t_2} v(t)\, dt.
+            \]
+          </p>
+        </article>
+
+        <!-- 6. Free Fall -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">6. Free Fall as Constant Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Near Earth’s surface, an object in free fall (neglecting air resistance) has an approximately constant
+            downward acceleration of magnitude \(g \approx 9.8\,\text{m/s}^2\).
+          </p>
+          <p class="text-sm text-slate-700 mb-2">
+            If we choose upward as positive, then
+            \[
+              a = -g.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            The motion is described by
+            \[
+              v(t) = v_0 - g t, \qquad
+              x(t) = x_0 + v_0 t - \tfrac12 g t^2.
+            \]
+          </p>
+
+          <!-- SVG 5: a(t) constant + SVG 6: motion dots -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <!-- a(t) graph -->
+            <div>
+              <svg viewBox="0 0 220 160" class="w-full">
+                <!-- Axes -->
+                <line x1="30" y1="130" x2="200" y2="130" stroke="#64748b" stroke-width="1.5" />
+                <line x1="30" y1="130" x2="30" y2="30" stroke="#64748b" stroke-width="1.5" />
+                <text x="203" y="135" font-size="10" fill="#64748b">t</text>
+                <text x="15" y="35" font-size="10" fill="#64748b">a</text>
+
+                <!-- Constant acceleration bar -->
+                <rect x="40" y="80" width="150" height="50"
+                      fill="#fee2e2" stroke="#f97316" stroke-width="1.5" />
+                <text x="60" y="105" font-size="10" fill="#b45309">\(a = -g\)</text>
+              </svg>
+              <p class="text-[0.75rem] text-slate-600 mt-1">
+                Acceleration is (approximately) constant in free fall.
+              </p>
+            </div>
+
+            <!-- Free-fall motion diagram -->
+            <div>
+              <svg viewBox="0 0 150 160" class="w-full">
+                <!-- Ground -->
+                <line x1="20" y1="140" x2="130" y2="140" stroke="#64748b" stroke-width="1.5" />
+                <text x="70" y="155" font-size="10" fill="#64748b">ground</text>
+
+                <!-- Dots increasing spacing -->
+                <circle cx="75" cy="40" r="4" fill="#2563eb" />
+                <circle cx="75" cy="60" r="4" fill="#2563eb" />
+                <circle cx="75" cy="85" r="4" fill="#2563eb" />
+                <circle cx="75" cy="115" r="4" fill="#2563eb" />
+                <text x="20" y="50" font-size="9" fill="#0f172a">equal Δt</text>
+              </svg>
+              <p class="text-[0.75rem] text-slate-600 mt-1">
+                Positions at equal time intervals get farther apart as the object speeds up.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. Summary -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">7. Summary of Key Relationships</h2>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Use SI units (m, kg, s) and dimensional analysis to check equations.</li>
+            <li>Vectors have magnitude and direction; resolve them into components using trig.</li>
+            <li>Velocity is the derivative of position; acceleration is the derivative of velocity.</li>
+            <li>Integrals of \(a(t)\) and \(v(t)\) give you \(v(t)\) and \(x(t)\), respectively, up to constants of integration set by initial conditions.</li>
+            <li>For constant acceleration:
+              \[
+                v = v_0 + at, \quad
+                x = x_0 + v_0 t + \tfrac12 a t^2, \quad
+                v^2 = v_0^2 + 2a(x - x_0).
+              \]
+            </li>
+            <li>Free fall is constant acceleration with \(a = -g\) when up is positive.</li>
+            <li>The slope of \(x(t)\) is \(v(t)\); the slope of \(v(t)\) is \(a(t)\); areas under curves correspond to changes in position or velocity.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -191,85 +593,87 @@
     <section id="tab-examples" class="tab-section hidden">
       <div class="space-y-6">
 
-        <!-- Example 1 -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
           <h2 class="text-lg font-bold text-slate-800 mb-2">Example 1: Constant Acceleration from Calculus</h2>
           <p class="text-sm text-slate-700 mb-2">
-            A particle moves along the $x$-axis with constant acceleration $a = 3.0\\,\\text{m/s}^2$.
-            At $t=0$, the particle is at $x_0 = 2.0\\,\\text{m}$ with velocity $v_0 = 1.0\\,\\text{m/s}$.
+            A particle moves along the \(x\)-axis with constant acceleration \(a = 3.0\,\text{m/s}^2\).
+            At \(t = 0\), the particle is at \(x_0 = 2.0\,\text{m}\) with velocity \(v_0 = 1.0\,\text{m/s}\).
           </p>
           <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
-            <li>Find $v(t)$ using calculus.</li>
-            <li>Find $x(t)$ using calculus.</li>
-            <li>Determine $x$ and $v$ at $t = 4.0\\,\\text{s}$.</li>
+            <li>Find \(v(t)\) using calculus.</li>
+            <li>Find \(x(t)\) using calculus.</li>
+            <li>Determine \(x\) and \(v\) at \(t = 4.0\,\text{s}\).</li>
           </ol>
 
           <details class="mt-3">
             <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
             <div class="mt-2 text-sm text-slate-700 space-y-2">
-              <p><strong>(1) Velocity:</strong> Start from $a = \\dfrac{dv}{dt} = 3.0$.</p>
-              <p>Integrate with respect to $t$:</p>
+              <p><strong>(1) Velocity:</strong> Start from \(a = \dfrac{dv}{dt} = 3.0\).</p>
               <p>
-                $$v(t) = \\int a\\, dt = \\int 3.0\\, dt = 3.0 t + C$$
+                Integrate:
+                \[
+                  v(t) = \int 3.0\, dt = 3.0 t + C.
+                \]
               </p>
-              <p>Use $v(0) = v_0 = 1.0$ to find $C$:</p>
-              <p>$1.0 = 3.0(0) + C \\Rightarrow C = 1.0$</p>
-              <p>
-                <strong>So:</strong> $$v(t) = 3.0 t + 1.0\\,\\text{(m/s)}$$
-              </p>
-
-              <p class="mt-2"><strong>(2) Position:</strong> $v = \\dfrac{dx}{dt} = 3.0 t + 1.0$.</p>
-              <p>Integrate again:</p>
-              <p>
-                $$x(t) = \\int v(t)\\, dt = \\int (3.0 t + 1.0)\\, dt = 1.5 t^2 + t + C'$$
-              </p>
-              <p>Use $x(0) = x_0 = 2.0$:</p>
-              <p>$2.0 = 1.5(0)^2 + 0 + C' \\Rightarrow C' = 2.0$</p>
-              <p>
-                <strong>So:</strong> $$x(t) = 1.5 t^2 + t + 2.0\\,\\text{(m)}$$
+              <p>Use \(v(0) = v_0 = 1.0\) \(\Rightarrow C = 1.0\). So
+                \[
+                  v(t) = 3.0 t + 1.0\,\text{m/s}.
+                \]
               </p>
 
-              <p class="mt-2"><strong>(3) Evaluate at $t = 4.0$ s:</strong></p>
+              <p class="mt-2"><strong>(2) Position:</strong> \(v = \dfrac{dx}{dt} = 3.0 t + 1.0\).</p>
               <p>
-                $v(4.0) = 3.0(4.0) + 1.0 = 13.0\\,\\text{m/s}$.
+                \[
+                  x(t) = \int (3.0 t + 1.0)\, dt = 1.5 t^2 + t + C'.
+                \]
+              </p>
+              <p>Use \(x(0) = x_0 = 2.0\) \(\Rightarrow C' = 2.0\).
+                So
+                \[
+                  x(t) = 1.5 t^2 + t + 2.0\,\text{m}.
+                \]
+              </p>
+
+              <p class="mt-2"><strong>(3) At \(t = 4.0\,\text{s}\):</strong></p>
+              <p>
+                \(v(4.0) = 3.0(4.0) + 1.0 = 13.0\,\text{m/s}.\)
               </p>
               <p>
-                $x(4.0) = 1.5(4.0)^2 + 4.0 + 2.0 = 1.5(16) + 6 = 24 + 6 = 30\\,\\text{m}$.
+                \(x(4.0) = 1.5(4.0)^2 + 4.0 + 2.0 = 1.5(16) + 6 = 24 + 6 = 30\,\text{m}.\)
               </p>
             </div>
           </details>
         </div>
 
-        <!-- Example 2 -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 2: Position from a Time-Dependent Acceleration</h2>
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 2: Time-Dependent Acceleration</h2>
           <p class="text-sm text-slate-700 mb-2">
-            Suppose a particle has acceleration $a(t) = 4t\\,\\text{(m/s}^2\\text{)}$ along the $x$-axis.
-            At $t = 0$, $v_0 = 0$ and $x_0 = 0$.
+            A particle moves along the \(x\)-axis with acceleration \(a(t) = 4t\,\text{(m/s}^2\text{)}\).
+            At \(t = 0\), \(v_0 = 0\) and \(x_0 = 0\).
           </p>
           <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
-            <li>Find $v(t)$ using integration.</li>
-            <li>Find $x(t)$.</li>
+            <li>Find \(v(t)\) by integration.</li>
+            <li>Find \(x(t)\).</li>
           </ol>
 
           <details class="mt-3">
             <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
             <div class="mt-2 text-sm text-slate-700 space-y-2">
-              <p><strong>(1) Velocity:</strong></p>
-              <p>$a(t) = \\dfrac{dv}{dt} = 4t$</p>
+              <p><strong>(1) Velocity:</strong> \(a(t) = \dfrac{dv}{dt} = 4t\).</p>
               <p>
-                $$v(t) = \\int 4t\\, dt = 2t^2 + C$$
+                \[
+                  v(t) = \int 4t\, dt = 2t^2 + C.
+                \]
               </p>
-              <p>Use $v(0) = 0$ ⇒ $C=0$.</p>
-              <p><strong>So:</strong> $v(t) = 2t^2$.</p>
+              <p>Use \(v(0) = 0\) \(\Rightarrow C = 0\). So \(v(t) = 2t^2.\)</p>
 
-              <p class="mt-2"><strong>(2) Position:</strong></p>
-              <p>$v(t) = \\dfrac{dx}{dt} = 2t^2$</p>
+              <p class="mt-2"><strong>(2) Position:</strong> \(v(t) = \dfrac{dx}{dt} = 2t^2\).</p>
               <p>
-                $$x(t) = \\int 2t^2\\, dt = \\frac{2}{3} t^3 + C'$$
+                \[
+                  x(t) = \int 2t^2\, dt = \tfrac{2}{3} t^3 + C'.
+                \]
               </p>
-              <p>Use $x(0) = 0$ ⇒ $C' = 0$.</p>
-              <p><strong>So:</strong> $x(t) = \\dfrac{2}{3} t^3$.</p>
+              <p>Use \(x(0) = 0\) \(\Rightarrow C' = 0\). So \(x(t) = \tfrac{2}{3} t^3.\)</p>
             </div>
           </details>
         </div>
@@ -282,7 +686,8 @@
       <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Week 1</h2>
         <p class="text-sm text-slate-700 mb-4">
-          Try these without looking at the solutions. Then expand each problem to check your work.
+          Try each problem fully before expanding the solution outline. Focus on setting up correct
+          expressions using units, vectors, and calculus.
         </p>
 
         <div class="space-y-4 text-sm text-slate-800">
@@ -290,27 +695,24 @@
           <!-- Problem 1 -->
           <details>
             <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 1 – Free Fall from Rest
+              Problem 1 – Dimensional Analysis
             </summary>
             <div class="mt-2 space-y-1">
               <p>
-                A rock is dropped from rest from a height of $h = 20\\,\\text{m}$ above the ground.
-                Take downward as positive and use $g = 9.8\\,\\text{m/s}^2$.
+                A student claims the kinetic energy of a particle can be written as
+                \[
+                  K = m v^3.
+                \]
               </p>
               <ol class="list-decimal pl-5 space-y-1">
-                <li>Write expressions for $v(t)$ and $x(t)$ using calculus.</li>
-                <li>Find the time it takes to hit the ground.</li>
-                <li>Find the speed just before impact.</li>
+                <li>Use dimensions to test whether this could be correct.</li>
+                <li>Compare with the standard expression \(K = \tfrac12 m v^2\).</li>
               </ol>
               <hr class="my-2 border-slate-200" />
               <p class="font-semibold">Solution (outline):</p>
-              <p>$a = g = 9.8$ so $v(t) = gt + v_0 = 9.8 t$ with $v_0 = 0$.</p>
-              <p>$x(t) = x_0 + \\int_0^t v(t') dt' = h + \\int_0^t 9.8 t' dt' = 20 + 4.9 t^2$.</p>
-              <p>Set ground at $x = 0$. Then $0 = 20 + 4.9 t^2$ ⇒ $t = \\sqrt{-20/4.9}$ but sign convention will matter.</p>
-              <p class="text-xs text-slate-600">
-                You can instead take upward positive with $a = -9.8\\,\\text{m/s}^2$;
-                the standard solution should give $t \\approx 2.0\\,\\text{s}$ and $v \\approx 19.8\\,\\text{m/s}$ downward.
-                Work it carefully with consistent sign conventions.
+              <p>
+                For \(K = m v^3\): \([K] = [M] [L/T]^3 = [M L^3/T^3]\), but energy in SI has dimensions \([M L^2/T^2]\).
+                The proposed formula is dimensionally inconsistent.
               </p>
             </div>
           </details>
@@ -322,40 +724,57 @@
             </summary>
             <div class="mt-2 space-y-1">
               <p>
-                A particle moves along the $x$-axis with acceleration $a(t) = -6t$.
-                At $t = 0$, we have $v_0 = 5.0\\,\\text{m/s}$ and $x_0 = 0$.
+                A particle has acceleration \(a(t) = -6t\) along the \(x\)-axis. At \(t = 0\),
+                \(v_0 = 5.0\,\text{m/s}\) and \(x_0 = 0\).
               </p>
               <ol class="list-decimal pl-5 space-y-1">
-                <li>Find $v(t)$ using integration.</li>
-                <li>Find $x(t)$.</li>
+                <li>Find \(v(t)\) using integration.</li>
+                <li>Find \(x(t)\).</li>
                 <li>At what time does the particle momentarily come to rest?</li>
               </ol>
               <hr class="my-2 border-slate-200" />
               <p class="font-semibold">Solution (outline):</p>
-              <p>$v(t) = \\int a(t)dt = \\int (-6t) dt = -3t^2 + C$.</p>
-              <p>Use $v(0) = 5$ ⇒ $C = 5$ ⇒ $v(t) = 5 - 3t^2$.</p>
-              <p>$x(t) = \\int v(t) dt = \\int (5 - 3t^2) dt = 5t - t^3 + C'$; use $x(0) = 0$ ⇒ $C' = 0$.</p>
-              <p>Set $v(t) = 0$: $5 - 3t^2 = 0$ ⇒ $t = \\sqrt{5/3} \\approx 1.29\\,\\text{s}$.</p>
+              <p>
+                \(v(t) = \int (-6t)\, dt = -3t^2 + C\). Use \(v(0) = 5\Rightarrow C = 5\),
+                so \(v(t) = 5 - 3t^2.\)
+              </p>
+              <p>
+                \(x(t) = \int (5 - 3t^2)\, dt = 5t - t^3 + C'\). With \(x(0)=0\Rightarrow C' = 0\).
+              </p>
+              <p>
+                Set \(v(t)=0\): \(5 - 3t^2 = 0 \Rightarrow t = \sqrt{5/3} \approx 1.29\,\text{s}.\)
+              </p>
             </div>
           </details>
 
           <!-- Problem 3 -->
           <details>
             <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 3 – Graph Interpretation
+              Problem 3 – Free-Fall from a Height
             </summary>
             <div class="mt-2 space-y-1">
               <p>
-                Suppose the velocity of a particle is given by the graph of $v(t)$ vs $t$ (not shown here).
-                Describe in words how you would compute the displacement between $t = 1\\,\\text{s}$ and
-                $t = 4\\,\\text{s}$ using calculus, and how this relates to the area under the curve.
+                A rock is dropped from rest from a height of \(h = 20\,\text{m}\) above the ground.
+                Take upward as positive and use \(g = 9.8\,\text{m/s}^2\).
               </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Write \(x(t)\) and \(v(t)\) for the rock’s motion.</li>
+                <li>Find the time when the rock hits the ground.</li>
+                <li>Find the speed just before impact.</li>
+              </ol>
               <hr class="my-2 border-slate-200" />
-              <p class="font-semibold">Solution (conceptual):</p>
+              <p class="font-semibold">Solution (outline):</p>
               <p>
-                The displacement is
-                $$\\Delta x = x(4) - x(1) = \\int_{1}^{4} v(t)\\, dt.$$
-                Geometrically, this is the signed area under the $v(t)$ curve between $t = 1$ and $t = 4$.
+                With upward positive, \(a = -g\), \(v_0 = 0\), \(x_0 = h\):
+                \[
+                  v(t) = -g t,\quad x(t) = h - \tfrac12 g t^2.
+                \]
+              </p>
+              <p>
+                Impact when \(x(t) = 0\): \(0 = h - \tfrac12 g t^2 \Rightarrow t = \sqrt{\frac{2h}{g}} \approx 2.0\,\text{s}.\)
+              </p>
+              <p>
+                \(v(t) = -g t \approx -19.6\,\text{m/s}\); speed is \(19.6\,\text{m/s}\) downward.
               </p>
             </div>
           </details>
@@ -364,30 +783,32 @@
       </div>
     </section>
 
-    <!-- TAB: Interactive Panel (simple "simulation") -->
+    <!-- TAB: Interactive Panel -->
     <section id="tab-sim" class="tab-section hidden">
       <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h2 class="text-lg font-bold text-slate-800 mb-3">Interactive Panel – Constant Acceleration</h2>
         <p class="text-sm text-slate-700 mb-4">
-          Use the sliders to set an initial position $x_0$, initial velocity $v_0$, and
-          constant acceleration $a$. The panel will show the resulting functions:
-          $$v(t) = v_0 + a t \\quad\\text{and}\\quad x(t) = x_0 + v_0 t + \\tfrac{1}{2} a t^2.$$
+          Use the sliders to set an initial position \(x_0\), initial velocity \(v_0\), and
+          constant acceleration \(a\). The panel will display the resulting functions
+          \[
+            v(t) = v_0 + a t, \qquad x(t) = x_0 + v_0 t + \tfrac12 a t^2.
+          \]
         </p>
 
         <!-- Controls -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm text-slate-800">
           <div>
-            <label class="block mb-1 font-semibold">Initial Position $x_0$ (m)</label>
+            <label class="block mb-1 font-semibold">Initial Position \(x_0\) (m)</label>
             <input id="x0" type="range" min="-10" max="10" step="1" value="0" class="w-full" />
             <div class="mt-1 text-xs">Value: <span id="x0-val">0</span> m</div>
           </div>
           <div>
-            <label class="block mb-1 font-semibold">Initial Velocity $v_0$ (m/s)</label>
+            <label class="block mb-1 font-semibold">Initial Velocity \(v_0\) (m/s)</label>
             <input id="v0" type="range" min="-10" max="10" step="1" value="2" class="w-full" />
             <div class="mt-1 text-xs">Value: <span id="v0-val">2</span> m/s</div>
           </div>
           <div>
-            <label class="block mb-1 font-semibold">Acceleration $a$ (m/s²)</label>
+            <label class="block mb-1 font-semibold">Acceleration \(a\) (m/s²)</label>
             <input id="a" type="range" min="-10" max="10" step="1" value="1" class="w-full" />
             <div class="mt-1 text-xs">Value: <span id="a-val">1</span> m/s²</div>
           </div>
@@ -397,15 +818,15 @@
         <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-800">
           <p class="font-semibold mb-2">Resulting Functions:</p>
           <p id="v-equation" class="mb-1">
-            $v(t) = 2 + 1 t$
+            \(v(t) = 2 + 1\, t\)
           </p>
           <p id="x-equation" class="mb-3">
-            $x(t) = 0 + 2 t + \\tfrac{1}{2}(1) t^2$
+            \(x(t) = 0 + 2\, t + \tfrac12 (1) t^2\)
           </p>
           <p class="text-xs text-slate-600">
-            Try changing the sign of $a$ to see how the motion changes (speeding up vs slowing down,
-            direction changes, etc.). You can ask: “For what values of $t$ does $v(t)=0$?” or
-            “At what time does the particle pass $x=0$?” and solve using these algebraic expressions.
+            Try changing the sign of \(a\) to see how the motion changes (speeding up vs slowing down,
+            changing direction, etc.). You can ask: “For what time does \(v(t)=0\)?” or
+            “When does the object pass \(x=0\)?”, and solve using these algebraic expressions.
           </p>
         </div>
       </div>
@@ -418,7 +839,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
       <div>
         <p class="text-white font-semibold">Physics 201 • Week 1</p>
-        <p>Units, dimensions, and one-dimensional kinematics using derivatives and integrals.</p>
+        <p>Units, vectors, and one-dimensional kinematics using derivatives and integrals.</p>
       </div>
       <div>
         <a href="../index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
@@ -426,7 +847,7 @@
     </div>
   </footer>
 
-  <!-- Simple tab switching + interactive panel JS -->
+  <!-- Tabs + Interactive Panel JS -->
   <script>
     // Tab switching
     const tabButtons = document.querySelectorAll('.tab-btn');
@@ -474,11 +895,11 @@
       v0Val.textContent = v0;
       aVal.textContent = a;
 
-      const vStr = `v(t) = ${v0} + ${a} t`;
-      const xStr = `x(t) = ${x0} + ${v0} t + \\tfrac{1}{2}(${a}) t^2`;
+      const vStr = `v(t) = ${v0} + ${a}\\, t`;
+      const xStr = `x(t) = ${x0} + ${v0}\\, t + \\tfrac12 (${a}) t^2`;
 
-      vEq.textContent = `$${vStr}$`;
-      xEq.textContent = `$${xStr}$`;
+      vEq.textContent = `\\(${vStr}\\)`;
+      xEq.textContent = `\\(${xStr}\\)`;
 
       if (window.MathJax) {
         MathJax.typesetPromise();
@@ -494,4 +915,5 @@
   </script>
 </body>
 </html>
+
 
