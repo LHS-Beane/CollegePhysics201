@@ -1,1 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Week 2 | Physics 201 – 2D Kinematics & Vectors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .noselect {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="bg-slate-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">🧭</span>
+          <a href="../index.html" class="font-bold text-xl tracking-tight hover:underline">
+            Physics 201
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="../index.html" class="text-slate-300 hover:text-white transition">Home</a>
+          <a href="../syllabus.pdf" class="text-slate-300 hover:text-white transition">Syllabus</a>
+          <span class="text-slate-100">Week 2</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Week 2 • Sessions 3–4
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        2D Kinematics & Vectors
+      </h1>
+      <p class="text-slate-600 max-w-2xl">
+        In this module you will review vectors, extend motion to two dimensions, analyze projectiles,
+        and interpret motion in different reference frames using relative velocity.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="overview"
+                class="tab-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+          Overview
+        </button>
+        <button data-tab="notes"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Notes
+        </button>
+        <button data-tab="examples"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Worked Examples
+        </button>
+        <button data-tab="practice"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Practice Problems
+        </button>
+        <button data-tab="sim"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Interactive Panel
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB: Overview -->
+    <section id="tab-overview" class="tab-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
+          <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
+            <li>Represent vectors in component form and perform vector operations.</li>
+            <li>Describe planar motion using the position vector \(\vec r(t)\), velocity \(\vec v(t)\), and acceleration \(\vec a(t)\).</li>
+            <li>Analyze projectile motion using parametric equations \(x(t)\) and \(y(t)\).</li>
+            <li>Compute range, maximum height, and time of flight for projectiles (no air resistance).</li>
+            <li>Interpret relative velocity in 2D (boat–river, airplane–wind problems).</li>
+            <li>Use calculus to find velocity and acceleration from a given position function in 2D.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
+          <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
+            <li>Read the <span class="font-semibold">Notes</span> as if they were a short textbook chapter.</li>
+            <li>Follow each equation with its physical interpretation and diagram.</li>
+            <li>Study the <span class="font-semibold">Worked Examples</span> before attempting the practice set.</li>
+            <li>Use the <span class="font-semibold">Projectile Simulator</span> to see how angle and speed affect trajectories.</li>
+            <li>Experiment with the <span class="font-semibold">Vector Addition Tool</span> to build a strong geometric intuition.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Notes -->
+    <section id="tab-notes" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- 1. Vector Basics -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Vectors in 2D</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            A <span class="font-semibold">vector</span> in two dimensions has a magnitude and direction and
+            can be represented in component form:
+            \[
+              \vec A = A_x \,\hat i + A_y \,\hat j.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Given a magnitude \(A\) and angle \(\theta\) measured from the positive x-axis:
+            \[
+              A_x = A\cos\theta, \qquad A_y = A\sin\theta.
+            \]
+          </p>
+
+          <!-- SVG: vector components -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="30" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="130" y1="160" x2="130" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <text x="232" y="155" font-size="10" fill="#64748b">x</text>
+              <text x="135" y="35" font-size="10" fill="#64748b">y</text>
+
+              <!-- Vector A -->
+              <line x1="130" y1="150" x2="210" y2="80"
+                    stroke="#2563eb" stroke-width="2" />
+              <polygon points="210,80 204,84 208,74" fill="#2563eb" />
+              <text x="212" y="80" font-size="10" fill="#2563eb">\(\vec A\)</text>
+
+              <!-- Components -->
+              <line x1="130" y1="150" x2="210" y2="150"
+                    stroke="#94a3b8" stroke-dasharray="4 4" />
+              <line x1="210" y1="150" x2="210" y2="80"
+                    stroke="#94a3b8" stroke-dasharray="4 4" />
+              <text x="165" y="163" font-size="9" fill="#6b7280">\(A_x\)</text>
+              <text x="215" y="115" font-size="9" fill="#6b7280">\(A_y\)</text>
+
+              <!-- Angle -->
+              <path d="M130 145 A20 20 0 0 1 150 135"
+                    fill="none" stroke="#0f172a" stroke-width="1" />
+              <text x="152" y="137" font-size="9" fill="#0f172a">\(\theta\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-2">
+            Vector addition and subtraction work component-wise:
+            \[
+              \vec R = \vec A + \vec B
+              \quad\Rightarrow\quad
+              R_x = A_x + B_x,\quad R_y = A_y + B_y.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            The magnitude and direction of \(\vec R\) are:
+            \[
+              R = \sqrt{R_x^2 + R_y^2}, \qquad
+              \tan\phi = \frac{R_y}{R_x}.
+            \]
+          </p>
+        </article>
+
+        <!-- 2. 2D Kinematics -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Position, Velocity, and Acceleration in 2D</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            We describe motion in a plane using the position vector:
+            \[
+              \vec r(t) = x(t)\,\hat i + y(t)\,\hat j.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Velocity and acceleration are time derivatives:
+            \[
+              \vec v(t) = \frac{d\vec r}{dt}
+                        = \frac{dx}{dt}\,\hat i + \frac{dy}{dt}\,\hat j
+                        = v_x(t)\,\hat i + v_y(t)\,\hat j,
+            \]
+            \[
+              \vec a(t) = \frac{d\vec v}{dt}
+                        = \frac{d^2x}{dt^2}\,\hat i + \frac{d^2y}{dt^2}\,\hat j.
+            \]
+          </p>
+          <p class="text-sm text-slate-700">
+            When acceleration is constant in each direction, we can use 1D kinematics formulas for
+            each component separately.
+          </p>
+        </article>
+
+        <!-- 3. Projectile Motion -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Projectile Motion (No Air Resistance)</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Consider a projectile launched from the origin at speed \(v_0\) and angle \(\theta\) above the
+            horizontal. Neglect air resistance and take upward as positive y.
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Components of initial velocity:
+            \[
+              v_{0x} = v_0 \cos\theta, \qquad
+              v_{0y} = v_0 \sin\theta.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            Taking \(g\) as the magnitude of gravitational acceleration (downward),
+            the motion equations are:
+            \[
+              x(t) = v_{0x} t,
+              \qquad
+              y(t) = v_{0y} t - \tfrac12 g t^2.
+            \]
+          </p>
+
+          <!-- SVG: projectile path -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Ground -->
+              <line x1="20" y1="150" x2="240" y2="150" stroke="#0f172a" stroke-width="1.5" />
+              <!-- Axes -->
+              <line x1="40" y1="150" x2="40" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <line x1="40" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">x</text>
+              <text x="45" y="35" font-size="10" fill="#64748b">y</text>
+
+              <!-- Trajectory -->
+              <path d="M40 150 Q 120 60 220 150"
+                    fill="none" stroke="#2563eb" stroke-width="2" />
+              <!-- Launch vector -->
+              <line x1="40" y1="150" x2="90" y2="110" stroke="#22c55e" stroke-width="2" />
+              <polygon points="90,110 83,113 89,104" fill="#22c55e" />
+              <text x="90" y="105" font-size="9" fill="#16a34a">\(\vec v_0\)</text>
+              <!-- Angle -->
+              <path d="M40 144 A20 20 0 0 1 60 136"
+                    fill="none" stroke="#0f172a" stroke-width="1" />
+              <text x="62" y="137" font-size="9" fill="#0f172a">\(\theta\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-2">
+            For launch and landing at the same vertical level (\(y=0\)):
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Time of flight:
+              \[
+                T = \frac{2v_0\sin\theta}{g}.
+              \]
+            </li>
+            <li>Range:
+              \[
+                R = v_0\cos\theta \, T = \frac{v_0^2\sin(2\theta)}{g}.
+              \]
+            </li>
+            <li>Maximum height:
+              \[
+                H_\max = \frac{v_0^2\sin^2\theta}{2g}.
+              \]
+            </li>
+          </ul>
+        </article>
+
+        <!-- 4. Relative Velocity -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Relative Velocity in 2D</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            Relative velocity relates the velocities of objects as seen from different reference frames.
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            A common notation is
+            \[
+              \vec v_{A/B}
+            \]
+            meaning the velocity of A as measured in frame B.
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            If a boat moves across a river:
+            \[
+              \vec v_{\text{boat/ground}} = \vec v_{\text{boat/water}} + \vec v_{\text{water/ground}}.
+            \]
+          </p>
+
+          <!-- SVG: relative velocity triangle -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Vector v_bg -->
+              <line x1="60" y1="130" x2="200" y2="80"
+                    stroke="#2563eb" stroke-width="2" />
+              <polygon points="200,80 192,82 198,74" fill="#2563eb" />
+              <text x="150" y="70" font-size="9" fill="#2563eb">\(\vec v_{\text{boat/ground}}\)</text>
+
+              <!-- v_bw -->
+              <line x1="60" y1="130" x2="140" y2="130"
+                    stroke="#22c55e" stroke-width="2" />
+              <polygon points="140,130 132,133 138,125" fill="#22c55e" />
+              <text x="90" y="140" font-size="9" fill="#16a34a">\(\vec v_{\text{boat/water}}\)</text>
+
+              <!-- v_wg -->
+              <line x1="140" y1="130" x2="200" y2="80"
+                    stroke="#f97316" stroke-width="2" />
+              <polygon points="200,80 192,82 198,74" fill="#f97316" />
+              <text x="175" y="120" font-size="9" fill="#ea580c">\(\vec v_{\text{water/ground}}\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            Component analysis often simplifies these problems: treat each direction (across vs downstream)
+            independently, then recombine to get the resultant vector.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TAB: Worked Examples -->
+    <section id="tab-examples" class="tab-section hidden">
+      <div class="space-y-6">
+
+        <!-- Example 1: Projectile -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 1 – Projectile Range and Height</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A ball is launched from ground level with speed \(v_0 = 18\,\text{m/s}\) at an angle
+            \(\theta = 40^\circ\) above the horizontal. Neglect air resistance and let
+            \(g = 9.8\,\text{m/s}^2\).
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find the time of flight.</li>
+            <li>Find the maximum height.</li>
+            <li>Find the horizontal range.</li>
+          </ol>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                Components:
+                \[
+                  v_{0x} = 18\cos 40^\circ,\quad v_{0y} = 18\sin 40^\circ.
+                \]
+                Numerically \(v_{0y} \approx 11.6\,\text{m/s}\).
+              </p>
+              <p>
+                <strong>(1) Time of flight</strong><br>
+                For a level landing, time up equals time down:
+                \[
+                  T = \frac{2v_{0y}}{g} \approx \frac{2(11.6)}{9.8} \approx 2.37\,\text{s}.
+                \]
+              </p>
+              <p>
+                <strong>(2) Maximum height</strong><br>
+                \[
+                  H_\max = \frac{v_{0y}^2}{2g} \approx \frac{(11.6)^2}{2(9.8)}
+                  \approx \frac{134.6}{19.6} \approx 6.9\,\text{m}.
+                \]
+              </p>
+              <p>
+                <strong>(3) Range</strong><br>
+                \[
+                  R = v_{0x} T = 18\cos 40^\circ \cdot 2.37 \approx 13.8 \cdot 2.37 \approx 32.7\,\text{m}.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 2: Relative Velocity -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 2 – Boat in a River Current</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A boat can move at \(5.0\,\text{m/s}\) relative to the water. The river flows east at
+            \(2.0\,\text{m/s}\). The boat is pointed due north relative to the water.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find the boat's velocity relative to the ground (magnitude and direction).</li>
+            <li>How far downstream does the boat drift while crossing a \(100\,\text{m}\)-wide river?</li>
+          </ol>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                Take east as +x, north as +y.
+                \[
+                  \vec v_{\text{boat/water}} = (0, 5.0)\,\text{m/s},
+                  \quad
+                  \vec v_{\text{water/ground}} = (2.0, 0)\,\text{m/s}.
+                \]
+              </p>
+              <p>
+                <strong>(1)</strong>
+                \[
+                  \vec v_{\text{boat/ground}} = (2.0, 5.0)\,\text{m/s}.
+                \]
+                Magnitude:
+                \[
+                  v = \sqrt{2.0^2 + 5.0^2} = \sqrt{4+25} = \sqrt{29} \approx 5.39\,\text{m/s}.
+                \]
+                Direction:
+                \[
+                  \tan\phi = \frac{5.0}{2.0} = 2.5 \Rightarrow \phi \approx 68.2^\circ
+                \]
+                north of east (or equivalently \(21.8^\circ\) east of north).
+              </p>
+              <p>
+                <strong>(2)</strong> Time to cross:
+                \[
+                  t = \frac{\text{width}}{v_y} = \frac{100}{5.0} = 20\,\text{s}.
+                \]
+                Downstream drift:
+                \[
+                  x = v_x t = (2.0)(20) = 40\,\text{m}.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 3: r(t) with Calculus -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Example 3 – Position Function and Acceleration</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A particle moves so that its position is
+            \[
+              \vec r(t) = \left(3t^2\right)\hat i + \left(4t^3\right)\hat j
+              \quad (\text{meters, seconds}).
+            \]
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find \(\vec v(t)\) and \(\vec a(t)\).</li>
+            <li>Evaluate \(\vec v(2\,\text{s})\) and \(\vec a(2\,\text{s})\).</li>
+          </ol>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p>
+                Velocity:
+                \[
+                  \vec v(t) = \frac{d\vec r}{dt}
+                  = (6t)\hat i + (12t^2)\hat j.
+                \]
+                Acceleration:
+                \[
+                  \vec a(t) = \frac{d\vec v}{dt}
+                  = 6\hat i + (24t)\hat j.
+                \]
+              </p>
+              <p>
+                At \(t = 2\,\text{s}\):
+                \[
+                  \vec v(2) = (6\cdot2)\hat i + (12\cdot4)\hat j
+                  = (12)\hat i + (48)\hat j\,\text{m/s},
+                \]
+                \[
+                  \vec a(2) = 6\hat i + (24\cdot2)\hat j
+                  = 6\hat i + 48\hat j\,\text{m/s}^2.
+                \]
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: Practice Problems -->
+    <section id="tab-practice" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Vectors & 2D Motion</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Try these problems without looking at the outlines. Use component methods, diagrams, and
+          calculus where appropriate.
+        </p>
+
+        <div class="space-y-4 text-sm text-slate-800">
+
+          <!-- P1 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 1 – Vector Components and Magnitude
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A vector \(\vec A\) has magnitude \(12\,\text{m}\) and points \(30^\circ\) above the positive x-axis.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find \(A_x\) and \(A_y\).</li>
+                <li>Verify that \(\sqrt{A_x^2 + A_y^2} = 12\,\text{m}\).</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                \(A_x = 12\cos30^\circ,\; A_y = 12\sin30^\circ.\) Numerically
+                \(A_x \approx 10.4\,\text{m},\; A_y = 6.0\,\text{m}.\)
+              </p>
+              <p>
+                Check magnitude: \(\sqrt{10.4^2 + 6.0^2} \approx 12\,\text{m}.\)
+              </p>
+            </div>
+          </details>
+
+          <!-- P2 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 2 – Projectile Time Above a Certain Height
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A projectile is launched from ground level at \(v_0 = 20\,\text{m/s}\) and
+                \(\theta = 60^\circ\). For how long is the projectile at a height \(y \ge 10\,\text{m}\)?
+              </p>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Use
+                \[
+                  y(t) = v_0\sin\theta\, t - \tfrac12 g t^2.
+                \]
+                Set \(y = 10\) and solve the quadratic for \(t\); the interval between the two roots is
+                the time the projectile is above \(10\,\text{m}\).
+              </p>
+            </div>
+          </details>
+
+          <!-- P3 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 3 – Launch at a Different Height
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A rock is thrown from a cliff of height \(h = 25\,\text{m}\) above the ground with
+                \(v_0 = 15\,\text{m/s}\) at an angle of \(35^\circ\) above the horizontal.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Write expressions for \(x(t)\) and \(y(t)\) (with \(y=0\) at ground level).</li>
+                <li>Find the time when it hits the ground.</li>
+                <li>Find the horizontal distance from the base of the cliff.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Take \(y(0) = h\):
+                \[
+                  x(t) = v_0\cos35^\circ\, t,\quad
+                  y(t) = h + v_0\sin35^\circ\, t - \tfrac12 g t^2.
+                \]
+                Set \(y(t) = 0\) and solve the quadratic for the positive time; plug into \(x(t)\).
+              </p>
+            </div>
+          </details>
+
+          <!-- P4 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 4 – Airplane in Wind
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                An airplane's airspeed (relative to the air) is \(220\,\text{m/s}\) and it is pointed
+                due north. A wind of \(60\,\text{m/s}\) blows from west to east.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the ground speed and direction of the airplane.</li>
+                <li>How far east will it drift in 30 minutes?</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Components: \(\vec v_{\text{plane/air}}=(0,220)\), \(\vec v_{\text{air/ground}}=(60,0)\).
+                Add components, then find magnitude and angle. For drift, use the x-component over the time interval.
+              </p>
+            </div>
+          </details>
+
+          <!-- P5 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 5 – r(t) and Tangent Velocity
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A particle moves in the plane with
+                \[
+                  \vec r(t) = (2\cos t)\,\hat i + (3\sin t)\,\hat j \quad (\text{meters, } t\text{ in seconds}).
+                \]
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find \(\vec v(t)\) and \(\vec a(t)\).</li>
+                <li>Find the speed at \(t = \pi/4\).</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                \(\vec v(t) = (-2\sin t)\hat i + (3\cos t)\hat j\),
+                \(\vec a(t) = (-2\cos t)\hat i + (-3\sin t)\hat j\).
+                Evaluate at \(t=\pi/4\) and take the magnitude of \(\vec v(\pi/4)\).
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Interactive Panel -->
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- Projectile Simulator -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Projectile Simulator – Animated</h2>
+          <p class="text-sm text-slate-700 mb-4">
+            Adjust the launch speed \(v_0\), angle \(\theta\), and gravitational acceleration \(g\).
+            The trajectory, instantaneous velocity vector, and downward acceleration vector are shown.
+            The projectile is launched and lands at ground level (\(y=0\)).
+          </p>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-sm text-slate-800">
+            <div>
+              <label class="block mb-1 font-semibold">Launch Speed \(v_0\) (m/s)</label>
+              <input id="proj-v0" type="range" min="5" max="40" step="1" value="20" class="w-full" />
+              <div class="mt-1 text-xs">Value: <span id="proj-v0-val">20</span> m/s</div>
+            </div>
+            <div>
+              <label class="block mb-1 font-semibold">Angle \(\theta\) (deg)</label>
+              <input id="proj-angle" type="range" min="5" max="85" step="1" value="45" class="w-full" />
+              <div class="mt-1 text-xs">Value: <span id="proj-angle-val">45</span> °</div>
+            </div>
+            <div>
+              <label class="block mb-1 font-semibold">Gravity \(g\) (m/s²)</label>
+              <input id="proj-g" type="range" min="2" max="20" step="0.5" value="9.8" class="w-full" />
+              <div class="mt-1 text-xs">Value: <span id="proj-g-val">9.8</span> m/s²</div>
+            </div>
+          </div>
+
+          <!-- Outputs -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-xs md:text-sm text-slate-800">
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+              <p class="font-semibold mb-1">Time of Flight</p>
+              <p id="proj-T-display">\(T \approx 2.89\,\text{s}\)</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+              <p class="font-semibold mb-1">Range</p>
+              <p id="proj-R-display">\(R \approx 40.8\,\text{m}\)</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-3">
+              <p class="font-semibold mb-1">Max Height</p>
+              <p id="proj-H-display">\(H_\max \approx 10.2\,\text{m}\)</p>
+            </div>
+          </div>
+
+          <!-- Equation Display -->
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-800 mb-4">
+            <p class="font-semibold mb-2">Parametric Equations (for current settings):</p>
+            <p id="proj-x-eq" class="mb-1">\(x(t) = v_0\cos\theta \, t\)</p>
+            <p id="proj-y-eq">\(y(t) = v_0\sin\theta \, t - \tfrac12 g t^2\)</p>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex flex-wrap gap-3 mb-3 text-sm">
+            <button id="proj-start"
+                    class="px-4 py-2 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700">
+              Start
+            </button>
+            <button id="proj-pause"
+                    class="px-4 py-2 rounded-lg bg-slate-700 text-white font-semibold hover:bg-slate-800">
+              Pause
+            </button>
+            <button id="proj-reset"
+                    class="px-4 py-2 rounded-lg bg-slate-200 text-slate-800 font-semibold hover:bg-slate-300">
+              Reset
+            </button>
+            <span class="text-xs text-slate-500 self-center">
+              The projectile stops automatically when it reaches the ground again.
+            </span>
+          </div>
+
+          <!-- Graph -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <p class="text-sm font-semibold text-slate-800 mb-2">
+              Trajectory with Velocity and Acceleration Vectors
+            </p>
+            <div class="w-full max-w-3xl mx-auto">
+              <svg id="proj-svg" viewBox="0 0 260 180" class="w-full noselect">
+                <!-- Axes -->
+                <line x1="30" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+                <line x1="30" y1="150" x2="30" y2="20" stroke="#64748b" stroke-width="1.5" />
+                <text x="233" y="155" font-size="10" fill="#64748b">x</text>
+                <text x="35" y="25" font-size="10" fill="#64748b">y</text>
+
+                <!-- Ground line -->
+                <line x1="30" y1="150" x2="230" y2="150" stroke="#0f172a" stroke-width="1" />
+
+                <!-- Trajectory path -->
+                <path id="proj-path" d="" fill="none" stroke="#2563eb" stroke-width="2" />
+
+                <!-- Projectile -->
+                <circle id="proj-ball" cx="30" cy="150" r="4" fill="#f97316" stroke="#ea580c" stroke-width="1.5" />
+
+                <!-- Velocity vector -->
+                <line id="proj-v-line" x1="0" y1="0" x2="0" y2="0"
+                      stroke="#22c55e" stroke-width="2" />
+                <polygon id="proj-v-arrow" points="0,0 0,0 0,0" fill="#22c55e" />
+
+                <!-- Acceleration vector -->
+                <line id="proj-a-line" x1="0" y1="0" x2="0" y2="0"
+                      stroke="#ef4444" stroke-width="2" />
+                <polygon id="proj-a-arrow" points="0,0 0,0 0,0" fill="#ef4444" />
+
+              </svg>
+            </div>
+            <p class="text-[0.75rem] text-slate-600 mt-2">
+              Green arrow: instantaneous velocity. Red arrow: constant downward gravitational acceleration.
+              Note how the velocity vector changes direction while the acceleration vector stays vertical.
+            </p>
+          </div>
+        </div>
+
+        <!-- Vector Addition Tool -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">Vector Addition Tool – Drag the Arrows</h2>
+          <p class="text-sm text-slate-700 mb-4">
+            Drag the tips of \(\vec A\) (blue) and \(\vec B\) (green). The resultant
+            \(\vec R = \vec A + \vec B\) (orange) updates in real time, along with components and magnitudes.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-white border border-slate-200 rounded-lg p-4 noselect">
+              <svg id="vec-svg" viewBox="0 0 260 200" class="w-full">
+                <!-- Axes -->
+                <line x1="20" y1="100" x2="240" y2="100" stroke="#64748b" stroke-width="1.5" />
+                <line x1="130" y1="190" x2="130" y2="10" stroke="#64748b" stroke-width="1.5" />
+                <text x="242" y="105" font-size="10" fill="#64748b">x</text>
+                <text x="135" y="15" font-size="10" fill="#64748b">y</text>
+
+                <!-- Vector A -->
+                <line id="vec-A-line" x1="130" y1="100" x2="190" y2="60"
+                      stroke="#2563eb" stroke-width="2" />
+                <polygon id="vec-A-arrow" points="190,60 183,62 188,55" fill="#2563eb" />
+                <circle id="vec-A-tip" cx="190" cy="60" r="5" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5" />
+
+                <!-- Vector B -->
+                <line id="vec-B-line" x1="130" y1="100" x2="70" y2="40"
+                      stroke="#22c55e" stroke-width="2" />
+                <polygon id="vec-B-arrow" points="70,40 72,47 65,42" fill="#22c55e" />
+                <circle id="vec-B-tip" cx="70" cy="40" r="5" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5" />
+
+                <!-- Resultant R -->
+                <line id="vec-R-line" x1="130" y1="100" x2="160" y2="20"
+                      stroke="#f97316" stroke-width="2" />
+                <polygon id="vec-R-arrow" points="160,20 154,23 159,15" fill="#f97316" />
+
+              </svg>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs md:text-sm text-slate-800">
+              <p class="font-semibold mb-2">Vector Components and Magnitudes</p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <p class="font-semibold text-blue-700 mb-1">\(\vec A\)</p>
+                  <p id="vec-A-components">\(A_x = 0,\; A_y = 0\)</p>
+                  <p id="vec-A-mag">\(A = 0\)</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-emerald-700 mb-1">\(\vec B\)</p>
+                  <p id="vec-B-components">\(B_x = 0,\; B_y = 0\)</p>
+                  <p id="vec-B-mag">\(B = 0\)</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-amber-700 mb-1">\(\vec R = \vec A + \vec B\)</p>
+                  <p id="vec-R-components">\(R_x = 0,\; R_y = 0\)</p>
+                  <p id="vec-R-mag">\(R = 0\)</p>
+                </div>
+              </div>
+              <p class="text-[0.75rem] text-slate-600 mt-3">
+                Origin is at the center of the axes. Drag the blue and green tips.
+                This diagram emphasizes component addition in 2D.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 2</p>
+        <p>Vectors, 2D kinematics, projectile motion, and relative velocity.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tabs + Interactive JS -->
+  <script>
+    // ---------- Tab switching ----------
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        });
+
+        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        tabSections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('tab-' + target).classList.remove('hidden');
+
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+    });
+
+    // ---------- Utility ----------
+    function roundTo(val, places) {
+      const factor = Math.pow(10, places);
+      return Math.round(val * factor) / factor;
+    }
+
+    // ============================================================
+    // PROJECTILE SIMULATOR
+    // ============================================================
+    const v0Slider = document.getElementById('proj-v0');
+    const angleSlider = document.getElementById('proj-angle');
+    const gSlider = document.getElementById('proj-g');
+
+    const v0ValSpan = document.getElementById('proj-v0-val');
+    const angleValSpan = document.getElementById('proj-angle-val');
+    const gValSpan = document.getElementById('proj-g-val');
+
+    const TDisplay = document.getElementById('proj-T-display');
+    const RDisplay = document.getElementById('proj-R-display');
+    const HDisplay = document.getElementById('proj-H-display');
+    const xEqDisplay = document.getElementById('proj-x-eq');
+    const yEqDisplay = document.getElementById('proj-y-eq');
+
+    const projSvg = document.getElementById('proj-svg');
+    const projPath = document.getElementById('proj-path');
+    const projBall = document.getElementById('proj-ball');
+    const vLine = document.getElementById('proj-v-line');
+    const vArrow = document.getElementById('proj-v-arrow');
+    const aLine = document.getElementById('proj-a-line');
+    const aArrow = document.getElementById('proj-a-arrow');
+
+    const projStartBtn = document.getElementById('proj-start');
+    const projPauseBtn = document.getElementById('proj-pause');
+    const projResetBtn = document.getElementById('proj-reset');
+
+    // Graph geometry
+    const pxXMin = 30, pxXMax = 230;
+    const pxYBottom = 150, pxYTop = 20;
+    const pxXRange = pxXMax - pxXMin;
+    const pxYRange = pxYBottom - pxYTop;
+
+    let projParams = {
+      v0: 20,
+      angleDeg: 45,
+      angleRad: Math.PI / 4,
+      g: 9.8,
+      T: 0,
+      R: 0,
+      H: 0,
+      xScale: 1,
+      yScale: 1
+    };
+
+    let projAnim = {
+      running: false,
+      t: 0,
+      lastTime: null,
+      timeScale: 1
+    };
+
+    function computeProjectileParams() {
+      const v0 = Number(v0Slider.value);
+      const angleDeg = Number(angleSlider.value);
+      const g = Number(gSlider.value);
+
+      v0ValSpan.textContent = v0.toFixed(0);
+      angleValSpan.textContent = angleDeg.toFixed(0);
+      gValSpan.textContent = roundTo(g, 1);
+
+      const angleRad = angleDeg * Math.PI / 180;
+
+      const v0x = v0 * Math.cos(angleRad);
+      const v0y = v0 * Math.sin(angleRad);
+
+      // Time of flight (same level)
+      let T = 0;
+      if (g > 0) T = (2 * v0y) / g;
+      if (T < 0) T = 0;
+
+      // Range, max height
+      const R = v0x * T;
+      const H = (v0y * v0y) / (2 * g);
+
+      // Scaling factors for plot (avoid zero scale)
+      const xMax = Math.max(R, 1);
+      const yMax = Math.max(H, 1);
+
+      const xScale = xMax / pxXRange; // m per pixel
+      const yScale = yMax / (pxYRange * 0.9); // m per pixel
+
+      projParams = {
+        v0,
+        angleDeg,
+        angleRad,
+        g,
+        T,
+        R,
+        H,
+        xScale,
+        yScale
+      };
+
+      // Update text
+      TDisplay.textContent = `\\(T \\approx ${roundTo(T, 2)}\\,\\text{s}\\)`;
+      RDisplay.textContent = `\\(R \\approx ${roundTo(R, 2)}\\,\\text{m}\\)`;
+      HDisplay.textContent = `\\(H_\\max \\approx ${roundTo(H, 2)}\\,\\text{m}\\)`;
+
+      xEqDisplay.textContent = `\\(x(t) = ${roundTo(v0x, 2)}\\, t\\)`;
+      yEqDisplay.textContent = `\\(y(t) = ${roundTo(v0y, 2)}\\, t - \\tfrac12 (${roundTo(g, 2)}) t^2\\)`;
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+
+      updateProjectilePath();
+      drawProjectileAtTime(projAnim.t);
+    }
+
+    function worldToPixel(x, y) {
+      // Origin at (0,0) on ground
+      const px = pxXMin + (x / projParams.xScale);
+      const py = pxYBottom - (y / projParams.yScale);
+      return { x: px, y: py };
+    }
+
+    function updateProjectilePath() {
+      const pts = [];
+      const steps = 120;
+      const T = projParams.T || 1;
+      for (let i = 0; i <= steps; i++) {
+        const t = (T * i) / steps;
+        const v0 = projParams.v0;
+        const g = projParams.g;
+        const ang = projParams.angleRad;
+
+        const v0x = v0 * Math.cos(ang);
+        const v0y = v0 * Math.sin(ang);
+
+        const x = v0x * t;
+        const y = v0y * t - 0.5 * g * t * t;
+        if (y < 0) break;
+
+        const p = worldToPixel(x, y);
+        pts.push(p);
+      }
+
+      if (pts.length === 0) {
+        projPath.setAttribute('d', '');
+        return;
+      }
+
+      let d = `M ${pts[0].x.toFixed(2)} ${pts[0].y.toFixed(2)} `;
+      for (let i = 1; i < pts.length; i++) {
+        d += `L ${pts[i].x.toFixed(2)} ${pts[i].y.toFixed(2)} `;
+      }
+      projPath.setAttribute('d', d);
+    }
+
+    function drawArrow(lineElem, arrowElem, x1, y1, x2, y2, size = 6) {
+      lineElem.setAttribute('x1', x1);
+      lineElem.setAttribute('y1', y1);
+      lineElem.setAttribute('x2', x2);
+      lineElem.setAttribute('y2', y2);
+
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.sqrt(dx*dx + dy*dy);
+      if (len < 1e-6) {
+        arrowElem.setAttribute('points', '');
+        return;
+      }
+      const ux = dx / len;
+      const uy = dy / len;
+
+      // Arrow tip at (x2, y2)
+      const tipX = x2;
+      const tipY = y2;
+      // Base points
+      const leftX = tipX - ux*size - uy*size*0.5;
+      const leftY = tipY - uy*size + ux*size*0.5;
+      const rightX = tipX - ux*size + uy*size*0.5;
+      const rightY = tipY - uy*size - ux*size*0.5;
+
+      const points = `${tipX},${tipY} ${leftX},${leftY} ${rightX},${rightY}`;
+      arrowElem.setAttribute('points', points);
+    }
+
+    function drawProjectileAtTime(t) {
+      const v0 = projParams.v0;
+      const g = projParams.g;
+      const ang = projParams.angleRad;
+      const v0x = v0 * Math.cos(ang);
+      const v0y = v0 * Math.sin(ang);
+
+      if (t < 0) t = 0;
+      if (t > projParams.T) t = projParams.T;
+
+      const x = v0x * t;
+      let y = v0y * t - 0.5 * g * t * t;
+      if (y < 0) y = 0;
+
+      const pos = worldToPixel(x, y);
+
+      projBall.setAttribute('cx', pos.x);
+      projBall.setAttribute('cy', pos.y);
+
+      // Velocity
+      const vx = v0x;
+      const vy = v0y - g * t;
+
+      const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
+      const vScale = 0.6 * (pxXRange / projParams.R || 10);
+      const vEndX = pos.x + (vx / vMag) * vScale * 10;
+      const vEndY = pos.y - (vy / vMag) * vScale * 10;
+      drawArrow(vLine, vArrow, pos.x, pos.y, vEndX, vEndY, 6);
+
+      // Acceleration (downward)
+      const aScale = 18;
+      const aEndX = pos.x;
+      const aEndY = pos.y + aScale;
+      drawArrow(aLine, aArrow, pos.x, pos.y, aEndX, aEndY, 6);
+    }
+
+    function resetProjectileAnimation() {
+      projAnim.running = false;
+      projAnim.t = 0;
+      projAnim.lastTime = null;
+      drawProjectileAtTime(0);
+    }
+
+    function animateProjectile(timestamp) {
+      if (!projAnim.running) return;
+      if (projAnim.lastTime == null) {
+        projAnim.lastTime = timestamp;
+      }
+      const dt = (timestamp - projAnim.lastTime) / 1000 * projAnim.timeScale;
+      projAnim.lastTime = timestamp;
+      projAnim.t += dt;
+
+      if (projAnim.t >= projParams.T) {
+        projAnim.t = projParams.T;
+        drawProjectileAtTime(projAnim.t);
+        projAnim.running = false;
+        return;
+      }
+
+      drawProjectileAtTime(projAnim.t);
+      requestAnimationFrame(animateProjectile);
+    }
+
+    // Event listeners for projectile controls
+    v0Slider.addEventListener('input', () => {
+      computeProjectileParams();
+      resetProjectileAnimation();
+    });
+    angleSlider.addEventListener('input', () => {
+      computeProjectileParams();
+      resetProjectileAnimation();
+    });
+    gSlider.addEventListener('input', () => {
+      computeProjectileParams();
+      resetProjectileAnimation();
+    });
+
+    projStartBtn.addEventListener('click', () => {
+      if (projParams.T <= 0) return;
+      projAnim.running = true;
+      projAnim.lastTime = null;
+      projAnim.t = 0;
+      requestAnimationFrame(animateProjectile);
+    });
+
+    projPauseBtn.addEventListener('click', () => {
+      projAnim.running = !projAnim.running;
+      if (projAnim.running) {
+        projAnim.lastTime = null;
+        requestAnimationFrame(animateProjectile);
+      }
+    });
+
+    projResetBtn.addEventListener('click', () => {
+      resetProjectileAnimation();
+    });
+
+    // Initial projectile setup
+    computeProjectileParams();
+    resetProjectileAnimation();
+
+    // ============================================================
+    // VECTOR ADDITION TOOL – DRAGGABLE
+    // ============================================================
+    const vecSvg = document.getElementById('vec-svg');
+    const ALine = document.getElementById('vec-A-line');
+    const AArrow = document.getElementById('vec-A-arrow');
+    const ATip = document.getElementById('vec-A-tip');
+
+    const BLine = document.getElementById('vec-B-line');
+    const BArrow = document.getElementById('vec-B-arrow');
+    const BTip = document.getElementById('vec-B-tip');
+
+    const RLine = document.getElementById('vec-R-line');
+    const RArrow = document.getElementById('vec-R-arrow');
+
+    const AComp = document.getElementById('vec-A-components');
+    const AMag = document.getElementById('vec-A-mag');
+    const BComp = document.getElementById('vec-B-components');
+    const BMag = document.getElementById('vec-B-mag');
+    const RComp = document.getElementById('vec-R-components');
+    const RMag = document.getElementById('vec-R-mag');
+
+    const originX = 130;
+    const originY = 100;
+
+    let dragState = {
+      dragging: null, // 'A' or 'B'
+    };
+
+    function updateVectorGraphics() {
+      const Ax = Number(ATip.getAttribute('cx'));
+      const Ay = Number(ATip.getAttribute('cy'));
+
+      const Bx = Number(BTip.getAttribute('cx'));
+      const By = Number(BTip.getAttribute('cy'));
+
+      // A
+      ALine.setAttribute('x1', originX);
+      ALine.setAttribute('y1', originY);
+      ALine.setAttribute('x2', Ax);
+      ALine.setAttribute('y2', Ay);
+      drawArrow(ALine, AArrow, originX, originY, Ax, Ay, 6);
+
+      // B
+      BLine.setAttribute('x1', originX);
+      BLine.setAttribute('y1', originY);
+      BLine.setAttribute('x2', Bx);
+      BLine.setAttribute('y2', By);
+      drawArrow(BLine, BArrow, originX, originY, Bx, By, 6);
+
+      // Compute components in a "physics coordinate system":
+      // x-right is positive, y-up is positive.
+      const scale = 0.1; // convert pixels to "meters" if desired
+      const AxComp = (Ax - originX) * scale;
+      const AyComp = (originY - Ay) * scale; // invert
+      const BxComp = (Bx - originX) * scale;
+      const ByComp = (originY - By) * scale;
+
+      const A_len = Math.sqrt(AxComp*AxComp + AyComp*AyComp);
+      const B_len = Math.sqrt(BxComp*BxComp + ByComp*ByComp);
+
+      // R = A + B in component form
+      const RxComp = AxComp + BxComp;
+      const RyComp = AyComp + ByComp;
+
+      const R_len = Math.sqrt(RxComp*RxComp + RyComp*RyComp);
+
+      // Convert R back to pixel tip
+      const RxPix = originX + (RxComp / scale);
+      const RyPix = originY - (RyComp / scale);
+
+      RLine.setAttribute('x1', originX);
+      RLine.setAttribute('y1', originY);
+      RLine.setAttribute('x2', RxPix);
+      RLine.setAttribute('y2', RyPix);
+      drawArrow(RLine, RArrow, originX, originY, RxPix, RyPix, 6);
+
+      // Update text
+      AComp.textContent = `\\(A_x \\approx ${roundTo(AxComp,2)},\\; A_y \\approx ${roundTo(AyComp,2)}\\)`;
+      AMag.textContent = `\\(A \\approx ${roundTo(A_len,2)}\\)`;
+
+      BComp.textContent = `\\(B_x \\approx ${roundTo(BxComp,2)},\\; B_y \\approx ${roundTo(ByComp,2)}\\)`;
+      BMag.textContent = `\\(B \\approx ${roundTo(B_len,2)}\\)`;
+
+      RComp.textContent = `\\(R_x \\approx ${roundTo(RxComp,2)},\\; R_y \\approx ${roundTo(RyComp,2)}\\)`;
+      RMag.textContent = `\\(R \\approx ${roundTo(R_len,2)}\\)`;
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    function svgPointFromEvent(svg, evt) {
+      const rect = svg.getBoundingClientRect();
+      let clientX, clientY;
+      if (evt.touches && evt.touches.length > 0) {
+        clientX = evt.touches[0].clientX;
+        clientY = evt.touches[0].clientY;
+      } else {
+        clientX = evt.clientX;
+        clientY = evt.clientY;
+      }
+      const x = (clientX - rect.left) * (260 / rect.width);
+      const y = (clientY - rect.top) * (200 / rect.height);
+      return { x, y };
+    }
+
+    function clampVecTip(pt) {
+      // Keep tips inside the SVG a bit
+      const x = Math.min(240, Math.max(20, pt.x));
+      const y = Math.min(190, Math.max(10, pt.y));
+      return { x, y };
+    }
+
+    function startDrag(vecName) {
+      dragState.dragging = vecName;
+    }
+
+    function stopDrag() {
+      dragState.dragging = null;
+    }
+
+    function handleMove(evt) {
+      if (!dragState.dragging) return;
+      evt.preventDefault();
+      const pt = svgPointFromEvent(vecSvg, evt);
+      const clamped = clampVecTip(pt);
+
+      if (dragState.dragging === 'A') {
+        ATip.setAttribute('cx', clamped.x);
+        ATip.setAttribute('cy', clamped.y);
+      } else if (dragState.dragging === 'B') {
+        BTip.setAttribute('cx', clamped.x);
+        BTip.setAttribute('cy', clamped.y);
+      }
+      updateVectorGraphics();
+    }
+
+    ATip.addEventListener('mousedown', () => startDrag('A'));
+    BTip.addEventListener('mousedown', () => startDrag('B'));
+    ATip.addEventListener('touchstart', (e) => { startDrag('A'); e.preventDefault(); });
+    BTip.addEventListener('touchstart', (e) => { startDrag('B'); e.preventDefault(); });
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('touchmove', handleMove, { passive: false });
+
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+    document.addEventListener('touchcancel', stopDrag);
+
+    // Initial vector status
+    updateVectorGraphics();
+  </script>
+</body>
+</html>
 
