@@ -32,7 +32,6 @@
 <div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
   <span class="font-semibold">Physics 201</span>
   <button id="menuBtn" class="text-white focus:outline-none">
-    <!-- Hamburger Icon -->
     <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
       <path d="M4 6h16M4 12h16M4 18h16"/>
@@ -40,77 +39,49 @@
   </button>
 </div>
 
-<!-- SIDEBAR OVERLAY (mobile dimmer) -->
+<!-- OVERLAY (mobile only) -->
 <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden"></div>
 
 <!-- SIDEBAR -->
 <aside id="sidebar"
   class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
-         p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200">
+         p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
 
-  <!-- Title -->
   <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
 
-  <!-- Main links -->
-  <a href="index.html" class="nav-item block px-3 py-2 rounded">Home</a>
-  <a href="syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
+  <a href="../index.html" class="nav-item block px-3 py-2 rounded">Home</a>
+  <a href="../syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
 
   <hr class="my-3">
 
-  <!-- Resources -->
   <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
 
-  <a href="formulas.html" class="nav-item block px-3 py-2 rounded">Formula Sheet</a>
-  <a href="calculus.html" class="nav-item block px-3 py-2 rounded">Calculus Refresher</a>
+  <a href="../formulas.html" class="nav-item block px-3 py-2 rounded">
+    Formula Sheet
+  </a>
+
+  <a href="../calculus.html" class="nav-item block px-3 py-2 rounded">
+    Calculus Refresher
+  </a>
 
   <hr class="my-3">
 
-  <!-- Weeks -->
   <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
 
-  <a href="week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
-  <a href="week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
-  <a href="week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
-  <a href="week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
-  <a href="week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
-  <a href="week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
-  <a href="week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
-  <a href="week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
+  <a href="../weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
+  <a href="../weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
+  <a href="../weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
+  <a href="../weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
+  <a href="../weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
+  <a href="../weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
+  <a href="../weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
+  <a href="../weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
 
 </aside>
 
 <!-- PAGE CONTENT WRAPPER -->
 <div class="md:ml-64 p-6">
-    <!-- Your page content goes here -->
-</div>
 
-<!-- ACTIVE PAGE + MOBILE MENU SCRIPT -->
-<script>
-  // Highlight active link
-  const path = window.location.pathname.split("/").pop();
-  document.querySelectorAll(".nav-item").forEach(link => {
-    if (link.getAttribute("href") === path) {
-      link.classList.add("bg-blue-600", "text-white");
-    } else {
-      link.classList.add("text-slate-700", "hover:bg-slate-100");
-    }
-  });
-
-  // Mobile toggle
-  const sidebar = document.getElementById("sidebar");
-  const menuBtn = document.getElementById("menuBtn");
-  const overlay = document.getElementById("overlay");
-
-  menuBtn.addEventListener("click", () => {
-    sidebar.classList.remove("-translate-x-full");
-    overlay.classList.remove("hidden");
-  });
-
-  overlay.addEventListener("click", () => {
-    sidebar.classList.add("-translate-x-full");
-    overlay.classList.add("hidden");
-  });
-</script>
 
   <!-- Hero -->
   <header class="bg-white border-b border-slate-200 hero-pattern">
@@ -863,7 +834,37 @@
     collapseBtn.addEventListener('click', () => {
       allDetails.forEach(d => d.open = false);
     });
-  </script>
+</div>
+ </script>
+<!-- SIDEBAR SCRIPT -->
+<script>
+  // Highlight active link
+  const path = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-item").forEach(link => {
+    if (link.getAttribute("href").includes(path)) {
+      link.classList.add("bg-blue-600", "text-white");
+    } else {
+      link.classList.add("text-slate-700", "hover:bg-slate-100");
+    }
+  });
+
+  // Mobile toggle
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  const overlay = document.getElementById("overlay");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  });
+</script>
+
+ 
 </body>
 </html>
 
