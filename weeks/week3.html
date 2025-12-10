@@ -686,132 +686,141 @@
     </section>
 
     <!-- TAB: Interactive Panel -->
-    <section id="tab-sim" class="tab-section hidden">
-      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-        <h2 class="text-lg font-bold text-slate-800 mb-3">Interactive Panel – Force, Mass, and Acceleration</h2>
-        <p class="text-sm text-slate-700 mb-4">
-          Use the sliders to choose a mass $m$ and a net horizontal force $\sum F_x$.
-          The panel will compute the resulting acceleration:
-          \[
-            a = \frac{\sum F_x}{m}.
-          \]
-          You can interpret this as a simplified “FBD in one number” for a block on a horizontal surface.
+  <section id="tab-sim" class="tab-section hidden">
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+    <h2 class="text-lg font-bold text-slate-800 mb-3">
+      Interactive Panel – Block on an Incline (Newton’s 2nd Law with Friction)
+    </h2>
+
+    <p class="text-sm text-slate-700 mb-4">
+      This interactive model lets you control the mass, incline angle, coefficients of friction,
+      gravitational environment, and initial velocity. Use the questions below to connect the simulation
+      to free-body diagrams and Newton’s Second Law.
+    </p>
+
+    <!-- GEO GEBRA SIM EMBED -->
+    <div class="w-full flex justify-center mb-6">
+      <iframe 
+        src="https://www.geogebra.org/classic/CxZz6XTK?embed" 
+        width="800" height="600"
+        style="border: 1px solid #e4e4e4; border-radius: 4px;"
+        allowfullscreen
+        frameborder="0">
+      </iframe>
+    </div>
+
+    <!-- INTERACTIVE GUIDED QUESTIONS -->
+    <div class="space-y-8">
+
+      <!-- Q1 Static friction threshold -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+        <h3 class="font-semibold mb-2 text-sky-300">1. Static Friction Threshold – Predict & Test</h3>
+        <p class="mb-2">
+          Set <strong>initial velocity = 0</strong>. Slowly increase the incline angle until the block 
+          just begins sliding.
+        </p>
+        <ol class="list-decimal ml-5 space-y-1 mb-3">
+          <li>Record the angle at which motion begins: \( \theta_{\text{crit}} = \_\_\_\_^\circ \).</li>
+          <li>Using Newton’s 2nd Law for impending motion:
+            \[
+              mg\sin\theta_{\text{crit}} = \mu_s mg\cos\theta_{\text{crit}},
+            \]
+            solve for \( \mu_s \).
+          </li>
+          <li>Compare your calculated value to the simulation slider for \( \mu_s \).</li>
+        </ol>
+      </div>
+
+      <!-- Q2 Newton's 2nd Law with friction -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+        <h3 class="font-semibold mb-2 text-sky-300">2. Newton’s 2nd Law on an Incline</h3>
+        <p class="mb-2">
+          Choose values for mass \(m\), angle \( \theta \), and kinetic friction \( \mu_k \).  
+          Predict the acceleration using:
         </p>
 
-        <!-- Controls -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm text-slate-800">
-          <div>
-            <label class="block mb-1 font-semibold">Mass $m$ (kg)</label>
-            <input id="m-slider" type="range" min="1" max="50" step="1" value="10" class="w-full" />
-            <div class="mt-1 text-xs">Value: <span id="m-val">10</span> kg</div>
-          </div>
-          <div>
-            <label class="block mb-1 font-semibold">Net Force $\sum F_x$ (N)</label>
-            <input id="f-slider" type="range" min="-100" max="100" step="5" value="20" class="w-full" />
-            <div class="mt-1 text-xs">Value: <span id="f-val">20</span> N</div>
-          </div>
-          <div>
-            <label class="block mb-1 font-semibold">Friction Present?</label>
-            <select id="fric-select" class="w-full border border-slate-300 rounded px-2 py-1 text-xs">
-              <option value="none">No (pure net force model)</option>
-              <option value="comment">Conceptually (you include it in $\sum F$)</option>
-            </select>
-            <p class="mt-1 text-[0.7rem] text-slate-600">
-              In real problems, you’d compute $\sum F_x$ from all forces (applied, friction, tension, etc.).
-            </p>
-          </div>
-        </div>
+        <p class="mb-3">
+          \[
+            a = g\big(\sin\theta - \mu_k \cos\theta\big)
+          \]
+        </p>
 
-        <!-- Display -->
-        <div class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-sm text-sky-100">
-          <p class="font-semibold mb-2">Result:</p>
-          <p id="a-equation" class="mb-1">
-            \( a = \dfrac{20}{10} = 2.0\ \text{m/s}^2 \)
-          </p>
-          <p class="text-xs text-slate-400 mb-2">
-            Sign convention: positive $a$ means acceleration to the right, negative $a$ to the left.
-          </p>
-          <p class="text-xs text-slate-400">
-            Think in terms of your free-body diagram: once you’ve summed all forces along $x$,
-            this panel tells you how “hard” the motion responds based on the mass.
-          </p>
-        </div>
+        <ol class="list-decimal ml-5 space-y-1 mb-3">
+          <li>Compute your predicted acceleration.</li>
+          <li>Start the simulation and compare it to the model’s actual acceleration.</li>
+          <li>
+            If the values don’t match, identify which force component (parallel, perpendicular, friction)
+            may have been misinterpreted.
+          </li>
+        </ol>
       </div>
-    </section>
 
-  </main>
+      <!-- Q3 Gravity planet switch -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+        <h3 class="font-semibold mb-2 text-sky-300">3. Changing Gravity – Earth, Moon, Mars</h3>
+        <p class="mb-2">
+          Switch among gravity values: \( g = 9.8, 3.7, 1.6\ \text{m/s}^2 \).
+        </p>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
-      <div>
-        <p class="text-white font-semibold">Physics 201 • Week 3</p>
-        <p>Newton’s Laws, free-body diagrams, friction, and multi-object dynamics.</p>
+        <ol class="list-decimal ml-5 space-y-1 mb-3">
+          <li>Record acceleration for the same \(m\), \( \theta \), \( \mu_k \) at each gravity value.</li>
+          <li>
+            Explain why friction decreases proportionally with gravity:
+            \[
+              f_k = \mu_k mg\cos\theta.
+            \]
+          </li>
+          <li>Which environment gives the largest acceleration? Why?</li>
+        </ol>
       </div>
-      <div>
-        <a href="../index.html" class="text-sky-300 hover:text-sky-200">Back to Course Home →</a>
+
+      <!-- Q4 Energy exploration -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+        <h3 class="font-semibold mb-2 text-sky-300">4. Energy Loss to Friction</h3>
+        <p class="mb-2">
+          Give the block an initial velocity up the ramp. Observe the motion.
+        </p>
+
+        <ol class="list-decimal ml-5 space-y-1 mb-3">
+          <li>Predict the stopping distance using energy methods:
+            \[
+              \Delta KE = -mg d\sin\theta - \mu_k mg\cos\theta \cdot d
+            \]
+          </li>
+          <li>Run the simulation and record the actual stopping distance.</li>
+          <li>Explain any discrepancy (timing, rounding, angle estimation).</li>
+        </ol>
       </div>
+
+      <!-- Q5 Static vs kinetic friction investigation -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+        <h3 class="font-semibold mb-2 text-sky-300">5. Static vs. Kinetic Friction – Do They Match?</h3>
+        <p class="mb-2">
+          Use the simulation to compare motion at:
+        </p>
+
+        <ul class="list-disc ml-6 mb-3 space-y-1">
+          <li>just before slipping (static friction)</li>
+          <li>just after slipping begins (kinetic friction)</li>
+        </ul>
+
+        <p class="mb-2"><strong>Questions:</strong></p>
+        <ol class="list-decimal ml-5 space-y-1">
+          <li>Is \( \mu_s \) equal to \( \mu_k \)? Why not?</li>
+          <li>Is the acceleration discontinuous when sliding starts?</li>
+          <li>
+            Compute the “jump” in friction force:
+            \[
+              f_s^{\text{max}} - f_k = \mu_s N - \mu_k N.
+            \]
+          </li>
+        </ol>
+      </div>
+
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Tabs + Interactive Panel JS -->
-  <script>
-    // Tab switching
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabSections = document.querySelectorAll('.tab-section');
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-tab');
-
-        tabButtons.forEach(b => {
-          b.classList.remove('bg-slate-900', 'text-white');
-          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
-        });
-
-        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
-        btn.classList.add('bg-slate-900', 'text-white');
-
-        tabSections.forEach(sec => sec.classList.add('hidden'));
-        document.getElementById('tab-' + target).classList.remove('hidden');
-
-        if (window.MathJax) {
-          MathJax.typesetPromise();
-        }
-      });
-    });
-
-    // Interactive panel: F = m a
-    const mSlider = document.getElementById('m-slider');
-    const fSlider = document.getElementById('f-slider');
-    const mVal = document.getElementById('m-val');
-    const fVal = document.getElementById('f-val');
-    const aEq = document.getElementById('a-equation');
-
-    function updateAcceleration() {
-      const m = Number(mSlider.value);
-      const F = Number(fSlider.value);
-      mVal.textContent = m;
-      fVal.textContent = F;
-
-      const a = F / m;
-      const aFixed = a.toFixed(2);
-
-      const eqStr = `a = \\\\dfrac{${F}}{${m}} = ${aFixed}\\\\ \\text{m/s}^2`;
-      aEq.textContent = `\\\\(${eqStr}\\\\)`;
-
-      if (window.MathJax) {
-        MathJax.typesetPromise();
-      }
-    }
-
-    mSlider.addEventListener('input', updateAcceleration);
-    fSlider.addEventListener('input', updateAcceleration);
-
-    // Initial render
-    updateAcceleration();
-  </script>
-</div>
 
 <!-- SIDEBAR SCRIPT -->
 <script>
