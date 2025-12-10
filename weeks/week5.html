@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Week 5 – Momentum & Collisions | Physics 201</title>
+  <title>Week 5 | Physics 201 – Momentum & Collisions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- MathJax (for inline/display equations) -->
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
@@ -24,361 +21,964 @@
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
+    .hero-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-  <!-- TOP BAR -->
-  <header class="bg-slate-900 text-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <div>
-        <p class="text-[0.65rem] uppercase tracking-[0.25em] text-slate-400">
-          Physics 201 • Calculus-Based Mechanics
-        </p>
-        <h1 class="text-sm md:text-base font-semibold">
-          Week 5 – Momentum, Impulse, and Collisions
-        </h1>
-      </div>
-      <div class="flex gap-2 text-xs">
-        <a href="/CollegePhysics201/index.html"
-           class="px-2 py-1 rounded border border-slate-600 hover:bg-slate-800">
-          Course Home
-        </a>
-        <a href="/CollegePhysics201/weeks/week4.html"
-           class="hidden sm:inline-block px-2 py-1 rounded border border-slate-600 hover:bg-slate-800">
-          ◀ Week 4
-        </a>
-        <a href="/CollegePhysics201/weeks/week6.html"
-           class="hidden sm:inline-block px-2 py-1 rounded border border-slate-600 hover:bg-slate-800">
-          Week 6 ▶
-        </a>
-      </div>
+<!-- MOBILE TOP BAR -->
+<div class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-900 text-white">
+  <span class="font-semibold">Physics 201</span>
+  <button id="menuBtn" class="text-white focus:outline-none">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
+
+<!-- OVERLAY (mobile only) -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden md:hidden"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar"
+  class="w-64 bg-white border-r border-slate-200 h-screen fixed left-0 top-0 overflow-y-auto
+         p-6 space-y-3 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40">
+
+  <h1 class="text-2xl font-bold mb-4 text-slate-800">Physics 201</h1>
+
+  <a href="/CollegePhysics201/index.html" class="nav-item block px-3 py-2 rounded">Home</a>
+  <a href="/CollegePhysics201/syllabus.pdf" class="nav-item block px-3 py-2 rounded">Syllabus</a>
+
+  <hr class="my-3">
+
+  <p class="text-xs uppercase tracking-wide text-slate-500">Resources</p>
+
+  <a href="/CollegePhysics201/docs/formulas.html" class="nav-item block px-3 py-2 rounded">
+    Formula Sheet
+  </a>
+
+  <a href="/CollegePhysics201/calculus.html" class="nav-item block px-3 py-2 rounded">
+    Calculus Refresher
+  </a>
+
+  <hr class="my-3">
+
+  <p class="text-xs uppercase tracking-wide text-slate-500">Course Weeks</p>
+
+  <a href="/CollegePhysics201/weeks/week1.html" class="nav-item block px-3 py-2 rounded">Week 1 – 1D Kinematics</a>
+  <a href="/CollegePhysics201/weeks/week2.html" class="nav-item block px-3 py-2 rounded">Week 2 – 2D Motion & Vectors</a>
+  <a href="/CollegePhysics201/weeks/week3.html" class="nav-item block px-3 py-2 rounded">Week 3 – Newton’s Laws</a>
+  <a href="/CollegePhysics201/weeks/week4.html" class="nav-item block px-3 py-2 rounded">Week 4 – Work & Energy</a>
+  <a href="/CollegePhysics201/weeks/week5.html" class="nav-item block px-3 py-2 rounded">Week 5 – Momentum</a>
+  <a href="/CollegePhysics201/weeks/week6.html" class="nav-item block px-3 py-2 rounded">Week 6 – Rotation I</a>
+  <a href="/CollegePhysics201/weeks/week7.html" class="nav-item block px-3 py-2 rounded">Week 7 – Rotation II & Torque</a>
+  <a href="/CollegePhysics201/weeks/week8.html" class="nav-item block px-3 py-2 rounded">Week 8 – SHM</a>
+
+</aside>
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="md:ml-64 p-6">
+
+  <!-- Hero -->
+  <header id="top" class="bg-white border-b border-slate-200 hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        Week 5 • Momentum & Collisions
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        Linear Momentum, Impulse, and Collisions
+      </h1>
+      <p class="text-slate-600 max-w-2xl">
+        This module develops linear momentum as a central tool in mechanics. You will relate
+        impulse to the area under a force–time curve, apply conservation of momentum to explosions
+        and collisions, and distinguish elastic, inelastic, and perfectly inelastic collisions in
+        one and two dimensions.
+      </p>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
 
-    <!-- HERO CARD -->
-    <section class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-      <div class="flex flex-col md:flex-row">
-        <!-- Left: Blue panel -->
-        <div class="md:w-2/5 bg-blue-700 text-white p-6 md:p-8 flex flex-col justify-center">
-          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-blue-200 mb-2">
-            Week 5 • Momentum & Collisions
-          </p>
-          <h2 class="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
-            Linear Momentum, Impulse, and Collisions
-          </h2>
-          <p class="text-sm md:text-[0.95rem] text-blue-100 mb-4">
-            This week develops the impulse–momentum theorem, conservation of momentum
-            in one and two dimensions, and energy analysis of collisions — perfectly
-            inelastic, elastic, and explosion-type scenarios.
-          </p>
-          <ul class="text-xs md:text-sm text-blue-100 space-y-1 mb-5">
-            <li>• Define and compute linear momentum and impulse.</li>
-            <li>• Apply conservation of momentum to multi-object systems.</li>
-            <li>• Distinguish elastic vs. inelastic collisions using energy.</li>
-            <li>• Work with 2D collision geometry and vector components.</li>
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="overview"
+                class="tab-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+          Overview
+        </button>
+        <button data-tab="notes"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Notes
+        </button>
+        <button data-tab="examples"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Worked Examples
+        </button>
+        <button data-tab="practice"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Practice Problems
+        </button>
+        <button data-tab="sim"
+                class="tab-btn bg-white text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100">
+          Interactive Panel
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB: Overview -->
+    <section id="tab-overview" class="tab-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
+          <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
+            <li>Define linear momentum \( \vec p = m\vec v \) and impulse \( \vec J \).</li>
+            <li>Connect impulse to the area under a force–time graph.</li>
+            <li>Identify when linear momentum is conserved for a system.</li>
+            <li>Apply conservation of momentum to 1D and 2D collisions and explosions.</li>
+            <li>Distinguish elastic, inelastic, and perfectly inelastic collisions and analyze energy changes.</li>
+            <li>Use component methods to handle 2D momentum problems conceptually and mathematically.</li>
           </ul>
-          <div class="flex flex-wrap gap-3 text-xs md:text-sm">
-            <a href="/CollegePhysics201/docs/week5/week5_notes_momentum.pdf"
-               class="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-white text-blue-700 font-semibold hover:bg-blue-50">
-              Download Week 5 Notes
-            </a>
-            <a href="/CollegePhysics201/docs/week5/week5_examples_momentum.pdf"
-               class="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-blue-200 bg-blue-600/30 text-blue-50 hover:bg-blue-600/50">
-              Worked Examples
-            </a>
-            <a href="/CollegePhysics201/docs/week5/week5_practice_momentum.pdf"
-               class="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-blue-100 text-blue-50 hover:bg-blue-600/70">
-              Practice Set + Solutions
-            </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
+          <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
+            <li>Read the <span class="font-semibold">Notes</span> section to establish definitions and core relationships.</li>
+            <li>Draw quick sketches for every collision or explosion situation.</li>
+            <li>Work through the <span class="font-semibold">Worked Examples</span> carefully; track momentum and energy.</li>
+            <li>Attempt the <span class="font-semibold">Practice Problems</span> on your own, then compare with the solution outlines.</li>
+            <li>Use the <span class="font-semibold">Interactive Panel</span> to experiment with 1D collisions numerically.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Notes -->
+    <section id="tab-notes" class="tab-section hidden">
+      <div class="space-y-8">
+
+        <!-- 1. Momentum & Impulse -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Linear Momentum and Impulse</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            The linear momentum of a particle (or rigid body treated as a particle) is
+            \[
+              \vec p = m\vec v.
+            \]
+            It is a vector pointing in the direction of the velocity.
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            A net force acting over a time interval changes momentum. The impulse delivered by a net
+            force \( \vec F_\text{net}(t) \) from time \(t_i\) to \(t_f\) is
+            \[
+              \vec J = \int_{t_i}^{t_f} \vec F_\text{net}(t)\, dt,
+            \]
+            and the impulse–momentum theorem says
+            \[
+              \vec J = \Delta \vec p = \vec p_f - \vec p_i.
+            \]
+          </p>
+
+          <!-- Force-time graph SVG -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- Axes -->
+              <line x1="40" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="40" y1="150" x2="40" y2="30" stroke="#64748b" stroke-width="1.5" />
+              <text x="233" y="155" font-size="10" fill="#64748b">t</text>
+              <text x="25" y="35" font-size="10" fill="#64748b">F</text>
+
+              <!-- Force-time pulse -->
+              <polygon points="60,150 90,90 150,90 180,150"
+                       fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2" />
+              <text x="95" y="85" font-size="10" fill="#1d4ed8">area = \(J\)</text>
+
+              <!-- t_i and t_f -->
+              <line x1="90" y1="150" x2="90" y2="90" stroke="#94a3b8" stroke-dasharray="4 4" />
+              <line x1="150" y1="150" x2="150" y2="90" stroke="#94a3b8" stroke-dasharray="4 4" />
+              <text x="85" y="163" font-size="9" fill="#64748b">\(t_i\)</text>
+              <text x="147" y="163" font-size="9" fill="#64748b">\(t_f\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-3">
+            For a constant net force \( \vec F_\text{net} \) over a time \( \Delta t \),
+            \[
+              \vec J = \vec F_\text{net} \Delta t,\qquad
+              \vec F_\text{net} = \frac{\Delta \vec p}{\Delta t}.
+            \]
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">
+            System momentum and external forces
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            For a system of particles,
+            \[
+              \vec P_\text{sys} = \sum_i m_i \vec v_i.
+            \]
+            Internal forces between particles cancel in pairs (Newton’s 3rd law). Only
+            <span class="font-semibold">external forces</span> change the total system momentum:
+            \[
+              \sum \vec F_\text{ext} = \frac{d\vec P_\text{sys}}{dt}.
+            \]
+          </p>
+        </article>
+
+        <!-- 2. Conservation of Momentum in 1D -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Conservation of Linear Momentum (1D)</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            If the net external impulse on a system is zero over some time interval,
+            the total momentum of the system is conserved:
+            \[
+              \vec P_\text{initial} = \vec P_\text{final}.
+            \]
+          </p>
+
+          <p class="text-sm text-slate-700 mb-2">
+            In one dimension with objects 1 and 2,
+            \[
+              m_1 v_{1i} + m_2 v_{2i} = m_1 v_{1f} + m_2 v_{2f},
+            \]
+            where the sign of each velocity encodes direction.
+          </p>
+
+          <!-- 1D collision diagram -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 280 140" class="w-full">
+              <!-- track -->
+              <line x1="20" y1="90" x2="260" y2="90" stroke="#64748b" stroke-width="1.5" />
+
+              <!-- cart 1 initial -->
+              <rect x="40" y="65" width="40" height="20" fill="#0ea5e9" />
+              <text x="55" y="78" font-size="10" fill="#0f172a">1</text>
+              <!-- v1i arrow -->
+              <line x1="60" y1="60" x2="100" y2="60" stroke="#0ea5e9" stroke-width="2" />
+              <polygon points="100,60 94,58 94,62" fill="#0ea5e9" />
+              <text x="60" y="52" font-size="9" fill="#0ea5e9">\(v_{1i}\)</text>
+
+              <!-- cart 2 initial -->
+              <rect x="180" y="65" width="40" height="20" fill="#22c55e" />
+              <text x="194" y="78" font-size="10" fill="#0f172a">2</text>
+              <!-- v2i arrow -->
+              <line x1="200" y1="60" x2="170" y2="60" stroke="#22c55e" stroke-width="2" />
+              <polygon points="170,60 176,58 176,62" fill="#22c55e" />
+              <text x="175" y="52" font-size="9" fill="#22c55e">\(v_{2i}\)</text>
+
+              <!-- after collision -->
+              <rect x="110" y="110" width="40" height="20" fill="#0ea5e9" />
+              <text x="125" y="123" font-size="10" fill="#0f172a">1</text>
+              <rect x="160" y="110" width="40" height="20" fill="#22c55e" />
+              <text x="174" y="123" font-size="10" fill="#0f172a">2</text>
+
+              <!-- v1f -->
+              <line x1="130" y1="105" x2="155" y2="105" stroke="#0ea5e9" stroke-width="2" />
+              <polygon points="155,105 149,103 149,107" fill="#0ea5e9" />
+              <text x="125" y="97" font-size="9" fill="#0ea5e9">\(v_{1f}\)</text>
+
+              <!-- v2f -->
+              <line x1="180" y1="105" x2="205" y2="105" stroke="#22c55e" stroke-width="2" />
+              <polygon points="205,105 199,103 199,107" fill="#22c55e" />
+              <text x="175" y="97" font-size="9" fill="#22c55e">\(v_{2f}\)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            Even if kinetic energy is not conserved (inelastic collision), total momentum of the
+            isolated system is still conserved.
+          </p>
+        </article>
+
+        <!-- 3. Elastic vs Inelastic Collisions -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Elastic, Inelastic, and Perfectly Inelastic Collisions</h2>
+          <p class="text-sm text-slate-700 mb-2">
+            In any collision between objects in an isolated system:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
+            <li><span class="font-semibold">Momentum is always conserved:</span>
+              \( \vec P_i = \vec P_f \).</li>
+            <li><span class="font-semibold">Kinetic energy may or may not be conserved.</span></li>
+          </ul>
+
+          <div class="overflow-x-auto text-sm mb-3">
+            <table class="min-w-full text-left border border-slate-200 rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800">
+                <tr>
+                  <th class="px-3 py-2 border-b border-slate-200">Type</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Momentum?</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Kinetic Energy?</th>
+                  <th class="px-3 py-2 border-b border-slate-200">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">Elastic</td>
+                  <td class="px-3 py-2">Conserved</td>
+                  <td class="px-3 py-2">Conserved</td>
+                  <td class="px-3 py-2">Idealized bouncy collision (no mechanical energy lost).</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="px-3 py-2">Inelastic</td>
+                  <td class="px-3 py-2">Conserved</td>
+                  <td class="px-3 py-2">Not conserved</td>
+                  <td class="px-3 py-2">Some kinetic energy transforms into other forms (heat, sound, deformation).</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2">Perfectly inelastic</td>
+                  <td class="px-3 py-2">Conserved</td>
+                  <td class="px-3 py-2">Not conserved</td>
+                  <td class="px-3 py-2">Objects stick together and move with a common final velocity.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm text-slate-700 mb-2 font-semibold">
+            Perfectly inelastic collision in 1D
+          </p>
+          <p class="text-sm text-slate-700">
+            If masses \(m_1\) and \(m_2\) stick together,
+            \[
+              m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2) v_f
+              \quad\Rightarrow\quad
+              v_f = \frac{m_1 v_{1i} + m_2 v_{2i}}{m_1 + m_2}.
+            \]
+          </p>
+
+          <p class="text-sm text-slate-700 mt-3 font-semibold">
+            General 1D elastic collision
+          </p>
+          <p class="text-sm text-slate-700">
+            For two masses on a line, using both momentum and kinetic energy conservation, the final
+            velocities can be written as
+            \[
+              v_{1f} = \frac{m_1 - m_2}{m_1 + m_2} v_{1i}
+                      + \frac{2m_2}{m_1 + m_2} v_{2i},
+            \]
+            \[
+              v_{2f} = \frac{2m_1}{m_1 + m_2} v_{1i}
+                      + \frac{m_2 - m_1}{m_1 + m_2} v_{2i}.
+            \]
+          </p>
+        </article>
+
+        <!-- 4. 2D Momentum -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Momentum in Two Dimensions</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            In 2D collisions, momentum must be conserved in <em>each component</em>:
+            \[
+              \sum p_{x,i} = \sum p_{x,f}, \qquad
+              \sum p_{y,i} = \sum p_{y,f}.
+            \]
+          </p>
+
+          <!-- 2D collision sketch -->
+          <div class="w-full max-w-md mx-auto my-4">
+            <svg viewBox="0 0 260 180" class="w-full">
+              <!-- axes -->
+              <line x1="30" y1="150" x2="230" y2="150" stroke="#64748b" stroke-width="1.5" />
+              <line x1="130" y1="160" x2="130" y2="40" stroke="#64748b" stroke-width="1.5" />
+              <text x="235" y="155" font-size="10" fill="#64748b">x</text>
+              <text x="120" y="45" font-size="10" fill="#64748b">y</text>
+
+              <!-- incoming ball -->
+              <circle cx="90" cy="120" r="8" fill="#0ea5e9" />
+              <line x1="70" y1="130" x2="90" y2="120"
+                    stroke="#0ea5e9" stroke-width="2" />
+              <polygon points="70,130 76,129 72,124" fill="#0ea5e9" />
+              <text x="55" y="138" font-size="9" fill="#0ea5e9">\(m_1\)</text>
+
+              <!-- target ball -->
+              <circle cx="160" cy="120" r="8" fill="#22c55e" />
+              <text x="172" y="124" font-size="9" fill="#22c55e">\(m_2\)</text>
+
+              <!-- outgoing velocities -->
+              <line x1="160" y1="120" x2="190" y2="90"
+                    stroke="#22c55e" stroke-width="2" />
+              <polygon points="190,90 184,90 187,95" fill="#22c55e" />
+              <text x="192" y="90" font-size="9" fill="#22c55e">\( \vec v_{2f} \)</text>
+
+              <line x1="90" y1="120" x2="110" y2="80"
+                    stroke="#0ea5e9" stroke-width="2" />
+              <polygon points="110,80 104,82 108,86" fill="#0ea5e9" />
+              <text x="112" y="78" font-size="9" fill="#0ea5e9">\( \vec v_{1f} \)</text>
+            </svg>
+          </div>
+
+          <p class="text-sm text-slate-700">
+            Strategy:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Draw a vector diagram for the momenta before and after.</li>
+            <li>Write separate conservation equations for \(x\) and \(y\) components.</li>
+            <li>Use kinetic energy conservation <em>only if</em> the collision is elastic.</li>
+          </ul>
+        </article>
+
+        <!-- 5. Center of Mass & Recoil (short) -->
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-xl font-bold text-slate-800 mb-3">5. Center of Mass and Recoil (Conceptual)</h2>
+          <p class="text-sm text-slate-700 mb-3">
+            For a system of particles, the center-of-mass position is
+            \[
+              \vec r_\text{CM} = \frac{1}{M} \sum_i m_i \vec r_i,\quad
+              M = \sum_i m_i.
+            \]
+            The total momentum is related to the center-of-mass motion by
+            \[
+              \vec P_\text{sys} = M \vec v_\text{CM}.
+            \]
+          </p>
+          <p class="text-sm text-slate-700 mb-3">
+            If there is no net external force on the system, then \(\vec P_\text{sys}\) is constant
+            and the center of mass moves with constant velocity, even if the objects inside the system
+            interact strongly (explosions, recoil, internal springs, etc.).
+          </p>
+          <p class="text-sm text-slate-700">
+            Example: when a rifle recoils as a bullet is fired, the center of mass of the
+            rifle–bullet system continues its motion smoothly; the forward momentum of the bullet is
+            balanced by the backward momentum of the rifle so that the total remains constant.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TAB: Worked Examples -->
+    <section id="tab-examples" class="tab-section hidden">
+      <div class="space-y-6">
+
+        <!-- Example 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">
+            Example 1: Rear-End Collision on a Frictionless Track (1D)
+          </h2>
+          <p class="text-sm text-slate-700 mb-2">
+            A 1,000 kg car moving at \(20\,\text{m/s}\) to the right collides with a 1,500 kg SUV
+            moving at \(10\,\text{m/s}\) in the same direction. The collision is perfectly inelastic,
+            and the vehicles lock together and move as one afterward.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find the common final velocity of the two-vehicle system.</li>
+            <li>Determine the percentage of kinetic energy lost in the collision.</li>
+          </ol>
+
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1) Final velocity using momentum conservation:</strong></p>
+              <p>
+                Let right be positive. Before:
+                \[
+                  p_i = m_1 v_{1i} + m_2 v_{2i}
+                      = (1000)(20) + (1500)(10)
+                      = 20{,}000 + 15{,}000
+                      = 35{,}000\,\text{kg·m/s}.
+                \]
+              </p>
+              <p>
+                After, they stick: mass \(m_1 + m_2 = 2500\,\text{kg}\) with velocity \(v_f\):
+                \[
+                  p_f = (m_1 + m_2) v_f.
+                \]
+                Momentum conservation \(p_i = p_f\) gives
+                \[
+                  v_f = \frac{35{,}000}{2500} = 14\,\text{m/s} \text{ (to the right)}.
+                \]
+              </p>
+
+              <p><strong>(2) Kinetic energy change:</strong></p>
+              <p>
+                Initial kinetic energy:
+                \[
+                  K_i = \tfrac12 m_1 v_{1i}^2 + \tfrac12 m_2 v_{2i}^2
+                      = \tfrac12 (1000)(20^2) + \tfrac12 (1500)(10^2).
+                \]
+              </p>
+              <p>
+                \[
+                  K_i = 500 \cdot 400 + 750 \cdot 100
+                      = 200{,}000 + 75{,}000
+                      = 275{,}000\,\text{J}.
+                \]
+              </p>
+              <p>
+                Final kinetic energy:
+                \[
+                  K_f = \tfrac12 (2500) (14^2)
+                      = 1250 \cdot 196
+                      = 245{,}000\,\text{J}.
+                \]
+              </p>
+              <p>
+                Energy lost:
+                \[
+                  \Delta K = K_f - K_i = 245{,}000 - 275{,}000 = -30{,}000\,\text{J}.
+                \]
+              </p>
+              <p>
+                Percentage loss:
+                \[
+                  \frac{|\Delta K|}{K_i} \times 100\%
+                  = \frac{30{,}000}{275{,}000} \times 100\%
+                  \approx 10.9\%.
+                \]
+              </p>
+              <p class="font-semibold">
+                Final speed \(v_f = 14\,\text{m/s}\) to the right; about \(11\%\) of the kinetic energy
+                was lost.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 class="text-lg font-bold text-slate-800 mb-2">
+            Example 2: 2D Collision on Ice
+          </h2>
+          <p class="text-sm text-slate-700 mb-2">
+            Two identical 80 kg hockey players collide on a frictionless rink. Player A is initially
+            moving east at \(4.0\,\text{m/s}\). Player B is initially at rest. After they collide and
+            hook together, they move off at an angle of \(30^\circ\) north of east.
+          </p>
+          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
+            <li>Find their common final speed.</li>
+            <li>Determine how much kinetic energy is lost in the collision.</li>
+          </ol>
+
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm text-blue-600 hover:underline">Show Solution</summary>
+            <div class="mt-2 text-sm text-slate-700 space-y-2">
+              <p><strong>(1) Final speed using momentum conservation:</strong></p>
+              <p>
+                Let east be +\(x\), north be +\(y\). Initial momentum:
+                \[
+                  \vec P_i = (m v, 0) = (80 \cdot 4.0, 0) = (320, 0)\,\text{kg·m/s}.
+                \]
+                Player B is at rest.
+              </p>
+              <p>
+                After, combined mass is \(M = 160\,\text{kg}\) with speed \(v_f\) at \(30^\circ\) above east:
+                \[
+                  \vec P_f = M v_f (\cos 30^\circ, \sin 30^\circ)
+                            = 160 v_f (\cos 30^\circ, \tfrac12).
+                \]
+              </p>
+              <p>
+                Momentum conservation in \(x\):
+                \[
+                  320 = 160 v_f \cos 30^\circ
+                  \quad\Rightarrow\quad
+                  v_f = \frac{320}{160 \cos 30^\circ}
+                      = \frac{2}{\cos 30^\circ}.
+                \]
+              </p>
+              <p>
+                \(\cos 30^\circ = \sqrt{3}/2 \approx 0.866\), so
+                \[
+                  v_f \approx \frac{2}{0.866} \approx 2.31\,\text{m/s}.
+                \]
+              </p>
+
+              <p><strong>(2) Kinetic energy loss:</strong></p>
+              <p>
+                Initial kinetic energy (only player A moving):
+                \[
+                  K_i = \tfrac12 (80) (4.0^2) = 40 \cdot 16 = 640\,\text{J}.
+                \]
+              </p>
+              <p>
+                Final kinetic energy:
+                \[
+                  K_f = \tfrac12 (160) (2.31^2) \approx 80 \cdot 5.34 \approx 427\,\text{J}.
+                \]
+              </p>
+              <p>
+                Energy lost:
+                \[
+                  \Delta K = K_f - K_i \approx 427 - 640 = -213\,\text{J}.
+                \]
+              </p>
+              <p>
+                Percentage loss:
+                \[
+                  \frac{213}{640} \times 100\% \approx 33\%.
+                \]
+              </p>
+              <p class="font-semibold">
+                Final speed \(v_f \approx 2.3\,\text{m/s}\); roughly one-third of the kinetic energy was lost.
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: Practice Problems -->
+    <section id="tab-practice" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Week 5</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Try each problem fully before expanding the solution outline. Focus on clearly defining the
+          system, setting up conservation equations, and tracking energy changes when appropriate.
+        </p>
+
+        <div class="space-y-4 text-sm text-slate-800">
+
+          <!-- Problem 1 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 1 – Impulse from a Force–Time Graph
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 0.15 kg hockey puck initially at rest is struck by a stick. During a 10 ms contact
+                interval, the force on the puck rises linearly from 0 N to 120 N, then drops linearly
+                back to 0 N. Treat the force–time graph as a symmetric triangle.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the impulse delivered to the puck.</li>
+                <li>Determine the puck’s speed immediately after the hit.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Impulse is the area under the \(F(t)\) graph, which is a triangle:
+                \[
+                  J = \tfrac12 (\text{base}) (\text{height})
+                    = \tfrac12 (0.010\,\text{s})(120\,\text{N}) = 0.60\,\text{N·s}.
+                \]
+              </p>
+              <p>
+                Use \(J = \Delta p = m v_f\) (initial momentum zero):
+                \[
+                  v_f = \frac{J}{m} = \frac{0.60}{0.15} = 4.0\,\text{m/s}.
+                \]
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 2 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 2 – Perfectly Inelastic Collision
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 2.0 kg cart moving at \(3.0\,\text{m/s}\) to the right collides with a 1.0 kg cart
+                moving at \(1.0\,\text{m/s}\) to the left on a frictionless track. The carts stick together.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the final velocity (magnitude and direction) of the combined carts.</li>
+                <li>Compute the percentage of kinetic energy lost in the collision.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Take right as positive. Then \(v_{1i} = +3.0\,\text{m/s}\), \(v_{2i} = -1.0\,\text{m/s}\).
+                Total initial momentum:
+                \[
+                  p_i = (2.0)(3.0) + (1.0)(-1.0) = 6.0 - 1.0 = 5.0\,\text{kg·m/s}.
+                \]
+              </p>
+              <p>
+                Total mass after sticking: \(3.0\,\text{kg}\).
+                \[
+                  v_f = \frac{p_i}{m_1 + m_2} = \frac{5.0}{3.0} \approx 1.67\,\text{m/s} \text{ to the right}.
+                \]
+              </p>
+              <p>
+                Initial kinetic energy:
+                \[
+                  K_i = \tfrac12(2.0)(3.0^2) + \tfrac12(1.0)(1.0^2)
+                      = 1.0 \cdot 9 + 0.5
+                      = 9.5\,\text{J}.
+                \]
+                Final kinetic energy:
+                \[
+                  K_f = \tfrac12 (3.0)(1.67^2) \approx 1.5 \cdot 2.78 \approx 4.17\,\text{J}.
+                \]
+              </p>
+              <p>
+                Energy lost \( \approx 9.5 - 4.2 = 5.3\,\text{J} \), percentage loss
+                \[
+                  \approx \frac{5.3}{9.5} \times 100\% \approx 56\%.
+                \]
+              </p>
+            </div>
+          </details>
+
+          <!-- Problem 3 -->
+          <details>
+            <summary class="cursor-pointer font-semibold text-slate-800">
+              Problem 3 – 2D Momentum After Collision
+            </summary>
+            <div class="mt-2 space-y-1">
+              <p>
+                A 0.20 kg ball moving at \(4.0\,\text{m/s}\) east collides with a 0.30 kg ball that is
+                initially at rest. After the collision, the 0.20 kg ball moves at \(2.0\,\text{m/s}\)
+                at \(40^\circ\) north of east.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find the speed and direction of the 0.30 kg ball after the collision.</li>
+                <li>Is this collision elastic? Justify briefly using kinetic energy.</li>
+              </ol>
+              <hr class="my-2 border-slate-200" />
+              <p class="font-semibold">Solution (outline):</p>
+              <p>
+                Let east be +\(x\), north be +\(y\). Initial momentum:
+                \[
+                  \vec P_i = (0.20)(4.0, 0) = (0.80, 0)\,\text{kg·m/s}.
+                \]
+              </p>
+              <p>
+                After, 0.20 kg ball:
+                \[
+                  \vec p_1 = (0.20)(2.0)(\cos 40^\circ, \sin 40^\circ)
+                           = 0.40(\cos 40^\circ, \sin 40^\circ).
+                \]
+              </p>
+              <p>
+                Let the 0.30 kg ball have momentum \( \vec p_2 = (p_{2x}, p_{2y}) \).
+                Then
+                \[
+                  \vec p_2 = \vec P_i - \vec p_1.
+                \]
+                Divide by 0.30 kg to find its velocity components, then magnitude and angle.
+              </p>
+              <p>
+                Compare \(K_i = \tfrac12 (0.20)(4.0^2)\) with
+                \(K_f = \tfrac12(0.20)(2.0^2) + \tfrac12(0.30)v_2^2\). If \(K_f &lt; K_i\), the
+                collision is inelastic.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: Interactive Panel -->
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">Interactive Panel – 1D Collisions</h2>
+        <p class="text-sm text-slate-700 mb-4">
+          Use the controls to set two masses and their initial velocities in one dimension. Then
+          choose whether the collision is <span class="font-semibold">perfectly inelastic</span>
+          (stick together) or <span class="font-semibold">elastic</span> (both momentum and kinetic
+          energy conserved). The panel computes final velocities and the change in total kinetic energy.
+        </p>
+
+        <!-- Controls -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-sm text-slate-800">
+          <div class="space-y-3">
+            <div>
+              <label class="block mb-1 font-semibold">Mass \(m_1\) (kg)</label>
+              <input id="m1" type="number" value="1.0" step="0.1"
+                     class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+            </div>
+            <div>
+              <label class="block mb-1 font-semibold">Mass \(m_2\) (kg)</label>
+              <input id="m2" type="number" value="2.0" step="0.1"
+                     class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+            </div>
+            <div>
+              <label class="block mb-1 font-semibold">Initial velocity \(v_{1i}\) (m/s)</label>
+              <input id="v1i" type="number" value="3.0" step="0.1"
+                     class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+            </div>
+            <div>
+              <label class="block mb-1 font-semibold">Initial velocity \(v_{2i}\) (m/s)</label>
+              <input id="v2i" type="number" value="0.0" step="0.1"
+                     class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" />
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block mb-1 font-semibold">Collision Type</label>
+              <select id="collision-type"
+                      class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500">
+                <option value="inelastic">Perfectly Inelastic (stick together)</option>
+                <option value="elastic">Elastic (1D)</option>
+              </select>
+            </div>
+            <p class="text-xs text-slate-600">
+              Use a sign convention: positive velocities to the right, negative to the left.
+              For example, try \(v_{1i} = 3\,\text{m/s}\) and \(v_{2i} = -1\,\text{m/s}\).
+            </p>
+            <button id="compute-btn"
+                    class="mt-2 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800">
+              Compute Outcomes
+            </button>
           </div>
         </div>
 
-        <!-- Right: Momentum SVG -->
-        <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center">
-          <svg viewBox="0 0 320 200" class="w-full max-w-md">
-            <!-- Background -->
-            <rect x="0" y="0" width="320" height="200" fill="#f8fafc" />
-
-            <!-- Track -->
-            <line x1="30" y1="130" x2="290" y2="130" stroke="#cbd5f5" stroke-width="3" />
-
-            <!-- Cart A (left) -->
-            <rect x="60" y="100" width="60" height="30" rx="4" ry="4" fill="#1d4ed8" />
-            <circle cx="75" cy="132" r="5" fill="#0f172a" />
-            <circle cx="105" cy="132" r="5" fill="#0f172a" />
-            <text x="90" y="118" text-anchor="middle" font-size="11" fill="#e5e7eb">m₁</text>
-
-            <!-- Cart B (right) -->
-            <rect x="190" y="100" width="60" height="30" rx="4" ry="4" fill="#0ea5e9" />
-            <circle cx="205" cy="132" r="5" fill="#0f172a" />
-            <circle cx="235" cy="132" r="5" fill="#0f172a" />
-            <text x="220" y="118" text-anchor="middle" font-size="11" fill="#0f172a">m₂</text>
-
-            <!-- Velocity arrows -->
-            <line x1="45" y1="115" x2="75" y2="115" stroke="#22c55e" stroke-width="2.5" />
-            <polygon points="75,115 67,118 67,112" fill="#22c55e" />
-            <text x="40" y="110" font-size="10" fill="#16a34a">v₁,i</text>
-
-            <line x1="245" y1="115" x2="215" y2="115" stroke="#ef4444" stroke-width="2.5" />
-            <polygon points="215,115 223,118 223,112" fill="#ef4444" />
-            <text x="252" y="110" font-size="10" fill="#b91c1c">v₂,i</text>
-
-            <!-- Combined cart (after collision, faded outline) -->
-            <rect x="122" y="100" width="86" height="30" rx="4" ry="4" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" />
-            <text x="165" y="96" text-anchor="middle" font-size="10" fill="#64748b">stuck together?</text>
-
-            <!-- Post-collision momentum arrow -->
-            <line x1="130" y1="155" x2="210" y2="155" stroke="#6366f1" stroke-width="3" />
-            <polygon points="210,155 202,158 202,152" fill="#6366f1" />
-            <text x="170" y="168" text-anchor="middle" font-size="10" fill="#4f46e5">pᵢ = p_f</text>
-
-            <!-- Momentum equation -->
-            <text x="160" y="40" text-anchor="middle" font-size="11" fill="#0f172a">
-              p = m v,   Σpᵢ = Σp_f
-            </text>
-            <text x="160" y="58" text-anchor="middle" font-size="10" fill="#64748b">
-              elastic vs. inelastic
-            </text>
-          </svg>
+        <!-- Results -->
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-800">
+          <p class="font-semibold mb-2">Results:</p>
+          <p id="result-v1f" class="mb-1">\(v_{1f} = \dots\)</p>
+          <p id="result-v2f" class="mb-1">\(v_{2f} = \dots\)</p>
+          <p id="result-kinetic" class="mb-1">Change in kinetic energy: \(\Delta K = \dots\)</p>
+          <p id="result-note" class="text-xs text-slate-600 mt-2">
+            For elastic collisions, \(\Delta K\) should be (up to rounding) zero. For inelastic
+            collisions, \(\Delta K\) will be negative, meaning kinetic energy is transformed into
+            other forms.
+          </p>
         </div>
       </div>
-    </section>
-
-    <!-- OVERVIEW & LEARNING GOALS -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7 space-y-3">
-      <h2 class="text-xl font-bold text-slate-900 mb-1">Week 5 Overview & Learning Goals</h2>
-      <p class="text-sm text-slate-700">
-        Momentum provides a powerful alternative to force and energy methods, especially for
-        interacting multi-object systems and collisions. You’ll use both calculus and algebraic
-        arguments to connect force, impulse, and changes in momentum.
-      </p>
-      <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
-        <li>Define linear momentum $\vec p = m\vec v$ and impulse $\vec J = \int \vec F\,dt$.</li>
-        <li>Relate net impulse to change in momentum: $\vec J = \Delta \vec p$.</li>
-        <li>Identify when total momentum of a system is conserved.</li>
-        <li>Analyze 1D collisions (elastic, inelastic, and completely inelastic).</li>
-        <li>Resolve momentum conservation into components for 2D collisions.</li>
-        <li>Compare energy and momentum methods; identify where kinetic energy is lost.</li>
-      </ul>
-    </section>
-
-    <!-- PRE-CLASS PREP -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7 space-y-3">
-      <h2 class="text-lg font-bold text-slate-900 mb-1">Pre-Class Preparation (Suggested)</h2>
-      <p class="text-sm text-slate-700">
-        Use these resources if you’re previewing the material or reteaching yourself the week.
-      </p>
-      <ul class="text-sm text-slate-700 space-y-1 list-disc pl-5">
-        <li>
-          <span class="font-semibold">Read:</span>
-          Textbook chapter on linear momentum, impulse, and collisions
-          (e.g., “Momentum and Collisions” in the course text).
-        </li>
-        <li>
-          <span class="font-semibold">Notes PDF:</span>
-          <a href="/CollegePhysics201/docs/week5/week5_notes_momentum.pdf"
-             class="text-blue-600 hover:underline">
-            Week 5 Notes – Momentum & Collisions
-          </a>
-        </li>
-        <li>
-          <span class="font-semibold">Example set:</span>
-          Skim the
-          <a href="/CollegePhysics201/docs/week5/week5_examples_momentum.pdf"
-             class="text-blue-600 hover:underline">
-            Worked Example Packet
-          </a>
-          so the in-class derivations feel familiar.
-        </li>
-      </ul>
-      <p class="text-xs text-slate-500">
-        If you miss class, work through the notes in order and then attempt the practice set
-        before checking the solutions.
-      </p>
-    </section>
-
-    <!-- IN-CLASS FLOW / TIMING -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7">
-      <h2 class="text-lg font-bold text-slate-900 mb-3">In-Class Flow (2.5 Hours)</h2>
-
-      <div class="grid gap-4 md:grid-cols-2 text-sm">
-        <div class="space-y-2">
-          <h3 class="font-semibold text-slate-800">0:00–0:20 — Warm-Up & Concept Launch</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Concept check: compare “force picture” vs. “momentum picture.”</li>
-            <li>Definition of linear momentum and impulse; quick sanity checks with units.</li>
-            <li>Short clicker/think-pair-share on situations where momentum is conserved.</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-800 mt-4">0:20–0:55 — Impulse–Momentum Theorem</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Derive $\vec J = \Delta \vec p$ from $\vec F_\text{net} = d\vec p/dt$.</li>
-            <li>Interpret area under a force–time graph as impulse.</li>
-            <li>Worked Example: variable force pulse on a cart.</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-800 mt-4">0:55–1:20 — 1D Collisions & Conservation</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Define “isolated system” and internal vs. external forces.</li>
-            <li>Perfectly inelastic collision (objects stick together).</li>
-            <li>Elastic collision in 1D; use both momentum and kinetic energy.</li>
-          </ul>
-        </div>
-
-        <div class="space-y-2">
-          <h3 class="font-semibold text-slate-800">1:20–1:45 — 2D Collisions & Explosions</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Break momentum into x- and y-components.</li>
-            <li>Oblique collision at a known angle; solve component equations.</li>
-            <li>Explosion example: one object breaks into two pieces.</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-800 mt-4">1:45–2:05 — Group Problem Set</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Mixed set: impulse from a force–time graph + 1D inelastic + 2D collision.</li>
-            <li>Students present one solution at the board or via document camera.</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-800 mt-4">2:05–2:30 — Wrap-Up & Checkpoint</h3>
-          <ul class="list-disc pl-5 text-slate-700 space-y-1">
-            <li>Summary: when to use Newton’s 2nd law vs. work–energy vs. momentum.</li>
-            <li>Short quiz or exit ticket (conceptual + 1 numerical question).</li>
-            <li>Preview of Week 6: rotational analogues of momentum and impulse.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- KEY CONCEPTS & EQUATIONS -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7 space-y-3">
-      <h2 class="text-lg font-bold text-slate-900 mb-1">Key Concepts & Equations</h2>
-      <div class="grid gap-4 md:grid-cols-2 text-sm text-slate-800">
-        <div class="space-y-2">
-          <h3 class="font-semibold text-slate-900">Momentum & Impulse</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Linear momentum: $\\vec p = m\\vec v$.</li>
-            <li>Impulse: $\\vec J = \\int \\vec F\\,dt$.</li>
-            <li>Impulse–momentum theorem: $\\vec J = \\Delta \\vec p$.</li>
-            <li>Average force over time interval $\\Delta t$:
-              $F_\\text{avg} = \\dfrac{\\Delta p}{\\Delta t}$.</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-900 mt-4">System & Conservation</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Isolated system: external impulse ≈ 0, so total momentum conserved.</li>
-            <li>$\\sum \\vec p_i = \\sum \\vec p_f$ (vector equation).</li>
-            <li>Internal forces cancel in pairs (Newton’s 3rd law).</li>
-          </ul>
-        </div>
-
-        <div class="space-y-2">
-          <h3 class="font-semibold text-slate-900">Collisions in 1D</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Perfectly inelastic:
-              objects stick → one final velocity $v_f$.
-              $$m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2)v_f.$$</li>
-            <li>Elastic:
-              momentum and kinetic energy both conserved.</li>
-            <li>Useful relation in 1D elastic collision:
-              relative speed is reversed:
-              $$v_{1i} - v_{2i} = -(v_{1f} - v_{2f}).$$</li>
-          </ul>
-
-          <h3 class="font-semibold text-slate-900 mt-4">2D Collisions</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Conserve $p_x$ and $p_y$ separately:
-              $$\\sum p_{x,i} = \\sum p_{x,f}, \\quad
-                \\sum p_{y,i} = \\sum p_{y,f}.$$</li>
-            <li>Use components for unknown angles or speeds.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORKED EXAMPLES (TEXT-BASED) -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7 space-y-3">
-      <h2 class="text-lg font-bold text-slate-900 mb-1">Worked Examples (Overview)</h2>
-      <p class="text-sm text-slate-700">
-        Full step-by-step solutions are in the
-        <a href="/CollegePhysics201/docs/week5/week5_examples_momentum.pdf"
-           class="text-blue-600 hover:underline">
-          Week 5 Examples PDF
-        </a>. The in-class examples typically include:
-      </p>
-      <ol class="text-sm text-slate-800 list-decimal pl-5 space-y-2">
-        <li>
-          <span class="font-semibold">Impulse from a force–time graph.</span><br />
-          Given a triangular force pulse on a cart, find the change in momentum and final velocity.
-        </li>
-        <li>
-          <span class="font-semibold">Perfectly inelastic collision in 1D.</span><br />
-          Two carts stick together; solve for final speed and energy lost.
-        </li>
-        <li>
-          <span class="font-semibold">Elastic collision in 1D.</span><br />
-          Use both momentum and kinetic energy to solve for both final velocities.
-        </li>
-        <li>
-          <span class="font-semibold">2D collision with angles.</span><br />
-          A moving puck strikes another at rest; after collision, one angle is known.
-          Use component equations to solve for the other angle or speed.
-        </li>
-        <li>
-          <span class="font-semibold">Explosion / recoil problem.</span><br />
-          A stationary object breaks into two pieces; find recoil speed or fragment velocities.
-        </li>
-      </ol>
-    </section>
-
-    <!-- PRACTICE SET -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7 space-y-3">
-      <h2 class="text-lg font-bold text-slate-900 mb-1">Practice Problems</h2>
-      <p class="text-sm text-slate-700">
-        Use the dedicated practice set for graded-style problems:
-        <a href="/CollegePhysics201/docs/week5/week5_practice_momentum.pdf"
-           class="text-blue-600 hover:underline">
-          Week 5 Practice – Momentum & Collisions
-        </a>.
-        The last pages include full solutions for self-check.
-      </p>
-      <ul class="text-sm text-slate-800 list-disc pl-5 space-y-1">
-        <li>Impulse–momentum questions with given $F(t)$ graphs.</li>
-        <li>Single-collision 1D problems (elastic and inelastic).</li>
-        <li>Two-step problems: explosion followed by collision.</li>
-        <li>2D collisions requiring careful component bookkeeping.</li>
-        <li>Conceptual questions: when is momentum conserved vs. when is energy conserved?</li>
-      </ul>
-      <p class="text-xs text-slate-500">
-        Recommendation: Work each problem with a free-body diagram (if forces are involved),
-        define your system clearly, and write the momentum conservation equations <em>before</em>
-        plugging in numbers.
-      </p>
-    </section>
-
-    <!-- REFLECTION / EXTENSION -->
-    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 md:p-7">
-      <h2 class="text-lg font-bold text-slate-900 mb-2">Reflection & Extension</h2>
-      <ul class="text-sm text-slate-800 list-disc pl-5 space-y-1">
-        <li>Compare how you would solve a collision using:
-          (a) Newton’s 2nd law directly,
-          (b) work–energy,
-          (c) momentum conservation. When is each most efficient?</li>
-        <li>Think about real-world systems (car crashes, rockets, sports). Where is momentum an easier
-          tool than forces or energy?</li>
-        <li>Preview connection to rotation: angular momentum plays a similar role for rotating systems.</li>
-      </ul>
-      <p class="mt-3 text-xs text-slate-500">
-        When you’re comfortable with these ideas, try mixing them with previous weeks:
-        projectile collisions, multi-stage motion, or collisions followed by energy-based motion.
-      </p>
     </section>
 
   </main>
 
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 5</p>
+        <p>Linear momentum, impulse, and collisions in one and two dimensions.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-blue-300 hover:text-blue-200">Back to Course Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tabs + Interactive Panel JS -->
+  <script>
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        });
+
+        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        tabSections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('tab-' + target).classList.remove('hidden');
+
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+    });
+
+    // Interactive collision panel
+    const m1Input = document.getElementById('m1');
+    const m2Input = document.getElementById('m2');
+    const v1iInput = document.getElementById('v1i');
+    const v2iInput = document.getElementById('v2i');
+    const typeSelect = document.getElementById('collision-type');
+    const computeBtn = document.getElementById('compute-btn');
+
+    const v1fElem = document.getElementById('result-v1f');
+    const v2fElem = document.getElementById('result-v2f');
+    const kineticElem = document.getElementById('result-kinetic');
+
+    function formatNum(x) {
+      if (!isFinite(x)) return '—';
+      const val = Math.round(x * 1000) / 1000;
+      return val.toString();
+    }
+
+    function computeCollision() {
+      const m1 = parseFloat(m1Input.value);
+      const m2 = parseFloat(m2Input.value);
+      const v1i = parseFloat(v1iInput.value);
+      const v2i = parseFloat(v2iInput.value);
+      const mode = typeSelect.value;
+
+      if (!(m1 > 0 && m2 > 0)) {
+        v1fElem.textContent = '\\(v_{1f} = \\text{invalid masses}\\)';
+        v2fElem.textContent = '\\(v_{2f} = \\text{invalid masses}\\)';
+        kineticElem.textContent = '\\(\\Delta K = \\text{—}\\)';
+        if (window.MathJax) MathJax.typesetPromise();
+        return;
+      }
+
+      // Initial kinetic energy
+      const Ki = 0.5 * m1 * v1i * v1i + 0.5 * m2 * v2i * v2i;
+
+      let v1f, v2f;
+
+      if (mode === 'inelastic') {
+        // Perfectly inelastic: stick together
+        const vf = (m1 * v1i + m2 * v2i) / (m1 + m2);
+        v1f = vf;
+        v2f = vf;
+      } else {
+        // Elastic 1D collision
+        v1f = ((m1 - m2) / (m1 + m2)) * v1i + (2 * m2 / (m1 + m2)) * v2i;
+        v2f = (2 * m1 / (m1 + m2)) * v1i + ((m2 - m1) / (m1 + m2)) * v2i;
+      }
+
+      const Kf = 0.5 * m1 * v1f * v1f + 0.5 * m2 * v2f * v2f;
+      const dK = Kf - Ki;
+
+      v1fElem.textContent = '\\(v_{1f} = ' + formatNum(v1f) + '\\,\\text{m/s}\\)';
+      v2fElem.textContent = '\\(v_{2f} = ' + formatNum(v2f) + '\\,\\text{m/s}\\)';
+      kineticElem.textContent = '\\(\\Delta K = ' + formatNum(dK) + '\\,\\text{J}\\)';
+
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    computeBtn.addEventListener('click', computeCollision);
+
+    // Initial placeholder render
+    if (window.MathJax) {
+      MathJax.typesetPromise();
+    }
+  </script>
+</div>
+
+<!-- SIDEBAR SCRIPT -->
+<script>
+  // Highlight active link
+  const path = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-item").forEach(link => {
+    if (link.getAttribute("href").includes(path)) {
+      link.classList.add("bg-blue-600", "text-white");
+    } else {
+      link.classList.add("text-slate-700", "hover:bg-slate-100");
+    }
+  });
+
+  // Mobile toggle
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  const overlay = document.getElementById("overlay");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  });
+</script>
+
 </body>
 </html>
-
