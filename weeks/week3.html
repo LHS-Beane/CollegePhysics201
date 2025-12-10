@@ -129,700 +129,148 @@
       </div>
     </div>
 
-    <!-- TAB: Overview -->
-    <section id="tab-overview" class="tab-section">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">Learning Goals</h2>
-          <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
-            <li>State and interpret Newton’s First, Second, and Third Laws.</li>
-            <li>Identify all forces acting on a system and draw a correct free-body diagram (FBD).</li>
-            <li>Apply $\sum \vec{F} = m \vec{a}$ in component form in 1D and 2D.</li>
-            <li>Analyze motion on horizontal surfaces and inclines with and without friction.</li>
-            <li>Solve problems involving tension, normal force, friction, and multi-object systems.</li>
-            <li>Recognize action–reaction pairs and avoid common misconceptions about “cancelling forces.”</li>
-          </ul>
-        </div>
+---
 
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h3 class="text-sm font-bold text-slate-800 mb-2">How to Use This Module</h3>
-          <ul class="list-disc pl-5 text-xs space-y-1 text-slate-700">
-            <li>Work through the <span class="font-semibold">Notes</span> section first; treat it as your mini-textbook chapter.</li>
-            <li>Study the blueprint-style FBD diagrams and redraw them in your notebook.</li>
-            <li>Follow the <span class="font-semibold">Worked Examples</span> step by step, paying attention to setup.</li>
-            <li>Attempt all <span class="font-semibold">Practice Problems</span> before opening the solution outlines.</li>
-            <li>Use the <span class="font-semibold">Interactive Panel</span> to connect force, mass, and acceleration numerically.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: Notes -->
-    <section id="tab-notes" class="tab-section hidden">
-      <div class="space-y-8">
-
-        <!-- 1. Newton’s Laws Overview -->
-        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">1. Newton’s Three Laws of Motion</h2>
-
-          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.1 First Law – Inertia</h3>
-          <p class="text-sm text-slate-700 mb-2">
-            An object at rest remains at rest, and an object in motion continues with constant velocity,
-            unless acted upon by a net external force.
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li><strong>Inertia:</strong> tendency of an object to resist changes in its motion.</li>
-            <li><strong>Mass:</strong> measure of inertia (more mass → harder to change velocity).</li>
-            <li><strong>Equilibrium:</strong> $\sum \vec{F} = 0 \Rightarrow \vec{a} = \vec{0}$, so velocity is constant (could be zero).</li>
-          </ul>
-
-          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.2 Second Law – Dynamics</h3>
-          <p class="text-sm text-slate-700 mb-2">
-            The net force on an object equals mass times acceleration:
-          </p>
-          <p class="text-sm text-slate-800 mb-2">
-            \[
-              \sum \vec{F} = m \vec{a}.
-            \]
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li>Net force is the <em>vector sum</em> of all forces acting on the object.</li>
-            <li>In 1D: $\sum F_x = m a_x$.</li>
-            <li>In 2D: $\sum F_x = m a_x$ and $\sum F_y = m a_y$.</li>
-            <li>Mass is constant in this course, so changing the net force changes the acceleration.</li>
-          </ul>
-
-          <h3 class="text-sm font-semibold text-slate-800 mb-1">1.3 Third Law – Action & Reaction</h3>
-          <p class="text-sm text-slate-700 mb-2">
-            For every force that object A exerts on B, there is an equal and opposite force that B exerts on A:
-          </p>
-          <p class="text-sm text-slate-800 mb-2">
-            \[
-              \vec{F}_{A \to B} = -\,\vec{F}_{B \to A}.
-            \]
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700">
-            <li>The pair always involves <strong>two objects</strong>.</li>
-            <li>They act on different objects, so they never cancel in a single free-body diagram.</li>
-            <li>Example: you push on the wall; the wall pushes back on you with equal magnitude, opposite direction.</li>
-          </ul>
-        </article>
-
-        <!-- 2. Forces & Blueprint FBDs -->
-        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">2. Common Forces and Free-Body Diagrams</h2>
-
-          <p class="text-sm text-slate-700 mb-2">
-            In mechanics, you’ll repeatedly encounter a small set of force types:
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li><strong>Weight</strong> $W = mg$ (downward, toward Earth’s center).</li>
-            <li><strong>Normal force</strong> $N$ (perpendicular contact force from a surface).</li>
-            <li><strong>Tension</strong> $T$ (pulling force along an ideal rope or string).</li>
-            <li><strong>Friction</strong> $f$ (parallel to the surface, opposes relative motion or tendency).</li>
-            <li><strong>Spring force</strong> $F_s = -k x$ (restoring force opposite displacement from equilibrium).</li>
-            <li><strong>Applied forces</strong> $F_{\text{app}}$ at some angle.</li>
-          </ul>
-
-          <p class="text-sm text-slate-700 mb-2 font-semibold">Recipe for a free-body diagram (FBD):</p>
-          <ol class="list-decimal pl-5 text-sm text-slate-700 mb-4 space-y-1">
-            <li>Isolate the object of interest.</li>
-            <li>Represent it as a dot or box.</li>
-            <li>Draw an arrow for every force acting <em>on</em> the object, labeled and starting at the object.</li>
-            <li>Choose axes (often along/normal to the surface).</li>
-            <li>Write $\sum F_x = m a_x$ and $\sum F_y = m a_y$ using components.</li>
-          </ol>
-
-          <!-- Blueprint FBD 1: Block on horizontal surface -->
-          <div class="w-full max-w-md mx-auto my-4">
-            <svg viewBox="0 0 260 200" class="w-full rounded-lg shadow-sm">
-              <!-- Blueprint background -->
-              <rect x="0" y="0" width="260" height="200" fill="#020617" />
-              <!-- Grid -->
-              <defs>
-                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f172a" stroke-width="1" />
-                </pattern>
-                <marker id="arrow-blueprint" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                  <polygon points="0 0, 8 4, 0 8" fill="#e0f2fe" />
-                </marker>
-              </defs>
-              <rect x="0" y="0" width="260" height="200" fill="url(#grid)" opacity="0.35" />
-
-              <!-- Ground -->
-              <line x1="30" y1="150" x2="230" y2="150" stroke="#38bdf8" stroke-width="2" />
-              <text x="32" y="165" font-size="10" fill="#bae6fd">surface</text>
-
-              <!-- Block -->
-              <rect x="100" y="110" width="60" height="40" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
-              <text x="125" y="134" font-size="10" fill="#e0f2fe">m</text>
-
-              <!-- Weight -->
-              <line x1="130" y1="150" x2="130" y2="185"
-                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="136" y="180" font-size="10" fill="#e0f2fe">mg</text>
-
-              <!-- Normal -->
-              <line x1="130" y1="110" x2="130" y2="75"
-                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="136" y="85" font-size="10" fill="#e0f2fe">N</text>
-
-              <!-- Applied force -->
-              <line x1="160" y1="130" x2="215" y2="130"
-                    stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="190" y="123" font-size="10" fill="#e0f2fe">F</text>
-
-              <!-- Friction -->
-              <line x1="100" y1="130" x2="60" y2="130"
-                    stroke="#f97316" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="60" y="122" font-size="10" fill="#fed7aa">f</text>
-
-              <!-- Axes -->
-              <line x1="40" y1="145" x2="80" y2="145" stroke="#38bdf8" stroke-width="1.5" />
-              <line x1="40" y1="145" x2="40" y2="105" stroke="#38bdf8" stroke-width="1.5" />
-              <text x="82" y="148" font-size="9" fill="#e0f2fe">+x</text>
-              <text x="34" y="104" font-size="9" fill="#e0f2fe">+y</text>
-            </svg>
-          </div>
-
-          <p class="text-xs text-slate-600 mt-1 text-center max-w-md mx-auto">
-            Blueprint-style FBD for a block on a rough horizontal surface pulled to the right.
-          </p>
-        </article>
-
-        <!-- 3. Components, Inclines & Friction -->
-        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">3. Components, Inclines, and Friction</h2>
-
-          <p class="text-sm text-slate-700 mb-2">
-            For many problems, choosing axes aligned with the motion simplifies the math, especially on inclines.
-          </p>
-
-          <p class="text-sm text-slate-700 mb-2 font-semibold">3.1 Weight Components on an Incline</p>
-          <p class="text-sm text-slate-700 mb-2">
-            For a block of mass $m$ on an incline at angle $\theta$:
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li>Component perpendicular to plane: $mg \cos\theta$.</li>
-            <li>Component parallel to plane (down-slope): $mg \sin\theta$.</li>
-          </ul>
-
-          <!-- Blueprint FBD 2: Incline -->
-          <div class="w-full max-w-md mx-auto my-4">
-            <svg viewBox="0 0 260 200" class="w-full rounded-lg shadow-sm">
-              <rect x="0" y="0" width="260" height="200" fill="#020617" />
-              <rect x="0" y="0" width="260" height="200" fill="url(#grid)" opacity="0.35" />
-
-              <!-- Incline plane -->
-              <polygon points="40,160 220,160 220,140" fill="#020617" stroke="#38bdf8" stroke-width="2" />
-              <line x1="60" y1="160" x2="200" y2="100" stroke="#38bdf8" stroke-width="2" />
-              <text x="180" y="112" font-size="10" fill="#e0f2fe">θ</text>
-
-              <!-- Block on incline -->
-              <g transform="translate(130,120) rotate(-20)">
-                <rect x="-20" y="-15" width="40" height="30" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
-              </g>
-
-              <!-- Weight -->
-              <line x1="140" y1="120" x2="140" y2="175" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="146" y="170" font-size="10" fill="#e0f2fe">mg</text>
-
-              <!-- Components: mg⊥ and mg∥ -->
-              <line x1="140" y1="120" x2="120" y2="155" stroke="#f97316" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="100" y="158" font-size="10" fill="#fed7aa">mg‖</text>
-
-              <line x1="140" y1="120" x2="175" y2="135" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="175" y="132" font-size="10" fill="#bbf7d0">mg⊥</text>
-
-              <!-- Normal -->
-              <line x1="135" y1="115" x2="115" y2="95" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blueprint)" />
-              <text x="100" y="92" font-size="10" fill="#e0f2fe">N</text>
-            </svg>
-          </div>
-
-          <p class="text-sm text-slate-700 mb-2 font-semibold">3.2 Friction Models</p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li><strong>Static friction</strong> adjusts up to a maximum:
-              \[
-                f_s \le \mu_s N.
-              \]
-            </li>
-            <li><strong>Kinetic friction</strong> (sliding):
-              \[
-                f_k = \mu_k N.
-              \]
-            </li>
-            <li>Direction: opposite the direction of motion (or intended motion along the surface).</li>
-          </ul>
-
-          <p class="text-sm text-slate-700 mb-2 font-semibold">3.3 Newton’s Second Law on an Incline (with friction)</p>
-          <p class="text-sm text-slate-700 mb-2">
-            Choose $x$ along the plane (down-slope positive), $y$ perpendicular to the plane (out of surface positive).
-          </p>
-          <p class="text-sm text-slate-700 mb-2">
-            \[
-              \sum F_x = mg \sin\theta - f_k = m a,
-              \quad
-              \sum F_y = N - mg \cos\theta = 0.
-            \]
-          </p>
-          <p class="text-sm text-slate-700">
-            Using $f_k = \mu_k N = \mu_k mg \cos\theta$,
-            \[
-              a = g\big(\sin\theta - \mu_k \cos\theta\big).
-            \]
-          </p>
-        </article>
-
-        <!-- 4. Multi-Object Systems & Atwood -->
-        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">4. Multi-Object Systems and Tension</h2>
-          <p class="text-sm text-slate-700 mb-3">
-            Many Newton’s laws problems involve more than one object connected by ropes or in contact.
-            Strategy:
-          </p>
-          <ol class="list-decimal pl-5 text-sm text-slate-700 mb-3 space-y-1">
-            <li>Draw an FBD for each object separately.</li>
-            <li>Write $\sum F = m a$ for each object (same $a$ if rope is massless & inextensible).</li>
-            <li>Relate tensions and accelerations through constraints (e.g., same magnitude of tension in a massless rope).</li>
-            <li>Solve the system of equations for unknowns (accelerations, tensions, etc.).</li>
-          </ol>
-
-          <p class="text-sm text-slate-700 mb-2 font-semibold">Example pattern: Two blocks on a horizontal surface</p>
-          <p class="text-sm text-slate-700 mb-2">
-            For two blocks $m_1$ and $m_2$ pulled by a force $F$:
-          </p>
-          <ul class="list-disc pl-5 text-sm text-slate-700 mb-3">
-            <li>Treat $m_1 + m_2$ as one system to quickly find acceleration: $a = F/(m_1 + m_2)$.</li>
-            <li>Then isolate one block to find internal tension using $T = m a$.</li>
-          </ul>
-
-          <p class="text-sm text-slate-700">
-            For Atwood-style setups (one mass hanging, one on a surface), the same logic applies:
-            consistent acceleration but different force equations for each object.
-          </p>
-        </article>
-
-        <!-- 5. Summary -->
-        <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-xl font-bold text-slate-800 mb-3">5. Summary of Key Relationships</h2>
-          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
-            <li>First Law describes equilibrium ($\sum \vec{F} = 0$); Second Law describes general motion ($\sum \vec{F} = m \vec{a}$).</li>
-            <li>Third Law: forces between two objects come in equal-and-opposite pairs on different objects.</li>
-            <li>Weight: $W = mg$; normal: $N$ is perpendicular contact; friction: $f_s \le \mu_s N$, $f_k = \mu_k N$.</li>
-            <li>On inclines, decompose weight into $mg \sin\theta$ (parallel) and $mg \cos\theta$ (perpendicular).</li>
-            <li>Dynamics problems are solved by: FBD → components → $\sum F_x = m a_x$, $\sum F_y = m a_y$ → solve.</li>
-            <li>For multi-object systems, write equations for each object and use constraints (same $a$, same $T$ in an ideal rope).</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- TAB: Worked Examples -->
-    <section id="tab-examples" class="tab-section hidden">
-      <div class="space-y-6">
-
-        <!-- Example 1 -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-lg font-bold text-slate-800 mb-2">
-            Example 1: Horizontal Pull with Friction
-          </h2>
-          <p class="text-sm text-slate-700 mb-2">
-            A 10 kg block is pulled to the right by a horizontal force of $F = 40\ \text{N}$ on a rough
-            horizontal surface. The coefficient of kinetic friction is $\mu_k = 0.30$.
-          </p>
-          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
-            <li>Draw a free-body diagram.</li>
-            <li>Find the friction force.</li>
-            <li>Compute the acceleration of the block.</li>
-          </ol>
-
-          <details class="mt-3">
-            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
-            <div class="mt-2 text-sm text-slate-700 space-y-2">
-              <p><strong>(1) FBD:</strong> Forces: weight $mg$ down, normal $N$ up, pull $F$ right, friction $f_k$ left.</p>
-              <p><strong>(2) Normal & friction:</strong></p>
-              <p>
-                Vertical equilibrium (no vertical acceleration):
-                \[
-                  N - mg = 0 \Rightarrow N = mg = 10 \cdot 9.8 = 98\ \text{N}.
-                \]
-              </p>
-              <p>
-                Kinetic friction:
-                \[
-                  f_k = \mu_k N = 0.30 \cdot 98 \approx 29.4\ \text{N}.
-                \]
-              </p>
-              <p><strong>(3) Horizontal dynamics:</strong></p>
-              <p>
-                Take right as positive:
-                \[
-                  \sum F_x = F - f_k = m a.
-                \]
-                So
-                \[
-                  a = \frac{F - f_k}{m} = \frac{40 - 29.4}{10} \approx 1.06\ \text{m/s}^2.
-                \]
-              </p>
-            </div>
-          </details>
-        </div>
-
-        <!-- Example 2 -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-lg font-bold text-slate-800 mb-2">
-            Example 2: Block on an Incline with Friction
-          </h2>
-          <p class="text-sm text-slate-700 mb-2">
-            A 12 kg crate is on a $30^\circ$ incline. The coefficient of kinetic friction is
-            $\mu_k = 0.20$. The crate is released from rest and slides down. Find its acceleration.
-          </p>
-
-          <details class="mt-2">
-            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
-            <div class="mt-2 text-sm text-slate-700 space-y-2">
-              <p><strong>Step 1: Choose axes & FBD.</strong></p>
-              <ul class="list-disc pl-5">
-                <li>$x$-axis along the incline (down-slope positive), $y$-axis perpendicular to the incline.</li>
-                <li>Forces: $mg$ downward, normal $N$ perpendicular to plane, friction $f_k$ up the plane.</li>
-              </ul>
-
-              <p><strong>Step 2: Components and normal force.</strong></p>
-              <p>
-                Parallel component: $mg \sin\theta$; perpendicular: $mg \cos\theta$.
-              </p>
-              <p>
-                $\sum F_y = 0 \Rightarrow N - mg \cos\theta = 0 \Rightarrow N = mg \cos\theta.$
-              </p>
-
-              <p><strong>Step 3: Along the plane.</strong></p>
-              <p>
-                \[
-                  \sum F_x = mg \sin\theta - f_k = m a.
-                \]
-                With $f_k = \mu_k N = \mu_k mg \cos\theta$:
-                \[
-                  a = g (\sin\theta - \mu_k \cos\theta).
-                \]
-              </p>
-              <p>
-                Plug numbers: $g = 9.8$, $\theta = 30^\circ$:
-                \[
-                  a \approx 9.8 \left(0.5 - 0.20 \cdot 0.866\right)
-                  = 9.8 (0.5 - 0.173) \approx 9.8 \cdot 0.327 \approx 3.2\ \text{m/s}^2.
-                \]
-              </p>
-            </div>
-          </details>
-        </div>
-
-        <!-- Example 3 -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h2 class="text-lg font-bold text-slate-800 mb-2">
-            Example 3: Two-Block System with Tension
-          </h2>
-          <p class="text-sm text-slate-700 mb-2">
-            Two blocks are connected by a light string on a frictionless surface. Block 1 has mass
-            $m_1 = 2.0\ \text{kg}$, block 2 has mass $m_2 = 3.0\ \text{kg}$. A horizontal force of
-            $F = 20\ \text{N}$ pulls on $m_2$.
-          </p>
-          <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1 mb-3">
-            <li>Find the acceleration of the system.</li>
-            <li>Find the tension in the string between the blocks.</li>
-          </ol>
-
-          <details class="mt-2">
-            <summary class="cursor-pointer text-sm text-sky-700 hover:underline">Show Solution</summary>
-            <div class="mt-2 text-sm text-slate-700 space-y-2">
-              <p><strong>(1) Acceleration of the system.</strong></p>
-              <p>
-                Treat $m_1 + m_2$ as one combined mass:
-                \[
-                  \sum F = F = (m_1 + m_2) a.
-                \]
-                So
-                \[
-                  a = \frac{F}{m_1 + m_2} = \frac{20}{2.0 + 3.0} = \frac{20}{5} = 4.0\ \text{m/s}^2.
-                \]
-              </p>
-
-              <p><strong>(2) Tension in the string.</strong></p>
-              <p>
-                Now isolate $m_1$. The only horizontal force on $m_1$ is tension $T$:
-                \[
-                  \sum F_x = T = m_1 a \Rightarrow T = 2.0 \cdot 4.0 = 8.0\ \text{N}.
-                \]
-              </p>
-            </div>
-          </details>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TAB: Practice Problems -->
-    <section id="tab-practice" class="tab-section hidden">
-      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-        <h2 class="text-lg font-bold text-slate-800 mb-3">Practice Set – Week 3</h2>
-        <p class="text-sm text-slate-700 mb-4">
-          Try each problem without looking at the outline. Draw clean free-body diagrams and label all forces.
-        </p>
-
-        <div class="space-y-4 text-sm text-slate-800">
-
-          <!-- Problem 1 -->
-          <details>
-            <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 1 – Identifying Forces
-            </summary>
-            <div class="mt-2 space-y-1">
-              <p>
-                A book rests on a table. The Earth pulls down on the book with gravitational force $mg$.
-              </p>
-              <ol class="list-decimal pl-5 space-y-1">
-                <li>List all forces acting on the book and draw an FBD.</li>
-                <li>Identify one Newton’s Third Law pair involving the book.</li>
-              </ol>
-              <hr class="my-2 border-slate-200" />
-              <p class="font-semibold">Solution (outline):</p>
-              <p>
-                Forces on the book: weight $mg$ downward, normal force $N$ upward from the table.
-              </p>
-              <p>
-                Third Law pair example: Earth pulls on the book (downward); book pulls on Earth (upward)
-                with equal magnitude.
-              </p>
-            </div>
-          </details>
-
-          <!-- Problem 2 -->
-          <details>
-            <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 2 – Friction Threshold
-            </summary>
-            <div class="mt-2 space-y-1">
-              <p>
-                A 20 kg crate is at rest on a horizontal floor. The coefficient of static friction is
-                $\mu_s = 0.40$. A horizontal force $F$ is gradually increased.
-              </p>
-              <ol class="list-decimal pl-5 space-y-1">
-                <li>Find the minimum $F$ required to start the crate moving.</li>
-                <li>Draw the FBD at the threshold of motion.</li>
-              </ol>
-              <hr class="my-2 border-slate-200" />
-              <p class="font-semibold">Solution (outline):</p>
-              <p>
-                $N = mg = 20 \cdot 9.8 = 196\ \text{N}$.
-              </p>
-              <p>
-                Maximum static friction:
-                \[
-                  f_{s,\max} = \mu_s N = 0.40 \cdot 196 \approx 78\ \text{N}.
-                \]
-                Threshold force $F_{\min} \approx 78\ \text{N}$.
-              </p>
-            </div>
-          </details>
-
-          <!-- Problem 3 -->
-          <details>
-            <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 3 – Elevator Apparent Weight
-            </summary>
-            <div class="mt-2 space-y-1">
-              <p>
-                A 65 kg person stands on a scale in an elevator. The elevator accelerates <em>upward</em>
-                at $a = 1.8\ \text{m/s}^2$.
-              </p>
-              <ol class="list-decimal pl-5 space-y-1">
-                <li>Draw an FBD for the person.</li>
-                <li>Find the scale reading (normal force).</li>
-              </ol>
-              <hr class="my-2 border-slate-200" />
-              <p class="font-semibold">Solution (outline):</p>
-              <p>
-                Take upward positive: $\sum F_y = N - mg = m a$.
-              </p>
-              <p>
-                So $N = m(g + a) = 65(9.8 + 1.8) \approx 65 \cdot 11.6 \approx 754\ \text{N}$.
-              </p>
-            </div>
-          </details>
-
-          <!-- Problem 4 -->
-          <details>
-            <summary class="cursor-pointer font-semibold text-slate-800">
-              Problem 4 – Atwood-Style System
-            </summary>
-            <div class="mt-2 space-y-1">
-              <p>
-                A 2.0 kg block rests on a frictionless table and is connected by a light string over a
-                frictionless pulley to a 3.0 kg hanging mass.
-              </p>
-              <ol class="list-decimal pl-5 space-y-1">
-                <li>Draw FBDs for each mass.</li>
-                <li>Find the magnitude of the acceleration of the system.</li>
-                <li>Find the tension in the string.</li>
-              </ol>
-              <hr class="my-2 border-slate-200" />
-              <p class="font-semibold">Solution (outline):</p>
-              <p>
-                Let the 3.0 kg mass move downward with acceleration $a$, and the 2.0 kg block move right with $a$.
-              </p>
-              <p>
-                For 3.0 kg: $mg - T = m a$ → $3g - T = 3a$.<br />
-                For 2.0 kg: $T = 2a$.
-              </p>
-              <p>
-                Substitute: $3g - 2a = 3a \Rightarrow 3g = 5a \Rightarrow a = (3/5)g \approx 5.9\ \text{m/s}^2$,
-                and $T = 2a \approx 11.8\ \text{N}$.
-              </p>
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
+🔽 **Continue to Message 2 for the rest of the corrected file (Interactive Panel + scripts + footer).**
     <!-- TAB: Interactive Panel -->
-  <section id="tab-sim" class="tab-section hidden">
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-    <h2 class="text-lg font-bold text-slate-800 mb-3">
-      Interactive Panel – Block on an Incline (Newton’s 2nd Law with Friction)
-    </h2>
+    <section id="tab-sim" class="tab-section hidden">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-800 mb-3">
+          Interactive Panel – Block on an Incline (Newton’s 2nd Law with Friction)
+        </h2>
 
-    <p class="text-sm text-slate-700 mb-4">
-      This interactive model lets you control the mass, incline angle, coefficients of friction,
-      gravitational environment, and initial velocity. Use the questions below to connect the simulation
-      to free-body diagrams and Newton’s Second Law.
-    </p>
+        <p class="text-sm text-slate-700 mb-4">
+          Use this simulation to explore static friction, kinetic friction, acceleration on an incline,
+          and the effect of gravity. Adjust mass, angle, coefficients of friction, and initial velocity
+          and compare the results to Newton’s Second Law predictions.
+        </p>
 
-    <!-- GEO GEBRA SIM EMBED -->
-    <div class="w-full flex justify-center mb-6">
-      <iframe 
-        src="https://www.geogebra.org/classic/CxZz6XTK?embed" 
-        width="800" height="600"
-        style="border: 1px solid #e4e4e4; border-radius: 4px;"
-        allowfullscreen
-        frameborder="0">
-      </iframe>
+        <!-- GEO GEBRA SIM EMBED -->
+        <div class="w-full flex justify-center mb-6">
+          <iframe 
+            src="https://www.geogebra.org/classic/CxZz6XTK?embed" 
+            width="800" height="600"
+            style="border: 1px solid #e4e4e4; border-radius: 4px;"
+            allowfullscreen
+            frameborder="0">
+          </iframe>
+        </div>
+
+        <!-- INTERACTIVE GUIDED QUESTIONS -->
+        <div class="space-y-8">
+
+          <!-- Q1 Static friction threshold -->
+          <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+            <h3 class="font-semibold mb-2 text-sky-300">1. Static Friction Threshold – Predict & Test</h3>
+            <p class="mb-2">
+              Set <strong>initial velocity = 0</strong> and slowly increase the incline angle until the block 
+              just begins sliding.
+            </p>
+            <ol class="list-decimal ml-5 space-y-1 mb-3">
+              <li>Record the critical angle: \( \theta_{\text{crit}} = \_\_\_\_^\circ \).</li>
+              <li>
+                Use Newton’s Second Law at impending motion:
+                \[
+                  mg\sin\theta_{\text{crit}} = \mu_s mg\cos\theta_{\text{crit}}
+                \]
+                Solve for \( \mu_s \).
+              </li>
+              <li>Compare your result to the slider value for \( \mu_s \).</li>
+            </ol>
+          </div>
+
+          <!-- Q2 Newton's 2nd Law with kinetic friction -->
+          <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+            <h3 class="font-semibold mb-2 text-sky-300">2. Newton’s 2nd Law on an Incline</h3>
+            <p class="mb-2">Choose mass \(m\), angle \( \theta \), and kinetic friction \( \mu_k \). Predict acceleration:</p>
+
+            <p class="mb-3">
+              \[
+                a = g(\sin\theta - \mu_k \cos\theta)
+              \]
+            </p>
+
+            <ol class="list-decimal ml-5 space-y-1 mb-3">
+              <li>Compute your predicted acceleration.</li>
+              <li>Start the simulation and compare.</li>
+              <li>Explain any mismatch (units, angle reading, friction direction).</li>
+            </ol>
+          </div>
+
+          <!-- Q3 Changing gravity -->
+          <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+            <h3 class="font-semibold mb-2 text-sky-300">3. Changing Gravity – Earth, Moon, Mars</h3>
+            <p class="mb-2">Switch between \( g = 9.8, 3.7, 1.6\ \text{m/s}^2 \).</p>
+
+            <ol class="list-decimal ml-5 space-y-1 mb-3">
+              <li>Record acceleration for all three gravity values.</li>
+              <li>
+                Explain why friction depends on gravity:
+                \[
+                  f_k = \mu_k mg\cos\theta.
+                \]
+              </li>
+              <li>Which gravity gives the largest acceleration, and why?</li>
+            </ol>
+          </div>
+
+          <!-- Q4 Energy exploration -->
+          <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+            <h3 class="font-semibold mb-2 text-sky-300">4. Energy Loss to Friction</h3>
+            <p class="mb-2">Give the block an upward initial velocity and watch it slow to a stop.</p>
+
+            <ol class="list-decimal ml-5 space-y-1 mb-3">
+              <li>
+                Predict stopping distance using:
+                \[
+                  \Delta KE = -mg d\sin\theta - \mu_k mg\cos\theta\ d.
+                \]
+              </li>
+              <li>Measure stopping distance in the simulation.</li>
+              <li>Compare and explain differences.</li>
+            </ol>
+          </div>
+
+          <!-- Q5 Static vs kinetic -->
+          <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
+            <h3 class="font-semibold mb-2 text-sky-300">5. Static vs. Kinetic Friction – Compare</h3>
+            <p class="mb-2">Observe motion right before and right after slipping.</p>
+
+            <ul class="list-disc ml-6 mb-3 space-y-1">
+              <li>Is \( \mu_s \) larger or smaller than \( \mu_k \)?</li>
+              <li>Does acceleration “jump” as slipping begins?</li>
+            </ul>
+
+            <p class="mb-2 font-semibold">Compute:</p>
+            <p>
+              \[
+                f_s^{\max} - f_k = \mu_s N - \mu_k N.
+              \]
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold">Physics 201 • Week 3</p>
+        <p>Newton’s Laws, free-body diagrams, friction, and multi-object dynamics.</p>
+      </div>
+      <div>
+        <a href="../index.html" class="text-sky-300 hover:text-sky-200">Back to Course Home →</a>
+      </div>
     </div>
+  </footer>
 
-    <!-- INTERACTIVE GUIDED QUESTIONS -->
-    <div class="space-y-8">
+</div>
 
-      <!-- Q1 Static friction threshold -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
-        <h3 class="font-semibold mb-2 text-sky-300">1. Static Friction Threshold – Predict & Test</h3>
-        <p class="mb-2">
-          Set <strong>initial velocity = 0</strong>. Slowly increase the incline angle until the block 
-          just begins sliding.
-        </p>
-        <ol class="list-decimal ml-5 space-y-1 mb-3">
-          <li>Record the angle at which motion begins: \( \theta_{\text{crit}} = \_\_\_\_^\circ \).</li>
-          <li>Using Newton’s 2nd Law for impending motion:
-            \[
-              mg\sin\theta_{\text{crit}} = \mu_s mg\cos\theta_{\text{crit}},
-            \]
-            solve for \( \mu_s \).
-          </li>
-          <li>Compare your calculated value to the simulation slider for \( \mu_s \).</li>
-        </ol>
-      </div>
-
-      <!-- Q2 Newton's 2nd Law with friction -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
-        <h3 class="font-semibold mb-2 text-sky-300">2. Newton’s 2nd Law on an Incline</h3>
-        <p class="mb-2">
-          Choose values for mass \(m\), angle \( \theta \), and kinetic friction \( \mu_k \).  
-          Predict the acceleration using:
-        </p>
-
-        <p class="mb-3">
-          \[
-            a = g\big(\sin\theta - \mu_k \cos\theta\big)
-          \]
-        </p>
-
-        <ol class="list-decimal ml-5 space-y-1 mb-3">
-          <li>Compute your predicted acceleration.</li>
-          <li>Start the simulation and compare it to the model’s actual acceleration.</li>
-          <li>
-            If the values don’t match, identify which force component (parallel, perpendicular, friction)
-            may have been misinterpreted.
-          </li>
-        </ol>
-      </div>
-
-      <!-- Q3 Gravity planet switch -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
-        <h3 class="font-semibold mb-2 text-sky-300">3. Changing Gravity – Earth, Moon, Mars</h3>
-        <p class="mb-2">
-          Switch among gravity values: \( g = 9.8, 3.7, 1.6\ \text{m/s}^2 \).
-        </p>
-
-        <ol class="list-decimal ml-5 space-y-1 mb-3">
-          <li>Record acceleration for the same \(m\), \( \theta \), \( \mu_k \) at each gravity value.</li>
-          <li>
-            Explain why friction decreases proportionally with gravity:
-            \[
-              f_k = \mu_k mg\cos\theta.
-            \]
-          </li>
-          <li>Which environment gives the largest acceleration? Why?</li>
-        </ol>
-      </div>
-
-      <!-- Q4 Energy exploration -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
-        <h3 class="font-semibold mb-2 text-sky-300">4. Energy Loss to Friction</h3>
-        <p class="mb-2">
-          Give the block an initial velocity up the ramp. Observe the motion.
-        </p>
-
-        <ol class="list-decimal ml-5 space-y-1 mb-3">
-          <li>Predict the stopping distance using energy methods:
-            \[
-              \Delta KE = -mg d\sin\theta - \mu_k mg\cos\theta \cdot d
-            \]
-          </li>
-          <li>Run the simulation and record the actual stopping distance.</li>
-          <li>Explain any discrepancy (timing, rounding, angle estimation).</li>
-        </ol>
-      </div>
-
-      <!-- Q5 Static vs kinetic friction investigation -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-lg text-slate-100 text-sm">
-        <h3 class="font-semibold mb-2 text-sky-300">5. Static vs. Kinetic Friction – Do They Match?</h3>
-        <p class="mb-2">
-          Use the simulation to compare motion at:
-        </p>
-
-        <ul class="list-disc ml-6 mb-3 space-y-1">
-          <li>just before slipping (static friction)</li>
-          <li>just after slipping begins (kinetic friction)</li>
-        </ul>
-
-        <p class="mb-2"><strong>Questions:</strong></p>
-        <ol class="list-decimal ml-5 space-y-1">
-          <li>Is \( \mu_s \) equal to \( \mu_k \)? Why not?</li>
-          <li>Is the acceleration discontinuous when sliding starts?</li>
-          <li>
-            Compute the “jump” in friction force:
-            \[
-              f_s^{\text{max}} - f_k = \mu_s N - \mu_k N.
-            \]
-          </li>
-        </ol>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- SIDEBAR SCRIPT -->
+<!-- SIDEBAR + TAB SCRIPT -->
 <script>
   // Highlight active link
   const path = window.location.pathname.split("/").pop();
@@ -834,7 +282,30 @@
     }
   });
 
-  // Mobile toggle
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabSections = document.querySelectorAll('.tab-section');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+
+      tabButtons.forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white');
+        b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+      });
+
+      btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+      btn.classList.add('bg-slate-900', 'text-white');
+
+      tabSections.forEach(sec => sec.classList.add('hidden'));
+      document.getElementById('tab-' + target).classList.remove('hidden');
+
+      if (window.MathJax) MathJax.typesetPromise();
+    });
+  });
+
+  // Mobile toggle for sidebar
   const sidebar = document.getElementById("sidebar");
   const menuBtn = document.getElementById("menuBtn");
   const overlay = document.getElementById("overlay");
@@ -856,5 +327,6 @@
 
 </body>
 </html>
+
 
 
